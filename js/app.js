@@ -1,5 +1,83 @@
 // Main Application Controller for THE ANIMAL KINGDOM app
 
+// Curated Realistic Wildlife Habitat Wallpapers
+const REALISTIC_BACKGROUNDS = [
+  {
+    id: 'default',
+    title: 'Adaptive Theme Biome',
+    subtitle: 'Switches dynamically between Serengeti Twilight (Dark) & Tropical Rainforest (Light).',
+    category: 'Dynamic',
+    badge: 'DEFAULT',
+    thumb: 'images/wildlife_background.jpg',
+    urlDark: 'images/wildlife_background.jpg',
+    urlLight: 'images/tropical_forest_light_bg.jpg',
+    isDefault: true
+  },
+  {
+    id: 'savanna_sunset',
+    title: 'Serengeti Twilight Savanna',
+    subtitle: 'Golden hour acacia horizon with majestic roaming wildlife under an amber sunset.',
+    category: 'Savanna',
+    badge: '4K REALISTIC',
+    thumb: 'images/backgrounds/savanna_sunset.jpg',
+    url: 'images/backgrounds/savanna_sunset.jpg'
+  },
+  {
+    id: 'misty_rainforest',
+    title: 'Deep Amazonian Mist',
+    subtitle: 'Towering rainforest canopy, lush jungle palms, and cascading waterfalls in morning fog.',
+    category: 'Rainforest',
+    badge: '4K REALISTIC',
+    thumb: 'images/backgrounds/misty_rainforest.jpg',
+    url: 'images/backgrounds/misty_rainforest.jpg'
+  },
+  {
+    id: 'alpine_lake',
+    title: 'Alpine Glacial Sanctuary',
+    subtitle: 'Pristine turquoise mountain lake reflecting rugged snow peaks and fragrant pine wilderness.',
+    category: 'Alpine',
+    badge: '4K REALISTIC',
+    thumb: 'images/backgrounds/alpine_lake.jpg',
+    url: 'images/backgrounds/alpine_lake.jpg'
+  },
+  {
+    id: 'coral_reef',
+    title: 'Great Barrier Reef Azure',
+    subtitle: 'Sun-dappled turquoise ocean waters, sea turtles, rays, and vibrant living coral reefs.',
+    category: 'Marine',
+    badge: '4K REALISTIC',
+    thumb: 'images/backgrounds/coral_reef.jpg',
+    url: 'images/backgrounds/coral_reef.jpg'
+  },
+  {
+    id: 'arctic_aurora',
+    title: 'Arctic Polar Aurora',
+    subtitle: 'Ethereal emerald northern lights dancing over frozen fjords and snow-dusted tundra.',
+    category: 'Polar',
+    badge: '4K REALISTIC',
+    thumb: 'images/backgrounds/arctic_aurora.jpg',
+    url: 'images/backgrounds/arctic_aurora.jpg'
+  },
+  {
+    id: 'classic_safari',
+    title: 'Serengeti Safari Classic',
+    subtitle: 'Traditional wide-angle view of the African savanna wildlife under dramatic skies.',
+    category: 'Classic',
+    badge: 'SAVANNA',
+    thumb: 'images/wildlife_background.jpg',
+    url: 'images/wildlife_background.jpg'
+  },
+  {
+    id: 'classic_jungle',
+    title: 'Tropical Rainforest Classic',
+    subtitle: 'Vibrant sunlit canopy with emerald foliage and exotic rainforest palms.',
+    category: 'Classic',
+    badge: 'JUNGLE',
+    thumb: 'images/tropical_forest_light_bg.jpg',
+    url: 'images/tropical_forest_light_bg.jpg'
+  }
+];
+
 class AnimalKingdomApp {
   constructor() {
     this.currentCategory = 'amphibians';
@@ -9,6 +87,8 @@ class AnimalKingdomApp {
     this.isGlobalSearch = false;
     this.favorites = new Set(JSON.parse(localStorage.getItem('ak_favorites') || '[]'));
     this.theme = localStorage.getItem('ak_theme_mode') || 'dark';
+    this.currentBg = localStorage.getItem('ak_selected_bg') || 'default';
+    this.customBgUrl = localStorage.getItem('ak_custom_bg_url') || '';
     localStorage.removeItem('ak_nano_banana_bg_v1');
     localStorage.removeItem('ak_custom_settings_v1');
     localStorage.removeItem('ak_custom_settings_v2');
@@ -127,6 +207,7 @@ class AnimalKingdomApp {
   init() {
     this.currentView = 'home';
     this.applyTheme();
+    this.initBackgroundSetting();
     this.showHomeView(false);
     this.renderAnimalOfTheDay();
     this.setupEventListeners();
@@ -161,7 +242,141 @@ class AnimalKingdomApp {
         btn.title = 'Switch to Light Mode (Sunny Tropical Forest)';
       }
     }
+    this.applyCurrentBackground();
   }
+
+  /* =========================================================
+     REALISTIC HABITAT BACKGROUND WALLPAPERS SETTINGS
+     ========================================================= */
+  initBackgroundSetting() {
+    this.currentBg = localStorage.getItem('ak_selected_bg') || 'default';
+    this.customBgUrl = localStorage.getItem('ak_custom_bg_url') || '';
+    this.applyCurrentBackground();
+  }
+
+  applyCurrentBackground() {
+    const isLight = document.body.classList.contains('light-mode');
+    
+    if (this.currentBg === 'default') {
+      document.body.style.backgroundImage = '';
+      return;
+    }
+
+    let bgUrl = '';
+    if (this.currentBg === 'custom' && this.customBgUrl) {
+      bgUrl = this.customBgUrl;
+    } else {
+      const found = REALISTIC_BACKGROUNDS.find(b => b.id === this.currentBg);
+      if (found) {
+        bgUrl = found.url || found.thumb;
+      } else {
+        bgUrl = 'images/wildlife_background.jpg';
+      }
+    }
+
+    const overlay = isLight
+      ? 'linear-gradient(rgba(255, 255, 255, 0.38), rgba(240, 253, 244, 0.48))'
+      : 'linear-gradient(rgba(8, 12, 22, 0.58), rgba(8, 12, 22, 0.70))';
+
+    document.body.style.backgroundImage = `${overlay}, url('${bgUrl}')`;
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+  }
+
+  openBackgroundModal() {
+    const modal = document.getElementById('bg-modal');
+    if (!modal) return;
+    this.renderBackgroundGrid();
+    const customInput = document.getElementById('bg-custom-url-input');
+    if (customInput && this.customBgUrl) {
+      customInput.value = this.customBgUrl;
+    }
+    modal.classList.remove('hidden');
+    if (window.AK_AUDIO && window.AK_AUDIO.playUiClick) {
+      window.AK_AUDIO.playUiClick();
+    }
+  }
+
+  closeBackgroundModal() {
+    const modal = document.getElementById('bg-modal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  renderBackgroundGrid() {
+    const container = document.getElementById('bg-cards-grid');
+    if (!container) return;
+
+    container.innerHTML = REALISTIC_BACKGROUNDS.map(bg => {
+      const isActive = this.currentBg === bg.id;
+      return `
+        <div class="bg-card-item ${isActive ? 'active' : ''}" onclick="window.app.selectBackground('${bg.id}')">
+          <div class="bg-card-thumb-wrap">
+            <img src="${bg.thumb}" alt="${bg.title}" loading="lazy" />
+            <span class="bg-card-biome-tag">${bg.category.toUpperCase()}</span>
+            ${isActive ? '<span class="bg-card-active-indicator">✓ ACTIVE</span>' : ''}
+          </div>
+          <div class="bg-card-body">
+            <h4 class="bg-card-title">${bg.title}</h4>
+            <p class="bg-card-desc">${bg.subtitle}</p>
+            <div class="bg-card-footer">
+              <span class="bg-card-status-label">${isActive ? '● Currently Active' : bg.badge}</span>
+              <button class="bg-card-select-btn" type="button">${isActive ? 'Active' : 'Choose Habitat'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  selectBackground(id) {
+    this.currentBg = id;
+    localStorage.setItem('ak_selected_bg', id);
+    this.applyCurrentBackground();
+    this.renderBackgroundGrid();
+    if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
+      window.AK_AUDIO.playPop(440);
+    }
+  }
+
+  applyCustomBackgroundUrl() {
+    const input = document.getElementById('bg-custom-url-input');
+    if (!input) return;
+    const url = input.value.trim();
+    if (!url) {
+      alert('Please enter a valid image URL (e.g., https://...jpg)');
+      return;
+    }
+    if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('data:image/')) {
+      alert('Image URL must start with http:// or https://');
+      return;
+    }
+    this.customBgUrl = url;
+    this.currentBg = 'custom';
+    localStorage.setItem('ak_selected_bg', 'custom');
+    localStorage.setItem('ak_custom_bg_url', url);
+    this.applyCurrentBackground();
+    this.renderBackgroundGrid();
+    if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
+      window.AK_AUDIO.playPop(520);
+    }
+  }
+
+  resetDefaultBackground() {
+    this.currentBg = 'default';
+    this.customBgUrl = '';
+    localStorage.setItem('ak_selected_bg', 'default');
+    localStorage.removeItem('ak_custom_bg_url');
+    const input = document.getElementById('bg-custom-url-input');
+    if (input) input.value = '';
+    this.applyCurrentBackground();
+    this.renderBackgroundGrid();
+    if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
+      window.AK_AUDIO.playPop(350);
+    }
+  }
+
 
   showHomeView(scroll = true) {
     this.currentView = 'home';
@@ -845,11 +1060,13 @@ class AnimalKingdomApp {
       const favModal = document.getElementById('fav-modal');
       const quizModal = document.getElementById('quiz-modal');
       const battleModal = document.getElementById('battle-modal');
+      const bgModal = document.getElementById('bg-modal');
 
       if (e.target === animalModal) this.closeModal();
       if (e.target === favModal) this.closeFavorites();
       if (e.target === quizModal) this.closeQuiz();
       if (e.target === battleModal) this.closeBattleArena();
+      if (e.target === bgModal) this.closeBackgroundModal();
     });
 
     // Universal Escape key listener to exit any search, dropdown, or modal
@@ -859,6 +1076,7 @@ class AnimalKingdomApp {
         this.closeFavorites();
         this.closeQuiz();
         this.closeBattleArena();
+        this.closeBackgroundModal();
         this.closeGlobalDropdown();
         this.clearFighterSearch(1);
         this.clearFighterSearch(2);
@@ -1655,6 +1873,17 @@ window.addEventListener('DOMContentLoaded', () => {
   window.app = new AnimalKingdomApp();
   window.app.init();
 });
+
+window.openBackgroundModal = function() {
+  if (window.app && window.app.openBackgroundModal) {
+    window.app.openBackgroundModal();
+  }
+};
+window.closeBackgroundModal = function() {
+  if (window.app && window.app.closeBackgroundModal) {
+    window.app.closeBackgroundModal();
+  }
+};
 
 // ==========================================
 // FULL PAGE FAN CLUB & LIVE CHAT

@@ -49,10 +49,16 @@
           <button class="btn-icon" id="audio-toggle-btn" onclick="const s = window.AK_AUDIO.toggleSound(); this.innerText = s ? '🔊' : '🔇';" title="Toggle Sound Effects" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
             🔊
           </button>
+          <button class="btn-icon" id="bg-setting-btn" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
+            🖼️
+          </button>
         </div>
       </div>
 
       <div class="header-controls">
+        <button class="btn-header-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
+          🖼️ Habitats
+        </button>
         <button class="btn-header-pill btn-gallery-glow" onclick="window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()" title="Explore Traditional Wildlife Art Gallery">
           🎨 Art Gallery
         </button>
@@ -1121,6 +1127,53 @@
       </div>
       <div id="fc-quiz-content" class="fc-quiz-content"></div>
       <div id="fc-quiz-result" class="hidden fc-quiz-result"></div>
+    </div>
+  </div>
+
+  <!-- REALISTIC HABITAT BACKGROUND SETTINGS MODAL -->
+  <div id="bg-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.app.closeBackgroundModal()">
+    <div class="modal-dialog bg-modal-box">
+      <!-- Modal Header -->
+      <div class="bg-modal-header">
+        <div class="modal-header-text">
+          <div class="bg-badge-pill-row">
+            <span class="bg-badge-pill">🌍 EXPEDITION ENVIRONMENT</span>
+            <span class="bg-badge-pill sub">Photorealistic Biomes</span>
+          </div>
+          <h2 class="bg-modal-title">🖼️ Realistic Wildlife Habitats &amp; Wallpapers</h2>
+          <p class="bg-modal-subtitle">Immerse your journey in breathtaking, photorealistic natural biomes. Select a habitat to transform your safari view across every discovery zone.</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.app.closeBackgroundModal()" title="Close Background Settings">✕</button>
+      </div>
+
+      <!-- Modal Body / Scrollable Content -->
+      <div class="bg-modal-scroll">
+        <!-- Grid of Realistic Habitats -->
+        <div id="bg-cards-grid" class="bg-cards-grid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <!-- Custom Image URL Section -->
+        <div class="bg-custom-url-section">
+          <div class="bg-custom-url-header">
+            <span style="font-size: 1.2rem;">🌐</span>
+            <div>
+              <div class="bg-custom-url-title">Custom Wallpaper Image URL</div>
+              <div class="bg-custom-url-subtitle">Want to use your own nature photograph? Paste a direct web image link (.jpg, .png, .webp) below:</div>
+            </div>
+          </div>
+          <div class="bg-custom-url-form">
+            <input type="url" id="bg-custom-url-input" placeholder="https://images.unsplash.com/photo-..." spellcheck="false" autocomplete="off" />
+            <button class="bg-btn-apply" onclick="window.app.applyCustomBackgroundUrl()">Apply URL</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="bg-modal-footer">
+        <button class="bg-btn-reset" onclick="window.app.resetDefaultBackground()" title="Reset to dynamic theme background">🔄 Reset to Default Theme</button>
+        <button class="bg-btn-done" onclick="window.app.closeBackgroundModal()">Close</button>
+      </div>
     </div>
   </div>
 
