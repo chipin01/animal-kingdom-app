@@ -257,26 +257,22 @@ class AnimalKingdomApp {
   applyCurrentBackground() {
     const isLight = document.body.classList.contains('light-mode');
     
-    if (this.currentBg === 'default') {
-      document.body.style.backgroundImage = '';
-      return;
-    }
-
     let bgUrl = '';
     if (this.currentBg === 'custom' && this.customBgUrl) {
       bgUrl = this.customBgUrl;
     } else {
       const found = REALISTIC_BACKGROUNDS.find(b => b.id === this.currentBg);
-      if (found) {
+      if (found && !found.isDefault) {
         bgUrl = found.url || found.thumb;
       } else {
-        bgUrl = 'images/wildlife_background.jpg';
+        bgUrl = isLight ? 'images/tropical_forest_light_bg.jpg' : 'images/wildlife_background.jpg';
       }
     }
 
+    // Balanced vibrant overlay: keeps text readable while letting the landscape photograph pop with rich color & clarity!
     const overlay = isLight
-      ? 'linear-gradient(rgba(255, 255, 255, 0.38), rgba(240, 253, 244, 0.48))'
-      : 'linear-gradient(rgba(8, 12, 22, 0.58), rgba(8, 12, 22, 0.70))';
+      ? 'linear-gradient(rgba(255, 255, 255, 0.20), rgba(240, 253, 244, 0.28))'
+      : 'linear-gradient(rgba(8, 12, 22, 0.28), rgba(8, 12, 22, 0.42))';
 
     document.body.style.backgroundImage = `${overlay}, url('${bgUrl}')`;
     document.body.style.backgroundPosition = 'center center';
@@ -285,12 +281,28 @@ class AnimalKingdomApp {
     document.body.style.backgroundAttachment = 'fixed';
   }
 
+  showToast(msg) {
+    let toast = document.getElementById('ak-global-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'ak-global-toast';
+      toast.className = 'ak-global-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('visible');
+    if (this._toastTimer) clearTimeout(this._toastTimer);
+    this._toastTimer = setTimeout(() => {
+      toast.classList.remove('visible');
+    }, 3200);
+  }
+
   openBackgroundModal() {
     const modal = document.getElementById('bg-modal');
     if (!modal) return;
     this.renderBackgroundGrid();
     const customInput = document.getElementById('bg-custom-url-input');
-    if (customInput && this.customBgUrl) {
+    if (customInput && this.customBgUrl && !this.customBgUrl.startsWith('data:')) {
       customInput.value = this.customBgUrl;
     }
     modal.classList.remove('hidden');
@@ -308,10 +320,39 @@ class AnimalKingdomApp {
     const container = document.getElementById('bg-cards-grid');
     if (!container) return;
 
-    container.innerHTML = REALISTIC_BACKGROUNDS.map(bg => {
+    let customCardHtml = '';
+    if (this.customBgUrl) {
+      const isCustomActive = this.currentBg === 'custom';
+      customCardHtml = `
+        <div class="bg-card-item ${isCustomActive ? 'active' : ''}" style="border-color: #3b82f6;" onclick="window.app.selectBackground('custom', false)">
+          <div class="bg-card-thumb-wrap">
+            <img src="${this.customBgUrl}" alt="Custom Uploaded Wallpaper" loading="lazy" />
+            <span class="bg-card-biome-tag" style="background: #2563eb; color: #fff;">📸 MY PHOTO</span>
+            ${isCustomActive ? '<span class="bg-card-active-indicator">✓ ACTIVE</span>' : ''}
+          </div>
+          <div class="bg-card-body">
+            <h4 class="bg-card-title">My Uploaded Wallpaper</h4>
+            <p class="bg-card-desc">Your personal custom nature photo wallpaper.</p>
+            <div class="bg-card-footer">
+              <span class="bg-card-status-label">${isCustomActive ? '● Currently Active' : 'Custom'}</span>
+              <div style="display: flex; gap: 6px;">
+                <button class="bg-card-select-btn" type="button" onclick="event.stopPropagation(); window.app.selectBackground('custom', true)">
+                  ${isCustomActive ? 'Active' : 'Choose'}
+                </button>
+                <button class="bg-card-select-btn" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);" type="button" onclick="event.stopPropagation(); window.app.removeCustomBackground()" title="Delete custom wallpaper">
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = customCardHtml + REALISTIC_BACKGROUNDS.map(bg => {
       const isActive = this.currentBg === bg.id;
       return `
-        <div class="bg-card-item ${isActive ? 'active' : ''}" onclick="window.app.selectBackground('${bg.id}')">
+        <div class="bg-card-item ${isActive ? 'active' : ''}" onclick="window.app.selectBackground('${bg.id}', false)">
           <div class="bg-card-thumb-wrap">
             <img src="${bg.thumb}" alt="${bg.title}" loading="lazy" />
             <span class="bg-card-biome-tag">${bg.category.toUpperCase()}</span>
@@ -322,7 +363,7 @@ class AnimalKingdomApp {
             <p class="bg-card-desc">${bg.subtitle}</p>
             <div class="bg-card-footer">
               <span class="bg-card-status-label">${isActive ? '● Currently Active' : bg.badge}</span>
-              <button class="bg-card-select-btn" type="button">${isActive ? 'Active' : 'Choose Habitat'}</button>
+              <button class="bg-card-select-btn" type="button" onclick="event.stopPropagation(); window.app.selectBackground('${bg.id}', true)">${isActive ? 'Active' : 'Choose Habitat'}</button>
             </div>
           </div>
         </div>
@@ -330,7 +371,7 @@ class AnimalKingdomApp {
     }).join('');
   }
 
-  selectBackground(id) {
+  selectBackground(id, closeOnSelect = false) {
     this.currentBg = id;
     localStorage.setItem('ak_selected_bg', id);
     this.applyCurrentBackground();
@@ -338,6 +379,96 @@ class AnimalKingdomApp {
     if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
       window.AK_AUDIO.playPop(440);
     }
+
+    let title = 'Wallpaper';
+    if (id === 'custom') {
+      title = 'Your Uploaded Photo';
+    } else {
+      const found = REALISTIC_BACKGROUNDS.find(b => b.id === id);
+      if (found) title = found.title;
+    }
+    this.showToast(`🏞️ Wallpaper set to: ${title}!`);
+
+    if (closeOnSelect) {
+      setTimeout(() => this.closeBackgroundModal(), 320);
+    }
+  }
+
+  triggerLocalFileUpload() {
+    const input = document.getElementById('bg-file-upload-input');
+    if (input) input.click();
+  }
+
+  handleLocalFileUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file (.jpg, .png, .webp).');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const rawDataUrl = e.target.result;
+      
+      // Compress/resize via canvas to 1920x1080 max for instant performance and storage fit
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxW = 1920;
+        const maxH = 1080;
+        let w = img.width;
+        let h = img.height;
+        if (w > maxW || h > maxH) {
+          const ratio = Math.min(maxW / w, maxH / h);
+          w = Math.round(w * ratio);
+          h = Math.round(h * ratio);
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        
+        const optimizedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+        
+        try {
+          localStorage.setItem('ak_custom_bg_url', optimizedDataUrl);
+          this.customBgUrl = optimizedDataUrl;
+          this.currentBg = 'custom';
+          localStorage.setItem('ak_selected_bg', 'custom');
+          this.applyCurrentBackground();
+          this.renderBackgroundGrid();
+          this.showToast('🎉 Your uploaded photo is now your background!');
+          setTimeout(() => this.closeBackgroundModal(), 400);
+          if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(650);
+        } catch (err) {
+          console.warn('Storage quota exceeded, applying in memory', err);
+          this.customBgUrl = optimizedDataUrl;
+          this.currentBg = 'custom';
+          this.applyCurrentBackground();
+          this.renderBackgroundGrid();
+          this.showToast('🎉 Photo applied as background!');
+          setTimeout(() => this.closeBackgroundModal(), 400);
+        }
+      };
+      img.src = rawDataUrl;
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
+  }
+
+  removeCustomBackground() {
+    this.customBgUrl = '';
+    localStorage.removeItem('ak_custom_bg_url');
+    if (this.currentBg === 'custom') {
+      this.currentBg = 'default';
+      localStorage.setItem('ak_selected_bg', 'default');
+    }
+    this.applyCurrentBackground();
+    this.renderBackgroundGrid();
+    this.showToast('Custom wallpaper removed.');
+    if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(350);
   }
 
   applyCustomBackgroundUrl() {
@@ -358,6 +489,8 @@ class AnimalKingdomApp {
     localStorage.setItem('ak_custom_bg_url', url);
     this.applyCurrentBackground();
     this.renderBackgroundGrid();
+    this.showToast('🌐 Web image applied as background!');
+    setTimeout(() => this.closeBackgroundModal(), 400);
     if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
       window.AK_AUDIO.playPop(520);
     }
@@ -372,6 +505,8 @@ class AnimalKingdomApp {
     if (input) input.value = '';
     this.applyCurrentBackground();
     this.renderBackgroundGrid();
+    this.showToast('🔄 Reset to default theme background.');
+    setTimeout(() => this.closeBackgroundModal(), 350);
     if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
       window.AK_AUDIO.playPop(350);
     }

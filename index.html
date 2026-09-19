@@ -1153,13 +1153,25 @@
           <!-- Dynamically populated by app.js -->
         </div>
 
-        <!-- Custom Image URL Section -->
+        <!-- Custom Image Upload & URL Section -->
         <div class="bg-custom-url-section">
-          <div class="bg-custom-url-header">
+          <!-- Upload from Computer -->
+          <div class="bg-upload-dropzone" onclick="window.app.triggerLocalFileUpload()" title="Click to upload any photo from your computer">
+            <input type="file" id="bg-file-upload-input" accept="image/*" style="display: none;" onchange="window.app.handleLocalFileUpload(event)" />
+            <div class="bg-dropzone-icon">📁</div>
+            <div class="bg-dropzone-text">
+              <strong>Upload Photo from Your Computer</strong>
+              <span>Click to browse your photos or drop an image file (.jpg, .png, .webp)</span>
+            </div>
+            <button type="button" class="bg-btn-browse">Browse Device</button>
+          </div>
+
+          <!-- Web URL Alternative -->
+          <div class="bg-custom-url-header" style="margin-top: 18px;">
             <span style="font-size: 1.2rem;">🌐</span>
             <div>
-              <div class="bg-custom-url-title">Custom Wallpaper Image URL</div>
-              <div class="bg-custom-url-subtitle">Want to use your own nature photograph? Paste a direct web image link (.jpg, .png, .webp) below:</div>
+              <div class="bg-custom-url-title">Or Use Web Image URL</div>
+              <div class="bg-custom-url-subtitle">Paste a direct web link to an online wallpaper (.jpg, .png, .webp):</div>
             </div>
           </div>
           <div class="bg-custom-url-form">

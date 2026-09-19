@@ -7300,3 +7300,130 @@ body.light-mode .bg-btn-reset:hover {
   border-color: #fca5a5 !important;
 }
 
+/* Local Photo Upload Dropzone */
+.bg-upload-dropzone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 2px dashed rgba(59, 130, 246, 0.45);
+  border-radius: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.bg-upload-dropzone:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+}
+
+.bg-dropzone-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.bg-dropzone-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bg-dropzone-text strong {
+  font-size: 0.98rem;
+  color: #f1f5f9;
+}
+
+.bg-dropzone-text span {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.bg-btn-browse {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.bg-btn-browse:hover {
+  background: #2563eb;
+  transform: scale(1.04);
+}
+
+/* Modal Backdrop Transparency to Live-Preview Wallpaper */
+#bg-modal.modal-backdrop {
+  background: rgba(4, 7, 15, 0.55) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Global Floating Feedback Toast */
+.ak-global-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.3);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ak-global-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Light mode overrides for dropzone & toast */
+body.light-mode #bg-modal.modal-backdrop {
+  background: rgba(15, 23, 42, 0.4) !important;
+}
+
+body.light-mode .bg-upload-dropzone {
+  background: #f1f5f9;
+  border-color: #93c5fd;
+}
+
+body.light-mode .bg-upload-dropzone:hover {
+  background: #e2e8f0;
+  border-color: #3b82f6;
+}
+
+body.light-mode .bg-dropzone-text strong {
+  color: #0f172a;
+}
+
+body.light-mode .bg-dropzone-text span {
+  color: #64748b;
+}
+
+body.light-mode .ak-global-toast {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+
