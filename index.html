@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>THE ANIMAL KINGDOM - Wild Safari Explorer</title>
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="timeMachine.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group" onclick="window.app && window.app.showHomeView()" style="cursor: pointer;" title="Return to Home Hub">
+        <div class="logo-mascot-wrap">
+          <img src="images/logo.jpg" alt="Animal Kingdom Cub Emblem" class="logo-mascot-img">
+        </div>
+        <div class="logo-text">
+          <h1 class="logo-title">THE ANIMAL KINGDOM</h1>
+          <span class="logo-badge">780+ Creatures, Plants & Gemstones</span>
+        </div>
+      </div>
+
+      <!-- Center Column: Search & Settings -->
+      <div class="header-center-col" style="display: flex; flex-direction: column; flex: 1; max-width: 440px; margin: 0 12px; gap: 8px;">
+        <!-- Global Search Bar -->
+        <div class="header-search-wrap" style="margin: 0; max-width: 100%;">
+          <div class="search-input-box">
+            <span class="search-icon-symbol">🔍</span>
+            <input type="text" id="global-search-input" placeholder="Search 780+ species, reptiles & gems..." autocomplete="off" spellcheck="false">
+            <button id="global-search-clear" class="btn-clear-search-global hidden" onclick="window.app.clearGlobalSearch()" title="Clear search">✕</button>
+            <span class="search-shortcut-badge" title="Press / key to search">/</span>
+          </div>
+          <!-- Live Autocomplete Dropdown -->
+          <div id="global-search-dropdown" class="global-search-dropdown hidden"></div>
+        </div>
+        
+        <!-- Settings Row under search -->
+        <div class="header-settings-row" style="display: flex; justify-content: center; gap: 8px;">
+          <button class="btn-header-pill btn-fanclub-glow" onclick="window.openFanClubPage()" title="Join the Official Safari Fan Club">
+            ⭐ Fan Club
+          </button>
+          <button class="btn-icon btn-theme-toggle" id="theme-toggle-btn" onclick="window.app && window.app.toggleTheme()" title="Toggle Light / Dark Mode" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
+            ☀️
+          </button>
+          <button class="btn-icon" id="audio-toggle-btn" onclick="const s = window.AK_AUDIO.toggleSound(); this.innerText = s ? '🔊' : '🔇';" title="Toggle Sound Effects" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
+            🔊
+          </button>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button class="btn-header-pill btn-gallery-glow" onclick="window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()" title="Explore Traditional Wildlife Art Gallery">
+          🎨 Art Gallery
+        </button>
+        <button class="btn-header-pill btn-weather-glow" onclick="window.AK_WEATHER && window.AK_WEATHER.openWeatherModal()" title="Interactive Animal Weather Simulator & Irvine Radar">
+          🌦️ Animal Weather <span class="badge-live-pulse">LIVE</span>
+        </button>
+        <button class="btn-header-pill btn-anatomy-glow" onclick="window.AK_ANATOMY && window.AK_ANATOMY.openAnatomyModal()" title="Inside Animal X-Ray & Anatomy Scanner">
+          🔬 Anatomy X-Ray
+        </button>
+        <button class="btn-header-pill btn-migration-glow" onclick="window.AK_MIGRATION && window.AK_MIGRATION.openMigrationModal()" title="Live Global Wildlife Migration & GPS Tracker">
+          🗺️ Migration Map <span class="badge-live-pulse">🔴 LIVE</span>
+        </button>
+        <button class="btn-header-pill btn-arena-glow" onclick="window.app.openBattleArena()" title="Creature Face-Off Battle Arena">
+          ⚔️ Battle Arena
+        </button>
+        <button class="btn-header-pill" onclick="window.app.openQuiz()" title="Play Mystery Safari Quiz">
+          🎮 Quiz Game
+        </button>
+        <button class="btn-header-pill" onclick="window.app.openFavoritesModal()" title="View Favorites">
+          ❤️ Favorites (<span id="favorites-counter">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- VIEW 1: HOME HUB VIEW (Animals are hidden on home; user clicks a zone to enter) -->
+    <div id="home-view" class="main-view">
+      
+      <!-- COMPACT ANIMAL / PLANT / ROCK OF THE DAY -->
+      <section class="hub-hero-section compact-hub">
+        <div class="compact-hub-header">
+          <span class="badge-hub">🌟 HOME HUB</span>
+          <span class="compact-hub-subtitle">Daily Featured Discovery from Earth's Wild Kingdoms</span>
+        </div>
+        <div id="aod-container" class="aod-wrapper">
+          <!-- Rendered dynamically by animalOfDay.js & app.js -->
+        </div>
+      </section>
+
+      <!-- ========================================================= -->
+      <!-- NEW: COOL APPS & INTERACTIVE WILDLIFE STUDIOS HUB        -->
+      <!-- ========================================================= -->
+      <section class="new-apps-showcase-section">
+        <div class="new-badge-container">
+          <span class="badge-new-flash">✨ NEW</span>
+          <h2 class="new-section-title">Cool Interactive Apps &amp; Fine Art Studio</h2>
+          <p class="new-section-subtitle">Jump into our newest high-speed interactive tools, fine-art galleries, and live scientific trackers!</p>
+        </div>
+
+        <!-- Featured App Hero: Fine Art Gallery & Voice Studio -->
+        <div class="cool-app-featured-banner" onclick="window.AK_ART_GALLERY &amp;&amp; window.AK_ART_GALLERY.openGalleryModal()" title="Launch Art Gallery">
+          <div class="cool-app-badge-tag">🔥 BRAND NEW COOL APP</div>
+          <div class="cool-app-banner-content">
+            <div class="cool-app-info">
+              <span class="cool-app-cat-label">🎨 FINE ART &amp; NARRATION STUDIO</span>
+              <h3 class="cool-app-heading">Wildlife Masterpiece Art Gallery</h3>
+              <p class="cool-app-desc">
+                Step into a fine-art museum featuring live wildlife rendered in authentic <strong>Pastel</strong>, <strong>Watercolor</strong>, <strong>Colored Pencil</strong>, and <strong>Acrylic Paint</strong>. Inspect intricate traditional techniques with full voice narration!
+              </p>
+              <div class="cool-app-tags-row">
+                <span class="cool-app-pill">🖌️ Watercolor</span>
+                <span class="cool-app-pill">✏️ Colored Pencil</span>
+                <span class="cool-app-pill">🖍️ Soft Pastel</span>
+                <span class="cool-app-pill">🎨 Acrylic Impasto</span>
+                <span class="cool-app-pill">🔊 Voice Narration</span>
+              </div>
+              <div class="cool-app-btn-row">
+                <button class="btn-launch-cool-app" onclick="event.stopPropagation(); window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()">
+                  🚀 Launch Art Gallery Now →
+                </button>
+              </div>
+            </div>
+            
+            <div class="cool-app-preview-cards">
+              <div class="cool-preview-thumb" onclick="event.stopPropagation(); window.AK_ART_GALLERY &amp;&amp; (window.AK_ART_GALLERY.openGalleryModal(), window.AK_ART_GALLERY.inspectArtwork('snow_leopard_watercolor'))" title="Inspect Snow Leopard Watercolor">
+                <img src="images/art_gallery/snow_leopard_watercolor.jpg" alt="Snow Leopard Watercolor">
+                <span class="preview-mini-badge">Snow Leopard</span>
+              </div>
+              <div class="cool-preview-thumb" onclick="event.stopPropagation(); window.AK_ART_GALLERY &amp;&amp; (window.AK_ART_GALLERY.openGalleryModal(), window.AK_ART_GALLERY.inspectArtwork('tree_frog_pencil'))" title="Inspect Tree Frog Colored Pencil">
+                <img src="images/art_gallery/tree_frog_pencil.jpg" alt="Tree Frog Colored Pencil">
+                <span class="preview-mini-badge">Tree Frog</span>
+              </div>
+              <div class="cool-preview-thumb" onclick="event.stopPropagation(); window.AK_ART_GALLERY &amp;&amp; (window.AK_ART_GALLERY.openGalleryModal(), window.AK_ART_GALLERY.inspectArtwork('tiger_acrylic'))" title="Inspect Bengal Tiger Acrylic">
+                <img src="images/art_gallery/tiger_acrylic.jpg" alt="Bengal Tiger Acrylic">
+                <span class="preview-mini-badge">Bengal Tiger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Access Grid for Other Cool Apps -->
+        <div class="cool-apps-grid">
+          
+          <div class="cool-app-card" onclick="window.AK_WEATHER &amp;&amp; window.AK_WEATHER.openWeatherModal()" title="Launch Weather Simulator">
+            <div class="cool-card-icon-wrap bg-weather">🌦️</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">Animal Weather Simulator</h4>
+                <span class="cool-card-badge live">LIVE</span>
+              </div>
+              <p class="cool-card-desc">Simulate 8 real-world biomes &amp; sync with live Irvine, California weather radar.</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_ANATOMY &amp;&amp; window.AK_ANATOMY.openAnatomyModal()" title="Launch Anatomy Scanner">
+            <div class="cool-card-icon-wrap bg-anatomy">🔬</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">Anatomy X-Ray Scanner</h4>
+                <span class="cool-card-badge">HOT</span>
+              </div>
+              <p class="cool-card-desc">Inspect inside animal skeletons, muscular systems, and internal organ bio-layers.</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_MIGRATION &amp;&amp; window.AK_MIGRATION.openMigrationModal()" title="Launch Migration Map">
+            <div class="cool-card-icon-wrap bg-migration">🗺️</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">Global Wildlife Migration</h4>
+                <span class="cool-card-badge live">LIVE GPS</span>
+              </div>
+              <p class="cool-card-desc">Track real-time GPS telemetry routes of whales, hawks, monarch butterflies &amp; turtles.</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.app &amp;&amp; window.app.openBattleArena()" title="Launch Safari Battle Arena">
+            <div class="cool-card-icon-wrap bg-arena">⚔️</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">Safari Battle Arena</h4>
+                <span class="cool-card-badge">VS</span>
+              </div>
+              <p class="cool-card-desc">Simulate stat-based matchups between creatures (e.g., Lion vs Tiger).</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_TIME_MACHINE &amp;&amp; window.AK_TIME_MACHINE.openModal()" title="Launch Prehistoric Time Machine">
+            <div class="cool-card-icon-wrap bg-time">⏳</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">Evolution Time Machine</h4>
+                <span class="cool-card-badge new">NEW</span>
+              </div>
+              <p class="cool-card-desc">Travel back millions of years to see the giant ancient ancestors of modern animals.</p>
+            </div>
+            <span class="cool-card-arrow">➔</span>
+          </div>
+
+          
+
+        </div>
+      </section>
+
+      <!-- QUICK SEARCH & DISCOVERY BAR -->
+      <section class="quick-search-section">
+        <div class="quick-search-card">
+          <div class="quick-search-header">
+            <span class="quick-search-badge">🔎 EXPEDITION SEARCH</span>
+            <h3 class="quick-search-title">Search Any Creature, Plant, Reptile, or Gemstone</h3>
+            <p class="quick-search-desc">Search through all 780+ species, reptiles, and minerals by common name, scientific name, diet, or habitat!</p>
+          </div>
+
+          <div class="quick-search-input-wrap">
+            <span class="quick-input-icon">🔍</span>
+            <input type="text" id="hero-search-input" placeholder="Search across 840+ species (e.g. Leopard Gecko, Ball Python, King Cobra, Chameleon, Rose, Diamond)..." autocomplete="off" spellcheck="false">
+            <button id="hero-search-clear" class="btn-clear-search-hero hidden" onclick="window.app.clearHeroSearch()" title="Clear and exit search">✕</button>
+            <button class="btn-quick-search-go" onclick="window.app.triggerHeroSearch()">Search All 🚀</button>
+          </div>
+
+          <div class="popular-search-tags">
+            <span class="tags-label">Popular Searches:</span>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Leopard Gecko')">🦎 Leopard Gecko</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Ball Python')">🐍 Ball Python</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('King Cobra')">👑 King Cobra</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Bearded Dragon')">🦎 Bearded Dragon</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Eastern Box Turtle')">🐢 Box Turtle</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Diamond')">💎 Diamond</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Emerald')">💚 Emerald</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Rose')">🌹 Rose</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Snow Fairy')">❄️ Snow Fairy (Shima Enaga)</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Axolotl')">🦎 Axolotl</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('African Lion')">🦁 Lion</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Killer Whale')">🐋 Orca</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Monarch Butterfly')">🦋 Monarch</button>
+            <button class="tag-pill" onclick="window.app.applySearchTag('Red-Tailed Hawk')">🦅 Hawk</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EARTH DISCOVERY ZONES (8 PORTAL CATEGORIES) -->
+      <section class="animal-zone-section" id="animal-zone">
+        <div class="zone-header" id="animal-zone-header">
+          <div class="zone-title-wrap">
+            <span class="badge-zone">🐾 DISCOVERY ZONES</span>
+            <h2 class="zone-main-title">Earth Discovery Zones</h2>
+            <p class="zone-instructions">Select any zone below to enter its gallery and view all species, reptiles, plants, or gemstones!</p>
+          </div>
+        </div>
+
+        <!-- 8 Main Category Portal Buttons -->
+        <div class="category-buttons-grid">
+          <!-- 1. Amphibians Button: Frog Picture -->
+          <button class="cat-nav-btn" data-category="amphibians" onclick="window.app.selectCategory('amphibians')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Red-eyed_Tree_Frog_%28Agalychnis_callidryas%29_1.png/500px-Red-eyed_Tree_Frog_%28Agalychnis_callidryas%29_1.png&w=500&output=jpg" alt="Frog" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1579380656108-328e8042d0ae?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">94 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🐸</div>
+              <h3 class="cat-btn-name">Amphibians</h3>
+              <span class="cat-btn-desc">Explore Frogs & Salamanders →</span>
+            </div>
+          </button>
+
+          <!-- 2. Insects Button: Butterfly Picture -->
+          <button class="cat-nav-btn" data-category="insects" onclick="window.app.selectCategory('insects')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/500px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg&w=500&output=jpg" alt="Butterfly" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">94 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🦋</div>
+              <h3 class="cat-btn-name">Insects</h3>
+              <span class="cat-btn-desc">Explore Butterflies & Beetles →</span>
+            </div>
+          </button>
+
+          <!-- 3. Marine Button: Killer Whale Picture -->
+          <button class="cat-nav-btn" data-category="marine" onclick="window.app.selectCategory('marine')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Killerwhales_jumping.jpg/500px-Killerwhales_jumping.jpg&w=500&output=jpg" alt="Killer Whale" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">94 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🐋</div>
+              <h3 class="cat-btn-name">Marine</h3>
+              <span class="cat-btn-desc">Explore Whales & Sharks →</span>
+            </div>
+          </button>
+
+          <!-- 4. Land Animal Button: Lion Picture -->
+          <button class="cat-nav-btn" data-category="land" onclick="window.app.selectCategory('land')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/500px-020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg&w=500&output=jpg" alt="Lion" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">115 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🦁</div>
+              <h3 class="cat-btn-name">Land Animals</h3>
+              <span class="cat-btn-desc">Explore Lions & Savanna Wildlife →</span>
+            </div>
+          </button>
+
+          <!-- 5. Bird Button: Japanese Snow Fairy Picture -->
+          <button class="cat-nav-btn" data-category="birds" onclick="window.app.selectCategory('birds')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F56%2FAegithalos_caudatus_front-on_2.jpg&w=500&output=jpg" alt="Japanese Snow Fairy" class="cat-btn-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/56/Aegithalos_caudatus_front-on_2.jpg'">
+              <span class="cat-btn-badge">Global Atlas</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🐦</div>
+              <h3 class="cat-btn-name">Birds</h3>
+              <span class="cat-btn-desc">Explore Avian & Songbirds →</span>
+            </div>
+          </button>
+
+          <!-- 6. Plant Button: Flower Picture -->
+          <button class="cat-nav-btn" data-category="plants" onclick="window.app.selectCategory('plants')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fcb%2FHibiscus_flower_TZ.jpg%2F800px-Hibiscus_flower_TZ.jpg&w=500&output=jpg" alt="Flowers & Plants" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">129 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🌸</div>
+              <h3 class="cat-btn-name">Flowers & Plants</h3>
+              <span class="cat-btn-desc">Explore Flora & Blossoms →</span>
+            </div>
+          </button>
+
+          <!-- 7. Gemstones Button: Diamond Picture -->
+          <button class="cat-nav-btn" data-category="gemstones" onclick="window.app.selectCategory('gemstones')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd7%2FClassic_brilliant_cut_diamond.jpg%2F800px-Classic_brilliant_cut_diamond.jpg&w=500&output=jpg" alt="Diamond Gemstone" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">108 Gemstones</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">💎</div>
+              <h3 class="cat-btn-name">Gemstones & Minerals</h3>
+              <span class="cat-btn-desc">Explore Crystals & Diamonds →</span>
+            </div>
+          </button>
+
+          <!-- 8. Reptiles Button: Chameleon Picture -->
+          <button class="cat-nav-btn" data-category="reptiles" onclick="window.app.selectCategory('reptiles')">
+            <div class="cat-btn-img-box">
+              <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F4%2F4d%2FChamaeleo_calyptratus_20070408_01.jpg%2F800px-Chamaeleo_calyptratus_20070408_01.jpg&w=500&output=jpg" alt="Chameleon Reptile" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=600&q=80'">
+              <span class="cat-btn-badge">111 Species</span>
+            </div>
+            <div class="cat-btn-content">
+              <div class="cat-btn-icon">🦎</div>
+              <h3 class="cat-btn-name">Reptiles</h3>
+              <span class="cat-btn-desc">Explore Chameleons & Serpents →</span>
+            </div>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: CATEGORY / ZONE PAGE VIEW (Opens when any section is clicked) -->
+    <div id="category-view" class="main-view hidden">
+      
+      <!-- Top Zone Navigation with Back to Home Button & Quick Switcher -->
+      <div class="category-view-nav">
+        <button class="btn-back-home" onclick="window.app.showHomeView()" title="Back to Home Categories">
+          <span class="back-arrow-icon">←</span> Back to All Discovery Zones
+        </button>
+
+        <div class="category-quick-switcher">
+          <span class="switcher-label">Quick Switch:</span>
+          <div class="switcher-pills-row">
+            <button class="cat-switch-pill" data-cat="amphibians" onclick="window.app.selectCategory('amphibians')">🐸 Amphibians</button>
+            <button class="cat-switch-pill" data-cat="insects" onclick="window.app.selectCategory('insects')">🦋 Insects</button>
+            <button class="cat-switch-pill" data-cat="marine" onclick="window.app.selectCategory('marine')">🐋 Marine</button>
+            <button class="cat-switch-pill" data-cat="land" onclick="window.app.selectCategory('land')">🦁 Land</button>
+            <button class="cat-switch-pill" data-cat="birds" onclick="window.app.selectCategory('birds')">🐦 Birds</button>
+            <button class="cat-switch-pill" data-cat="plants" onclick="window.app.selectCategory('plants')">🌸 Plants</button>
+            <button class="cat-switch-pill" data-cat="gemstones" onclick="window.app.selectCategory('gemstones')">💎 Gemstones</button>
+            <button class="cat-switch-pill" data-cat="reptiles" onclick="window.app.selectCategory('reptiles')">🦎 Reptiles</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Category Browser Toolbar & Species Grid -->
+      <div class="zone-browser-panel">
+        <div class="zone-header-row">
+          <div>
+            <h3 id="current-zone-title" class="current-zone-title">🐸 Amphibians Zone</h3>
+            <p id="current-zone-subtitle" class="current-zone-sub">Frogs, Salamanders, Newts & Caecilians that live between water and land!</p>
+          </div>
+          <span id="category-count-badge" class="count-pill">Showing 94 species</span>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="zone-filters-row">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Search by name, diet, habitat, or superpower..." autocomplete="off">
+            <button id="search-clear-btn" class="btn-clear-search hidden" onclick="window.app.clearSearch()" title="Clear and exit search">✕</button>
+          </div>
+
+          <div class="filter-pills-group">
+            <button class="filter-pill active" onclick="window.app.setFilter('all', this)">All Species</button>
+            <button class="filter-pill hidden" id="filter-pill-common" onclick="window.app.setFilter('common', this)">🏡 Pets & Common</button>
+            <button class="filter-pill hidden" id="filter-pill-flowers" onclick="window.app.setFilter('flowers', this)">🌸 Flowers & Blossoms</button>
+            <button class="filter-pill hidden" id="filter-pill-herbs" onclick="window.app.setFilter('herbs', this)">🌿 Fragrant Herbs</button>
+            <button class="filter-pill hidden" id="filter-pill-precious" onclick="window.app.setFilter('precious', this)">💎 Precious Gems</button>
+            <button class="filter-pill hidden" id="filter-pill-quartz" onclick="window.app.setFilter('quartz', this)">🔮 Quartz & Crystals</button>
+            <button class="filter-pill hidden" id="filter-pill-rare" onclick="window.app.setFilter('rare', this)">✨ Rare Minerals</button>
+            <button class="filter-pill hidden" id="filter-pill-lizards" onclick="window.app.setFilter('lizards', this)">🦎 Lizards & Geckos</button>
+            <button class="filter-pill hidden" id="filter-pill-snakes" onclick="window.app.setFilter('snakes', this)">🐍 Snakes & Serpents</button>
+            <button class="filter-pill hidden" id="filter-pill-turtles" onclick="window.app.setFilter('turtles', this)">🐢 Turtles & Tortoises</button>
+            <button class="filter-pill hidden" id="filter-pill-crocs" onclick="window.app.setFilter('crocs', this)">🐊 Crocodilians</button>
+            <button class="filter-pill" id="filter-pill-endangered" onclick="window.app.setFilter('endangered', this)">⚠️ Endangered</button>
+            <button class="filter-pill" id="filter-pill-leastconcern" onclick="window.app.setFilter('least_concern', this)">✅ Least Concern</button>
+          </div>
+        </div>
+
+        <!-- Species Card Grid (Renders 90+ species for the selected section) -->
+        <div id="species-grid" class="species-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ANIMAL DETAIL MODAL -->
+  <div id="animal-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div id="animal-modal-content" class="modal-content-inner">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ GAME MODAL -->
+  <div id="quiz-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog quiz-dialog">
+      <div class="modal-detail-card">
+        <button class="modal-close-btn" onclick="window.app.closeQuiz()">✕</button>
+        <div id="quiz-content" class="quiz-modal-inner">
+          <!-- Rendered by game.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAVORITES MODAL -->
+  <div id="fav-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog fav-dialog">
+      <div class="modal-detail-card">
+        <div class="fav-header">
+          <h2>❤️ Your Safari Explorer Favorites</h2>
+          <button class="modal-close-btn" onclick="window.app.closeFavorites()">✕</button>
+        </div>
+        <div id="fav-list-container" class="fav-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BATTLE ARENA MODAL -->
+  <div id="battle-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog battle-dialog">
+      <div class="modal-detail-card battle-arena-card">
+        
+        <!-- Arena Top Bar -->
+        <div class="battle-header">
+          <div class="battle-title-wrap">
+            <span class="battle-badge">⚔️ BIOLOGICAL SIMULATOR</span>
+            <h2 class="battle-main-title">Creature Face-Off Arena</h2>
+            <p class="battle-sub">Pit any 2 species, predators, or minerals against each other using real biological facts, bite force, speed, and defense!</p>
+          </div>
+          <button class="modal-close-btn" onclick="window.app.closeBattleArena()">✕</button>
+        </div>
+
+        <!-- Quick Legendary Matchups Bar -->
+        <div class="arena-presets-container">
+          <span class="preset-label">🔥 Legendary Matchups:</span>
+          <div class="preset-pills-scroll" id="arena-presets-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Arena Fighter Selectors & VS Stage -->
+        <div class="battle-stage-grid">
+          <!-- Fighter 1 Pod -->
+          <div class="fighter-pod pod-left" id="fighter-1-pod">
+            <div class="pod-header">
+              <span class="fighter-tag">FIGHTER 1 (RED CORNER)</span>
+              <div class="fighter-search-box">
+                <input type="text" id="fighter-1-search" placeholder="Search any animal..." oninput="window.app.filterFighters(1, this.value)">
+                <button id="fighter-1-clear" class="btn-clear-search-fighter hidden" onclick="window.app.clearFighterSearch(1)" title="Clear and exit search">✕</button>
+                <div id="fighter-1-dropdown" class="fighter-dropdown hidden"></div>
+              </div>
+            </div>
+            <div class="fighter-display" id="fighter-1-display">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- VS Badge & Controls -->
+          <div class="stage-center-controls">
+            <div class="vs-emblem">VS</div>
+            <button class="btn-swap-fighters" onclick="window.app.swapFighters()" title="Swap Corners">⇄</button>
+            <button class="btn-random-fighters" onclick="window.app.randomizeFighters()" title="Randomize Both">🎲 Random</button>
+            <button class="btn-start-battle" id="btn-simulate-fight" onclick="window.app.startBattleSimulation()">
+              ⚔️ SIMULATE BATTLE!
+            </button>
+          </div>
+
+          <!-- Fighter 2 Pod -->
+          <div class="fighter-pod pod-right" id="fighter-2-pod">
+            <div class="pod-header">
+              <span class="fighter-tag">FIGHTER 2 (BLUE CORNER)</span>
+              <div class="fighter-search-box">
+                <input type="text" id="fighter-2-search" placeholder="Search any animal..." oninput="window.app.filterFighters(2, this.value)">
+                <button id="fighter-2-clear" class="btn-clear-search-fighter hidden" onclick="window.app.clearFighterSearch(2)" title="Clear and exit search">✕</button>
+                <div id="fighter-2-dropdown" class="fighter-dropdown hidden"></div>
+              </div>
+            </div>
+            <div class="fighter-display" id="fighter-2-display">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time Stat Comparison Radar/Bars -->
+        <div class="arena-stat-comparison" id="arena-stat-comparison">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Combat Simulation Log & Victory Banner -->
+        <div class="battle-results-panel hidden" id="battle-results-panel">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE WILDLIFE MIGRATION TRACKER MODAL -->
+  <div id="migration-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_MIGRATION.closeMigrationModal()">
+    <div class="modal-dialog migration-dialog">
+      <div class="modal-detail-card migration-card">
+        
+        <!-- Modal Top Bar -->
+        <div class="migration-header">
+          <div class="migration-title-wrap">
+            <span class="migration-badge">🛰️ REAL-TIME SATELLITE TELEMETRY</span>
+            <h2 class="migration-main-title">Live Global Wildlife Migration Tracker</h2>
+            <p class="migration-sub">Scientifically verified GPS telemetry routes, active seasonal flyways & real-time animal journey tracking</p>
+          </div>
+          <button class="modal-close-btn" onclick="window.AK_MIGRATION.closeMigrationModal()" title="Close Migration Map">✕</button>
+        </div>
+
+        <!-- Filter Bar & Active Status -->
+        <div class="migration-toolbar">
+          <div class="migration-filter-group" id="mig-filter-buttons">
+            <button class="mig-filter-btn active" data-cat="all" onclick="window.AK_MIGRATION.setCategoryFilter('all')">🌍 All Flyways (<span id="mig-count-all">10</span>)</button>
+            <button class="mig-filter-btn mig-filter-live" data-cat="live" onclick="window.AK_MIGRATION.setCategoryFilter('live')">🔴 Active Right Now (<span id="mig-count-live">9</span>)</button>
+            <button class="mig-filter-btn" data-cat="avian" onclick="window.AK_MIGRATION.setCategoryFilter('avian')">🦅 Birds</button>
+            <button class="mig-filter-btn" data-cat="marine" onclick="window.AK_MIGRATION.setCategoryFilter('marine')">🐋 Marine</button>
+            <button class="mig-filter-btn" data-cat="land" onclick="window.AK_MIGRATION.setCategoryFilter('land')">🦓 Land Herds</button>
+            <button class="mig-filter-btn" data-cat="insect" onclick="window.AK_MIGRATION.setCategoryFilter('insect')">🦋 Insects</button>
+          </div>
+          <div class="migration-status-pill">
+            <span class="live-dot-blink"></span>
+            <span id="mig-month-status-label">🔴 Live Real-World Sync: September (9 Active Flyways)</span>
+          </div>
+        </div>
+
+        <!-- Seasonal Month Time-Travel Bar -->
+        <div class="migration-timeline-bar">
+          <span class="timeline-bar-label">⏱️ Season Time-Travel:</span>
+          <div class="migration-month-pills" id="mig-month-selector">
+            <!-- Rendered dynamically by migrationMap.js -->
+          </div>
+        </div>
+
+        <!-- Migration Map Workspace (Sidebar + Map Viewport) -->
+        <div class="migration-workspace">
+          <!-- Left: Route List Sidebar -->
+          <div class="migration-sidebar">
+            <div class="migration-search-wrap">
+              <span class="mig-search-icon">🔍</span>
+              <input type="text" id="mig-search-input" placeholder="Search migrations (e.g. Monarch, Caribou, Whale)..." oninput="window.AK_MIGRATION.filterSearch(this.value)">
+              <button id="mig-search-clear" class="btn-clear-mig-search hidden" onclick="window.AK_MIGRATION.clearSearch()" title="Clear">✕</button>
+            </div>
+            <div class="migration-routes-list" id="migration-routes-list">
+              <!-- Dynamically populated route cards -->
+            </div>
+          </div>
+
+          <!-- Right: Interactive Leaflet Map & Telemetry Dashboard -->
+          <div class="migration-main-stage">
+            <div class="migration-map-container" id="migration-map-container">
+              <!-- Leaflet Map attaches here -->
+            </div>
+
+            <div class="migration-telemetry-dashboard" id="migration-telemetry-dashboard">
+              <!-- Route details, current coordinates, bio facts populated here -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ANIMAL X-RAY & ANATOMY SCANNER MODAL -->
+  <div id="anatomy-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_ANATOMY.closeAnatomyModal()">
+    <div class="modal-dialog anatomy-dialog">
+      <div class="modal-detail-card anatomy-card">
+        
+        <!-- Modal Top Bar -->
+        <div class="anatomy-header">
+          <div class="anatomy-title-wrap">
+            <span class="anatomy-badge">🔬 BIOMECHANICAL & X-RAY SCANNER</span>
+            <h2 class="anatomy-main-title">Animal Internal Anatomy & X-Ray Scanner</h2>
+            <p class="anatomy-sub">Look inside any creature to inspect its bones, skull mechanics, digestive acid chambers, heart rate, and internal organs!</p>
+          </div>
+          <button class="modal-close-btn" onclick="window.AK_ANATOMY.closeAnatomyModal()" title="Close Anatomy Scanner">✕</button>
+        </div>
+
+        <!-- Specimen Selector & Fast Search -->
+        <div class="anatomy-top-controls">
+          <div class="anatomy-search-wrap">
+            <span class="anatomy-search-icon">🔍</span>
+            <input type="text" id="anatomy-search-input" placeholder="Search ANY animal to scan its inside (e.g. Shark, Lion, Python, Eagle, Frog)..." oninput="window.AK_ANATOMY.filterSearch(this.value)" onkeydown="window.AK_ANATOMY.handleSearchKeyDown(event)" autocomplete="off" spellcheck="false">
+            <button id="anatomy-search-clear" class="btn-clear-anatomy-search hidden" onclick="window.AK_ANATOMY.clearSearch()" title="Clear">✕</button>
+            <div id="anatomy-search-dropdown" class="anatomy-search-dropdown hidden"></div>
+          </div>
+          <button class="btn-quick-search-go" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.AK_ANATOMY.triggerSearch()" title="Scan Animal Anatomy">Scan Inside 🔬</button>
+          <div class="anatomy-preset-pills-row" id="anatomy-preset-pills">
+            <!-- Featured preset buttons -->
+          </div>
+        </div>
+
+        <!-- Layer Selector Toolbar & Depth Peeler Slider -->
+        <div class="anatomy-toolbar">
+          <div class="anatomy-layer-btn-group">
+            <button class="anatomy-layer-btn active" data-layer="all" onclick="window.AK_ANATOMY.setLayer('all')">✨ Full Cross-Section</button>
+            <button class="anatomy-layer-btn" data-layer="skeleton" onclick="window.AK_ANATOMY.setLayer('skeleton')">🦴 Skeleton & Bones</button>
+            <button class="anatomy-layer-btn" data-layer="digestion" onclick="window.AK_ANATOMY.setLayer('digestion')">🍖 Digestion & Stomach</button>
+            <button class="anatomy-layer-btn" data-layer="organs" onclick="window.AK_ANATOMY.setLayer('organs')">🫀 Heart & Lungs</button>
+            <button class="anatomy-layer-btn" data-layer="brain" onclick="window.AK_ANATOMY.setLayer('brain')">🧠 Brain & Senses</button>
+            <button class="anatomy-layer-btn" data-layer="muscles" onclick="window.AK_ANATOMY.setLayer('muscles')">🥩 Muscles</button>
+          </div>
+          <div class="anatomy-depth-slider-wrap">
+            <span class="depth-slider-label">🎚️ Scan Depth:</span>
+            <input type="range" id="anatomy-depth-slider" min="0" max="100" value="100" oninput="window.AK_ANATOMY.setDepth(this.value)">
+            <span class="depth-slider-val" id="anatomy-depth-val">100%</span>
+          </div>
+        </div>
+
+        <!-- Main Workspace (Interactive X-Ray Stage on Left + Fact Card on Right) -->
+        <div class="anatomy-workspace-grid">
+          <div class="anatomy-viewport-container" id="anatomy-viewport">
+            <!-- Dynamic X-Ray Vector & Hotspots rendered by anatomyScanner.js -->
+          </div>
+
+          <div class="anatomy-fact-panel" id="anatomy-fact-card">
+            <!-- Dynamic biological stats rendered here -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ANIMAL WEATHER SIMULATOR & IRVINE RADAR MODAL -->
+  <div id="weather-simulator-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog weather-dialog">
+      <div class="modal-detail-card weather-modal-card">
+        <button class="modal-close-btn" onclick="window.AK_WEATHER.closeWeatherModal()" title="Close Weather Simulator">✕</button>
+        
+        <div class="weather-modal-header">
+          <div class="weather-header-left">
+            <span class="weather-badge">🌦️ METEOROLOGICAL RADAR & HABITAT SIMULATOR</span>
+            <h2 class="weather-main-title">Animal Weather & Climate Simulator</h2>
+            <p class="weather-sub">Adjust meteorological conditions to see which animals emerge, hunt, and thrive—plus live real-time Irvine wildlife detection!</p>
+          </div>
+          <div class="weather-counter-box">
+            <span id="weather-count-badge" class="weather-count-pill">📡 16 Species Active</span>
+          </div>
+        </div>
+
+        <!-- Top Quick Weather Presets Bar -->
+        <div class="weather-presets-bar">
+          <span class="preset-label">Weather Presets:</span>
+          <div class="preset-buttons-wrap">
+            <button class="weather-preset-btn active" data-preset="rain" onclick="window.AK_WEATHER.setPreset('rain')">🌧️ Rain</button>
+            <button class="weather-preset-btn" data-preset="thunderstorm" onclick="window.AK_WEATHER.setPreset('thunderstorm')">⛈️ Thunderstorm</button>
+            <button class="weather-preset-btn" data-preset="sunny" onclick="window.AK_WEATHER.setPreset('sunny')">☀️ Sunny / Heatwave</button>
+            <button class="weather-preset-btn" data-preset="snow" onclick="window.AK_WEATHER.setPreset('snow')">❄️ Polar Snow</button>
+            <button class="weather-preset-btn" data-preset="fog" onclick="window.AK_WEATHER.setPreset('fog')">🌫️ Cloud Mist</button>
+            <button class="weather-preset-btn" data-preset="wind" onclick="window.AK_WEATHER.setPreset('wind')">🍃 Autumn Gale</button>
+            <button class="weather-preset-btn" data-preset="night" onclick="window.AK_WEATHER.setPreset('night')">🌙 Moonlit Night</button>
+          </div>
+        </div>
+
+        <!-- Sandbox Tuning Controls -->
+        <div class="weather-sliders-toolbar">
+          <div class="slider-cell">
+            <label>🌡️ Temperature: <strong id="weather-temp-val">18°C / 64°F</strong></label>
+            <input type="range" id="weather-temp-slider" min="-20" max="48" value="18" oninput="window.AK_WEATHER.onSliderChange()">
+          </div>
+          <div class="slider-cell">
+            <label>💧 Rain / Precip: <strong id="weather-precip-val">85%</strong></label>
+            <input type="range" id="weather-precip-slider" min="0" max="100" value="85" oninput="window.AK_WEATHER.onSliderChange()">
+          </div>
+          <div class="slider-cell">
+            <label>💨 Wind Speed: <strong id="weather-wind-val">12 mph</strong></label>
+            <input type="range" id="weather-wind-slider" min="0" max="60" value="12" oninput="window.AK_WEATHER.onSliderChange()">
+          </div>
+          <div class="slider-cell">
+            <label>⏰ Time of Day:</label>
+            <select id="weather-time-select" onchange="window.AK_WEATHER.onSliderChange()">
+              <option value="day">☀️ Daytime</option>
+              <option value="sunset">🌅 Sunset / Dusk</option>
+              <option value="night">🌙 Midnight</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Main Workspace Grid: (Left: Weather Canvas + Radar Dots, Right: Creature Details & Irvine Live Forecaster) -->
+        <div class="weather-workspace-grid">
+          
+          <!-- Weather Viewport Stage -->
+          <div class="weather-stage-container" id="weather-stage-wrapper">
+            <div class="weather-hud-banner">
+              <span id="weather-hud-title" class="hud-weather-title">🌧️ Rainy Downpour • 18°C (64°F)</span>
+              <span id="weather-hud-desc" class="hud-weather-desc">Raindrops pattering down, humidity 92%</span>
+            </div>
+
+            <!-- Particle Canvas -->
+            <canvas id="weather-particle-canvas" class="weather-particle-canvas"></canvas>
+
+            <!-- Interactive Animal Radar Dots Layer -->
+            <div id="weather-radar-layer" class="weather-radar-layer">
+              <!-- Rendered dynamically by weatherSimulator.js -->
+            </div>
+
+            <div class="weather-stage-instruction">
+              <span>👆 Tap any glowing creature dot to inspect why it loves this weather!</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Active Specimen Detail Card + Irvine Live Forecaster -->
+          <div class="weather-side-panel">
+            
+            <!-- Selected Animal Card -->
+            <div id="weather-creature-card" class="weather-creature-card-box">
+              <!-- Rendered by weatherSimulator.js -->
+            </div>
+
+            <!-- Irvine, California Live Weather & Wildlife Hub -->
+            <div class="irvine-weather-hub-card">
+              <div class="irvine-hub-header">
+                <div>
+                  <span class="irvine-hub-badge">📍 REAL-TIME CITY FORECASTER</span>
+                  <h4 class="irvine-hub-title" id="irvine-weather-location">📍 Irvine, California</h4>
+                </div>
+                <div class="irvine-header-actions">
+                  <button class="btn-apply-rain" onclick="window.AK_WEATHER.setIrvineToRain()" title="Activate Live Rain Mode for Irvine">
+                    🌧️ It's Raining!
+                  </button>
+                  <button class="btn-apply-irvine" onclick="window.AK_WEATHER.applyIrvineWeatherToSimulator()" title="Sync Simulator to Irvine Weather">
+                    ⚡ Sync Weather
+                  </button>
+                </div>
+              </div>
+              
+              <div class="irvine-live-stats-row">
+                <div class="irvine-stat-item">
+                  <span class="irvine-stat-label">Irvine Temp:</span>
+                  <strong id="irvine-weather-temp" class="irvine-stat-val">74°F (23°C)</strong>
+                </div>
+                <div class="irvine-stat-item">
+                  <span class="irvine-stat-label">Condition:</span>
+                  <strong id="irvine-weather-condition" class="irvine-stat-val">☀️ Sunny</strong>
+                </div>
+              </div>
+
+              <div class="irvine-fauna-section">
+                <span class="irvine-fauna-title">🐾 Irvine Wildlife Active in Today's Weather:</span>
+                <div id="irvine-wildlife-list" class="irvine-wildlife-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- ART GALLERY MODAL (Traditional Fine Art Wildlife Showcase) -->
+  <!-- ========================================================= -->
+  <div id="art-gallery-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_ART_GALLERY.closeGalleryModal()">
+    <div class="modal-dialog art-gallery-modal-box">
+
+      <!-- Gallery Header -->
+      <div class="art-gallery-header">
+        <div class="modal-header-text">
+          <div class="art-gallery-badge-row">
+            <span class="art-badge-pill">🎨 FINE ART COLLECTION</span>
+            <span class="art-badge-pill sub">Pastel • Watercolor • Colored Pencil • Acrylic</span>
+          </div>
+          <h2 class="art-gallery-title">🖼️ Wildlife Masterpiece Art Gallery</h2>
+          <p class="art-gallery-subtitle">Experience live animals captured through authentic traditional fine-art mediums. Click any artwork to inspect techniques &amp; listen to the narration!</p>
+        </div>
+        <button class="modal-close-btn" onclick="window.AK_ART_GALLERY.closeGalleryModal()" title="Close Art Gallery">✕</button>
+      </div>
+
+      <!-- Medium Filter Buttons Bar -->
+      <div class="gallery-filter-toolbar">
+        <button class="gallery-filter-btn active" data-medium="all" onclick="window.AK_ART_GALLERY.setFilter('all')">
+          🌟 All Masterpieces (6)
+        </button>
+        <button class="gallery-filter-btn" data-medium="watercolor" onclick="window.AK_ART_GALLERY.setFilter('watercolor')">
+          🖌️ Watercolor
+        </button>
+        <button class="gallery-filter-btn" data-medium="colored_pencil" onclick="window.AK_ART_GALLERY.setFilter('colored_pencil')">
+          ✏️ Colored Pencil
+        </button>
+        <button class="gallery-filter-btn" data-medium="pastel" onclick="window.AK_ART_GALLERY.setFilter('pastel')">
+          🖍️ Soft Pastel
+        </button>
+        <button class="gallery-filter-btn" data-medium="acrylic" onclick="window.AK_ART_GALLERY.setFilter('acrylic')">
+          🎨 Acrylic Paint
+        </button>
+      </div>
+
+      <!-- Loading Spinner (shown while images load) -->
+      <div id="art-gallery-loading" class="art-gallery-loading-state hidden">
+        <div class="gallery-spinner"></div>
+        <p class="gallery-loading-txt">Loading masterworks... <span id="gallery-load-pct">0%</span></p>
+        <p class="gallery-loading-sub">Fetching high-quality artwork files</p>
+      </div>
+
+      <!-- 10-Second Error Panel (shown if images take too long) -->
+      <div id="art-gallery-error" class="art-gallery-error-panel hidden">
+        <div class="gallery-error-icon">⚠️</div>
+        <h3 class="gallery-error-title">Gallery Took Too Long to Load</h3>
+        <p class="gallery-error-desc">The artwork images are taking more than 10 seconds. Here's the debug info you can share to get it fixed:</p>
+        <div id="gallery-error-details" class="gallery-error-details-box"></div>
+        <div class="gallery-error-actions">
+          <button class="btn-gallery-retry" onclick="window.AK_ART_GALLERY.retryGallery()">🔄 Try Again</button>
+          <button class="btn-gallery-skip" onclick="window.AK_ART_GALLERY.forceShowGallery()">⚡ Show Anyway (May Be Slow)</button>
+        </div>
+      </div>
+
+      <!-- Gallery Artwork Grid -->
+      <div class="art-gallery-body" id="art-gallery-body-wrap">
+        <div id="art-gallery-grid" class="art-gallery-grid">
+          <!-- Rendered dynamically by artGallery.js -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- ARTWORK DEEP INSPECTOR MODAL (Zoom, Technique & Narration) -->
+  <!-- ========================================================= -->
+  <div id="art-inspector-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_ART_GALLERY.closeInspector()">
+    <div class="modal-dialog art-inspector-modal-box">
+
+      <div class="art-inspector-header">
+        <div class="art-inspect-header-meta">
+          <span id="inspect-art-medium-badge" class="art-badge-pill">Medium</span>
+          <h3 id="inspect-art-title" class="art-inspect-title">Artwork Title</h3>
+          <span id="inspect-art-species" class="art-inspect-species">Species Name</span>
+        </div>
+        <div class="art-inspect-actions">
+          <button id="btn-art-speak" class="btn-art-speak" onclick="window.AK_ART_GALLERY.toggleSpeech()" title="Read aloud artwork analysis &amp; biology">
+            🔊 Read / Speak Description
+          </button>
+          <button class="modal-close-btn" onclick="window.AK_ART_GALLERY.closeInspector()" title="Back to Gallery">✕</button>
+        </div>
+      </div>
+
+      <div class="art-inspector-body">
+
+        <!-- Left: High Res Canvas Display -->
+        <div class="art-inspector-canvas-col">
+          <div class="art-inspector-frame">
+            <img id="inspect-art-image" src="" alt="Masterpiece Artwork" class="art-inspector-full-img">
+          </div>
+          <div class="art-specs-row">
+            <div class="art-spec-pill"><strong>📜 Paper / Canvas:</strong> <span id="inspect-art-paper">Paper info</span></div>
+            <div class="art-spec-pill"><strong>📏 Dimensions:</strong> <span id="inspect-art-dim">18" x 24"</span></div>
+          </div>
+        </div>
+
+        <!-- Right: Description, Analysis & Biology -->
+        <div class="art-inspector-details-col">
+
+          <div class="art-detail-card">
+            <h4 class="art-detail-heading">📖 Artwork Description &amp; Artistry</h4>
+            <p id="inspect-art-desc" class="art-detail-text"></p>
+          </div>
+
+          <div class="art-detail-card">
+            <h4 class="art-detail-heading">🎨 Traditional Artistic Techniques Applied</h4>
+            <ul id="inspect-art-techniques" class="art-techniques-list">
+              <!-- Rendered dynamically -->
+            </ul>
+          </div>
+
+          <div class="art-detail-card wildlife-info">
+            <h4 class="art-detail-heading">🐾 Live Animal Habitat &amp; Biology</h4>
+            <div class="art-bio-item"><strong>🌿 Habitat:</strong> <span id="inspect-art-habitat"></span></div>
+            <div class="art-bio-item"><strong>💡 Wildlife Fact:</strong> <span id="inspect-art-fact"></span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- TIME MACHINE MODAL -->
+  <!-- ========================================================= -->
+  <div id="time-machine-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_TIME_MACHINE.closeModal()">
+    <div class="modal-dialog time-machine-box">
+      
+      <!-- Header -->
+      <div class="tm-header">
+        <h2>🕰️ Prehistoric Evolution Time Machine</h2>
+        <p>Travel back millions of years. Select a modern creature below and turn the dial to reveal its giant ancient ancestors!</p>
+        <button class="modal-close-btn tm-close-btn" onclick="window.AK_TIME_MACHINE.closeModal()">✕</button>
+      </div>
+
+      <!-- Selector Menu -->
+      <div id="tm-pair-menu" class="tm-menu">
+        <!-- Buttons injected here -->
+      </div>
+
+      <!-- Main Stage -->
+      <div class="tm-stage">
+        
+        <!-- Image Area -->
+        <div class="tm-image-container">
+          <img id="tm-img-modern" class="tm-img tm-img-modern" src="" alt="Modern Animal">
+          <img id="tm-img-ancient" class="tm-img tm-img-ancient" src="" alt="Ancient Animal">
+        </div>
+
+        <!-- Info Panels (Crossfaded based on slider) -->
+        <div class="tm-info-container">
+          
+          <!-- Modern Info -->
+          <div id="tm-info-modern" class="tm-info-card">
+            <h3 id="tm-mod-name" class="tm-info-title">Modern Name</h3>
+            <p id="tm-mod-sci" class="tm-info-sci">Scientific</p>
+            <span class="tm-era-badge" id="tm-mod-time">Present Day</span>
+            <p id="tm-mod-desc" class="tm-desc">Description</p>
+          </div>
+
+          <!-- Ancient Info -->
+          <div id="tm-info-ancient" class="tm-info-card ancient">
+            <h3 id="tm-anc-name" class="tm-info-title">Ancient Name</h3>
+            <p id="tm-anc-sci" class="tm-info-sci">Scientific</p>
+            <span class="tm-era-badge ancient" id="tm-anc-time">Millions of Years Ago</span>
+            <p id="tm-anc-desc" class="tm-desc">Description</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Control Dial -->
+      <div class="tm-controls">
+        <h3 id="tm-time-display" class="tm-time-display">Era: Present Day</h3>
+        <div class="tm-slider-wrapper">
+          <span class="tm-label-mod">Modern Day</span>
+          <input type="range" id="tm-dial-slider" class="tm-dial-slider" min="0" max="100" value="0" oninput="window.AK_TIME_MACHINE.onDialChange(this.value)">
+          <span class="tm-label-anc">Prehistoric Past</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- ========================================================= -->
+  <!-- FAN CLUB FULL PAGE VIEW -->
+  <!-- ========================================================= -->
+  <div id="fan-club-page" class="hidden">
+    <div class="fc-page-header">
+      <button class="fc-back-btn" onclick="window.closeFanClubPage()">⬅ Back to Safari</button>
+      <h2>⭐ The Official Safari Fan Club</h2>
+      <p>Connect with other explorers, share your art, and test your wildlife knowledge!</p>
+    </div>
+
+    <!-- Login Overlay -->
+    <div id="fc-login-overlay" class="fc-login-overlay">
+      <div class="fc-login-box">
+        <h2>🔒 Member Sign-In</h2>
+        <p>You must be signed in to access the Fan Club!</p>
+        <div class="fc-input-group" style="text-align: left;">
+          <label>Username</label>
+          <input type="text" id="fc-login-user" class="fc-input" placeholder="Enter your username">
+        </div>
+        <div class="fc-input-group" style="text-align: left; margin-bottom: 25px;">
+          <label>Password</label>
+          <input type="password" id="fc-login-pass" class="fc-input" placeholder="Enter your password">
+        </div>
+        <button class="fc-btn-primary" style="width:100%" onclick="window.submitFanClubLogin()">Sign In / Create Account</button>
+      </div>
+    </div>
+
+    <div class="fc-page-layout">
+      <!-- Left Column: Global Chat & Events -->
+      <div class="fc-col">
+        <div class="fc-card chat-card">
+          <div class="fc-card-header">
+            <h3>💬 Live Global Explorer Chat</h3>
+            <span class="fc-live-badge">🔴 LIVE</span>
+          </div>
+          <div id="fc-chat-box" class="fc-chat-box"></div>
+          <div class="fc-chat-input-row">
+            <span id="fc-chat-name-label" style="display: flex; align-items: center; color: #34d399; font-weight: bold; padding: 0 5px;"></span>
+            <input type="text" id="fc-chat-msg" placeholder="Say hello..." class="fc-input" onkeypress="if(event.key==='Enter') window.sendChatMessage()">
+            <button class="fc-btn-primary" onclick="window.sendChatMessage()">Send</button>
+          </div>
+        </div>
+
+        <div class="fc-card">
+          <h3>📅 Daily Fan Events</h3>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 15px;">New events unlock every day! Join to see the due date.</p>
+          <ul id="fc-dynamic-events" class="fc-event-list">
+            <!-- Events injected here by JS -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column: Activities & Profile -->
+      <div class="fc-col">
+        
+        <div class="fc-card fc-profile">
+          <h3>🏆 Fan Art Gallery Spotlight</h3>
+          <div class="fc-featured-art">
+            <img src="featured_tiger.jpg" alt="Featured Art">
+            <div class="fc-featured-info">
+              <strong>"Majestic Acrylic Tiger"</strong>
+              <span>Drawn by: SafariKing99 (Picked Best of the Week!)</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 25px;">📥 Submit to the Gallery Contest</h3>
+          <p style="color:#9ca3af; font-size:0.9rem; margin-bottom:15px;">Import your own wildlife drawings. The best drawing is picked weekly!</p>
+          
+          <div class="fc-input-group">
+            <input type="file" id="fc-drawing-upload" accept="image/*" onchange="window.handleDrawingUpload(event)" multiple class="fc-input">
+          </div>
+          
+          <div id="fc-drawing-gallery" class="fc-gallery hidden">
+            <h4>Your Submitted Drawings:</h4>
+            <div id="fc-drawing-grid" class="fc-drawing-grid"></div>
+          </div>
+        </div>
+
+        <div class="fc-card">
+          <h3>🎮 Fan Quizzes & Games</h3>
+          <div class="fc-activities">
+            <button class="fc-activity-btn" onclick="window.openPersonalityTest()">
+              <span class="fc-icon">🤔</span>
+              <div class="fc-text">
+                <strong>Personality Test</strong>
+                <span>Find your spirit animal!</span>
+              </div>
+            </button>
+            <button class="fc-activity-btn" onclick="window.openBiomeQuiz()">
+              <span class="fc-icon">🌍</span>
+              <div class="fc-text">
+                <strong>Biome Quiz</strong>
+                <span>Which habitat belongs to you?</span>
+              </div>
+            </button>
+            <button class="fc-activity-btn" onclick="window.openWouldYouRather()">
+              <span class="fc-icon">⚖️</span>
+              <div class="fc-text">
+                <strong>Would You Rather</strong>
+                <span>Tough wildlife survival choices.</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Modals -->
+  <div id="fc-quiz-modal" class="modal-backdrop hidden" onclick="if(event.target === this) this.classList.add('hidden')">
+    <div class="modal-dialog fc-modal-box">
+      <div class="fc-modal-header">
+        <h2 id="fc-quiz-title">Quiz Title</h2>
+        <button class="modal-close-btn" onclick="document.getElementById('fc-quiz-modal').classList.add('hidden')">✕</button>
+      </div>
+      <div id="fc-quiz-content" class="fc-quiz-content"></div>
+      <div id="fc-quiz-result" class="hidden fc-quiz-result"></div>
+    </div>
+  </div>
+
+  <!-- Confetti Layer -->
+  <div id="confetti-layer" class="confetti-layer"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>🌿 <strong>THE ANIMAL &amp; EARTH KINGDOM</strong> • Built for explorers of every age! 840 species, plants &amp; minerals across 8 wild discovery zones.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="lib/leaflet.js"></script>
+  <script src="data/amphibians.js"></script>
+  <script src="data/insects.js"></script>
+  <script src="data/marine.js"></script>
+  <script src="data/land.js"></script>
+  <script src="data/birds.js"></script>
+  <script src="data/plants.js"></script>
+  <script src="data/gemstones.js"></script>
+  <script src="data/reptiles.js"></script>
+  <script src="data/animalSounds.js"></script>
+  <script src="data/cool_animals.js"></script>
+  <script src="js/cardDeepKnowledge.js"></script>
+  <script src="js/battleEngine.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/animalOfDay.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/migrationMap.js"></script>
+  <script src="js/anatomyScanner.js"></script>
+  <script src="js/weatherSimulator.js"></script>
+  <script src="js/artGallery.js"></script>
+  <script src="js/timeMachine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Montezuma Cypress (El Árbol del Tule)",
+    "query": "Árbol del Tule"
+  },
+  {
+    "name": "Maidenhair Fern",
+    "query": "Adiantum"
+  },
+  {
+    "name": "Elkhorn Staghorn Fern",
+    "query": "Platycerium",
+    "found": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Platycerium_bifurcatum.jpg/500px-Platycerium_bifurcatum.jpg"
+  },
+  {
+    "name": "Fly Orchid",
+    "query": "Ophrys insectifera",
+    "found": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/%28MHNT%29_Ophrys_apifera_-_Villeneuve-l%C3%A8s-Bouloc_-_Flower.jpg/500px-%28MHNT%29_Ophrys_apifera_-_Villeneuve-l%C3%A8s-Bouloc_-_Flower.jpg"
+  },
+  {
+    "name": "Flame Lily (Gloriosa)",
+    "query": "Gloriosa superba",
+    "found": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Flame_Lily.jpg/500px-Flame_Lily.jpg"
+  },
+  {
+    "name": "Himalayan Blue Poppy",
+    "query": "Meconopsis"
+  },
+  {
+    "name": "Pebble Plant Camouflage (Fenestraria)",
+    "query": "Fenestraria"
+  },
+  {
+    "name": "Stinging Nettle",
+    "query": "Urtica dioica",
+    "found": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg/500px-Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg"
+  },
+  {
+    "name": "Water Hyacinth",
+    "query": "Eichhornia crassipes"
+  },
+  {
+    "name": "Common Eelgrass",
+    "query": "Zostera marina",
+    "found": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Eelgrass.jpg"
+  }
+]

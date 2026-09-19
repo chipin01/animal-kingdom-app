@@ -1,0 +1,3528 @@
+{
+  "Aslan": [
+    {
+      "name": "aslan_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_1.wav"
+    },
+    {
+      "name": "aslan_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_10.wav"
+    },
+    {
+      "name": "aslan_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_11.wav"
+    },
+    {
+      "name": "aslan_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_12.wav"
+    },
+    {
+      "name": "aslan_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_13.wav"
+    },
+    {
+      "name": "aslan_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_14.wav"
+    },
+    {
+      "name": "aslan_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_15.wav"
+    },
+    {
+      "name": "aslan_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_16.wav"
+    },
+    {
+      "name": "aslan_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_17.wav"
+    },
+    {
+      "name": "aslan_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_18.wav"
+    },
+    {
+      "name": "aslan_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_19.wav"
+    },
+    {
+      "name": "aslan_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_2.wav"
+    },
+    {
+      "name": "aslan_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_20.wav"
+    },
+    {
+      "name": "aslan_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_21.wav"
+    },
+    {
+      "name": "aslan_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_22.wav"
+    },
+    {
+      "name": "aslan_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_23.wav"
+    },
+    {
+      "name": "aslan_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_24.wav"
+    },
+    {
+      "name": "aslan_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_25.wav"
+    },
+    {
+      "name": "aslan_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_26.wav"
+    },
+    {
+      "name": "aslan_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_27.wav"
+    },
+    {
+      "name": "aslan_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_28.wav"
+    },
+    {
+      "name": "aslan_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_29.wav"
+    },
+    {
+      "name": "aslan_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_3.wav"
+    },
+    {
+      "name": "aslan_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_30.wav"
+    },
+    {
+      "name": "aslan_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_31.wav"
+    },
+    {
+      "name": "aslan_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_32.wav"
+    },
+    {
+      "name": "aslan_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_33.wav"
+    },
+    {
+      "name": "aslan_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_34.wav"
+    },
+    {
+      "name": "aslan_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_35.wav"
+    },
+    {
+      "name": "aslan_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_36.wav"
+    },
+    {
+      "name": "aslan_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_37.wav"
+    },
+    {
+      "name": "aslan_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_38.wav"
+    },
+    {
+      "name": "aslan_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_39.wav"
+    },
+    {
+      "name": "aslan_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_4.wav"
+    },
+    {
+      "name": "aslan_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_40.wav"
+    },
+    {
+      "name": "aslan_41.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_41.wav"
+    },
+    {
+      "name": "aslan_42.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_42.wav"
+    },
+    {
+      "name": "aslan_43.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_43.wav"
+    },
+    {
+      "name": "aslan_44.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_44.wav"
+    },
+    {
+      "name": "aslan_45.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_45.wav"
+    },
+    {
+      "name": "aslan_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_5.wav"
+    },
+    {
+      "name": "aslan_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_6.wav"
+    },
+    {
+      "name": "aslan_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_7.wav"
+    },
+    {
+      "name": "aslan_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_8.wav"
+    },
+    {
+      "name": "aslan_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Aslan/aslan_9.wav"
+    }
+  ],
+  "Esek": [
+    {
+      "name": "esek_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_1.wav"
+    },
+    {
+      "name": "esek_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_10.wav"
+    },
+    {
+      "name": "esek_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_11.wav"
+    },
+    {
+      "name": "esek_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_12.wav"
+    },
+    {
+      "name": "esek_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_13.wav"
+    },
+    {
+      "name": "esek_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_14.wav"
+    },
+    {
+      "name": "esek_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_15.wav"
+    },
+    {
+      "name": "esek_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_16.wav"
+    },
+    {
+      "name": "esek_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_17.wav"
+    },
+    {
+      "name": "esek_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_18.wav"
+    },
+    {
+      "name": "esek_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_19.wav"
+    },
+    {
+      "name": "esek_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_2.wav"
+    },
+    {
+      "name": "esek_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_20.wav"
+    },
+    {
+      "name": "esek_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_21.wav"
+    },
+    {
+      "name": "esek_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_22.wav"
+    },
+    {
+      "name": "esek_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_23.wav"
+    },
+    {
+      "name": "esek_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_24.wav"
+    },
+    {
+      "name": "esek_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_25.wav"
+    },
+    {
+      "name": "esek_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_3.wav"
+    },
+    {
+      "name": "esek_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_4.wav"
+    },
+    {
+      "name": "esek_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_5.wav"
+    },
+    {
+      "name": "esek_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_6.wav"
+    },
+    {
+      "name": "esek_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_7.wav"
+    },
+    {
+      "name": "esek_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_8.wav"
+    },
+    {
+      "name": "esek_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Esek/esek_9.wav"
+    }
+  ],
+  "Inek": [
+    {
+      "name": "inek_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_1.wav"
+    },
+    {
+      "name": "inek_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_10.wav"
+    },
+    {
+      "name": "inek_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_11.wav"
+    },
+    {
+      "name": "inek_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_12.wav"
+    },
+    {
+      "name": "inek_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_13.wav"
+    },
+    {
+      "name": "inek_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_14.wav"
+    },
+    {
+      "name": "inek_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_15.wav"
+    },
+    {
+      "name": "inek_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_16.wav"
+    },
+    {
+      "name": "inek_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_17.wav"
+    },
+    {
+      "name": "inek_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_18.wav"
+    },
+    {
+      "name": "inek_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_19.wav"
+    },
+    {
+      "name": "inek_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_2.wav"
+    },
+    {
+      "name": "inek_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_20.wav"
+    },
+    {
+      "name": "inek_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_21.wav"
+    },
+    {
+      "name": "inek_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_22.wav"
+    },
+    {
+      "name": "inek_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_23.wav"
+    },
+    {
+      "name": "inek_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_24.wav"
+    },
+    {
+      "name": "inek_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_25.wav"
+    },
+    {
+      "name": "inek_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_26.wav"
+    },
+    {
+      "name": "inek_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_27.wav"
+    },
+    {
+      "name": "inek_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_28.wav"
+    },
+    {
+      "name": "inek_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_29.wav"
+    },
+    {
+      "name": "inek_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_3.wav"
+    },
+    {
+      "name": "inek_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_30.wav"
+    },
+    {
+      "name": "inek_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_31.wav"
+    },
+    {
+      "name": "inek_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_32.wav"
+    },
+    {
+      "name": "inek_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_33.wav"
+    },
+    {
+      "name": "inek_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_34.wav"
+    },
+    {
+      "name": "inek_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_35.wav"
+    },
+    {
+      "name": "inek_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_36.wav"
+    },
+    {
+      "name": "inek_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_37.wav"
+    },
+    {
+      "name": "inek_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_38.wav"
+    },
+    {
+      "name": "inek_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_39.wav"
+    },
+    {
+      "name": "inek_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_4.wav"
+    },
+    {
+      "name": "inek_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_40.wav"
+    },
+    {
+      "name": "inek_41.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_41.wav"
+    },
+    {
+      "name": "inek_42.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_42.wav"
+    },
+    {
+      "name": "inek_43.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_43.wav"
+    },
+    {
+      "name": "inek_44.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_44.wav"
+    },
+    {
+      "name": "inek_45.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_45.wav"
+    },
+    {
+      "name": "inek_46.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_46.wav"
+    },
+    {
+      "name": "inek_47.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_47.wav"
+    },
+    {
+      "name": "inek_48.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_48.wav"
+    },
+    {
+      "name": "inek_49.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_49.wav"
+    },
+    {
+      "name": "inek_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_5.wav"
+    },
+    {
+      "name": "inek_50.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_50.wav"
+    },
+    {
+      "name": "inek_51.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_51.wav"
+    },
+    {
+      "name": "inek_52.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_52.wav"
+    },
+    {
+      "name": "inek_53.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_53.wav"
+    },
+    {
+      "name": "inek_54.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_54.wav"
+    },
+    {
+      "name": "inek_55.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_55.wav"
+    },
+    {
+      "name": "inek_56.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_56.wav"
+    },
+    {
+      "name": "inek_57.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_57.wav"
+    },
+    {
+      "name": "inek_58.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_58.wav"
+    },
+    {
+      "name": "inek_59.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_59.wav"
+    },
+    {
+      "name": "inek_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_6.wav"
+    },
+    {
+      "name": "inek_60.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_60.wav"
+    },
+    {
+      "name": "inek_61.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_61.wav"
+    },
+    {
+      "name": "inek_62.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_62.wav"
+    },
+    {
+      "name": "inek_63.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_63.wav"
+    },
+    {
+      "name": "inek_64.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_64.wav"
+    },
+    {
+      "name": "inek_65.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_65.wav"
+    },
+    {
+      "name": "inek_66.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_66.wav"
+    },
+    {
+      "name": "inek_67.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_67.wav"
+    },
+    {
+      "name": "inek_68.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_68.wav"
+    },
+    {
+      "name": "inek_69.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_69.wav"
+    },
+    {
+      "name": "inek_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_7.wav"
+    },
+    {
+      "name": "inek_70.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_70.wav"
+    },
+    {
+      "name": "inek_71.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_71.wav"
+    },
+    {
+      "name": "inek_72.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_72.wav"
+    },
+    {
+      "name": "inek_73.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_73.wav"
+    },
+    {
+      "name": "inek_74.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_74.wav"
+    },
+    {
+      "name": "inek_75.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_75.wav"
+    },
+    {
+      "name": "inek_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_8.wav"
+    },
+    {
+      "name": "inek_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Inek/inek_9.wav"
+    }
+  ],
+  "Kedi-Part1": [
+    {
+      "name": "cat_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_1.wav"
+    },
+    {
+      "name": "cat_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_10.wav"
+    },
+    {
+      "name": "cat_100.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_100.wav"
+    },
+    {
+      "name": "cat_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_11.wav"
+    },
+    {
+      "name": "cat_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_12.wav"
+    },
+    {
+      "name": "cat_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_13.wav"
+    },
+    {
+      "name": "cat_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_14.wav"
+    },
+    {
+      "name": "cat_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_15.wav"
+    },
+    {
+      "name": "cat_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_16.wav"
+    },
+    {
+      "name": "cat_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_17.wav"
+    },
+    {
+      "name": "cat_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_18.wav"
+    },
+    {
+      "name": "cat_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_19.wav"
+    },
+    {
+      "name": "cat_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_2.wav"
+    },
+    {
+      "name": "cat_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_20.wav"
+    },
+    {
+      "name": "cat_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_21.wav"
+    },
+    {
+      "name": "cat_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_22.wav"
+    },
+    {
+      "name": "cat_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_23.wav"
+    },
+    {
+      "name": "cat_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_24.wav"
+    },
+    {
+      "name": "cat_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_25.wav"
+    },
+    {
+      "name": "cat_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_26.wav"
+    },
+    {
+      "name": "cat_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_27.wav"
+    },
+    {
+      "name": "cat_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_28.wav"
+    },
+    {
+      "name": "cat_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_29.wav"
+    },
+    {
+      "name": "cat_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_3.wav"
+    },
+    {
+      "name": "cat_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_30.wav"
+    },
+    {
+      "name": "cat_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_31.wav"
+    },
+    {
+      "name": "cat_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_32.wav"
+    },
+    {
+      "name": "cat_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_33.wav"
+    },
+    {
+      "name": "cat_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_34.wav"
+    },
+    {
+      "name": "cat_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_35.wav"
+    },
+    {
+      "name": "cat_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_36.wav"
+    },
+    {
+      "name": "cat_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_37.wav"
+    },
+    {
+      "name": "cat_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_38.wav"
+    },
+    {
+      "name": "cat_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_39.wav"
+    },
+    {
+      "name": "cat_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_4.wav"
+    },
+    {
+      "name": "cat_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_40.wav"
+    },
+    {
+      "name": "cat_41.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_41.wav"
+    },
+    {
+      "name": "cat_42.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_42.wav"
+    },
+    {
+      "name": "cat_43.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_43.wav"
+    },
+    {
+      "name": "cat_44.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_44.wav"
+    },
+    {
+      "name": "cat_45.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_45.wav"
+    },
+    {
+      "name": "cat_46.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_46.wav"
+    },
+    {
+      "name": "cat_47.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_47.wav"
+    },
+    {
+      "name": "cat_48.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_48.wav"
+    },
+    {
+      "name": "cat_49.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_49.wav"
+    },
+    {
+      "name": "cat_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_5.wav"
+    },
+    {
+      "name": "cat_50.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_50.wav"
+    },
+    {
+      "name": "cat_51.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_51.wav"
+    },
+    {
+      "name": "cat_52.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_52.wav"
+    },
+    {
+      "name": "cat_53.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_53.wav"
+    },
+    {
+      "name": "cat_54.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_54.wav"
+    },
+    {
+      "name": "cat_55.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_55.wav"
+    },
+    {
+      "name": "cat_56.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_56.wav"
+    },
+    {
+      "name": "cat_57.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_57.wav"
+    },
+    {
+      "name": "cat_58.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_58.wav"
+    },
+    {
+      "name": "cat_59.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_59.wav"
+    },
+    {
+      "name": "cat_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_6.wav"
+    },
+    {
+      "name": "cat_60.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_60.wav"
+    },
+    {
+      "name": "cat_61.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_61.wav"
+    },
+    {
+      "name": "cat_62.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_62.wav"
+    },
+    {
+      "name": "cat_63.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_63.wav"
+    },
+    {
+      "name": "cat_64.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_64.wav"
+    },
+    {
+      "name": "cat_65.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_65.wav"
+    },
+    {
+      "name": "cat_66.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_66.wav"
+    },
+    {
+      "name": "cat_67.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_67.wav"
+    },
+    {
+      "name": "cat_68.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_68.wav"
+    },
+    {
+      "name": "cat_69.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_69.wav"
+    },
+    {
+      "name": "cat_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_7.wav"
+    },
+    {
+      "name": "cat_70.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_70.wav"
+    },
+    {
+      "name": "cat_71.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_71.wav"
+    },
+    {
+      "name": "cat_72.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_72.wav"
+    },
+    {
+      "name": "cat_73.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_73.wav"
+    },
+    {
+      "name": "cat_74.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_74.wav"
+    },
+    {
+      "name": "cat_75.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_75.wav"
+    },
+    {
+      "name": "cat_76.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_76.wav"
+    },
+    {
+      "name": "cat_77.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_77.wav"
+    },
+    {
+      "name": "cat_78.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_78.wav"
+    },
+    {
+      "name": "cat_79.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_79.wav"
+    },
+    {
+      "name": "cat_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_8.wav"
+    },
+    {
+      "name": "cat_80.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_80.wav"
+    },
+    {
+      "name": "cat_81.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_81.wav"
+    },
+    {
+      "name": "cat_82.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_82.wav"
+    },
+    {
+      "name": "cat_83.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_83.wav"
+    },
+    {
+      "name": "cat_84.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_84.wav"
+    },
+    {
+      "name": "cat_85.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_85.wav"
+    },
+    {
+      "name": "cat_86.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_86.wav"
+    },
+    {
+      "name": "cat_87.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_87.wav"
+    },
+    {
+      "name": "cat_88.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_88.wav"
+    },
+    {
+      "name": "cat_89.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_89.wav"
+    },
+    {
+      "name": "cat_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_9.wav"
+    },
+    {
+      "name": "cat_90.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_90.wav"
+    },
+    {
+      "name": "cat_91.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_91.wav"
+    },
+    {
+      "name": "cat_92.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_92.wav"
+    },
+    {
+      "name": "cat_93.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_93.wav"
+    },
+    {
+      "name": "cat_94.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_94.wav"
+    },
+    {
+      "name": "cat_95.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_95.wav"
+    },
+    {
+      "name": "cat_96.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_96.wav"
+    },
+    {
+      "name": "cat_97.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_97.wav"
+    },
+    {
+      "name": "cat_98.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_98.wav"
+    },
+    {
+      "name": "cat_99.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part1/cat_99.wav"
+    }
+  ],
+  "Kedi-Part2": [
+    {
+      "name": "cat_101.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_101.wav"
+    },
+    {
+      "name": "cat_102.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_102.wav"
+    },
+    {
+      "name": "cat_103.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_103.wav"
+    },
+    {
+      "name": "cat_104.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_104.wav"
+    },
+    {
+      "name": "cat_105.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_105.wav"
+    },
+    {
+      "name": "cat_106.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_106.wav"
+    },
+    {
+      "name": "cat_107.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_107.wav"
+    },
+    {
+      "name": "cat_108.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_108.wav"
+    },
+    {
+      "name": "cat_109.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_109.wav"
+    },
+    {
+      "name": "cat_110.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_110.wav"
+    },
+    {
+      "name": "cat_111.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_111.wav"
+    },
+    {
+      "name": "cat_112.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_112.wav"
+    },
+    {
+      "name": "cat_113.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_113.wav"
+    },
+    {
+      "name": "cat_114.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_114.wav"
+    },
+    {
+      "name": "cat_115.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_115.wav"
+    },
+    {
+      "name": "cat_116.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_116.wav"
+    },
+    {
+      "name": "cat_117.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_117.wav"
+    },
+    {
+      "name": "cat_118.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_118.wav"
+    },
+    {
+      "name": "cat_119.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_119.wav"
+    },
+    {
+      "name": "cat_120.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_120.wav"
+    },
+    {
+      "name": "cat_121.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_121.wav"
+    },
+    {
+      "name": "cat_122.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_122.wav"
+    },
+    {
+      "name": "cat_123.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_123.wav"
+    },
+    {
+      "name": "cat_124.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_124.wav"
+    },
+    {
+      "name": "cat_125.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_125.wav"
+    },
+    {
+      "name": "cat_126.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_126.wav"
+    },
+    {
+      "name": "cat_127.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_127.wav"
+    },
+    {
+      "name": "cat_128.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_128.wav"
+    },
+    {
+      "name": "cat_129.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_129.wav"
+    },
+    {
+      "name": "cat_130.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_130.wav"
+    },
+    {
+      "name": "cat_131.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_131.wav"
+    },
+    {
+      "name": "cat_132.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_132.wav"
+    },
+    {
+      "name": "cat_133.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_133.wav"
+    },
+    {
+      "name": "cat_134.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_134.wav"
+    },
+    {
+      "name": "cat_135.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_135.wav"
+    },
+    {
+      "name": "cat_136.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_136.wav"
+    },
+    {
+      "name": "cat_137.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_137.wav"
+    },
+    {
+      "name": "cat_138.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_138.wav"
+    },
+    {
+      "name": "cat_139.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_139.wav"
+    },
+    {
+      "name": "cat_140.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_140.wav"
+    },
+    {
+      "name": "cat_141.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_141.wav"
+    },
+    {
+      "name": "cat_142.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_142.wav"
+    },
+    {
+      "name": "cat_143.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_143.wav"
+    },
+    {
+      "name": "cat_144.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_144.wav"
+    },
+    {
+      "name": "cat_145.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_145.wav"
+    },
+    {
+      "name": "cat_146.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_146.wav"
+    },
+    {
+      "name": "cat_147.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_147.wav"
+    },
+    {
+      "name": "cat_148.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_148.wav"
+    },
+    {
+      "name": "cat_149.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_149.wav"
+    },
+    {
+      "name": "cat_150.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_150.wav"
+    },
+    {
+      "name": "cat_151.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_151.wav"
+    },
+    {
+      "name": "cat_152.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_152.wav"
+    },
+    {
+      "name": "cat_153.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_153.wav"
+    },
+    {
+      "name": "cat_154.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_154.wav"
+    },
+    {
+      "name": "cat_155.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_155.wav"
+    },
+    {
+      "name": "cat_156.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_156.wav"
+    },
+    {
+      "name": "cat_157.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_157.wav"
+    },
+    {
+      "name": "cat_158.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_158.wav"
+    },
+    {
+      "name": "cat_159.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_159.wav"
+    },
+    {
+      "name": "cat_160.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_160.wav"
+    },
+    {
+      "name": "cat_161.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_161.wav"
+    },
+    {
+      "name": "cat_162.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_162.wav"
+    },
+    {
+      "name": "cat_163.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_163.wav"
+    },
+    {
+      "name": "cat_164.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_164.wav"
+    },
+    {
+      "name": "cat_165.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_165.wav"
+    },
+    {
+      "name": "cat_166.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_166.wav"
+    },
+    {
+      "name": "cat_167.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_167.wav"
+    },
+    {
+      "name": "cat_168.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_168.wav"
+    },
+    {
+      "name": "cat_169.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_169.wav"
+    },
+    {
+      "name": "cat_170.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_170.wav"
+    },
+    {
+      "name": "cat_171.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_171.wav"
+    },
+    {
+      "name": "cat_172.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_172.wav"
+    },
+    {
+      "name": "cat_173.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_173.wav"
+    },
+    {
+      "name": "cat_174.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_174.wav"
+    },
+    {
+      "name": "cat_175.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_175.wav"
+    },
+    {
+      "name": "cat_176.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_176.wav"
+    },
+    {
+      "name": "cat_177.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_177.wav"
+    },
+    {
+      "name": "cat_178.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_178.WAV"
+    },
+    {
+      "name": "cat_179.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_179.wav"
+    },
+    {
+      "name": "cat_180.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_180.wav"
+    },
+    {
+      "name": "cat_181.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_181.wav"
+    },
+    {
+      "name": "cat_182.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_182.wav"
+    },
+    {
+      "name": "cat_183.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_183.wav"
+    },
+    {
+      "name": "cat_184.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_184.wav"
+    },
+    {
+      "name": "cat_185.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_185.wav"
+    },
+    {
+      "name": "cat_186.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_186.wav"
+    },
+    {
+      "name": "cat_187.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_187.wav"
+    },
+    {
+      "name": "cat_188.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_188.wav"
+    },
+    {
+      "name": "cat_189.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_189.wav"
+    },
+    {
+      "name": "cat_190.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_190.wav"
+    },
+    {
+      "name": "cat_191.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_191.wav"
+    },
+    {
+      "name": "cat_192.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_192.wav"
+    },
+    {
+      "name": "cat_193.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_193.wav"
+    },
+    {
+      "name": "cat_194.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_194.wav"
+    },
+    {
+      "name": "cat_195.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_195.wav"
+    },
+    {
+      "name": "cat_196.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_196.wav"
+    },
+    {
+      "name": "cat_197.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_197.wav"
+    },
+    {
+      "name": "cat_198.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_198.wav"
+    },
+    {
+      "name": "cat_199.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_199.wav"
+    },
+    {
+      "name": "cat_200.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kedi-Part2/cat_200.wav"
+    }
+  ],
+  "Kopek-Part1": [
+    {
+      "name": "dog_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_1.wav"
+    },
+    {
+      "name": "dog_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_10.wav"
+    },
+    {
+      "name": "dog_100.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_100.wav"
+    },
+    {
+      "name": "dog_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_11.wav"
+    },
+    {
+      "name": "dog_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_12.wav"
+    },
+    {
+      "name": "dog_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_13.wav"
+    },
+    {
+      "name": "dog_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_14.wav"
+    },
+    {
+      "name": "dog_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_15.wav"
+    },
+    {
+      "name": "dog_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_16.wav"
+    },
+    {
+      "name": "dog_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_17.wav"
+    },
+    {
+      "name": "dog_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_18.wav"
+    },
+    {
+      "name": "dog_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_19.wav"
+    },
+    {
+      "name": "dog_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_2.wav"
+    },
+    {
+      "name": "dog_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_20.wav"
+    },
+    {
+      "name": "dog_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_21.wav"
+    },
+    {
+      "name": "dog_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_22.wav"
+    },
+    {
+      "name": "dog_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_23.wav"
+    },
+    {
+      "name": "dog_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_24.wav"
+    },
+    {
+      "name": "dog_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_25.wav"
+    },
+    {
+      "name": "dog_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_26.wav"
+    },
+    {
+      "name": "dog_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_27.wav"
+    },
+    {
+      "name": "dog_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_28.wav"
+    },
+    {
+      "name": "dog_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_29.wav"
+    },
+    {
+      "name": "dog_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_3.wav"
+    },
+    {
+      "name": "dog_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_30.wav"
+    },
+    {
+      "name": "dog_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_31.wav"
+    },
+    {
+      "name": "dog_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_32.wav"
+    },
+    {
+      "name": "dog_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_33.wav"
+    },
+    {
+      "name": "dog_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_34.wav"
+    },
+    {
+      "name": "dog_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_35.wav"
+    },
+    {
+      "name": "dog_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_36.wav"
+    },
+    {
+      "name": "dog_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_37.wav"
+    },
+    {
+      "name": "dog_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_38.wav"
+    },
+    {
+      "name": "dog_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_39.wav"
+    },
+    {
+      "name": "dog_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_4.wav"
+    },
+    {
+      "name": "dog_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_40.wav"
+    },
+    {
+      "name": "dog_41.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_41.wav"
+    },
+    {
+      "name": "dog_42.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_42.wav"
+    },
+    {
+      "name": "dog_43.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_43.wav"
+    },
+    {
+      "name": "dog_44.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_44.wav"
+    },
+    {
+      "name": "dog_45.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_45.wav"
+    },
+    {
+      "name": "dog_46.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_46.wav"
+    },
+    {
+      "name": "dog_47.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_47.wav"
+    },
+    {
+      "name": "dog_48.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_48.wav"
+    },
+    {
+      "name": "dog_49.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_49.wav"
+    },
+    {
+      "name": "dog_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_5.wav"
+    },
+    {
+      "name": "dog_50.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_50.wav"
+    },
+    {
+      "name": "dog_51.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_51.wav"
+    },
+    {
+      "name": "dog_52.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_52.wav"
+    },
+    {
+      "name": "dog_53.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_53.wav"
+    },
+    {
+      "name": "dog_54.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_54.wav"
+    },
+    {
+      "name": "dog_55.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_55.wav"
+    },
+    {
+      "name": "dog_56.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_56.wav"
+    },
+    {
+      "name": "dog_57.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_57.wav"
+    },
+    {
+      "name": "dog_58.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_58.wav"
+    },
+    {
+      "name": "dog_59.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_59.wav"
+    },
+    {
+      "name": "dog_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_6.wav"
+    },
+    {
+      "name": "dog_60.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_60.wav"
+    },
+    {
+      "name": "dog_61.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_61.wav"
+    },
+    {
+      "name": "dog_62.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_62.wav"
+    },
+    {
+      "name": "dog_63.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_63.wav"
+    },
+    {
+      "name": "dog_64.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_64.wav"
+    },
+    {
+      "name": "dog_65.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_65.wav"
+    },
+    {
+      "name": "dog_66.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_66.wav"
+    },
+    {
+      "name": "dog_67.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_67.wav"
+    },
+    {
+      "name": "dog_68.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_68.wav"
+    },
+    {
+      "name": "dog_69.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_69.wav"
+    },
+    {
+      "name": "dog_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_7.wav"
+    },
+    {
+      "name": "dog_70.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_70.wav"
+    },
+    {
+      "name": "dog_71.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_71.wav"
+    },
+    {
+      "name": "dog_72.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_72.wav"
+    },
+    {
+      "name": "dog_73.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_73.wav"
+    },
+    {
+      "name": "dog_74.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_74.wav"
+    },
+    {
+      "name": "dog_75.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_75.wav"
+    },
+    {
+      "name": "dog_76.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_76.wav"
+    },
+    {
+      "name": "dog_77.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_77.wav"
+    },
+    {
+      "name": "dog_78.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_78.wav"
+    },
+    {
+      "name": "dog_79.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_79.wav"
+    },
+    {
+      "name": "dog_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_8.wav"
+    },
+    {
+      "name": "dog_80.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_80.wav"
+    },
+    {
+      "name": "dog_81.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_81.wav"
+    },
+    {
+      "name": "dog_82.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_82.wav"
+    },
+    {
+      "name": "dog_83.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_83.wav"
+    },
+    {
+      "name": "dog_84.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_84.wav"
+    },
+    {
+      "name": "dog_85.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_85.wav"
+    },
+    {
+      "name": "dog_86.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_86.wav"
+    },
+    {
+      "name": "dog_87.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_87.wav"
+    },
+    {
+      "name": "dog_88.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_88.wav"
+    },
+    {
+      "name": "dog_89.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_89.wav"
+    },
+    {
+      "name": "dog_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_9.wav"
+    },
+    {
+      "name": "dog_90.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_90.wav"
+    },
+    {
+      "name": "dog_91.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_91.wav"
+    },
+    {
+      "name": "dog_92.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_92.wav"
+    },
+    {
+      "name": "dog_93.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_93.wav"
+    },
+    {
+      "name": "dog_94.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_94.wav"
+    },
+    {
+      "name": "dog_95.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_95.wav"
+    },
+    {
+      "name": "dog_96.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_96.wav"
+    },
+    {
+      "name": "dog_97.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_97.wav"
+    },
+    {
+      "name": "dog_98.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_98.wav"
+    },
+    {
+      "name": "dog_99.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part1/dog_99.wav"
+    }
+  ],
+  "Kopek-Part2": [
+    {
+      "name": "dog_101.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_101.wav"
+    },
+    {
+      "name": "dog_102.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_102.wav"
+    },
+    {
+      "name": "dog_103.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_103.wav"
+    },
+    {
+      "name": "dog_104.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_104.wav"
+    },
+    {
+      "name": "dog_105.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_105.wav"
+    },
+    {
+      "name": "dog_106.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_106.wav"
+    },
+    {
+      "name": "dog_107.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_107.wav"
+    },
+    {
+      "name": "dog_108.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_108.wav"
+    },
+    {
+      "name": "dog_109.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_109.wav"
+    },
+    {
+      "name": "dog_110.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_110.wav"
+    },
+    {
+      "name": "dog_111.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_111.wav"
+    },
+    {
+      "name": "dog_112.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_112.wav"
+    },
+    {
+      "name": "dog_113.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_113.wav"
+    },
+    {
+      "name": "dog_114.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_114.wav"
+    },
+    {
+      "name": "dog_115.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_115.wav"
+    },
+    {
+      "name": "dog_116.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_116.WAV"
+    },
+    {
+      "name": "dog_117.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_117.wav"
+    },
+    {
+      "name": "dog_118.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_118.wav"
+    },
+    {
+      "name": "dog_119.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_119.wav"
+    },
+    {
+      "name": "dog_120.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_120.wav"
+    },
+    {
+      "name": "dog_121.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_121.wav"
+    },
+    {
+      "name": "dog_122.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_122.wav"
+    },
+    {
+      "name": "dog_123.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_123.wav"
+    },
+    {
+      "name": "dog_124.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_124.wav"
+    },
+    {
+      "name": "dog_125.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_125.wav"
+    },
+    {
+      "name": "dog_126.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_126.wav"
+    },
+    {
+      "name": "dog_127.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_127.wav"
+    },
+    {
+      "name": "dog_128.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_128.wav"
+    },
+    {
+      "name": "dog_129.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_129.wav"
+    },
+    {
+      "name": "dog_130.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_130.wav"
+    },
+    {
+      "name": "dog_131.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_131.wav"
+    },
+    {
+      "name": "dog_132.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_132.wav"
+    },
+    {
+      "name": "dog_133.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_133.wav"
+    },
+    {
+      "name": "dog_134.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_134.WAV"
+    },
+    {
+      "name": "dog_135.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_135.WAV"
+    },
+    {
+      "name": "dog_136.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_136.wav"
+    },
+    {
+      "name": "dog_137.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_137.wav"
+    },
+    {
+      "name": "dog_138.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_138.wav"
+    },
+    {
+      "name": "dog_139.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_139.wav"
+    },
+    {
+      "name": "dog_140.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_140.wav"
+    },
+    {
+      "name": "dog_141.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_141.wav"
+    },
+    {
+      "name": "dog_142.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_142.wav"
+    },
+    {
+      "name": "dog_143.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_143.wav"
+    },
+    {
+      "name": "dog_144.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_144.wav"
+    },
+    {
+      "name": "dog_145.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_145.wav"
+    },
+    {
+      "name": "dog_146.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_146.wav"
+    },
+    {
+      "name": "dog_147.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_147.wav"
+    },
+    {
+      "name": "dog_148.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_148.wav"
+    },
+    {
+      "name": "dog_149.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_149.wav"
+    },
+    {
+      "name": "dog_150.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_150.wav"
+    },
+    {
+      "name": "dog_151.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_151.wav"
+    },
+    {
+      "name": "dog_152.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_152.wav"
+    },
+    {
+      "name": "dog_153.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_153.wav"
+    },
+    {
+      "name": "dog_154.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_154.wav"
+    },
+    {
+      "name": "dog_155.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_155.wav"
+    },
+    {
+      "name": "dog_156.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_156.wav"
+    },
+    {
+      "name": "dog_157.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_157.wav"
+    },
+    {
+      "name": "dog_158.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_158.wav"
+    },
+    {
+      "name": "dog_159.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_159.wav"
+    },
+    {
+      "name": "dog_160.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_160.wav"
+    },
+    {
+      "name": "dog_161.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_161.WAV"
+    },
+    {
+      "name": "dog_162.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_162.WAV"
+    },
+    {
+      "name": "dog_163.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_163.WAV"
+    },
+    {
+      "name": "dog_164.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_164.wav"
+    },
+    {
+      "name": "dog_165.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_165.wav"
+    },
+    {
+      "name": "dog_166.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_166.wav"
+    },
+    {
+      "name": "dog_167.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_167.wav"
+    },
+    {
+      "name": "dog_168.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_168.wav"
+    },
+    {
+      "name": "dog_169.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_169.wav"
+    },
+    {
+      "name": "dog_170.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_170.wav"
+    },
+    {
+      "name": "dog_171.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_171.wav"
+    },
+    {
+      "name": "dog_172.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_172.wav"
+    },
+    {
+      "name": "dog_173.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_173.wav"
+    },
+    {
+      "name": "dog_174.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_174.wav"
+    },
+    {
+      "name": "dog_175.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_175.wav"
+    },
+    {
+      "name": "dog_176.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_176.wav"
+    },
+    {
+      "name": "dog_177.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_177.wav"
+    },
+    {
+      "name": "dog_178.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_178.wav"
+    },
+    {
+      "name": "dog_179.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_179.wav"
+    },
+    {
+      "name": "dog_180.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_180.wav"
+    },
+    {
+      "name": "dog_181.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_181.wav"
+    },
+    {
+      "name": "dog_182.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_182.wav"
+    },
+    {
+      "name": "dog_183.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_183.wav"
+    },
+    {
+      "name": "dog_184.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_184.wav"
+    },
+    {
+      "name": "dog_185.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_185.wav"
+    },
+    {
+      "name": "dog_186.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_186.WAV"
+    },
+    {
+      "name": "dog_187.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_187.wav"
+    },
+    {
+      "name": "dog_188.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_188.wav"
+    },
+    {
+      "name": "dog_189.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_189.wav"
+    },
+    {
+      "name": "dog_190.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_190.wav"
+    },
+    {
+      "name": "dog_191.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_191.wav"
+    },
+    {
+      "name": "dog_192.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_192.wav"
+    },
+    {
+      "name": "dog_193.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_193.WAV"
+    },
+    {
+      "name": "dog_194.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_194.wav"
+    },
+    {
+      "name": "dog_195.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_195.wav"
+    },
+    {
+      "name": "dog_196.WAV",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_196.WAV"
+    },
+    {
+      "name": "dog_197.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_197.wav"
+    },
+    {
+      "name": "dog_198.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_198.wav"
+    },
+    {
+      "name": "dog_199.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_199.wav"
+    },
+    {
+      "name": "dog_200.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kopek-Part2/dog_200.wav"
+    }
+  ],
+  "Koyun": [
+    {
+      "name": "koyun_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_1.wav"
+    },
+    {
+      "name": "koyun_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_10.wav"
+    },
+    {
+      "name": "koyun_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_11.wav"
+    },
+    {
+      "name": "koyun_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_12.wav"
+    },
+    {
+      "name": "koyun_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_13.wav"
+    },
+    {
+      "name": "koyun_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_14.wav"
+    },
+    {
+      "name": "koyun_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_15.wav"
+    },
+    {
+      "name": "koyun_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_16.wav"
+    },
+    {
+      "name": "koyun_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_17.wav"
+    },
+    {
+      "name": "koyun_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_18.wav"
+    },
+    {
+      "name": "koyun_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_19.wav"
+    },
+    {
+      "name": "koyun_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_2.wav"
+    },
+    {
+      "name": "koyun_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_20.wav"
+    },
+    {
+      "name": "koyun_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_21.wav"
+    },
+    {
+      "name": "koyun_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_22.wav"
+    },
+    {
+      "name": "koyun_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_23.wav"
+    },
+    {
+      "name": "koyun_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_24.wav"
+    },
+    {
+      "name": "koyun_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_25.wav"
+    },
+    {
+      "name": "koyun_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_26.wav"
+    },
+    {
+      "name": "koyun_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_27.wav"
+    },
+    {
+      "name": "koyun_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_28.wav"
+    },
+    {
+      "name": "koyun_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_29.wav"
+    },
+    {
+      "name": "koyun_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_3.wav"
+    },
+    {
+      "name": "koyun_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_30.wav"
+    },
+    {
+      "name": "koyun_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_31.wav"
+    },
+    {
+      "name": "koyun_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_32.wav"
+    },
+    {
+      "name": "koyun_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_33.wav"
+    },
+    {
+      "name": "koyun_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_34.wav"
+    },
+    {
+      "name": "koyun_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_35.wav"
+    },
+    {
+      "name": "koyun_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_36.wav"
+    },
+    {
+      "name": "koyun_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_37.wav"
+    },
+    {
+      "name": "koyun_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_38.wav"
+    },
+    {
+      "name": "koyun_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_39.wav"
+    },
+    {
+      "name": "koyun_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_4.wav"
+    },
+    {
+      "name": "koyun_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_40.wav"
+    },
+    {
+      "name": "koyun_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_5.wav"
+    },
+    {
+      "name": "koyun_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_6.wav"
+    },
+    {
+      "name": "koyun_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_7.wav"
+    },
+    {
+      "name": "koyun_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_8.wav"
+    },
+    {
+      "name": "koyun_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Koyun/koyun_9.wav"
+    }
+  ],
+  "Kurbaga": [
+    {
+      "name": "kurbaga_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_1.wav"
+    },
+    {
+      "name": "kurbaga_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_10.wav"
+    },
+    {
+      "name": "kurbaga_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_11.wav"
+    },
+    {
+      "name": "kurbaga_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_12.wav"
+    },
+    {
+      "name": "kurbaga_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_13.wav"
+    },
+    {
+      "name": "kurbaga_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_14.wav"
+    },
+    {
+      "name": "kurbaga_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_15.wav"
+    },
+    {
+      "name": "kurbaga_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_16.wav"
+    },
+    {
+      "name": "kurbaga_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_17.wav"
+    },
+    {
+      "name": "kurbaga_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_18.wav"
+    },
+    {
+      "name": "kurbaga_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_19.wav"
+    },
+    {
+      "name": "kurbaga_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_2.wav"
+    },
+    {
+      "name": "kurbaga_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_20.wav"
+    },
+    {
+      "name": "kurbaga_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_21.wav"
+    },
+    {
+      "name": "kurbaga_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_22.wav"
+    },
+    {
+      "name": "kurbaga_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_23.wav"
+    },
+    {
+      "name": "kurbaga_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_24.wav"
+    },
+    {
+      "name": "kurbaga_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_25.wav"
+    },
+    {
+      "name": "kurbaga_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_26.wav"
+    },
+    {
+      "name": "kurbaga_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_27.wav"
+    },
+    {
+      "name": "kurbaga_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_28.wav"
+    },
+    {
+      "name": "kurbaga_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_29.wav"
+    },
+    {
+      "name": "kurbaga_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_3.wav"
+    },
+    {
+      "name": "kurbaga_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_30.wav"
+    },
+    {
+      "name": "kurbaga_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_31.wav"
+    },
+    {
+      "name": "kurbaga_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_32.wav"
+    },
+    {
+      "name": "kurbaga_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_33.wav"
+    },
+    {
+      "name": "kurbaga_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_34.wav"
+    },
+    {
+      "name": "kurbaga_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_35.wav"
+    },
+    {
+      "name": "kurbaga_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_4.wav"
+    },
+    {
+      "name": "kurbaga_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_5.wav"
+    },
+    {
+      "name": "kurbaga_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_6.wav"
+    },
+    {
+      "name": "kurbaga_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_7.wav"
+    },
+    {
+      "name": "kurbaga_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_8.wav"
+    },
+    {
+      "name": "kurbaga_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kurbaga/kurbaga_9.wav"
+    }
+  ],
+  "Kus-Part1": [
+    {
+      "name": "Kus_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_1.wav"
+    },
+    {
+      "name": "Kus_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_10.wav"
+    },
+    {
+      "name": "Kus_100.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_100.wav"
+    },
+    {
+      "name": "Kus_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_11.wav"
+    },
+    {
+      "name": "Kus_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_12.wav"
+    },
+    {
+      "name": "Kus_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_13.wav"
+    },
+    {
+      "name": "Kus_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_14.wav"
+    },
+    {
+      "name": "Kus_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_15.wav"
+    },
+    {
+      "name": "Kus_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_16.wav"
+    },
+    {
+      "name": "Kus_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_17.wav"
+    },
+    {
+      "name": "Kus_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_18.wav"
+    },
+    {
+      "name": "Kus_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_19.wav"
+    },
+    {
+      "name": "Kus_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_2.wav"
+    },
+    {
+      "name": "Kus_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_20.wav"
+    },
+    {
+      "name": "Kus_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_21.wav"
+    },
+    {
+      "name": "Kus_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_22.wav"
+    },
+    {
+      "name": "Kus_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_23.wav"
+    },
+    {
+      "name": "Kus_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_24.wav"
+    },
+    {
+      "name": "Kus_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_25.wav"
+    },
+    {
+      "name": "Kus_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_26.wav"
+    },
+    {
+      "name": "Kus_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_27.wav"
+    },
+    {
+      "name": "Kus_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_28.wav"
+    },
+    {
+      "name": "Kus_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_29.wav"
+    },
+    {
+      "name": "Kus_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_3.wav"
+    },
+    {
+      "name": "Kus_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_30.wav"
+    },
+    {
+      "name": "Kus_31.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_31.wav"
+    },
+    {
+      "name": "Kus_32.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_32.wav"
+    },
+    {
+      "name": "Kus_33.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_33.wav"
+    },
+    {
+      "name": "Kus_34.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_34.wav"
+    },
+    {
+      "name": "Kus_35.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_35.wav"
+    },
+    {
+      "name": "Kus_36.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_36.wav"
+    },
+    {
+      "name": "Kus_37.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_37.wav"
+    },
+    {
+      "name": "Kus_38.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_38.wav"
+    },
+    {
+      "name": "Kus_39.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_39.wav"
+    },
+    {
+      "name": "Kus_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_4.wav"
+    },
+    {
+      "name": "Kus_40.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_40.wav"
+    },
+    {
+      "name": "Kus_41.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_41.wav"
+    },
+    {
+      "name": "Kus_42.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_42.wav"
+    },
+    {
+      "name": "Kus_43.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_43.wav"
+    },
+    {
+      "name": "Kus_44.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_44.wav"
+    },
+    {
+      "name": "Kus_45.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_45.wav"
+    },
+    {
+      "name": "Kus_46.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_46.wav"
+    },
+    {
+      "name": "Kus_47.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_47.wav"
+    },
+    {
+      "name": "Kus_48.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_48.wav"
+    },
+    {
+      "name": "Kus_49.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_49.wav"
+    },
+    {
+      "name": "Kus_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_5.wav"
+    },
+    {
+      "name": "Kus_50.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_50.wav"
+    },
+    {
+      "name": "Kus_51.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_51.wav"
+    },
+    {
+      "name": "Kus_52.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_52.wav"
+    },
+    {
+      "name": "Kus_53.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_53.wav"
+    },
+    {
+      "name": "Kus_54.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_54.wav"
+    },
+    {
+      "name": "Kus_55.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_55.wav"
+    },
+    {
+      "name": "Kus_56.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_56.wav"
+    },
+    {
+      "name": "Kus_57.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_57.wav"
+    },
+    {
+      "name": "Kus_58.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_58.wav"
+    },
+    {
+      "name": "Kus_59.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_59.wav"
+    },
+    {
+      "name": "Kus_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_6.wav"
+    },
+    {
+      "name": "Kus_60.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_60.wav"
+    },
+    {
+      "name": "Kus_61.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_61.wav"
+    },
+    {
+      "name": "Kus_62.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_62.wav"
+    },
+    {
+      "name": "Kus_63.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_63.wav"
+    },
+    {
+      "name": "Kus_64.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_64.wav"
+    },
+    {
+      "name": "Kus_65.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_65.wav"
+    },
+    {
+      "name": "Kus_66.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_66.wav"
+    },
+    {
+      "name": "Kus_67.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_67.wav"
+    },
+    {
+      "name": "Kus_68.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_68.wav"
+    },
+    {
+      "name": "Kus_69.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_69.wav"
+    },
+    {
+      "name": "Kus_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_7.wav"
+    },
+    {
+      "name": "Kus_70.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_70.wav"
+    },
+    {
+      "name": "Kus_71.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_71.wav"
+    },
+    {
+      "name": "Kus_72.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_72.wav"
+    },
+    {
+      "name": "Kus_73.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_73.wav"
+    },
+    {
+      "name": "Kus_74.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_74.wav"
+    },
+    {
+      "name": "Kus_75.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_75.wav"
+    },
+    {
+      "name": "Kus_76.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_76.wav"
+    },
+    {
+      "name": "Kus_77.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_77.wav"
+    },
+    {
+      "name": "Kus_78.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_78.wav"
+    },
+    {
+      "name": "Kus_79.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_79.wav"
+    },
+    {
+      "name": "Kus_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_8.wav"
+    },
+    {
+      "name": "Kus_80.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_80.wav"
+    },
+    {
+      "name": "Kus_81.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_81.wav"
+    },
+    {
+      "name": "Kus_82.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_82.wav"
+    },
+    {
+      "name": "Kus_83.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_83.wav"
+    },
+    {
+      "name": "Kus_84.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_84.wav"
+    },
+    {
+      "name": "Kus_85.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_85.wav"
+    },
+    {
+      "name": "Kus_86.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_86.wav"
+    },
+    {
+      "name": "Kus_87.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_87.wav"
+    },
+    {
+      "name": "Kus_88.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_88.wav"
+    },
+    {
+      "name": "Kus_89.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_89.wav"
+    },
+    {
+      "name": "Kus_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_9.wav"
+    },
+    {
+      "name": "Kus_90.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_90.wav"
+    },
+    {
+      "name": "Kus_91.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_91.wav"
+    },
+    {
+      "name": "Kus_92.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_92.wav"
+    },
+    {
+      "name": "Kus_93.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_93.wav"
+    },
+    {
+      "name": "Kus_94.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_94.wav"
+    },
+    {
+      "name": "Kus_95.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_95.wav"
+    },
+    {
+      "name": "Kus_96.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_96.wav"
+    },
+    {
+      "name": "Kus_97.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_97.wav"
+    },
+    {
+      "name": "Kus_98.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_98.wav"
+    },
+    {
+      "name": "Kus_99.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part1/Kus_99.wav"
+    }
+  ],
+  "Kus-Part2": [
+    {
+      "name": "Kus_101.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_101.wav"
+    },
+    {
+      "name": "Kus_102.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_102.wav"
+    },
+    {
+      "name": "Kus_103.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_103.wav"
+    },
+    {
+      "name": "Kus_104.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_104.wav"
+    },
+    {
+      "name": "Kus_105.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_105.wav"
+    },
+    {
+      "name": "Kus_106.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_106.wav"
+    },
+    {
+      "name": "Kus_107.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_107.wav"
+    },
+    {
+      "name": "Kus_108.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_108.wav"
+    },
+    {
+      "name": "Kus_109.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_109.wav"
+    },
+    {
+      "name": "Kus_110.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_110.wav"
+    },
+    {
+      "name": "Kus_111.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_111.wav"
+    },
+    {
+      "name": "Kus_112.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_112.wav"
+    },
+    {
+      "name": "Kus_113.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_113.wav"
+    },
+    {
+      "name": "Kus_114.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_114.wav"
+    },
+    {
+      "name": "Kus_115.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_115.wav"
+    },
+    {
+      "name": "Kus_116.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_116.wav"
+    },
+    {
+      "name": "Kus_117.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_117.wav"
+    },
+    {
+      "name": "Kus_118.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_118.wav"
+    },
+    {
+      "name": "Kus_119.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_119.wav"
+    },
+    {
+      "name": "Kus_120.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_120.wav"
+    },
+    {
+      "name": "Kus_121.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_121.wav"
+    },
+    {
+      "name": "Kus_122.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_122.wav"
+    },
+    {
+      "name": "Kus_123.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_123.wav"
+    },
+    {
+      "name": "Kus_124.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_124.wav"
+    },
+    {
+      "name": "Kus_125.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_125.wav"
+    },
+    {
+      "name": "Kus_126.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_126.wav"
+    },
+    {
+      "name": "Kus_127.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_127.wav"
+    },
+    {
+      "name": "Kus_128.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_128.wav"
+    },
+    {
+      "name": "Kus_129.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_129.wav"
+    },
+    {
+      "name": "Kus_130.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_130.wav"
+    },
+    {
+      "name": "Kus_131.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_131.wav"
+    },
+    {
+      "name": "Kus_132.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_132.wav"
+    },
+    {
+      "name": "Kus_133.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_133.wav"
+    },
+    {
+      "name": "Kus_134.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_134.wav"
+    },
+    {
+      "name": "Kus_135.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_135.wav"
+    },
+    {
+      "name": "Kus_136.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_136.wav"
+    },
+    {
+      "name": "Kus_137.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_137.wav"
+    },
+    {
+      "name": "Kus_138.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_138.wav"
+    },
+    {
+      "name": "Kus_139.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_139.wav"
+    },
+    {
+      "name": "Kus_140.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_140.wav"
+    },
+    {
+      "name": "Kus_141.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_141.wav"
+    },
+    {
+      "name": "Kus_142.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_142.wav"
+    },
+    {
+      "name": "Kus_143.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_143.wav"
+    },
+    {
+      "name": "Kus_144.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_144.wav"
+    },
+    {
+      "name": "Kus_145.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_145.wav"
+    },
+    {
+      "name": "Kus_146.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_146.wav"
+    },
+    {
+      "name": "Kus_147.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_147.wav"
+    },
+    {
+      "name": "Kus_148.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_148.wav"
+    },
+    {
+      "name": "Kus_149.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_149.wav"
+    },
+    {
+      "name": "Kus_150.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_150.wav"
+    },
+    {
+      "name": "Kus_151.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_151.wav"
+    },
+    {
+      "name": "Kus_152.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_152.wav"
+    },
+    {
+      "name": "Kus_153.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_153.wav"
+    },
+    {
+      "name": "Kus_154.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_154.wav"
+    },
+    {
+      "name": "Kus_155.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_155.wav"
+    },
+    {
+      "name": "Kus_156.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_156.wav"
+    },
+    {
+      "name": "Kus_157.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_157.wav"
+    },
+    {
+      "name": "Kus_158.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_158.wav"
+    },
+    {
+      "name": "Kus_159.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_159.wav"
+    },
+    {
+      "name": "Kus_160.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_160.wav"
+    },
+    {
+      "name": "Kus_161.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_161.wav"
+    },
+    {
+      "name": "Kus_162.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_162.wav"
+    },
+    {
+      "name": "Kus_163.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_163.wav"
+    },
+    {
+      "name": "Kus_164.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_164.wav"
+    },
+    {
+      "name": "Kus_165.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_165.wav"
+    },
+    {
+      "name": "Kus_166.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_166.wav"
+    },
+    {
+      "name": "Kus_167.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_167.wav"
+    },
+    {
+      "name": "Kus_168.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_168.wav"
+    },
+    {
+      "name": "Kus_169.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_169.wav"
+    },
+    {
+      "name": "Kus_170.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_170.wav"
+    },
+    {
+      "name": "Kus_171.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_171.wav"
+    },
+    {
+      "name": "Kus_172.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_172.wav"
+    },
+    {
+      "name": "Kus_173.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_173.wav"
+    },
+    {
+      "name": "Kus_174.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_174.wav"
+    },
+    {
+      "name": "Kus_175.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_175.wav"
+    },
+    {
+      "name": "Kus_176.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_176.wav"
+    },
+    {
+      "name": "Kus_177.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_177.wav"
+    },
+    {
+      "name": "Kus_178.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_178.wav"
+    },
+    {
+      "name": "Kus_179.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_179.wav"
+    },
+    {
+      "name": "Kus_180.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_180.wav"
+    },
+    {
+      "name": "Kus_181.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_181.wav"
+    },
+    {
+      "name": "Kus_182.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_182.wav"
+    },
+    {
+      "name": "Kus_183.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_183.wav"
+    },
+    {
+      "name": "Kus_184.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_184.wav"
+    },
+    {
+      "name": "Kus_185.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_185.wav"
+    },
+    {
+      "name": "Kus_186.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_186.wav"
+    },
+    {
+      "name": "Kus_187.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_187.wav"
+    },
+    {
+      "name": "Kus_188.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_188.wav"
+    },
+    {
+      "name": "Kus_189.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_189.wav"
+    },
+    {
+      "name": "Kus_190.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_190.wav"
+    },
+    {
+      "name": "Kus_191.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_191.wav"
+    },
+    {
+      "name": "Kus_192.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_192.wav"
+    },
+    {
+      "name": "Kus_193.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_193.wav"
+    },
+    {
+      "name": "Kus_194.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_194.wav"
+    },
+    {
+      "name": "Kus_195.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_195.wav"
+    },
+    {
+      "name": "Kus_196.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_196.wav"
+    },
+    {
+      "name": "Kus_197.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_197.wav"
+    },
+    {
+      "name": "Kus_198.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_198.wav"
+    },
+    {
+      "name": "Kus_199.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_199.wav"
+    },
+    {
+      "name": "Kus_200.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Kus-Part2/Kus_200.wav"
+    }
+  ],
+  "Maymun": [
+    {
+      "name": "maymun_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_1.wav"
+    },
+    {
+      "name": "maymun_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_10.wav"
+    },
+    {
+      "name": "maymun_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_11.wav"
+    },
+    {
+      "name": "maymun_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_12.wav"
+    },
+    {
+      "name": "maymun_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_13.wav"
+    },
+    {
+      "name": "maymun_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_14.wav"
+    },
+    {
+      "name": "maymun_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_15.wav"
+    },
+    {
+      "name": "maymun_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_16.wav"
+    },
+    {
+      "name": "maymun_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_17.wav"
+    },
+    {
+      "name": "maymun_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_18.wav"
+    },
+    {
+      "name": "maymun_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_19.wav"
+    },
+    {
+      "name": "maymun_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_2.wav"
+    },
+    {
+      "name": "maymun_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_20.wav"
+    },
+    {
+      "name": "maymun_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_21.wav"
+    },
+    {
+      "name": "maymun_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_22.wav"
+    },
+    {
+      "name": "maymun_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_23.wav"
+    },
+    {
+      "name": "maymun_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_24.wav"
+    },
+    {
+      "name": "maymun_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_25.wav"
+    },
+    {
+      "name": "maymun_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_3.wav"
+    },
+    {
+      "name": "maymun_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_4.wav"
+    },
+    {
+      "name": "maymun_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_5.wav"
+    },
+    {
+      "name": "maymun_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_6.wav"
+    },
+    {
+      "name": "maymun_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_7.wav"
+    },
+    {
+      "name": "maymun_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_8.wav"
+    },
+    {
+      "name": "maymun_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Maymun/maymun_9.wav"
+    }
+  ],
+  "Tavuk": [
+    {
+      "name": "tavuk_1.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_1.wav"
+    },
+    {
+      "name": "tavuk_10.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_10.wav"
+    },
+    {
+      "name": "tavuk_11.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_11.wav"
+    },
+    {
+      "name": "tavuk_12.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_12.wav"
+    },
+    {
+      "name": "tavuk_13.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_13.wav"
+    },
+    {
+      "name": "tavuk_14.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_14.wav"
+    },
+    {
+      "name": "tavuk_15.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_15.wav"
+    },
+    {
+      "name": "tavuk_16.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_16.wav"
+    },
+    {
+      "name": "tavuk_17.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_17.wav"
+    },
+    {
+      "name": "tavuk_18.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_18.wav"
+    },
+    {
+      "name": "tavuk_19.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_19.wav"
+    },
+    {
+      "name": "tavuk_2.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_2.wav"
+    },
+    {
+      "name": "tavuk_20.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_20.wav"
+    },
+    {
+      "name": "tavuk_21.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_21.wav"
+    },
+    {
+      "name": "tavuk_22.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_22.wav"
+    },
+    {
+      "name": "tavuk_23.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_23.wav"
+    },
+    {
+      "name": "tavuk_24.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_24.wav"
+    },
+    {
+      "name": "tavuk_25.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_25.wav"
+    },
+    {
+      "name": "tavuk_26.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_26.wav"
+    },
+    {
+      "name": "tavuk_27.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_27.wav"
+    },
+    {
+      "name": "tavuk_28.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_28.wav"
+    },
+    {
+      "name": "tavuk_29.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_29.wav"
+    },
+    {
+      "name": "tavuk_3.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_3.wav"
+    },
+    {
+      "name": "tavuk_30.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_30.wav"
+    },
+    {
+      "name": "tavuk_4.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_4.wav"
+    },
+    {
+      "name": "tavuk_5.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_5.wav"
+    },
+    {
+      "name": "tavuk_6.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_6.wav"
+    },
+    {
+      "name": "tavuk_7.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_7.wav"
+    },
+    {
+      "name": "tavuk_8.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_8.wav"
+    },
+    {
+      "name": "tavuk_9.wav",
+      "download_url": "https://raw.githubusercontent.com/YashNita/Animal-Sound-Dataset/master/Tavuk/tavuk_9.wav"
+    }
+  ]
+}
