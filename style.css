@@ -5165,40 +5165,52 @@ body.light-mode .modal-sci {
 }
 
 body.light-mode .quick-search-input-wrap {
-  background: #ffffff !important;
-  border: 2px solid #000000 !important;
+  background: transparent !important;
+  border: none !important;
 }
 
 body.light-mode #hero-search-input {
-  color: #000000 !important;
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #0f172a !important;
   font-weight: 700 !important;
 }
 
+body.light-mode #hero-search-input:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15) !important;
+}
+
 body.light-mode #hero-search-input::placeholder {
-  color: #4b5563 !important;
+  color: #64748b !important;
 }
 
 body.light-mode .btn-quick-search-go {
-  background: #000000 !important;
+  background: linear-gradient(135deg, #0284c7 0%, #10b981 100%) !important;
   color: #ffffff !important;
   font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
 }
 
 body.light-mode .btn-quick-search-go:hover {
-  background: #16a34a !important;
+  background: linear-gradient(135deg, #0369a1 0%, #059669 100%) !important;
   color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45) !important;
 }
 
 body.light-mode .tag-pill {
   background: #ffffff !important;
-  color: #000000 !important;
-  border: 1.5px solid #000000 !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
   font-weight: 800 !important;
 }
 
 body.light-mode .tag-pill:hover {
-  background: #000000 !important;
+  background: #10b981 !important;
   color: #ffffff !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25) !important;
 }
 
 body.light-mode .mini-pill {
@@ -5217,19 +5229,129 @@ body.light-mode .card-footer {
 
 body.light-mode .cat-nav-btn {
   background: #ffffff !important;
-  color: #000000 !important;
-  border: 2px solid #000000 !important;
+  color: #1e293b !important;
+  border: 2px solid #cbd5e1 !important;
   font-weight: 800 !important;
 }
 
 body.light-mode .cat-nav-btn.active {
-  background: #000000 !important;
+  background: #059669 !important;
   color: #ffffff !important;
-  border-color: #000000 !important;
+  border-color: #059669 !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3) !important;
 }
 
 body.light-mode .cat-nav-btn.active span {
   color: #ffffff !important;
+}
+
+/* Animal of the Day light-mode fixes */
+body.light-mode .btn-compact-act.btn-surprise {
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+body.light-mode .btn-compact-act.btn-surprise:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+body.light-mode .compact-spec-item {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+body.light-mode .compact-spec-item strong {
+  color: #0f172a !important;
+}
+
+body.light-mode .btn-compact-act.btn-listen {
+  background: #dcfce7 !important;
+  color: #047857 !important;
+  border-color: #86efac !important;
+}
+
+body.light-mode .btn-compact-act.btn-listen:hover {
+  background: #10b981 !important;
+  color: #ffffff !important;
+}
+
+body.light-mode .btn-compact-act.btn-sound {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+
+body.light-mode .btn-compact-act.btn-sound:hover {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+/* Category & Zone Page Light Mode Controls */
+body.light-mode .cat-switch-pill {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .cat-switch-pill:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+body.light-mode .cat-switch-pill.active {
+  background: #059669 !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
+  box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3) !important;
+}
+
+body.light-mode .count-pill {
+  background: #f0fdf4 !important;
+  color: #047857 !important;
+  border: 1.5px solid #86efac !important;
+  font-weight: 800 !important;
+}
+
+body.light-mode .search-box input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #cbd5e1 !important;
+}
+
+body.light-mode .search-box input:focus {
+  border-color: #0284c7 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+body.light-mode .search-box input::placeholder {
+  color: #64748b !important;
+}
+
+body.light-mode .filter-pill {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .filter-pill:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+body.light-mode .filter-pill.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3) !important;
 }
 
 body.light-mode .app-footer {
@@ -5913,15 +6035,16 @@ body.light-mode .gallery-filter-toolbar {
 
 body.light-mode .gallery-filter-btn {
   background: #ffffff !important;
-  color: #000000 !important;
-  border: 1.5px solid #000000 !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
   font-weight: 800 !important;
 }
 
 body.light-mode .gallery-filter-btn.active {
-  background: #000000 !important;
+  background: #d97706 !important;
   color: #ffffff !important;
-  border-color: #000000 !important;
+  border-color: #d97706 !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3) !important;
 }
 
 body.light-mode .art-detail-card,
