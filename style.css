@@ -2371,32 +2371,544 @@ body {
   }
 }
 
-@media (max-width: 640px) {
-  .category-buttons-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
+
+  .app-header {
+    padding: 8px 12px;
+  }
+
   .header-container {
     flex-direction: column;
     align-items: stretch;
+    gap: 8px;
   }
+
+  .logo-group {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .logo-mascot-wrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-badge {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+  }
+
+  .header-center-col {
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .search-input-box {
+    height: 38px;
+    padding: 0 12px;
+  }
+
+  #global-search-input {
+    font-size: 0.88rem;
+  }
+
+  .search-shortcut-badge {
+    display: none;
+  }
+
+  .header-settings-row {
+    gap: 8px;
+  }
+
+  /* Horizontal swipeable top tool chips */
   .header-controls {
-    width: 100%;
-    justify-content: space-between;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 8px !important;
+    padding: 4px 2px 6px !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
   }
+
+  .header-controls::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .btn-header-pill {
+    padding: 6px 14px !important;
+    font-size: 0.82rem !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .main-container {
+    padding: 14px 10px 48px;
+  }
+
+  .compact-hub {
+    margin-bottom: 20px;
+  }
+
+  .badge-hub, .badge-zone {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+  }
+
+  .hub-title, .zone-main-title {
+    font-size: 1.6rem;
+  }
+
+  .hub-subtitle, .zone-instructions {
+    font-size: 0.88rem;
+  }
+
+  /* Cool Apps Featured Banner */
+  .cool-app-featured-banner {
+    padding: 16px !important;
+    border-radius: 18px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .cool-app-badge-tag {
+    top: 10px !important;
+    right: 12px !important;
+    font-size: 0.68rem !important;
+    padding: 3px 8px !important;
+  }
+
+  .cool-app-banner-content {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .cool-app-heading {
+    font-size: 1.25rem !important;
+    margin-top: 14px !important;
+  }
+
+  .cool-app-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .cool-app-preview-cards {
+    gap: 8px !important;
+  }
+
+  .cool-preview-thumb {
+    border-radius: 10px !important;
+  }
+
+  .btn-launch-cool-app {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 11px 16px !important;
+    font-size: 0.9rem !important;
+    border-radius: 9999px !important;
+  }
+
+  .cool-apps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .cool-app-card {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Quick Search Card */
+  .quick-search-section {
+    margin: 20px 0 !important;
+  }
+
+  .quick-search-card {
+    padding: 16px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .quick-search-title {
+    font-size: 1.2rem !important;
+  }
+
+  .quick-search-desc {
+    font-size: 0.82rem !important;
+  }
+
   .quick-search-input-wrap {
-    flex-direction: column;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
+
+  #hero-search-input {
+    width: 100% !important;
+    padding: 12px 14px 12px 42px !important;
+    font-size: 0.88rem !important;
+  }
+
   .btn-quick-search-go {
-    width: 100%;
+    width: 100% !important;
+    padding: 11px !important;
+    font-size: 0.9rem !important;
+    border-radius: 9999px !important;
   }
-  .aod-specs-grid, .modal-grid-two, .quiz-options-grid {
-    grid-template-columns: 1fr;
+
+  .popular-search-tags {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px !important;
+    padding-bottom: 4px !important;
   }
-  .aod-info, .modal-body-content {
-    padding: 20px;
+
+  .popular-search-tags::-webkit-scrollbar {
+    display: none !important;
   }
-  .aod-name, .modal-animal-name {
-    font-size: 1.8rem;
+
+  .tag-pill {
+    flex-shrink: 0 !important;
+    font-size: 0.76rem !important;
+    padding: 5px 11px !important;
+    border-radius: 9999px !important;
+  }
+
+  /* 8 Discovery Category Buttons: Cropped & Modern 2-Column Tiles */
+  .category-buttons-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .cat-nav-btn {
+    border-radius: 14px !important;
+  }
+
+  .cat-btn-img-box {
+    height: 105px !important;
+  }
+
+  .cat-btn-content {
+    padding: 10px !important;
+  }
+
+  .cat-btn-icon {
+    font-size: 1.3rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .cat-btn-name {
+    font-size: 0.92rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .cat-btn-desc {
+    font-size: 0.72rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .cat-btn-badge {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+    bottom: 6px !important;
+    right: 6px !important;
+  }
+
+  /* Zone View Navigation & Filter Pills */
+  .category-view-nav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .btn-back-home {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 14px !important;
+    font-size: 0.88rem !important;
+    border-radius: 9999px !important;
+  }
+
+  .category-quick-switcher {
+    width: 100% !important;
+  }
+
+  .switcher-pills-row {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px !important;
+    padding: 2px 0 6px !important;
+  }
+
+  .switcher-pills-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .cat-switch-pill {
+    flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 9999px !important;
+  }
+
+  .zone-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .current-zone-title {
+    font-size: 1.4rem !important;
+  }
+
+  .current-zone-sub {
+    font-size: 0.82rem !important;
+  }
+
+  .count-pill {
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .zone-filters-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .filter-pills-group {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px !important;
+    padding-bottom: 4px !important;
+    width: 100% !important;
+  }
+
+  .filter-pills-group::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .filter-pill {
+    flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 9999px !important;
+  }
+
+  /* Species Cards: Clean Cropped 2-Column Mobile Grid */
+  .species-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .species-card {
+    border-radius: 14px !important;
+  }
+
+  .card-thumb-wrap {
+    height: 120px !important;
+  }
+
+  .card-body {
+    padding: 10px 10px 6px !important;
+  }
+
+  .card-title {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .card-sci-name {
+    font-size: 0.72rem !important;
+  }
+
+  .card-desc {
+    font-size: 0.75rem !important;
+    line-height: 1.35 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .mini-pill {
+    font-size: 0.68rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .card-footer {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .card-sound-btn {
+    padding: 3px 8px !important;
+    font-size: 0.72rem !important;
+    bottom: 6px !important;
+    right: 6px !important;
+  }
+
+  .card-fav-btn {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.9rem !important;
+    top: 6px !important;
+    right: 6px !important;
+  }
+
+  /* Modals: Snug, Clean Fit on All Smartphone Screens */
+  .modal-backdrop {
+    padding: 8px 6px !important;
+  }
+
+  .modal-dialog,
+  .battle-dialog,
+  .anatomy-dialog,
+  .weather-dialog,
+  .migration-dialog,
+  .art-gallery-modal-box,
+  .art-inspector-modal-box,
+  .quiz-dialog,
+  .fav-dialog,
+  .fc-modal-box,
+  .time-machine-box,
+  .bg-modal-box {
+    width: 98% !important;
+    max-width: 100% !important;
+    max-height: 94vh !important;
+    border-radius: 18px !important;
+    margin: 0 auto !important;
+  }
+
+  .modal-hero-image {
+    height: 200px !important;
+  }
+
+  .modal-body-content {
+    padding: 16px 14px !important;
+  }
+
+  .modal-animal-name {
+    font-size: 1.5rem !important;
+  }
+
+  .modal-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .modal-close-btn {
+    top: 10px !important;
+    right: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .modal-grid-two {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .aod-specs-grid, .quiz-options-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Habitat Modal on Mobile */
+  .bg-modal-header {
+    padding: 16px 14px !important;
+  }
+
+  .bg-modal-title {
+    font-size: 1.25rem !important;
+  }
+
+  .bg-modal-subtitle {
+    font-size: 0.82rem !important;
+  }
+
+  .bg-modal-scroll {
+    padding: 14px 12px !important;
+  }
+
+  .bg-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .bg-card-thumb-wrap {
+    height: 125px !important;
+  }
+
+  .bg-upload-dropzone {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 14px !important;
+    gap: 8px !important;
+  }
+
+  .bg-btn-browse {
+    width: 100% !important;
+  }
+
+  .bg-custom-url-form {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .bg-btn-apply {
+    width: 100% !important;
+  }
+
+  .bg-modal-footer {
+    padding: 12px 14px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+  }
+
+  .bg-btn-reset, .bg-btn-done {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .species-grid,
+  .category-buttons-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
