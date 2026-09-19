@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chipin01.github.io/animal-kingdom-app/sitemap.xml
