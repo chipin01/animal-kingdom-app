@@ -599,15 +599,16 @@ class AnimalWeatherSimulator {
       const a = dot.animal;
       const isSelected = this.selectedAnimal && this.selectedAnimal.id === a.id;
       const categoryClass = a.category || 'land';
+      const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
 
       return `
         <div class="weather-radar-dot cat-${categoryClass} ${isSelected ? 'selected' : ''}" 
              style="left: ${dot.xPct}%; top: ${dot.yPct}%;"
              onclick="window.AK_WEATHER.selectAnimalDotByIndex(${idx})"
-             title="${a.name} (${a.category}) - Click to inspect!">
+             title="${locName} (${a.category}) - Click to inspect!">
           <div class="radar-pulse-ring"></div>
           <span class="radar-dot-emoji">${a.emoji}</span>
-          <span class="radar-dot-label">${a.name}</span>
+          <span class="radar-dot-label">${locName}</span>
         </div>
       `;
     }).join('');
@@ -616,7 +617,10 @@ class AnimalWeatherSimulator {
   updateSpeciesCounterBadge() {
     const badge = document.getElementById('weather-count-badge');
     if (badge) {
-      badge.innerText = `📡 ${this.activeRadarDots.length} Species Active in this Weather`;
+      const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+      const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+      const suffix = isZh ? '個物種在此氣候下活躍' : (isEs ? 'especies activas en este clima' : 'Species Active in this Weather');
+      badge.innerText = `📡 ${this.activeRadarDots.length} ${suffix}`;
     }
   }
 
@@ -634,21 +638,42 @@ class AnimalWeatherSimulator {
     if (!card) return;
 
     const a = dot.animal;
+    const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+    const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+
+    const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
+    const locTagline = window.AK_I18N ? window.AK_I18N.getSpeciesTagline(a) : a.tagline;
+    const locHabitat = window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(a) : a.habitat;
+    const locDiet = window.AK_I18N ? window.AK_I18N.getSpeciesDiet(a) : a.diet;
+    const locStatus = window.AK_I18N ? window.AK_I18N.getStatusName(a.endangered) : a.endangered;
+    const locEcologyReason = window.AK_I18N ? window.AK_I18N.translateBioText(dot.ecologyReason) : dot.ecologyReason;
+
     const soundIcon = a.category === 'gemstones' ? '🔔' : (a.category === 'plants' ? '🌱' : '🔊');
-    const soundLabel = a.category === 'gemstones' ? 'Chime' : (a.category === 'plants' ? 'Nature' : 'Sound');
+    const soundLabel = a.category === 'gemstones' ? (isZh ? '鈴聲' : (isEs ? 'Campana' : 'Chime')) :
+                       (a.category === 'plants' ? (isZh ? '自然聲' : (isEs ? 'Naturaleza' : 'Nature')) :
+                       (isZh ? '叫聲' : (isEs ? 'Sonido' : 'Sound')));
+
+    const tagActive = isZh ? '🎯 探測到活躍生物標本' : (isEs ? '🎯 Espécimen Activo Detectado' : '🎯 Active Specimen Detected');
+    const labelEcology = isZh ? '氣象適應與生態習性：' : (isEs ? 'Comportamiento Meteorológico y Ecológico:' : 'Meteorological & Ecological Behavior:');
+    const labelHabitat = isZh ? '🌍 偏好棲息地' : (isEs ? '🌍 Hábitat Preferido' : '🌍 Preferred Habitat');
+    const labelDiet = isZh ? '🍽️ 覓食習性' : (isEs ? '🍽️ Dieta de Forrajeo' : '🍽️ Weather Foraging Diet');
+    const labelStatus = isZh ? '⚠️ 生態現狀' : (isEs ? '⚠️ Estado de Conservación' : '⚠️ Status');
+    const btnSoundText = isZh ? `${soundIcon} 聆聽${soundLabel}` : (isEs ? `${soundIcon} Escuchar ${soundLabel}` : `${soundIcon} Hear ${soundLabel}`);
+    const btnAnatomyText = isZh ? '🔬 解剖 X 光視圖' : (isEs ? '🔬 Anatomía Interna' : '🔬 Inside Anatomy');
+    const btnFullCardText = isZh ? '📖 完整物種百科卡 ➡️' : (isEs ? '📖 Ficha de Especie Completa ➡️' : '📖 Full Species Card ➡️');
 
     card.innerHTML = `
       <div class="weather-specimen-spotlight">
         <div class="specimen-spotlight-top">
           <div class="specimen-avatar-box" onclick="window.app && window.app.openAnimalDetail('${a.id}')">
             <img src="${window.app ? window.app.formatImageUrl(a.image, 400) : a.image}" alt="${a.name}" class="specimen-avatar-img">
-            <span class="specimen-cat-badge">${a.emoji} ${a.category}</span>
+            <span class="specimen-cat-badge">${a.emoji} ${locName}</span>
           </div>
           <div class="specimen-title-box">
-            <span class="weather-match-tag">🎯 Active Specimen Detected</span>
-            <h3 class="specimen-name" onclick="window.app && window.app.openAnimalDetail('${a.id}')">${a.emoji} ${a.name}</h3>
+            <span class="weather-match-tag">${tagActive}</span>
+            <h3 class="specimen-name" onclick="window.app && window.app.openAnimalDetail('${a.id}')">${a.emoji} ${locName}</h3>
             <div class="specimen-sci">${a.scientific}</div>
-            <p class="specimen-tagline">"${a.tagline}"</p>
+            <p class="specimen-tagline">"${locTagline}"</p>
           </div>
         </div>
 
@@ -656,37 +681,37 @@ class AnimalWeatherSimulator {
         <div class="weather-adaptation-box">
           <div class="adaptation-header">
             <span class="adaptation-icon">🌡️</span>
-            <strong>Meteorological & Ecological Behavior:</strong>
+            <strong>${labelEcology}</strong>
           </div>
-          <p class="adaptation-text">${dot.ecologyReason}</p>
+          <p class="adaptation-text">${locEcologyReason}</p>
         </div>
 
         <!-- Mini Specs Grid -->
         <div class="weather-specs-row">
           <div class="weather-mini-stat">
-            <span class="stat-label">🌍 Preferred Habitat</span>
-            <strong class="stat-val">${a.habitat}</strong>
+            <span class="stat-label">${labelHabitat}</span>
+            <strong class="stat-val">${locHabitat}</strong>
           </div>
           <div class="weather-mini-stat">
-            <span class="stat-label">🍽️ Weather Foraging Diet</span>
-            <strong class="stat-val">${a.diet}</strong>
+            <span class="stat-label">${labelDiet}</span>
+            <strong class="stat-val">${locDiet}</strong>
           </div>
           <div class="weather-mini-stat">
-            <span class="stat-label">⚠️ Status</span>
-            <strong class="stat-val">${a.endangered}</strong>
+            <span class="stat-label">${labelStatus}</span>
+            <strong class="stat-val">${locStatus}</strong>
           </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="weather-card-actions">
           <button class="btn-weather-act btn-sound" onclick="window.app && window.app.playSound('${a.id}', this)">
-            ${soundIcon} Hear ${soundLabel}
+            ${btnSoundText}
           </button>
           <button class="btn-weather-act btn-anatomy" onclick="window.AK_WEATHER.closeWeatherModal(); window.AK_ANATOMY && window.AK_ANATOMY.openAnatomyModal(); window.AK_ANATOMY && window.AK_ANATOMY.selectAnimalById('${a.id}');">
-            🔬 Inside Anatomy
+            ${btnAnatomyText}
           </button>
           <button class="btn-weather-act btn-open-card" onclick="window.app && window.app.openAnimalDetail('${a.id}')">
-            📖 Full Species Card ➡️
+            ${btnFullCardText}
           </button>
         </div>
       </div>

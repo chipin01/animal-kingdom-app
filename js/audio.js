@@ -98,12 +98,39 @@ function playAnimalSound(animal, buttonEl) {
   }
 }
 
-// Helper: returns the best British English (en-GB) voice available
-function _getBritishVoice() {
+// Helper: returns the best voice for the active language
+function _getVoiceForLang(lang = 'en') {
+  if (!window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
   if (!voices || voices.length === 0) return null;
-  // Priority 1: well-known GB neural/natural voices
-  const pref = voices.find(v =>
+
+  if (lang === 'zh') {
+    // 1. Traditional Chinese (Taiwan/Hong Kong) preferred
+    const zhPref = voices.find(v =>
+      (v.lang === 'zh-TW' || v.lang === 'zh-HK' || v.lang === 'cmn-Hant-TW' || v.lang === 'yue-Hant-HK') ||
+      (v.name.includes('Taiwan') || v.name.includes('Hong Kong') || v.name.includes('國語') || v.name.includes('HanHan') || v.name.includes('Mei-Jia') || v.name.includes('Yating') || v.name.includes('HsiaoChen') || v.name.includes('YunJhe') || v.name.includes('HiuGaai') || v.name.includes('HiuMaan'))
+    );
+    if (zhPref) return zhPref;
+    // 2. Any Chinese voice
+    const anyZh = voices.find(v => v.lang.startsWith('zh') || v.name.includes('Chinese') || v.name.includes('Mandarin'));
+    if (anyZh) return anyZh;
+  } else if (lang === 'es') {
+    // 1. Spain/Latin America Spanish
+    const esPref = voices.find(v =>
+      (v.lang === 'es-ES' || v.lang === 'es-MX' || v.lang === 'es-US') && (
+        v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Monica') ||
+        v.name.includes('Paulina') || v.name.includes('Jorge') || v.name.includes('Helena') ||
+        v.name.includes('Laura') || v.name.includes('Alvaro') || v.name.includes('Elvira')
+      )
+    );
+    if (esPref) return esPref;
+    // 2. Any Spanish voice
+    const anyEs = voices.find(v => v.lang.startsWith('es') || v.name.toLowerCase().includes('spanish'));
+    if (anyEs) return anyEs;
+  }
+
+  // English (default): British preference
+  const prefGB = voices.find(v =>
     v.lang === 'en-GB' && (
       v.name.includes('Google UK') || v.name.includes('Daniel') ||
       v.name.includes('Serena') || v.name.includes('Arthur') ||
@@ -111,11 +138,9 @@ function _getBritishVoice() {
       v.name.includes('Libby') || v.name.includes('Natural')
     )
   );
-  if (pref) return pref;
-  // Priority 2: any en-GB
+  if (prefGB) return prefGB;
   const anyGB = voices.find(v => v.lang === 'en-GB');
   if (anyGB) return anyGB;
-  // Priority 3: Google/Premium English
   return voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Premium'))) || null;
 }
 
@@ -125,31 +150,67 @@ function stopSpeech() {
   }
 }
 
-function speakAnimalText(text, onEnd) {
+function speakAnimalText(text, onEnd, lang = null) {
   if (!window.speechSynthesis) return;
   stopSpeech();
+
+  const activeLang = lang || (window.AK_I18N ? window.AK_I18N.getLanguage() : 'en');
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 0.93;
+  utterance.rate = activeLang === 'zh' ? 0.96 : 0.93;
   utterance.pitch = 1.0;
-  utterance.lang = 'en-GB';
-  const britishVoice = _getBritishVoice();
-  if (britishVoice) utterance.voice = britishVoice;
+  utterance.volume = 1.0;
+
+  if (activeLang === 'zh') {
+    utterance.lang = 'zh-TW';
+  } else if (activeLang === 'es') {
+    utterance.lang = 'es-ES';
+  } else {
+    utterance.lang = 'en-GB';
+  }
+
+  const voice = _getVoiceForLang(activeLang);
+  if (voice) utterance.voice = voice;
+
   if (onEnd) utterance.onend = onEnd;
+  utterance.onerror = (e) => {
+    console.warn('Speech error:', e);
+    if (onEnd) onEnd();
+  };
+
   window.speechSynthesis.speak(utterance);
 }
 
 function narrateAnimal(animal, btn) {
   if (!animal) return;
+  const lang = window.AK_I18N ? window.AK_I18N.getLanguage() : 'en';
+
+  const stopLabels = {
+    zh: '⏹️ 停止朗讀故事',
+    es: '⏹️ Detener historia',
+    en: '⏹️ Stop Story'
+  };
+
+  const playLabels = {
+    zh: '📖 聆聽語音故事 (朗讀)',
+    es: '📖 Escuchar historia (Lectura)',
+    en: '📖 Listen to Story (Read Aloud)'
+  };
+
   if (window.speechSynthesis && window.speechSynthesis.speaking) {
     stopSpeech();
-    if (btn) btn.innerText = '📖 Listen to Story (Read Aloud)';
+    if (btn) btn.innerText = playLabels[lang] || playLabels.en;
     return;
   }
-  const text = (animal.name || '') + '. ' + (animal.tagline || '') + '. ' + (animal.description || '') + ' Fun fact: ' + (animal.funFact || '');
-  if (btn) btn.innerText = '⏹️ Stop Story';
+
+  const text = window.AK_I18N
+    ? window.AK_I18N.getAnimalNarrationText(animal, lang)
+    : ((animal.name || '') + '. ' + (animal.tagline || '') + '. ' + (animal.description || '') + ' Fun fact: ' + (animal.funFact || ''));
+
+  if (btn) btn.innerText = stopLabels[lang] || stopLabels.en;
+
   speakAnimalText(text, () => {
-    if (btn) btn.innerText = '📖 Listen to Story (Read Aloud)';
-  });
+    if (btn) btn.innerText = playLabels[lang] || playLabels.en;
+  }, lang);
 }
 
 // ============================================================================

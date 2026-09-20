@@ -151,15 +151,170 @@ class PrehistoricTimeMachine {
     }
   }
 
+  getLocalizedPair(pair) {
+    if (!pair) return null;
+    const lang = window.AK_I18N ? window.AK_I18N.getLanguage() : 'en';
+    if (lang === 'en') return pair;
+
+    const dict = {
+      zh: {
+        't-rex': {
+          modName: '家雞',
+          modTime: '現代',
+          modDesc: '體型小巧、不會飛行的家禽，以產蛋聞名。儘管外觀差異巨大，其骨骼結構與基因卻深藏著史前巨型肉食恐龍的演化密碼。',
+          ancName: '霸王龍 (雷克斯暴龍)',
+          ancTime: '6600萬年前 (白堊紀晚期)',
+          ancDesc: '白堊紀晚期的頂級霸主。古生物學研究證實，霸王龍的骨骼、膠原蛋白分子與現代鳥類和家雞具有驚人的演化親緣！'
+        },
+        'megalodon': {
+          modName: '大白鯊',
+          modTime: '現代',
+          modDesc: '長達20英尺的頂級海洋掠食猛獸，巡游於全球各大洋溫帶及熱帶近岸水域。',
+          ancName: '巨齒鯊 (巨牙鯊)',
+          ancTime: '360萬年前 (上新世)',
+          ancDesc: '地球歷史上體型最龐大的巨型鯊魚，體長估計達60英尺。其血盆巨口足以完整吞下一輛汽車！'
+        },
+        'mammoth': {
+          modName: '非洲草原象',
+          modTime: '現代',
+          modDesc: '現存陸地上最龐大的哺乳動物，全身幾無毛髮以適應熾熱非洲草原，具備極高的家族情感與記憶力。',
+          ancName: '真猛獁象 (長毛象)',
+          ancTime: '1萬年前 (更新世冰河期)',
+          ancDesc: '冰河世紀的標誌性巨獸，身披濃密保暖長毛，擁有長達15英尺的巨大螺旋狀彎曲獠牙。'
+        },
+        'smilodon': {
+          modName: '孟加拉虎',
+          modTime: '現代',
+          modDesc: '亞洲叢林中的獨行王者，擁有標誌性的橙黑偽裝條紋與爆發力。',
+          ancName: '斯劍虎 (劍齒虎)',
+          ancTime: '1萬年前 (更新世)',
+          ancDesc: '史前最著名的刀齒貓科猛獸，擁有長達28公分的致命匕首狀犬齒，能精準鎖喉巨型獵物。'
+        },
+        'sloth': {
+          modName: '三趾樹懶',
+          modTime: '現代',
+          modDesc: '熱帶雨林樹冠上行動極度緩慢的小型樹棲動物，甚至連毛髮上都會生長共生藻類。',
+          ancName: '大地懶 (巨地懶)',
+          ancTime: '1.1萬年前 (更新世)',
+          ancDesc: '站立時高達6公尺、體重超過4噸的史前陸生巨獸，體型堪比現代巨象，前肢擁有巨大彎爪！'
+        },
+        'sarcosuchus': {
+          modName: '尼羅鱷',
+          modTime: '現代',
+          modDesc: '非洲河流中的伏擊王者，體長可達16英尺，能伏擊斑馬與角馬。',
+          ancName: '帝鱷 (超級巨鱷)',
+          ancTime: '1.12億年前 (白堊紀早期)',
+          ancDesc: '史前河流的恐怖霸主，體長超過40英尺、體重逾8噸，經常在水邊伏擊捕食恐龍！'
+        },
+        'paraceratherium': {
+          modName: '白犀牛',
+          modTime: '現代',
+          modDesc: '體型龐大、體重逾2噸的草食性巨獸，具備厚實皮膚與堅硬鼻角。',
+          ancName: '巨犀 (天山副巨犀)',
+          ancTime: '3400萬年前 (漸新世)',
+          ancDesc: '地球歷史上出現過最大的陸地哺乳動物！無角但脖頸極長，站立時肩高達5公尺，能像長頸鹿一樣啃食高大樹冠。'
+        },
+        'basilosaurus': {
+          modName: '藍鯨',
+          modTime: '現代',
+          modDesc: '地球歷史上已知體型最大的生物，長達30公尺，溫柔地濾食微小磷蝦。',
+          ancName: '龍王鯨 (械齒鯨)',
+          ancTime: '4000萬年前 (始新世)',
+          ancDesc: '長達65英尺的古鯨類，擁有細長如巨蛇的蜿蜒身軀與鋒利牙齒，體側還保留著退化的微小後肢！'
+        }
+      },
+      es: {
+        't-rex': {
+          modName: 'Pollo / Gallina',
+          modTime: 'Época Actual',
+          modDesc: 'Ave doméstica de pequeño tamaño. Su esqueleto y genética guardan profundos secretos compartidos con los dinosaurios carnívoros.',
+          ancName: 'Tiranosaurio Rex',
+          ancTime: 'Hace 66 Millones de Años',
+          ancDesc: 'Un colosal depredador del Cretácico Tardío. Los científicos confirmaron que comparte sorprendentes similitudes óseas con las aves modernas.'
+        },
+        'megalodon': {
+          modName: 'Gran Tiburón Blanco',
+          modTime: 'Época Actual',
+          modDesc: 'Un temible depredador marino que alcanza hasta 20 pies de largo en aguas oceánicas.',
+          ancName: 'Megalodón',
+          ancTime: 'Hace 3.6 Millones de Años',
+          ancDesc: 'El tiburón más gigantesco de la historia de la Tierra, con 60 pies de longitud y mandíbulas capaces de tragar un automóvil entero.'
+        },
+        'mammoth': {
+          modName: 'Elefante Africano',
+          modTime: 'Época Actual',
+          modDesc: 'El mamífero terrestre vivo más grande, sin pelaje para resistir el calor de la sabana.',
+          ancName: 'Mamut Lanudo',
+          ancTime: 'Hace 10,000 Años',
+          ancDesc: 'Gigante adaptado a la Edad de Hielo con una densa capa de pelaje y colmillos curvos de 15 pies de longitud.'
+        },
+        'smilodon': {
+          modName: 'Tigre de Bengala',
+          modTime: 'Época Actual',
+          modDesc: 'Poderoso gran felino solitario de las selvas asiáticas.',
+          ancName: 'Smilodon (Dientes de Sable)',
+          ancTime: 'Hace 10,000 Años',
+          ancDesc: 'Legendario felino prehistórico dotado de colmillos en forma de daga de 28 cm para cazar megafauna.'
+        },
+        'sloth': {
+          modName: 'Perezoso de Tres Dedos',
+          modTime: 'Época Actual',
+          modDesc: 'Pequeño habitante arborícola de movimientos muy lentos en selvas tropicales.',
+          ancName: 'Megaterio (Perezoso Gigante)',
+          ancTime: 'Hace 11,000 Años',
+          ancDesc: 'Un titán de 4 toneladas y 6 metros de altura capaz de derribar ramas de árboles gigantescos.'
+        },
+        'sarcosuchus': {
+          modName: 'Cocodrilo del Nilo',
+          modTime: 'Época Actual',
+          modDesc: 'Depredador de emboscada que habita las riberas africanas alcanzando 16 pies.',
+          ancName: 'Sarcosuchus (SuperCocodrilo)',
+          ancTime: 'Hace 112 Millones de Años',
+          ancDesc: 'Un monstruo prehistórico de 40 pies de longitud y 8 toneladas que compartía ríos con dinosaurios y los cazaba.'
+        },
+        'paraceratherium': {
+          modName: 'Rinoceronte Blanco',
+          modTime: 'Época Actual',
+          modDesc: 'Gran herbívoro de más de 2 toneladas dotado de cuernos defensivos.',
+          ancName: 'Paraceratherium (Rinoceronte Gigante)',
+          ancTime: 'Hace 34 Millones de Años',
+          ancDesc: '¡El mamífero terrestre más grande de la historia! Sin cuernos, con un largo cuello que alcanzaba las copas de los árboles.'
+        },
+        'basilosaurus': {
+          modName: 'Ballena Azul',
+          modTime: 'Época Actual',
+          modDesc: 'El ser vivo más colosal conocido en la historia, filtrador de kril oceánico.',
+          ancName: 'Basilosaurio',
+          ancTime: 'Hace 40 Millones de Años',
+          ancDesc: 'Ballena ancestral de cuerpo serpentino de 65 pies que aún conservaba patas traseras vestigiales.'
+        }
+      }
+    };
+
+    const loc = dict[lang] && dict[lang][pair.id];
+    if (!loc) return pair;
+
+    return {
+      ...pair,
+      modernName: loc.modName || pair.modernName,
+      modernTime: loc.modTime || pair.modernTime,
+      modernDesc: loc.modDesc || pair.modernDesc,
+      ancientName: loc.ancName || pair.ancientName,
+      ancientTime: loc.ancTime || pair.ancientTime,
+      ancientDesc: loc.ancDesc || pair.ancientDesc
+    };
+  }
+
   renderMenu() {
     const menuEl = document.getElementById('tm-pair-menu');
     if (!menuEl) return;
     
     menuEl.innerHTML = this.pairs.map(p => {
+      const loc = this.getLocalizedPair(p);
       const isActive = p.id === this.currentPairId ? 'active' : '';
       return `
         <button class="tm-menu-btn ${isActive}" onclick="window.AK_TIME_MACHINE.loadPair('${p.id}')">
-          ${p.modernName} ➡️ ${p.ancientName}
+          ${loc.modernName} ➡️ ${loc.ancientName}
         </button>
       `;
     }).join('');
@@ -169,8 +324,9 @@ class PrehistoricTimeMachine {
     this.currentPairId = id;
     this.renderMenu(); // update active state
     
-    const pair = this.pairs.find(p => p.id === id);
-    if (!pair) return;
+    const rawPair = this.pairs.find(p => p.id === id);
+    if (!rawPair) return;
+    const pair = this.getLocalizedPair(rawPair);
 
     // Reset slider to 0 (Modern Day)
     const slider = document.getElementById('tm-dial-slider');
@@ -204,8 +360,9 @@ class PrehistoricTimeMachine {
   }
 
   onDialChange(val) {
-    const pair = this.pairs.find(p => p.id === this.currentPairId);
-    if (!pair) return;
+    const rawPair = this.pairs.find(p => p.id === this.currentPairId);
+    if (!rawPair) return;
+    const pair = this.getLocalizedPair(rawPair);
 
     const modernImg = document.getElementById('tm-img-modern');
     const ancientImg = document.getElementById('tm-img-ancient');
@@ -227,6 +384,10 @@ class PrehistoricTimeMachine {
 
     // Info panel switching (Crossfade threshold at 50%)
     if (modBox && ancBox) {
+      const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+      const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+      const eraPrefix = isZh ? '時代' : (isEs ? 'Era' : 'Era');
+
       if (progress < 50) {
         modBox.style.opacity = 1 - (normalized * 2);
         modBox.style.pointerEvents = 'auto';
@@ -234,7 +395,7 @@ class PrehistoricTimeMachine {
         ancBox.style.opacity = 0;
         ancBox.style.pointerEvents = 'none';
         
-        timeDisplay.textContent = `Era: ${pair.modernTime}`;
+        timeDisplay.textContent = `${eraPrefix}: ${pair.modernTime}`;
         timeDisplay.style.color = '#10b981'; // modern emerald
       } else {
         modBox.style.opacity = 0;
@@ -244,7 +405,7 @@ class PrehistoricTimeMachine {
         ancBox.style.opacity = (normalized - 0.5) * 2;
         ancBox.style.pointerEvents = 'auto';
         
-        timeDisplay.textContent = `Era: ${pair.ancientTime}`;
+        timeDisplay.textContent = `${eraPrefix}: ${pair.ancientTime}`;
         timeDisplay.style.color = '#f59e0b'; // prehistoric amber
       }
     }

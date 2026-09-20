@@ -504,23 +504,34 @@ class WildlifeMigrationTracker {
       );
     }
 
+    const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+    const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+
     listEl.innerHTML = items.map(m => {
       const isLiveNow = this.isMigrationActiveNow(m);
       const isSelected = m.id === this.currentSelectedMigrationId;
+      const locRouteName = window.AK_I18N ? window.AK_I18N.translateBioText(m.name) : m.name;
+      const locSpecies = window.AK_I18N ? window.AK_I18N.getSpeciesName(m.species) : m.species;
+      const badgeLive = isLiveNow ? (isZh ? '<span class="mig-live-pulse-badge">🔴 正在進行中</span>' : (isEs ? '<span class="mig-live-pulse-badge">🔴 EN VIVO</span>' : '<span class="mig-live-pulse-badge">🔴 LIVE NOW</span>')) :
+                                    (isZh ? '<span class="mig-season-badge">季節性遷徙</span>' : (isEs ? '<span class="mig-season-badge">ESTACIONAL</span>' : '<span class="mig-season-badge">SEASONAL</span>'));
+      const unitMiles = isZh ? '英里' : (isEs ? 'millas' : 'miles');
+      const unitDays = isZh ? '天' : (isEs ? 'días' : 'days');
+      const unitSpeed = isZh ? '英里/時' : (isEs ? 'mph' : 'mph');
+
       return `
         <div class="mig-route-card ${isSelected ? 'selected' : ''}" onclick="window.AK_MIGRATION.selectMigration('${m.id}')">
           <div class="mig-card-header">
             <span class="mig-card-emoji">${m.emoji}</span>
             <div class="mig-card-titles">
-              <h4 class="mig-card-name">${m.name}</h4>
-              <span class="mig-card-sci"><em>${m.species}</em></span>
+              <h4 class="mig-card-name">${locRouteName}</h4>
+              <span class="mig-card-sci"><em>${locSpecies}</em></span>
             </div>
-            ${isLiveNow ? '<span class="mig-live-pulse-badge">🔴 LIVE NOW</span>' : '<span class="mig-season-badge">SEASONAL</span>'}
+            ${badgeLive}
           </div>
           <div class="mig-card-stats">
-            <span>📏 ${m.distanceMiles.toLocaleString()} miles</span>
-            <span>⏱️ ${m.durationDays} days</span>
-            <span>⚡ ${m.speedMph} mph</span>
+            <span>📏 ${m.distanceMiles.toLocaleString()} ${unitMiles}</span>
+            <span>⏱️ ${m.durationDays} ${unitDays}</span>
+            <span>⚡ ${m.speedMph} ${unitSpeed}</span>
           </div>
           <p class="mig-card-preview">${m.originName.split(',')[0]} ➔ ${m.destName.split(',')[0]}</p>
         </div>
@@ -693,18 +704,35 @@ class WildlifeMigrationTracker {
     const effMonthName = this.getMonthName(effMonth);
     const animal = window.app ? window.app.getAnimalById(m.animalId) : null;
 
+    const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+    const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+    const locRouteName = window.AK_I18N ? window.AK_I18N.translateBioText(m.name) : m.name;
+    const locSpecies = window.AK_I18N ? window.AK_I18N.getSpeciesName(m.species) : m.species;
+    const sciPrefix = isZh ? '學名' : (isEs ? 'Científico' : 'Scientific');
+    const seasonalStatusTitle = isZh ? `📅 季節狀態 (${effMonthName}):` : (isEs ? `📅 Estado Estacional (${effMonthName}):` : `📅 Seasonal Status (${effMonthName}):`);
+    const lblTotalJourney = isZh ? `總旅程 (${m.distanceKm.toLocaleString()} 公里)` : (isEs ? `Viaje Total (${m.distanceKm.toLocaleString()} km)` : `Total Journey (${m.distanceKm.toLocaleString()} km)`);
+    const lblDuration = isZh ? '平均耗時' : (isEs ? 'Duración Típica' : 'Typical Duration');
+    const lblSpeed = isZh ? '巡航時速' : (isEs ? 'Velocidad de Crucero' : 'Cruise Speed');
+    const lblCorridor = isZh ? '全球遷徙生態廊道' : (isEs ? 'Corredores Globales' : 'Global Corridors');
+    const unitMiles = isZh ? '英里' : (isEs ? 'millas' : 'miles');
+    const unitDays = isZh ? '天' : (isEs ? 'Días' : 'Days');
+    const unitSpeed = isZh ? '英里/時' : (isEs ? 'mph' : 'mph');
+
+    const badgeActiveText = isLiveNow ? (isZh ? `🔴 在 ${effMonthName} 活躍中` : (isEs ? `🔴 ACTIVO EN ${effMonthName.toUpperCase()}` : `🔴 ACTIVE IN ${effMonthName.toUpperCase()}`)) :
+                                        (isZh ? `⏳ 在 ${effMonthName} 處於休眠/非遷徙期` : (isEs ? `⏳ INACTIVO EN ${effMonthName.toUpperCase()}` : `⏳ INACTIVE / DORMANT IN ${effMonthName.toUpperCase()}`));
+
     detailEl.innerHTML = `
       <div class="mig-detail-header">
         <div class="mig-detail-badge-row">
-          ${isLiveNow ? `<span class="badge-mig-live">🔴 ACTIVE IN ${effMonthName.toUpperCase()}</span>` : `<span class="badge-mig-season">⏳ INACTIVE / DORMANT IN ${effMonthName.toUpperCase()}</span>`}
+          <span class="${isLiveNow ? 'badge-mig-live' : 'badge-mig-season'}">${badgeActiveText}</span>
           <span class="badge-mig-category">${m.category.toUpperCase()} • ${m.routeType}</span>
         </div>
-        <h3 class="mig-detail-title">${m.emoji} ${m.name}</h3>
-        <div class="mig-detail-sci">Scientific: <em>${m.species}</em></div>
+        <h3 class="mig-detail-title">${m.emoji} ${locRouteName}</h3>
+        <div class="mig-detail-sci">${sciPrefix}: <em>${locSpecies}</em></div>
       </div>
 
       <div class="mig-status-highlight ${isLiveNow ? 'live' : ''}">
-        <strong>📅 Seasonal Status (${effMonthName}):</strong>
+        <strong>${seasonalStatusTitle}</strong>
         <p>${this.getSeasonalDetailForMonth(m, effMonth)}</p>
       </div>
 
@@ -712,29 +740,29 @@ class WildlifeMigrationTracker {
         <div class="mig-stat-box">
           <span class="mig-stat-icon">📏</span>
           <div>
-            <div class="mig-stat-val">${m.distanceMiles.toLocaleString()} miles</div>
-            <div class="mig-stat-lbl">Total Journey (${m.distanceKm.toLocaleString()} km)</div>
+            <div class="mig-stat-val">${m.distanceMiles.toLocaleString()} ${unitMiles}</div>
+            <div class="mig-stat-lbl">${lblTotalJourney}</div>
           </div>
         </div>
         <div class="mig-stat-box">
           <span class="mig-stat-icon">⏱️</span>
           <div>
-            <div class="mig-stat-val">${m.durationDays} Days</div>
-            <div class="mig-stat-lbl">Typical Duration</div>
+            <div class="mig-stat-val">${m.durationDays} ${unitDays}</div>
+            <div class="mig-stat-lbl">${lblDuration}</div>
           </div>
         </div>
         <div class="mig-stat-box">
           <span class="mig-stat-icon">⚡</span>
           <div>
-            <div class="mig-stat-val">${m.speedMph} mph</div>
-            <div class="mig-stat-lbl">Cruise Speed</div>
+            <div class="mig-stat-val">${m.speedMph} ${unitSpeed}</div>
+            <div class="mig-stat-lbl">${lblSpeed}</div>
           </div>
         </div>
         <div class="mig-stat-box">
           <span class="mig-stat-icon">🌍</span>
           <div>
             <div class="mig-stat-val">2 Continents</div>
-            <div class="mig-stat-lbl">Global Corridors</div>
+            <div class="mig-stat-lbl">${lblCorridor}</div>
           </div>
         </div>
       </div>

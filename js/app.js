@@ -237,6 +237,10 @@ class AnimalKingdomApp {
   }
 
   onLanguageChange(lang) {
+    if (window.AK_I18N) {
+      window.AK_I18N.applyToDom();
+    }
+
     // Re-render current active view
     if (this.currentView === 'home') {
       this.renderAnimalOfTheDay();
@@ -244,7 +248,7 @@ class AnimalKingdomApp {
       this.renderCategoryZone();
     }
 
-    // If modal is open, re-render modal with translated texts
+    // If detail modal is open, re-render modal with translated texts
     if (this.currentAnimalId) {
       const modal = document.getElementById('animal-modal');
       if (modal && !modal.classList.contains('hidden')) {
@@ -252,10 +256,35 @@ class AnimalKingdomApp {
       }
     }
 
-    // Also update background modal cards if open
-    const bgModal = document.getElementById('bg-settings-modal');
+    // If quiz modal is open, re-render quiz UI
+    const quizModal = document.getElementById('quiz-modal');
+    if (quizModal && !quizModal.classList.contains('hidden') && window.AK_GAME && window.AK_GAME.renderQuizUI) {
+      window.AK_GAME.renderQuizUI();
+    }
+
+    // If battle arena is open, re-render stage & presets
+    const battleModal = document.getElementById('battle-modal');
+    if (battleModal && !battleModal.classList.contains('hidden')) {
+      this.renderBattlePresets();
+      this.renderBattleStage();
+    }
+
+    // If favorites modal is open, re-render favorites list
+    const favModal = document.getElementById('fav-modal');
+    if (favModal && !favModal.classList.contains('hidden')) {
+      this.openFavoritesModal();
+    }
+
+    // If background modal is open, re-render background cards
+    const bgModal = document.getElementById('bg-modal');
     if (bgModal && !bgModal.classList.contains('hidden')) {
-      this.renderBackgroundCards();
+      this.renderBackgroundGrid();
+    }
+
+    // If time machine is open, re-render stage
+    const tmModal = document.getElementById('time-machine-modal');
+    if (tmModal && !tmModal.classList.contains('hidden') && window.AK_TIME_MACHINE && window.AK_TIME_MACHINE.updateStage) {
+      window.AK_TIME_MACHINE.updateStage();
     }
   }
 
@@ -650,11 +679,11 @@ class AnimalKingdomApp {
             <h3 class="aod-compact-title">${a.emoji} ${localizedName}</h3>
             <span class="aod-compact-sci">${a.scientific}</span>
           </div>
-          <p class="aod-compact-tagline">"${this.truncateText(a.tagline, 120)}"</p>
+          <p class="aod-compact-tagline">"${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesTagline(a) : a.tagline, 120)}"</p>
           <div class="aod-compact-specs">
-            <span class="compact-spec-item">🌍 <strong>${specHabitatLabel}:</strong> ${this.truncateText(a.habitat, 34)}</span>
-            <span class="compact-spec-item">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} <strong>${specDietLabel}:</strong> ${this.truncateText(a.diet, 30)}</span>
-            <span class="compact-spec-item">💡 <strong>${specFactLabel}:</strong> ${this.truncateText(a.funFact, 48)}</span>
+            <span class="compact-spec-item">🌍 <strong>${specHabitatLabel}:</strong> ${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(a) : a.habitat, 34)}</span>
+            <span class="compact-spec-item">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} <strong>${specDietLabel}:</strong> ${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesDiet(a) : a.diet, 30)}</span>
+            <span class="compact-spec-item">💡 <strong>${specFactLabel}:</strong> ${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesFunFact(a) : a.funFact, 48)}</span>
           </div>
           <div class="aod-compact-actions">
             <button class="btn-compact-act btn-listen" onclick="window.app.readAloud('${a.id}', this)" title="Listen to read-aloud story">
@@ -908,10 +937,10 @@ class AnimalKingdomApp {
             ${a.badgeText ? `<div class="card-geo-badge">${a.badgeText}</div>` : ''}
             <h3 class="card-title">${a.emoji} ${locName}</h3>
             <div class="card-sci">${a.scientific}</div>
-            <p class="card-tagline">${a.tagline}</p>
+            <p class="card-tagline">${window.AK_I18N ? window.AK_I18N.getSpeciesTagline(a) : a.tagline}</p>
             <div class="card-meta-pills">
-              <span class="mini-pill">🌍 ${this.truncateText(a.habitat, 28)}</span>
-              <span class="mini-pill">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} ${this.truncateText(a.diet, 24)}</span>
+              <span class="mini-pill">🌍 ${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(a) : a.habitat, 28)}</span>
+              <span class="mini-pill">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} ${this.truncateText(window.AK_I18N ? window.AK_I18N.getSpeciesDiet(a) : a.diet, 24)}</span>
             </div>
           </div>
           <div class="card-footer">
@@ -1013,6 +1042,43 @@ class AnimalKingdomApp {
     const superpowers = window.CardKnowledgeEngine ? window.CardKnowledgeEngine.getSuperpowers(animal) : [];
     const characteristics = window.CardKnowledgeEngine ? window.CardKnowledgeEngine.getCharacteristics(animal) : [];
 
+    const locTagline = window.AK_I18N ? window.AK_I18N.getSpeciesTagline(animal) : animal.tagline;
+    const locDescription = window.AK_I18N ? window.AK_I18N.getSpeciesDescription(animal) : animal.description;
+    const locHabitat = window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(animal) : animal.habitat;
+    const locDiet = window.AK_I18N ? window.AK_I18N.getSpeciesDiet(animal) : animal.diet;
+    const locPredators = window.AK_I18N ? window.AK_I18N.getSpeciesPredators(animal) : animal.predators;
+    const locFunFact = window.AK_I18N ? window.AK_I18N.getSpeciesFunFact(animal) : animal.funFact;
+
+    const sciLabel = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '化學成分與硬度' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Composición y Dureza' : 'Composition & Hardness')) :
+                     (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '植物學名' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Nombre Botánico' : 'Botanical Name')) :
+                     (isReptile ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '分類學 / 學名' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Taxonomía / Científico' : 'Taxonomy / Scientific')) :
+                     (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '學名' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Nombre Científico' : 'Scientific'))));
+
+    const deepTitle1 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '地質起源與形成歷程' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Génesis Geológica y Formación' : 'How They Formed & Geological Genesis')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '生長環境與原生風土' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Cómo Crecen y Terroir Nativo' : 'How They Grow & Native Terroir')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '生活習性與日常作息' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Cómo Viven y Rutina Diaria' : 'How They Live & Daily Routine')));
+    const deepBadge1 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '地質成因' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'ORIGEN GEOLÓGICO' : 'GEOLOGICAL ORIGIN')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '植物生態' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'ECOLOGÍA VEGETAL' : 'PLANT ECOLOGY')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '生活方式' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'ESTILO DE VIDA' : 'LIFESTYLE')));
+
+    const deepTitle2 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '晶體超凡光學現象與力量' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Superpoderes del Cristal y Fenómenos Ópticos' : 'Crystal Superpowers & Optical Phenomena')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '植物超能力與防禦機制' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Superpoderes Botánicos y Guerra Química' : 'Botanical Superpowers & Chemical Warfare')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '超凡能力與特殊生存適應' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Superpoderes y Adaptaciones Únicas' : 'Superpowers & Unique Survival Adaptations')));
+    const deepBadge2 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '水晶能量' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'PODERES DEL CRISTAL' : 'CRYSTAL POWERS')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '植物絕技' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'PODERES VEGETALES' : 'PLANT POWERS')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '生存超能力' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'SUPERPODERES' : 'SUPERPOWERS')));
+
+    const deepTitle3 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '晶體結構與寶石學性質' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Estructura Cristalina y Propiedades' : 'Crystal Structure & Gemological Properties')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '花卉解剖與花瓣構造' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Anatomía Floral y Arquitectura' : 'Floral Anatomy & Petal Architecture')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '身體構造與生理特徵' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Características Físicas y Anatomía' : 'Physical Characteristics & Anatomy')));
+    const deepBadge3 = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '寶石學' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'GEMOLOGÍA' : 'GEMOLOGY')) :
+                       (isPlant ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '植物學' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'BOTÁNICA' : 'BOTANY')) :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '身體解剖' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'ANATOMÍA' : 'ANATOMY')));
+
+    const funfactTitle = isGem ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '✨ 地質科學小知識！' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? '✨ ¡Dato Curioso de Ciencia de la Tierra!' : '✨ Earth Science Fun Fact!')) :
+                         (isReptile ? (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '🦎 爬行動物小知識！' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? '🦎 ¡Dato Curioso de Reptiles!' : '🦎 Reptilian Fun Fact!')) :
+                         (window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '🌟 趣味小知識！' : (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? '🌟 ¡Dato Curioso Fascinante!' : '🌟 Cool Fun Fact!')));
+
     content.innerHTML = `
       <div class="modal-detail-card">
         <button class="modal-close-btn" onclick="window.app.closeModal()">✕</button>
@@ -1030,7 +1096,7 @@ class AnimalKingdomApp {
           <div class="modal-header-row">
             <div>
               <h2 class="modal-animal-name">${animal.emoji} ${locName}</h2>
-              <div class="modal-sci-name">${isGem ? 'Composition & Hardness' : (isPlant ? 'Botanical Name' : (isReptile ? 'Taxonomy / Scientific' : 'Scientific'))}: <em>${animal.scientific}</em></div>
+              <div class="modal-sci-name">${sciLabel}: <em>${animal.scientific}</em></div>
             </div>
               ${!isGem && !isPlant ? `
               <button class="btn-voice-sound" style="background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%); color: #fff; border: 1px solid #818cf8;" onclick="window.AK_ANATOMY.openAnatomyModal('${animal.id}')" title="Scan Inside Skeleton, Digestion & Organs">
@@ -1051,11 +1117,11 @@ class AnimalKingdomApp {
             </div>
           </div>
 
-          <div class="modal-tagline-quote">"${animal.tagline}"</div>
+          <div class="modal-tagline-quote">"${locTagline}"</div>
 
           <div class="modal-section-box">
             <h4 class="box-heading">${overviewTitle}</h4>
-            <p class="modal-desc-text">${animal.description}</p>
+            <p class="modal-desc-text">${locDescription}</p>
           </div>
 
           <!-- 3 In-Depth Multi-Paragraph Educational Sections -->
@@ -1064,8 +1130,8 @@ class AnimalKingdomApp {
             <div class="modal-deep-card theme-living">
               <div class="deep-card-header">
                 <span class="deep-card-icon">${isGem ? '⛰️' : (isPlant ? '🌿' : '🏡')}</span>
-                <h4 class="deep-card-title">${isGem ? 'How They Formed & Geological Genesis' : (isPlant ? 'How They Grow & Native Terroir' : 'How They Live & Daily Routine')}</h4>
-                <span class="deep-card-badge">${isGem ? 'GEOLOGICAL ORIGIN' : (isPlant ? 'PLANT ECOLOGY' : 'LIFESTYLE')}</span>
+                <h4 class="deep-card-title">${deepTitle1}</h4>
+                <span class="deep-card-badge">${deepBadge1}</span>
               </div>
               <div class="deep-card-body">
                 ${howTheyLive.map(p => `<p class="deep-paragraph">${this.formatMarkdownParagraph(p)}</p>`).join('')}
@@ -1076,8 +1142,8 @@ class AnimalKingdomApp {
             <div class="modal-deep-card theme-powers">
               <div class="deep-card-header">
                 <span class="deep-card-icon">${isGem ? '✨' : (isPlant ? '🛡️' : '⚡')}</span>
-                <h4 class="deep-card-title">${isGem ? 'Crystal Superpowers & Optical Phenomena' : (isPlant ? 'Botanical Superpowers & Chemical Warfare' : 'Superpowers & Unique Survival Adaptations')}</h4>
-                <span class="deep-card-badge">${isGem ? 'CRYSTAL POWERS' : (isPlant ? 'PLANT POWERS' : 'SUPERPOWERS')}</span>
+                <h4 class="deep-card-title">${deepTitle2}</h4>
+                <span class="deep-card-badge">${deepBadge2}</span>
               </div>
               <div class="deep-card-body">
                 ${superpowers.map(p => `<p class="deep-paragraph">${this.formatMarkdownParagraph(p)}</p>`).join('')}
@@ -1088,8 +1154,8 @@ class AnimalKingdomApp {
             <div class="modal-deep-card theme-characteristics">
               <div class="deep-card-header">
                 <span class="deep-card-icon">${isGem ? '💎' : (isPlant ? '🌸' : '🎨')}</span>
-                <h4 class="deep-card-title">${isGem ? 'Crystal Structure & Gemological Properties' : (isPlant ? 'Floral Anatomy & Petal Architecture' : 'Physical Characteristics & Anatomy')}</h4>
-                <span class="deep-card-badge">${isGem ? 'GEMOLOGY' : (isPlant ? 'BOTANY' : 'ANATOMY')}</span>
+                <h4 class="deep-card-title">${deepTitle3}</h4>
+                <span class="deep-card-badge">${deepBadge3}</span>
               </div>
               <div class="deep-card-body">
                 ${characteristics.map(p => `<p class="deep-paragraph">${this.formatMarkdownParagraph(p)}</p>`).join('')}
@@ -1103,7 +1169,7 @@ class AnimalKingdomApp {
               <div class="box-icon">${box1Icon}</div>
               <div>
                 <strong>${box1Label}</strong>
-                <p>${animal.habitat}</p>
+                <p>${locHabitat}</p>
               </div>
             </div>
 
@@ -1111,7 +1177,7 @@ class AnimalKingdomApp {
               <div class="box-icon">${box2Icon}</div>
               <div>
                 <strong>${box2Label}</strong>
-                <p>${animal.diet}</p>
+                <p>${locDiet}</p>
               </div>
             </div>
 
@@ -1127,14 +1193,14 @@ class AnimalKingdomApp {
               <div class="box-icon">${box4Icon}</div>
               <div>
                 <strong>${box4Label}</strong>
-                <p>${animal.predators}</p>
+                <p>${locPredators}</p>
               </div>
             </div>
           </div>
 
           <div class="modal-funfact-box">
-            <div class="funfact-title">${isGem ? '✨ Earth Science Fun Fact!' : (isReptile ? '🦎 Reptilian Fun Fact!' : '🌟 Cool Fun Fact!')}</div>
-            <p>${animal.funFact}</p>
+            <div class="funfact-title">${funfactTitle}</div>
+            <p>${locFunFact}</p>
           </div>
 
           <div class="modal-nav-arrows">
@@ -1203,26 +1269,32 @@ class AnimalKingdomApp {
     const favItems = all.filter(a => this.favorites.has(a.id));
 
     if (favItems.length === 0) {
+      const emptyTitle = window.AK_I18N ? window.AK_I18N.t('fav_empty_title') : 'No favorite creatures yet';
+      const emptyDesc = window.AK_I18N ? window.AK_I18N.t('fav_empty_desc') : 'Tap the heart icon on any animal card to save it to your safari book!';
       listContainer.innerHTML = `
         <div class="empty-state">
           <div class="empty-icon">⭐</div>
-          <h3>No favorite creatures yet</h3>
-          <p>Tap the heart icon on any animal card to save it to your safari book!</p>
+          <h3>${emptyTitle}</h3>
+          <p>${emptyDesc}</p>
         </div>
       `;
     } else {
       listContainer.innerHTML = `
         <div class="fav-grid">
-          ${favItems.map(a => `
-            <div class="fav-item-card" onclick="window.app.closeFavorites(); window.app.openAnimalDetail('${a.id}')">
-              <img src="${this.formatImageUrl(a.image, 200)}" alt="${a.name}" onerror="window.app.handleImageError(this, '${a.category}', '${a.emoji}', '${a.name.replace(/'/g, "\\'")}')">
-              <div class="fav-info">
-                <h4>${a.emoji} ${a.name}</h4>
-                <span>${a.category.toUpperCase()} • ${a.endangered}</span>
+          ${favItems.map(a => {
+            const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
+            const locStatus = window.AK_I18N ? window.AK_I18N.getStatusName(a.endangered) : a.endangered;
+            return `
+              <div class="fav-item-card" onclick="window.app.closeFavorites(); window.app.openAnimalDetail('${a.id}')">
+                <img src="${this.formatImageUrl(a.image, 200)}" alt="${a.name}" onerror="window.app.handleImageError(this, '${a.category}', '${a.emoji}', '${a.name.replace(/'/g, "\\'")}')">
+                <div class="fav-info">
+                  <h4>${a.emoji} ${locName}</h4>
+                  <span>${(a.category || '').toUpperCase()} • ${locStatus}</span>
+                </div>
+                <button class="btn-remove-fav" onclick="event.stopPropagation(); window.app.toggleFavorite('${a.id}'); window.app.openFavoritesModal();">✕</button>
               </div>
-              <button class="btn-remove-fav" onclick="event.stopPropagation(); window.app.toggleFavorite('${a.id}'); window.app.openFavoritesModal();">✕</button>
-            </div>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
       `;
     }
@@ -1825,6 +1897,10 @@ class AnimalKingdomApp {
 
     const s1 = window.CREATURE_BATTLE.getCreatureStats(f1);
     const s2 = window.CREATURE_BATTLE.getCreatureStats(f2);
+    const locName1 = window.AK_I18N ? window.AK_I18N.getSpeciesName(f1) : f1.name;
+    const locName2 = window.AK_I18N ? window.AK_I18N.getSpeciesName(f2) : f2.name;
+    const superLabel = window.AK_I18N ? window.AK_I18N.t('battle_stat_superpower') : '⚡ Superpower:';
+    const wepLabel = window.AK_I18N ? window.AK_I18N.t('battle_stat_weapon') : '⚔️ Weapon:';
 
     // Fighter 1 Display
     const f1Container = document.getElementById('fighter-1-display');
@@ -1833,7 +1909,7 @@ class AnimalKingdomApp {
         <div class="fighter-img-wrap">
           <img src="${this.formatImageUrl(f1.image, 600)}" alt="${f1.name}" onerror="window.app.handleImageError(this, '${f1.category}', '${f1.emoji}', '${f1.name.replace(/'/g, "\\'")}')">
         </div>
-        <h3 class="fighter-name">${f1.emoji} ${f1.name}</h3>
+        <h3 class="fighter-name">${f1.emoji} ${locName1}</h3>
         <div class="fighter-sci">${f1.scientific}</div>
         <div class="fighter-badge-row">
           <span class="fighter-spec-badge">⚖️ ${s1.weightFormatted}</span>
@@ -1842,8 +1918,8 @@ class AnimalKingdomApp {
           <span class="fighter-spec-badge">🛡️ Armor ${s1.armorRating}/100</span>
         </div>
         <div class="fighter-superpower-box">
-          <strong>⚡ Superpower:</strong> ${s1.superpower}<br>
-          <strong>⚔️ Weapon:</strong> ${s1.primaryWeapon}
+          <strong>${superLabel}</strong> ${s1.superpower}<br>
+          <strong>${wepLabel}</strong> ${s1.primaryWeapon}
         </div>
       `;
     }
@@ -1855,7 +1931,7 @@ class AnimalKingdomApp {
         <div class="fighter-img-wrap">
           <img src="${this.formatImageUrl(f2.image, 600)}" alt="${f2.name}" onerror="window.app.handleImageError(this, '${f2.category}', '${f2.emoji}', '${f2.name.replace(/'/g, "\\'")}')">
         </div>
-        <h3 class="fighter-name">${f2.emoji} ${f2.name}</h3>
+        <h3 class="fighter-name">${f2.emoji} ${locName2}</h3>
         <div class="fighter-sci">${f2.scientific}</div>
         <div class="fighter-badge-row">
           <span class="fighter-spec-badge">⚖️ ${s2.weightFormatted}</span>
@@ -1864,8 +1940,8 @@ class AnimalKingdomApp {
           <span class="fighter-spec-badge">🛡️ Armor ${s2.armorRating}/100</span>
         </div>
         <div class="fighter-superpower-box">
-          <strong>⚡ Superpower:</strong> ${s2.superpower}<br>
-          <strong>⚔️ Weapon:</strong> ${s2.primaryWeapon}
+          <strong>${superLabel}</strong> ${s2.superpower}<br>
+          <strong>${wepLabel}</strong> ${s2.primaryWeapon}
         </div>
       `;
     }
@@ -2081,10 +2157,13 @@ class AnimalKingdomApp {
     const resultsPanel = document.getElementById('battle-results-panel');
     if (!resultsPanel) return;
 
+    const locWinnerName = window.AK_I18N ? window.AK_I18N.getSpeciesName(sim.winner) : sim.winner.name;
+    const winnerBanner = window.AK_I18N ? window.AK_I18N.t('battle_winner_banner', { name: locWinnerName }) : `🏆 VICTORY TO ${locWinnerName.toUpperCase()}!`;
+
     resultsPanel.innerHTML = `
       <div class="victory-banner">
         <div class="victory-crown">👑</div>
-        <h3 class="victory-title">WINNER: ${sim.winner.emoji} ${sim.winner.name.toUpperCase()}</h3>
+        <h3 class="victory-title">${winnerBanner}</h3>
         <p class="victory-verdict">${this.formatMarkdownParagraph(sim.verdictReason)}</p>
       </div>
 

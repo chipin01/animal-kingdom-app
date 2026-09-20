@@ -631,9 +631,11 @@ class AnimalAnatomyScanner {
       const match = all.find(x => x.id === p.id || x.name.toLowerCase().includes(p.label.split(' ')[1].toLowerCase()));
       const realId = match ? match.id : p.id;
       const isSelected = this.currentAnimal && this.currentAnimal.id === realId;
+      const emoji = p.label.split(' ')[0];
+      const localizedName = match && window.AK_I18N ? window.AK_I18N.getSpeciesName(match) : p.label.substring(2).trim();
       return `
         <button class="anatomy-preset-btn ${isSelected ? 'active' : ''}" onclick="window.AK_ANATOMY.selectAnimalById('${realId}')">
-          ${p.label}
+          ${emoji} ${localizedName}
         </button>
       `;
     }).join('');
@@ -1117,6 +1119,19 @@ class AnimalAnatomyScanner {
       `;
     }
 
+
+    const isZh = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh';
+    const isEs = window.AK_I18N && window.AK_I18N.getLanguage() === 'es';
+
+    const sysSkel = isZh ? '骨骼系統骨架' : (isEs ? 'Sistema Esquelético' : 'Skeletal Framework');
+    const sysDig = isZh ? '消化系統與臟器' : (isEs ? 'Digestión y Vísceras' : 'Digestion & Guts');
+    const sysOrg = isZh ? '心肺循環系統' : (isEs ? 'Corazón y Pulmones' : 'Heart & Lungs');
+    const sysBrain = isZh ? '大腦與感覺神經' : (isEs ? 'Cerebro y Sentidos' : 'Brain & Senses');
+
+    const btnHearCall = isZh ? '🔊 聆聽叫聲' : (isEs ? '🔊 Escuchar Llamada' : '🔊 Hear Call');
+    const btnFullCard = isZh ? '🔍 完整物種標本卡' : (isEs ? '🔍 Ficha de Especie Completa' : '🔍 Full Species Specimen Card');
+    const btnFullXray = isZh ? '✨ 全透視 X 光視圖' : (isEs ? '✨ Vista Completa Rayos X' : '✨ Full X-Ray View');
+
     cardEl.innerHTML = `
       <!-- Spotlight Hotspot Detail -->
       ${selectedHighlightHtml}
@@ -1126,7 +1141,7 @@ class AnimalAnatomyScanner {
         <div class="system-mini-card ${this.activeLayer === 'skeleton' ? 'active' : ''}" onclick="window.AK_ANATOMY.setLayer('skeleton')">
           <div class="system-mini-top">
             <span class="system-mini-icon">🦴</span>
-            <strong>Skeletal Framework</strong>
+            <strong>${sysSkel}</strong>
           </div>
           <p>${skel.boneDensity} • ${skel.specialAdaptations.substring(0, 75)}...</p>
         </div>
@@ -1134,7 +1149,7 @@ class AnimalAnatomyScanner {
         <div class="system-mini-card ${this.activeLayer === 'digestion' ? 'active' : ''}" onclick="window.AK_ANATOMY.setLayer('digestion')">
           <div class="system-mini-top">
             <span class="system-mini-icon">🍖</span>
-            <strong>Digestion & Guts</strong>
+            <strong>${sysDig}</strong>
           </div>
           <p>pH ${dig.phLevel} • ${dig.stomachType} (${dig.digestTime})</p>
         </div>
@@ -1142,7 +1157,7 @@ class AnimalAnatomyScanner {
         <div class="system-mini-card ${this.activeLayer === 'organs' ? 'active' : ''}" onclick="window.AK_ANATOMY.setLayer('organs')">
           <div class="system-mini-top">
             <span class="system-mini-icon">🫀</span>
-            <strong>Heart & Lungs</strong>
+            <strong>${sysOrg}</strong>
           </div>
           <p>${cardio.heartRate} • ${cardio.title}</p>
         </div>
@@ -1150,7 +1165,7 @@ class AnimalAnatomyScanner {
         <div class="system-mini-card ${this.activeLayer === 'brain' ? 'active' : ''}" onclick="window.AK_ANATOMY.setLayer('brain')">
           <div class="system-mini-top">
             <span class="system-mini-icon">🧠</span>
-            <strong>Brain & Senses</strong>
+            <strong>${sysBrain}</strong>
           </div>
           <p>${nerv.superpower}</p>
         </div>
@@ -1159,13 +1174,13 @@ class AnimalAnatomyScanner {
       <!-- Action Buttons -->
       <div class="anatomy-actions-bar">
         <button class="btn-voice-sound" onclick="window.AK_AUDIO.playAnimalSound(window.AK_ANATOMY.currentAnimal)" title="Hear Sound">
-          🔊 Hear Call
+          ${btnHearCall}
         </button>
         <button class="btn-ghost" onclick="window.AK_ANATOMY.closeAnatomyModal(); window.app.openAnimalDetail(window.AK_ANATOMY.currentAnimal.id)" title="Open Full Field Guide Card">
-          🔍 Full Species Specimen Card
+          ${btnFullCard}
         </button>
         <button class="btn-secondary" onclick="window.AK_ANATOMY.setLayer('all')" title="Reset Full Scan">
-          ✨ Full X-Ray View
+          ${btnFullXray}
         </button>
       </div>
     `;

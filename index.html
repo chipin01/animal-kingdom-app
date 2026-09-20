@@ -244,9 +244,6 @@
       <!-- QUICK SEARCH & DISCOVERY BAR -->
       <section class="quick-search-section">
         <div class="quick-search-card">
-      <!-- QUICK SEARCH & DISCOVERY BAR -->
-      <section class="quick-search-section">
-        <div class="quick-search-card">
           <div class="quick-search-header">
             <span class="quick-search-badge" data-i18n="search_badge">🔎 EXPEDITION SEARCH</span>
             <h3 class="quick-search-title" data-i18n="search_title">Search Any Creature, Plant, Reptile, or Gemstone</h3>
@@ -493,7 +490,7 @@
     <div class="modal-dialog fav-dialog">
       <div class="modal-detail-card">
         <div class="fav-header">
-          <h2>❤️ Your Safari Explorer Favorites</h2>
+          <h2 data-i18n="fav_modal_title">❤️ Your Safari Explorer Favorites</h2>
           <button class="modal-close-btn" onclick="window.app.closeFavorites()">✕</button>
         </div>
         <div id="fav-list-container" class="fav-container">
@@ -511,16 +508,16 @@
         <!-- Arena Top Bar -->
         <div class="battle-header">
           <div class="battle-title-wrap">
-            <span class="battle-badge">⚔️ BIOLOGICAL SIMULATOR</span>
-            <h2 class="battle-main-title">Creature Face-Off Arena</h2>
-            <p class="battle-sub">Pit any 2 species, predators, or minerals against each other using real biological facts, bite force, speed, and defense!</p>
+            <span class="battle-badge" data-i18n="battle_badge">⚔️ BIOLOGICAL SIMULATOR</span>
+            <h2 class="battle-main-title" data-i18n="battle_title">Creature Face-Off Arena</h2>
+            <p class="battle-sub" data-i18n="battle_desc">Pit any 2 species, predators, or animals against each other using real biological facts, bite force, speed, and defense!</p>
           </div>
           <button class="modal-close-btn" onclick="window.app.closeBattleArena()">✕</button>
         </div>
 
         <!-- Quick Legendary Matchups Bar -->
         <div class="arena-presets-container">
-          <span class="preset-label">🔥 Legendary Matchups:</span>
+          <span class="preset-label" data-i18n="battle_presets_label">🔥 Legendary Matchups:</span>
           <div class="preset-pills-scroll" id="arena-presets-list">
             <!-- Dynamically populated -->
           </div>
@@ -531,9 +528,9 @@
           <!-- Fighter 1 Pod -->
           <div class="fighter-pod pod-left" id="fighter-1-pod">
             <div class="pod-header">
-              <span class="fighter-tag">FIGHTER 1 (RED CORNER)</span>
+              <span class="fighter-tag" data-i18n="battle_f1_tag">FIGHTER 1 (RED CORNER)</span>
               <div class="fighter-search-box">
-                <input type="text" id="fighter-1-search" placeholder="Search any animal..." oninput="window.app.filterFighters(1, this.value)">
+                <input type="text" id="fighter-1-search" data-i18n-placeholder="battle_search_ph" placeholder="Search any animal..." oninput="window.app.filterFighters(1, this.value)">
                 <button id="fighter-1-clear" class="btn-clear-search-fighter hidden" onclick="window.app.clearFighterSearch(1)" title="Clear and exit search">✕</button>
                 <div id="fighter-1-dropdown" class="fighter-dropdown hidden"></div>
               </div>
@@ -547,8 +544,8 @@
           <div class="stage-center-controls">
             <div class="vs-emblem">VS</div>
             <button class="btn-swap-fighters" onclick="window.app.swapFighters()" title="Swap Corners">⇄</button>
-            <button class="btn-random-fighters" onclick="window.app.randomizeFighters()" title="Randomize Both">🎲 Random</button>
-            <button class="btn-start-battle" id="btn-simulate-fight" onclick="window.app.startBattleSimulation()">
+            <button class="btn-random-fighters" data-i18n="battle_random" onclick="window.app.randomizeFighters()" title="Randomize Both">🎲 Random</button>
+            <button class="btn-start-battle" id="btn-simulate-fight" data-i18n="battle_simulate_btn" onclick="window.app.startBattleSimulation()">
               ⚔️ SIMULATE BATTLE!
             </button>
           </div>
@@ -556,9 +553,9 @@
           <!-- Fighter 2 Pod -->
           <div class="fighter-pod pod-right" id="fighter-2-pod">
             <div class="pod-header">
-              <span class="fighter-tag">FIGHTER 2 (BLUE CORNER)</span>
+              <span class="fighter-tag" data-i18n="battle_f2_tag">FIGHTER 2 (BLUE CORNER)</span>
               <div class="fighter-search-box">
-                <input type="text" id="fighter-2-search" placeholder="Search any animal..." oninput="window.app.filterFighters(2, this.value)">
+                <input type="text" id="fighter-2-search" data-i18n-placeholder="battle_search_ph" placeholder="Search any animal..." oninput="window.app.filterFighters(2, this.value)">
                 <button id="fighter-2-clear" class="btn-clear-search-fighter hidden" onclick="window.app.clearFighterSearch(2)" title="Clear and exit search">✕</button>
                 <div id="fighter-2-dropdown" class="fighter-dropdown hidden"></div>
               </div>
@@ -591,9 +588,9 @@
         <!-- Modal Top Bar -->
         <div class="migration-header">
           <div class="migration-title-wrap">
-            <span class="migration-badge">🛰️ REAL-TIME SATELLITE TELEMETRY</span>
-            <h2 class="migration-main-title">Live Global Wildlife Migration Tracker</h2>
-            <p class="migration-sub">Scientifically verified GPS telemetry routes, active seasonal flyways & real-time animal journey tracking</p>
+            <span class="migration-badge" data-i18n="migration_badge">🛰️ REAL-TIME SATELLITE TELEMETRY</span>
+            <h2 class="migration-main-title" data-i18n="migration_title">Live Global Wildlife Migration Tracker</h2>
+            <p class="migration-sub" data-i18n="migration_desc">Scientifically verified GPS telemetry routes, active seasonal flyways & real-time animal journey tracking</p>
           </div>
           <button class="modal-close-btn" onclick="window.AK_MIGRATION.closeMigrationModal()" title="Close Migration Map">✕</button>
         </div>
@@ -601,12 +598,12 @@
         <!-- Filter Bar & Active Status -->
         <div class="migration-toolbar">
           <div class="migration-filter-group" id="mig-filter-buttons">
-            <button class="mig-filter-btn active" data-cat="all" onclick="window.AK_MIGRATION.setCategoryFilter('all')">🌍 All Flyways (<span id="mig-count-all">10</span>)</button>
-            <button class="mig-filter-btn mig-filter-live" data-cat="live" onclick="window.AK_MIGRATION.setCategoryFilter('live')">🔴 Active Right Now (<span id="mig-count-live">9</span>)</button>
-            <button class="mig-filter-btn" data-cat="avian" onclick="window.AK_MIGRATION.setCategoryFilter('avian')">🦅 Birds</button>
-            <button class="mig-filter-btn" data-cat="marine" onclick="window.AK_MIGRATION.setCategoryFilter('marine')">🐋 Marine</button>
-            <button class="mig-filter-btn" data-cat="land" onclick="window.AK_MIGRATION.setCategoryFilter('land')">🦓 Land Herds</button>
-            <button class="mig-filter-btn" data-cat="insect" onclick="window.AK_MIGRATION.setCategoryFilter('insect')">🦋 Insects</button>
+            <button class="mig-filter-btn active" data-cat="all" onclick="window.AK_MIGRATION.setCategoryFilter('all')">🌍 <span data-i18n="migration_all_flyways">All Flyways</span> (<span id="mig-count-all">10</span>)</button>
+            <button class="mig-filter-btn mig-filter-live" data-cat="live" onclick="window.AK_MIGRATION.setCategoryFilter('live')">🔴 <span data-i18n="migration_active_now">Active Right Now</span> (<span id="mig-count-live">9</span>)</button>
+            <button class="mig-filter-btn" data-cat="avian" onclick="window.AK_MIGRATION.setCategoryFilter('avian')" data-i18n="migration_birds">🦅 Birds</button>
+            <button class="mig-filter-btn" data-cat="marine" onclick="window.AK_MIGRATION.setCategoryFilter('marine')" data-i18n="migration_marine">🐋 Marine</button>
+            <button class="mig-filter-btn" data-cat="land" onclick="window.AK_MIGRATION.setCategoryFilter('land')" data-i18n="migration_land">🦓 Land Herds</button>
+            <button class="mig-filter-btn" data-cat="insect" onclick="window.AK_MIGRATION.setCategoryFilter('insect')" data-i18n="migration_insects">🦋 Insects</button>
           </div>
           <div class="migration-status-pill">
             <span class="live-dot-blink"></span>
@@ -616,7 +613,7 @@
 
         <!-- Seasonal Month Time-Travel Bar -->
         <div class="migration-timeline-bar">
-          <span class="timeline-bar-label">⏱️ Season Time-Travel:</span>
+          <span class="timeline-bar-label" data-i18n="migration_season_timetravel">⏱️ Season Time-Travel:</span>
           <div class="migration-month-pills" id="mig-month-selector">
             <!-- Rendered dynamically by migrationMap.js -->
           </div>
@@ -628,7 +625,7 @@
           <div class="migration-sidebar">
             <div class="migration-search-wrap">
               <span class="mig-search-icon">🔍</span>
-              <input type="text" id="mig-search-input" placeholder="Search migrations (e.g. Monarch, Caribou, Whale)..." oninput="window.AK_MIGRATION.filterSearch(this.value)">
+              <input type="text" id="mig-search-input" data-i18n-placeholder="migration_search_ph" placeholder="Search migrations (e.g. Monarch, Caribou, Whale)..." oninput="window.AK_MIGRATION.filterSearch(this.value)">
               <button id="mig-search-clear" class="btn-clear-mig-search hidden" onclick="window.AK_MIGRATION.clearSearch()" title="Clear">✕</button>
             </div>
             <div class="migration-routes-list" id="migration-routes-list">
@@ -660,9 +657,9 @@
         <!-- Modal Top Bar -->
         <div class="anatomy-header">
           <div class="anatomy-title-wrap">
-            <span class="anatomy-badge">🔬 BIOMECHANICAL & X-RAY SCANNER</span>
-            <h2 class="anatomy-main-title">Animal Internal Anatomy & X-Ray Scanner</h2>
-            <p class="anatomy-sub">Look inside any creature to inspect its bones, skull mechanics, digestive acid chambers, heart rate, and internal organs!</p>
+            <span class="anatomy-badge" data-i18n="anatomy_badge">🔬 BIOMECHANICAL & X-RAY SCANNER</span>
+            <h2 class="anatomy-main-title" data-i18n="anatomy_title">Animal Internal Anatomy & X-Ray Scanner</h2>
+            <p class="anatomy-sub" data-i18n="anatomy_desc">Look inside any creature to inspect its bones, skull mechanics, digestive acid chambers, heart rate, and internal organs!</p>
           </div>
           <button class="modal-close-btn" onclick="window.AK_ANATOMY.closeAnatomyModal()" title="Close Anatomy Scanner">✕</button>
         </div>
@@ -671,11 +668,11 @@
         <div class="anatomy-top-controls">
           <div class="anatomy-search-wrap">
             <span class="anatomy-search-icon">🔍</span>
-            <input type="text" id="anatomy-search-input" placeholder="Search ANY animal to scan its inside (e.g. Shark, Lion, Python, Eagle, Frog)..." oninput="window.AK_ANATOMY.filterSearch(this.value)" onkeydown="window.AK_ANATOMY.handleSearchKeyDown(event)" autocomplete="off" spellcheck="false">
+            <input type="text" id="anatomy-search-input" data-i18n-placeholder="anatomy_search_ph" placeholder="Search ANY animal to scan its inside (e.g. Shark, Lion, Python, Eagle, Frog)..." oninput="window.AK_ANATOMY.filterSearch(this.value)" onkeydown="window.AK_ANATOMY.handleSearchKeyDown(event)" autocomplete="off" spellcheck="false">
             <button id="anatomy-search-clear" class="btn-clear-anatomy-search hidden" onclick="window.AK_ANATOMY.clearSearch()" title="Clear">✕</button>
             <div id="anatomy-search-dropdown" class="anatomy-search-dropdown hidden"></div>
           </div>
-          <button class="btn-quick-search-go" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.AK_ANATOMY.triggerSearch()" title="Scan Animal Anatomy">Scan Inside 🔬</button>
+          <button class="btn-quick-search-go" style="padding: 8px 16px; font-size: 0.85rem;" data-i18n="anatomy_scan_btn" onclick="window.AK_ANATOMY.triggerSearch()" title="Scan Animal Anatomy">Scan Inside 🔬</button>
           <div class="anatomy-preset-pills-row" id="anatomy-preset-pills">
             <!-- Featured preset buttons -->
           </div>
@@ -684,15 +681,15 @@
         <!-- Layer Selector Toolbar & Depth Peeler Slider -->
         <div class="anatomy-toolbar">
           <div class="anatomy-layer-btn-group">
-            <button class="anatomy-layer-btn active" data-layer="all" onclick="window.AK_ANATOMY.setLayer('all')">✨ Full Cross-Section</button>
-            <button class="anatomy-layer-btn" data-layer="skeleton" onclick="window.AK_ANATOMY.setLayer('skeleton')">🦴 Skeleton & Bones</button>
-            <button class="anatomy-layer-btn" data-layer="digestion" onclick="window.AK_ANATOMY.setLayer('digestion')">🍖 Digestion & Stomach</button>
-            <button class="anatomy-layer-btn" data-layer="organs" onclick="window.AK_ANATOMY.setLayer('organs')">🫀 Heart & Lungs</button>
-            <button class="anatomy-layer-btn" data-layer="brain" onclick="window.AK_ANATOMY.setLayer('brain')">🧠 Brain & Senses</button>
-            <button class="anatomy-layer-btn" data-layer="muscles" onclick="window.AK_ANATOMY.setLayer('muscles')">🥩 Muscles</button>
+            <button class="anatomy-layer-btn active" data-layer="all" data-i18n="anatomy_layer_all" onclick="window.AK_ANATOMY.setLayer('all')">✨ Full Cross-Section</button>
+            <button class="anatomy-layer-btn" data-layer="skeleton" data-i18n="anatomy_layer_skeleton" onclick="window.AK_ANATOMY.setLayer('skeleton')">🦴 Skeleton & Bones</button>
+            <button class="anatomy-layer-btn" data-layer="digestion" data-i18n="anatomy_layer_digestion" onclick="window.AK_ANATOMY.setLayer('digestion')">🍖 Digestion & Stomach</button>
+            <button class="anatomy-layer-btn" data-layer="organs" data-i18n="anatomy_layer_organs" onclick="window.AK_ANATOMY.setLayer('organs')">🫀 Heart & Lungs</button>
+            <button class="anatomy-layer-btn" data-layer="brain" data-i18n="anatomy_layer_brain" onclick="window.AK_ANATOMY.setLayer('brain')">🧠 Brain & Senses</button>
+            <button class="anatomy-layer-btn" data-layer="muscles" data-i18n="anatomy_layer_muscles" onclick="window.AK_ANATOMY.setLayer('muscles')">🥩 Muscles</button>
           </div>
           <div class="anatomy-depth-slider-wrap">
-            <span class="depth-slider-label">🎚️ Scan Depth:</span>
+            <span class="depth-slider-label" data-i18n="anatomy_depth_label">🎚️ Scan Depth:</span>
             <input type="range" id="anatomy-depth-slider" min="0" max="100" value="100" oninput="window.AK_ANATOMY.setDepth(this.value)">
             <span class="depth-slider-val" id="anatomy-depth-val">100%</span>
           </div>
@@ -721,9 +718,9 @@
         
         <div class="weather-modal-header">
           <div class="weather-header-left">
-            <span class="weather-badge">🌦️ METEOROLOGICAL RADAR & HABITAT SIMULATOR</span>
-            <h2 class="weather-main-title">Animal Weather & Climate Simulator</h2>
-            <p class="weather-sub">Adjust meteorological conditions to see which animals emerge, hunt, and thrive—plus live real-time Irvine wildlife detection!</p>
+            <span class="weather-badge" data-i18n="weather_badge">🌦️ METEOROLOGICAL RADAR & HABITAT SIMULATOR</span>
+            <h2 class="weather-main-title" data-i18n="weather_title">Animal Weather & Climate Simulator</h2>
+            <p class="weather-sub" data-i18n="weather_desc">Adjust meteorological conditions to see which animals emerge, hunt, and thrive—plus live real-time Irvine wildlife detection!</p>
           </div>
           <div class="weather-counter-box">
             <span id="weather-count-badge" class="weather-count-pill">📡 16 Species Active</span>
@@ -732,38 +729,38 @@
 
         <!-- Top Quick Weather Presets Bar -->
         <div class="weather-presets-bar">
-          <span class="preset-label">Weather Presets:</span>
+          <span class="preset-label" data-i18n="weather_presets_label">Weather Presets:</span>
           <div class="preset-buttons-wrap">
-            <button class="weather-preset-btn active" data-preset="rain" onclick="window.AK_WEATHER.setPreset('rain')">🌧️ Rain</button>
-            <button class="weather-preset-btn" data-preset="thunderstorm" onclick="window.AK_WEATHER.setPreset('thunderstorm')">⛈️ Thunderstorm</button>
-            <button class="weather-preset-btn" data-preset="sunny" onclick="window.AK_WEATHER.setPreset('sunny')">☀️ Sunny / Heatwave</button>
-            <button class="weather-preset-btn" data-preset="snow" onclick="window.AK_WEATHER.setPreset('snow')">❄️ Polar Snow</button>
-            <button class="weather-preset-btn" data-preset="fog" onclick="window.AK_WEATHER.setPreset('fog')">🌫️ Cloud Mist</button>
-            <button class="weather-preset-btn" data-preset="wind" onclick="window.AK_WEATHER.setPreset('wind')">🍃 Autumn Gale</button>
-            <button class="weather-preset-btn" data-preset="night" onclick="window.AK_WEATHER.setPreset('night')">🌙 Moonlit Night</button>
+            <button class="weather-preset-btn active" data-preset="rain" data-i18n="weather_preset_rain" onclick="window.AK_WEATHER.setPreset('rain')">🌧️ Rain</button>
+            <button class="weather-preset-btn" data-preset="thunderstorm" data-i18n="weather_preset_storm" onclick="window.AK_WEATHER.setPreset('thunderstorm')">⛈️ Thunderstorm</button>
+            <button class="weather-preset-btn" data-preset="sunny" data-i18n="weather_preset_sunny" onclick="window.AK_WEATHER.setPreset('sunny')">☀️ Sunny / Heatwave</button>
+            <button class="weather-preset-btn" data-preset="snow" data-i18n="weather_preset_snow" onclick="window.AK_WEATHER.setPreset('snow')">❄️ Polar Snow</button>
+            <button class="weather-preset-btn" data-preset="fog" data-i18n="weather_preset_fog" onclick="window.AK_WEATHER.setPreset('fog')">🌫️ Cloud Mist</button>
+            <button class="weather-preset-btn" data-preset="wind" data-i18n="weather_preset_wind" onclick="window.AK_WEATHER.setPreset('wind')">🍃 Autumn Gale</button>
+            <button class="weather-preset-btn" data-preset="night" data-i18n="weather_preset_night" onclick="window.AK_WEATHER.setPreset('night')">🌙 Moonlit Night</button>
           </div>
         </div>
 
         <!-- Sandbox Tuning Controls -->
         <div class="weather-sliders-toolbar">
           <div class="slider-cell">
-            <label>🌡️ Temperature: <strong id="weather-temp-val">18°C / 64°F</strong></label>
+            <label><span data-i18n="weather_slider_temp">🌡️ Temperature:</span> <strong id="weather-temp-val">18°C / 64°F</strong></label>
             <input type="range" id="weather-temp-slider" min="-20" max="48" value="18" oninput="window.AK_WEATHER.onSliderChange()">
           </div>
           <div class="slider-cell">
-            <label>💧 Rain / Precip: <strong id="weather-precip-val">85%</strong></label>
+            <label><span data-i18n="weather_slider_rain">💧 Rain / Precip:</span> <strong id="weather-precip-val">85%</strong></label>
             <input type="range" id="weather-precip-slider" min="0" max="100" value="85" oninput="window.AK_WEATHER.onSliderChange()">
           </div>
           <div class="slider-cell">
-            <label>💨 Wind Speed: <strong id="weather-wind-val">12 mph</strong></label>
+            <label><span data-i18n="weather_slider_wind">💨 Wind Speed:</span> <strong id="weather-wind-val">12 mph</strong></label>
             <input type="range" id="weather-wind-slider" min="0" max="60" value="12" oninput="window.AK_WEATHER.onSliderChange()">
           </div>
           <div class="slider-cell">
-            <label>⏰ Time of Day:</label>
+            <label data-i18n="weather_slider_time">⏰ Time of Day:</label>
             <select id="weather-time-select" onchange="window.AK_WEATHER.onSliderChange()">
-              <option value="day">☀️ Daytime</option>
-              <option value="sunset">🌅 Sunset / Dusk</option>
-              <option value="night">🌙 Midnight</option>
+              <option value="day" data-i18n="weather_time_day">☀️ Daytime</option>
+              <option value="sunset" data-i18n="weather_time_sunset">🌅 Sunset / Dusk</option>
+              <option value="night" data-i18n="weather_time_night">🌙 Midnight</option>
             </select>
           </div>
         </div>
@@ -787,7 +784,7 @@
             </div>
 
             <div class="weather-stage-instruction">
-              <span>👆 Tap any glowing creature dot to inspect why it loves this weather!</span>
+              <span data-i18n="weather_hint_tap">👆 Tap any glowing creature dot to inspect why it loves this weather!</span>
             </div>
           </div>
 
@@ -803,14 +800,14 @@
             <div class="irvine-weather-hub-card">
               <div class="irvine-hub-header">
                 <div>
-                  <span class="irvine-hub-badge">📍 REAL-TIME CITY FORECASTER</span>
+                  <span class="irvine-hub-badge" data-i18n="irvine_badge">📍 REAL-TIME CITY FORECASTER</span>
                   <h4 class="irvine-hub-title" id="irvine-weather-location">📍 Irvine, California</h4>
                 </div>
                 <div class="irvine-header-actions">
-                  <button class="btn-apply-rain" onclick="window.AK_WEATHER.setIrvineToRain()" title="Activate Live Rain Mode for Irvine">
+                  <button class="btn-apply-rain" data-i18n="irvine_raining_btn" onclick="window.AK_WEATHER.setIrvineToRain()" title="Activate Live Rain Mode for Irvine">
                     🌧️ It's Raining!
                   </button>
-                  <button class="btn-apply-irvine" onclick="window.AK_WEATHER.applyIrvineWeatherToSimulator()" title="Sync Simulator to Irvine Weather">
+                  <button class="btn-apply-irvine" data-i18n="irvine_sync_btn" onclick="window.AK_WEATHER.applyIrvineWeatherToSimulator()" title="Sync Simulator to Irvine Weather">
                     ⚡ Sync Weather
                   </button>
                 </div>
@@ -818,17 +815,17 @@
               
               <div class="irvine-live-stats-row">
                 <div class="irvine-stat-item">
-                  <span class="irvine-stat-label">Irvine Temp:</span>
+                  <span class="irvine-stat-label" data-i18n="irvine_temp_label">Irvine Temp:</span>
                   <strong id="irvine-weather-temp" class="irvine-stat-val">74°F (23°C)</strong>
                 </div>
                 <div class="irvine-stat-item">
-                  <span class="irvine-stat-label">Condition:</span>
+                  <span class="irvine-stat-label" data-i18n="irvine_cond_label">Condition:</span>
                   <strong id="irvine-weather-condition" class="irvine-stat-val">☀️ Sunny</strong>
                 </div>
               </div>
 
               <div class="irvine-fauna-section">
-                <span class="irvine-fauna-title">🐾 Irvine Wildlife Active in Today's Weather:</span>
+                <span class="irvine-fauna-title" data-i18n="irvine_wildlife_active">🐾 Irvine Wildlife Active in Today's Weather:</span>
                 <div id="irvine-wildlife-list" class="irvine-wildlife-list">
                   <!-- Rendered dynamically -->
                 </div>
@@ -852,30 +849,30 @@
       <div class="art-gallery-header">
         <div class="modal-header-text">
           <div class="art-gallery-badge-row">
-            <span class="art-badge-pill">🎨 FINE ART COLLECTION</span>
-            <span class="art-badge-pill sub">Pastel • Watercolor • Colored Pencil • Acrylic</span>
+            <span class="art-badge-pill" data-i18n="art_gallery_badge">🎨 FINE ART COLLECTION</span>
+            <span class="art-badge-pill sub" data-i18n="art_gallery_sub_badge">Pastel • Watercolor • Colored Pencil • Acrylic</span>
           </div>
-          <h2 class="art-gallery-title">🖼️ Wildlife Masterpiece Art Gallery</h2>
-          <p class="art-gallery-subtitle">Experience live animals captured through authentic traditional fine-art mediums. Click any artwork to inspect techniques &amp; listen to the narration!</p>
+          <h2 class="art-gallery-title" data-i18n="art_gallery_title">🖼️ Wildlife Masterpiece Art Gallery</h2>
+          <p class="art-gallery-subtitle" data-i18n="art_gallery_subtitle">Experience live animals captured through authentic traditional fine-art mediums. Click any artwork to inspect techniques &amp; listen to the narration!</p>
         </div>
         <button class="modal-close-btn" onclick="window.AK_ART_GALLERY.closeGalleryModal()" title="Close Art Gallery">✕</button>
       </div>
 
       <!-- Medium Filter Buttons Bar -->
       <div class="gallery-filter-toolbar">
-        <button class="gallery-filter-btn active" data-medium="all" onclick="window.AK_ART_GALLERY.setFilter('all')">
+        <button class="gallery-filter-btn active" data-medium="all" data-i18n="art_filter_all" onclick="window.AK_ART_GALLERY.setFilter('all')">
           🌟 All Masterpieces (6)
         </button>
-        <button class="gallery-filter-btn" data-medium="watercolor" onclick="window.AK_ART_GALLERY.setFilter('watercolor')">
+        <button class="gallery-filter-btn" data-medium="watercolor" data-i18n="art_filter_watercolor" onclick="window.AK_ART_GALLERY.setFilter('watercolor')">
           🖌️ Watercolor
         </button>
-        <button class="gallery-filter-btn" data-medium="colored_pencil" onclick="window.AK_ART_GALLERY.setFilter('colored_pencil')">
+        <button class="gallery-filter-btn" data-medium="colored_pencil" data-i18n="art_filter_pencil" onclick="window.AK_ART_GALLERY.setFilter('colored_pencil')">
           ✏️ Colored Pencil
         </button>
-        <button class="gallery-filter-btn" data-medium="pastel" onclick="window.AK_ART_GALLERY.setFilter('pastel')">
+        <button class="gallery-filter-btn" data-medium="pastel" data-i18n="art_filter_pastel" onclick="window.AK_ART_GALLERY.setFilter('pastel')">
           🖍️ Soft Pastel
         </button>
-        <button class="gallery-filter-btn" data-medium="acrylic" onclick="window.AK_ART_GALLERY.setFilter('acrylic')">
+        <button class="gallery-filter-btn" data-medium="acrylic" data-i18n="art_filter_acrylic" onclick="window.AK_ART_GALLERY.setFilter('acrylic')">
           🎨 Acrylic Paint
         </button>
       </div>
@@ -883,8 +880,8 @@
       <!-- Loading Spinner (shown while images load) -->
       <div id="art-gallery-loading" class="art-gallery-loading-state hidden">
         <div class="gallery-spinner"></div>
-        <p class="gallery-loading-txt">Loading masterworks... <span id="gallery-load-pct">0%</span></p>
-        <p class="gallery-loading-sub">Fetching high-quality artwork files</p>
+        <p class="gallery-loading-txt"><span data-i18n="art_loading_txt">Loading masterworks...</span> <span id="gallery-load-pct">0%</span></p>
+        <p class="gallery-loading-sub" data-i18n="art_loading_sub">Fetching high-quality artwork files</p>
       </div>
 
       <!-- 10-Second Error Panel (shown if images take too long) -->
@@ -922,7 +919,7 @@
           <span id="inspect-art-species" class="art-inspect-species">Species Name</span>
         </div>
         <div class="art-inspect-actions">
-          <button id="btn-art-speak" class="btn-art-speak" onclick="window.AK_ART_GALLERY.toggleSpeech()" title="Read aloud artwork analysis &amp; biology">
+          <button id="btn-art-speak" class="btn-art-speak" data-i18n="art_btn_speak_read" onclick="window.AK_ART_GALLERY.toggleSpeech()" title="Read aloud artwork analysis &amp; biology">
             🔊 Read / Speak Description
           </button>
           <button class="modal-close-btn" onclick="window.AK_ART_GALLERY.closeInspector()" title="Back to Gallery">✕</button>
@@ -937,8 +934,8 @@
             <img id="inspect-art-image" src="" alt="Masterpiece Artwork" class="art-inspector-full-img">
           </div>
           <div class="art-specs-row">
-            <div class="art-spec-pill"><strong>📜 Paper / Canvas:</strong> <span id="inspect-art-paper">Paper info</span></div>
-            <div class="art-spec-pill"><strong>📏 Dimensions:</strong> <span id="inspect-art-dim">18" x 24"</span></div>
+            <div class="art-spec-pill"><strong data-i18n="art_spec_paper">📜 Paper / Canvas:</strong> <span id="inspect-art-paper">Paper info</span></div>
+            <div class="art-spec-pill"><strong data-i18n="art_spec_dim">📏 Dimensions:</strong> <span id="inspect-art-dim">18" x 24"</span></div>
           </div>
         </div>
 
@@ -946,21 +943,21 @@
         <div class="art-inspector-details-col">
 
           <div class="art-detail-card">
-            <h4 class="art-detail-heading">📖 Artwork Description &amp; Artistry</h4>
+            <h4 class="art-detail-heading" data-i18n="art_heading_desc">📖 Artwork Description &amp; Artistry</h4>
             <p id="inspect-art-desc" class="art-detail-text"></p>
           </div>
 
           <div class="art-detail-card">
-            <h4 class="art-detail-heading">🎨 Traditional Artistic Techniques Applied</h4>
+            <h4 class="art-detail-heading" data-i18n="art_heading_techniques">🎨 Traditional Artistic Techniques Applied</h4>
             <ul id="inspect-art-techniques" class="art-techniques-list">
               <!-- Rendered dynamically -->
             </ul>
           </div>
 
           <div class="art-detail-card wildlife-info">
-            <h4 class="art-detail-heading">🐾 Live Animal Habitat &amp; Biology</h4>
-            <div class="art-bio-item"><strong>🌿 Habitat:</strong> <span id="inspect-art-habitat"></span></div>
-            <div class="art-bio-item"><strong>💡 Wildlife Fact:</strong> <span id="inspect-art-fact"></span></div>
+            <h4 class="art-detail-heading" data-i18n="art_heading_bio">🐾 Live Animal Habitat &amp; Biology</h4>
+            <div class="art-bio-item"><strong data-i18n="art_label_habitat">🌿 Habitat:</strong> <span id="inspect-art-habitat"></span></div>
+            <div class="art-bio-item"><strong data-i18n="art_label_fact">💡 Wildlife Fact:</strong> <span id="inspect-art-fact"></span></div>
           </div>
 
         </div>
@@ -978,8 +975,8 @@
       
       <!-- Header -->
       <div class="tm-header">
-        <h2>🕰️ Prehistoric Evolution Time Machine</h2>
-        <p>Travel back millions of years. Select a modern creature below and turn the dial to reveal its giant ancient ancestors!</p>
+        <h2 data-i18n="tm_title">🕰️ Prehistoric Evolution Time Machine</h2>
+        <p data-i18n="tm_desc">Travel back millions of years. Select a modern creature below and turn the dial to reveal its giant ancient ancestors!</p>
         <button class="modal-close-btn tm-close-btn" onclick="window.AK_TIME_MACHINE.closeModal()">✕</button>
       </div>
 
@@ -1004,7 +1001,7 @@
           <div id="tm-info-modern" class="tm-info-card">
             <h3 id="tm-mod-name" class="tm-info-title">Modern Name</h3>
             <p id="tm-mod-sci" class="tm-info-sci">Scientific</p>
-            <span class="tm-era-badge" id="tm-mod-time">Present Day</span>
+            <span class="tm-era-badge" id="tm-mod-time" data-i18n="tm_present_day">Present Day</span>
             <p id="tm-mod-desc" class="tm-desc">Description</p>
           </div>
 
@@ -1012,7 +1009,7 @@
           <div id="tm-info-ancient" class="tm-info-card ancient">
             <h3 id="tm-anc-name" class="tm-info-title">Ancient Name</h3>
             <p id="tm-anc-sci" class="tm-info-sci">Scientific</p>
-            <span class="tm-era-badge ancient" id="tm-anc-time">Millions of Years Ago</span>
+            <span class="tm-era-badge ancient" id="tm-anc-time" data-i18n="tm_millions_ago">Millions of Years Ago</span>
             <p id="tm-anc-desc" class="tm-desc">Description</p>
           </div>
 
@@ -1021,11 +1018,11 @@
 
       <!-- Control Dial -->
       <div class="tm-controls">
-        <h3 id="tm-time-display" class="tm-time-display">Era: Present Day</h3>
+        <h3 id="tm-time-display" class="tm-time-display" data-i18n="tm_era_present">Era: Present Day</h3>
         <div class="tm-slider-wrapper">
-          <span class="tm-label-mod">Modern Day</span>
+          <span class="tm-label-mod" data-i18n="tm_label_modern">Modern Day</span>
           <input type="range" id="tm-dial-slider" class="tm-dial-slider" min="0" max="100" value="0" oninput="window.AK_TIME_MACHINE.onDialChange(this.value)">
-          <span class="tm-label-anc">Prehistoric Past</span>
+          <span class="tm-label-anc" data-i18n="tm_label_prehistoric">Prehistoric Past</span>
         </div>
       </div>
 
@@ -1236,6 +1233,7 @@
   <script src="data/reptiles.js"></script>
   <script src="data/animalSounds.js"></script>
   <script src="data/cool_animals.js"></script>
+  <script src="js/speciesTranslations.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/cardDeepKnowledge.js"></script>
   <script src="js/battleEngine.js"></script>

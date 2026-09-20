@@ -412,37 +412,100 @@ class AnimalArtGallery {
   // =========================================================
   // VOICE NARRATION & AUDIO SPEECH
   // =========================================================
+  // =========================================================
+  // VOICE NARRATION & AUDIO SPEECH (MULTILINGUAL)
+  // =========================================================
+  _getVoiceForLang(lang = 'en') {
+    if (!this.speechSynth) return null;
+    const voices = this.speechSynth.getVoices();
+    if (!voices || voices.length === 0) return null;
+
+    if (lang === 'zh') {
+      const zh = voices.find(v =>
+        (v.lang === 'zh-TW' || v.lang === 'zh-HK' || v.lang === 'cmn-Hant-TW' || v.lang === 'yue-Hant-HK') ||
+        (v.name.includes('Taiwan') || v.name.includes('Hong Kong') || v.name.includes('國語') || v.name.includes('HanHan') || v.name.includes('Mei-Jia') || v.name.includes('Yating') || v.name.includes('HsiaoChen') || v.name.includes('YunJhe') || v.name.includes('HiuGaai') || v.name.includes('HiuMaan'))
+      );
+      if (zh) return zh;
+      const anyZh = voices.find(v => v.lang.startsWith('zh') || v.name.includes('Chinese') || v.name.includes('Mandarin'));
+      if (anyZh) return anyZh;
+    } else if (lang === 'es') {
+      const es = voices.find(v =>
+        (v.lang === 'es-ES' || v.lang === 'es-MX' || v.lang === 'es-US') && (
+          v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Monica') ||
+          v.name.includes('Paulina') || v.name.includes('Jorge') || v.name.includes('Helena') ||
+          v.name.includes('Laura') || v.name.includes('Alvaro') || v.name.includes('Elvira')
+        )
+      );
+      if (es) return es;
+      const anyEs = voices.find(v => v.lang.startsWith('es') || v.name.toLowerCase().includes('spanish'));
+      if (anyEs) return anyEs;
+    }
+
+    // Default English: British voice
+    return this._pickBritishVoice();
+  }
+
   speakDescription() {
     if (!this.selectedArtwork || !('speechSynthesis' in window)) return;
 
     this.speechSynth.cancel();
 
-    const textToSpeak = `${this.selectedArtwork.title}. Painted in ${this.selectedArtwork.medium} style. ${this.selectedArtwork.fullDesc} Biological note: ${this.selectedArtwork.funFact}`;
+    const lang = window.AK_I18N ? window.AK_I18N.getLanguage() : 'en';
+    const art = this.selectedArtwork;
+    let textToSpeak = '';
+
+    if (lang === 'zh') {
+      const mediumMap = {
+        watercolor: '水彩畫與墨洗',
+        colored_pencil: '精緻色鉛筆植物繪畫',
+        pastel: '軟式粉彩',
+        acrylic: '壓克力厚塗畫'
+      };
+      const medZh = mediumMap[art.medium] || '傳統美術';
+      textToSpeak = `歡迎欣賞野生動物藝術名作：《${art.title}》。採用${medZh}技法精心繪製。${art.shortDesc} 生態與生物學筆記：${art.funFact}`;
+    } else if (lang === 'es') {
+      const mediumMapEs = {
+        watercolor: 'acuarela y aguada',
+        colored_pencil: 'lápiz de color botánico fino',
+        pastel: 'pastel suave',
+        acrylic: 'acrílico impasto'
+      };
+      const medEs = mediumMapEs[art.medium] || 'bellas artes tradicionales';
+      textToSpeak = `Bienvenido a apreciar esta obra maestra: ${art.title}. Pintado en técnica de ${medEs}. ${art.shortDesc} Nota biológica: ${art.funFact}`;
+    } else {
+      textToSpeak = `${art.title}. Painted in ${art.medium} style. ${art.fullDesc} Biological note: ${art.funFact}`;
+    }
 
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.rate = 0.92;
+    utterance.rate = lang === 'zh' ? 0.96 : 0.92;
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
-    // Use cached British English voice — refresh if needed
-    const voice = this.britishVoice || this._pickBritishVoice();
-    if (voice) {
-      utterance.voice = voice;
-      utterance.lang = 'en-GB';
-    } else {
-      utterance.lang = 'en-GB'; // hint browser to use British even without explicit voice
-    }
+    const voice = this._getVoiceForLang(lang);
+    if (voice) utterance.voice = voice;
+    utterance.lang = lang === 'zh' ? 'zh-TW' : (lang === 'es' ? 'es-ES' : 'en-GB');
+
+    const speakingLabels = {
+      zh: '🔊 正在語音朗讀中... (繁體中文 🇹🇼)',
+      es: '🔊 Hablando... (Español 🇪🇸)',
+      en: '🔊 Speaking... (British 🇬🇧)'
+    };
+    const idleLabels = {
+      zh: '🔊 朗讀藝術作品與解說',
+      es: '🔊 Leer / Escuchar Descripción',
+      en: '🔊 Read / Speak Description'
+    };
 
     const btn = document.getElementById('btn-art-speak');
     if (btn) {
-      btn.innerHTML = '🔊 Speaking... (British 🇬🇧)';
+      btn.innerHTML = speakingLabels[lang] || speakingLabels.en;
       btn.classList.add('speaking');
     }
 
     utterance.onend = () => {
       this.isSpeaking = false;
       if (btn) {
-        btn.innerHTML = '🔊 Read / Speak Description';
+        btn.innerHTML = idleLabels[lang] || idleLabels.en;
         btn.classList.remove('speaking');
       }
     };
@@ -450,7 +513,7 @@ class AnimalArtGallery {
     utterance.onerror = () => {
       this.isSpeaking = false;
       if (btn) {
-        btn.innerHTML = '🔊 Read / Speak Description';
+        btn.innerHTML = idleLabels[lang] || idleLabels.en;
         btn.classList.remove('speaking');
       }
     };
@@ -463,9 +526,15 @@ class AnimalArtGallery {
     if (this.speechSynth) {
       this.speechSynth.cancel();
       this.isSpeaking = false;
+      const lang = window.AK_I18N ? window.AK_I18N.getLanguage() : 'en';
+      const idleLabels = {
+        zh: '🔊 朗讀藝術作品與解說',
+        es: '🔊 Leer / Escuchar Descripción',
+        en: '🔊 Read / Speak Description'
+      };
       const btn = document.getElementById('btn-art-speak');
       if (btn) {
-        btn.innerHTML = '🔊 Read / Speak Description';
+        btn.innerHTML = idleLabels[lang] || idleLabels.en;
         btn.classList.remove('speaking');
       }
     }

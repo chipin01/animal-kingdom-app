@@ -42,49 +42,62 @@ function loadNewQuestion() {
 
 function renderQuizUI() {
   const container = document.getElementById('quiz-content');
-  if (!container) return;
+  if (!container || !currentTarget) return;
+
+  const scoreLabel = window.AK_I18N ? window.AK_I18N.t('quiz_score_label') : '⭐ Score:';
+  const streakLabel = window.AK_I18N ? window.AK_I18N.t('quiz_streak_label') : '🔥 Streak:';
+  const skipBtn = window.AK_I18N ? window.AK_I18N.t('quiz_skip_btn') : '⏭️ Skip';
+  const cluesBadge = window.AK_I18N ? window.AK_I18N.t('quiz_clues_badge') : '🕵️ MYSTERY CREATURE CLUES';
+  const questionTitle = window.AK_I18N ? window.AK_I18N.t('quiz_question_title') : 'Who Am I?';
+  const clueLive = window.AK_I18N ? window.AK_I18N.t('quiz_clue_live') : 'Where I live:';
+  const clueEat = window.AK_I18N ? window.AK_I18N.t('quiz_clue_eat') : 'What I eat:';
+  const cluePred = window.AK_I18N ? window.AK_I18N.t('quiz_clue_pred') : 'My Predators:';
+  const revealClueBtn = window.AK_I18N ? window.AK_I18N.t('quiz_reveal_clue') : '💡 Reveal Secret Clue';
 
   container.innerHTML = `
     <div class="quiz-header">
       <div class="quiz-stats">
-        <span class="quiz-stat-pill">⭐ Score: <strong id="quiz-score-val">${score}</strong></span>
-        <span class="quiz-stat-pill">🔥 Streak: <strong id="quiz-streak-val">${streak}</strong></span>
+        <span class="quiz-stat-pill">${scoreLabel} <strong id="quiz-score-val">${score}</strong></span>
+        <span class="quiz-stat-pill">${streakLabel} <strong id="quiz-streak-val">${streak}</strong></span>
       </div>
-      <button class="btn-icon-subtle" onclick="loadNewQuestion()" title="Skip / New Question">⏭️ Skip</button>
+      <button class="btn-icon-subtle" onclick="loadNewQuestion()" title="Skip / New Question">${skipBtn}</button>
     </div>
 
     <div class="quiz-clues-card">
-      <div class="quiz-badge">🕵️ MYSTERY CREATURE CLUES</div>
-      <h3 class="quiz-question-title">Who Am I?</h3>
+      <div class="quiz-badge">${cluesBadge}</div>
+      <h3 class="quiz-question-title">${questionTitle}</h3>
       
       <div class="clue-row">
         <span class="clue-icon">🌍</span>
-        <div class="clue-text"><strong>Where I live:</strong> ${currentTarget.habitat}</div>
+        <div class="clue-text"><strong>${clueLive}</strong> ${currentTarget.habitat}</div>
       </div>
 
       <div class="clue-row">
         <span class="clue-icon">🍽️</span>
-        <div class="clue-text"><strong>What I eat:</strong> ${currentTarget.diet}</div>
+        <div class="clue-text"><strong>${clueEat}</strong> ${currentTarget.diet}</div>
       </div>
 
       <div class="clue-row">
         <span class="clue-icon">⚠️</span>
-        <div class="clue-text"><strong>My Predators:</strong> ${currentTarget.predators}</div>
+        <div class="clue-text"><strong>${cluePred}</strong> ${currentTarget.predators}</div>
       </div>
 
       <div class="clue-hint-box" id="clue-hint-container">
-        <button class="btn-hint" onclick="revealSecretClue()">💡 Reveal Secret Clue</button>
+        <button class="btn-hint" onclick="revealSecretClue()">${revealClueBtn}</button>
       </div>
     </div>
 
     <div class="quiz-options-grid" id="quiz-options-grid">
-      ${currentOptions.map((opt, idx) => `
-        <button class="quiz-opt-btn" onclick="submitAnswer('${opt.id}', this)">
-          <span class="opt-num">${['A', 'B', 'C', 'D'][idx]}</span>
-          <img class="opt-thumb" src="${window.app ? window.app.formatImageUrl(opt.image, 400) : opt.image}" alt="${opt.name}" onerror="if (window.app) window.app.handleImageError(this, '${opt.category}', '${opt.emoji}', '${opt.name.replace(/'/g, "\\'")}')">
-          <span class="opt-name">${opt.emoji} ${opt.name}</span>
-        </button>
-      `).join('')}
+      ${currentOptions.map((opt, idx) => {
+        const optName = window.AK_I18N ? window.AK_I18N.getSpeciesName(opt) : opt.name;
+        return `
+          <button class="quiz-opt-btn" onclick="submitAnswer('${opt.id}', this)">
+            <span class="opt-num">${['A', 'B', 'C', 'D'][idx]}</span>
+            <img class="opt-thumb" src="${window.app ? window.app.formatImageUrl(opt.image, 400) : opt.image}" alt="${opt.name}" onerror="if (window.app) window.app.handleImageError(this, '${opt.category}', '${opt.emoji}', '${opt.name.replace(/'/g, "\\'")}')">
+            <span class="opt-name">${opt.emoji} ${optName}</span>
+          </button>
+        `;
+      }).join('')}
     </div>
 
     <div id="quiz-feedback-box" class="quiz-feedback-box hidden"></div>
@@ -94,7 +107,8 @@ function renderQuizUI() {
 function revealSecretClue() {
   const box = document.getElementById('clue-hint-container');
   if (box && currentTarget) {
-    box.innerHTML = `<div class="revealed-hint"><strong>💡 Fun Secret Clue:</strong> ${currentTarget.funFact}</div>`;
+    const label = window.AK_I18N ? window.AK_I18N.t('quiz_secret_clue_label') : '💡 Fun Secret Clue:';
+    box.innerHTML = `<div class="revealed-hint"><strong>${label}</strong> ${currentTarget.funFact}</div>`;
     window.AK_AUDIO.playPop(520);
   }
 }
@@ -111,6 +125,12 @@ function submitAnswer(chosenId, btnEl) {
     btn.disabled = true;
   });
 
+  const locTargetName = window.AK_I18N ? window.AK_I18N.getSpeciesName(currentTarget) : currentTarget.name;
+  const btnReadStory = window.AK_I18N ? window.AK_I18N.t('quiz_btn_read_story') : '📖 Read Full Story';
+  const btnLearnAbout = window.AK_I18N ? window.AK_I18N.t('quiz_btn_learn_about') : '📖 Learn About It';
+  const btnNext = window.AK_I18N ? window.AK_I18N.t('quiz_btn_next') : 'Next Mystery Creature ➡️';
+  const btnTryAnother = window.AK_I18N ? window.AK_I18N.t('quiz_btn_try_another') : 'Try Another ➡️';
+
   if (isCorrect) {
     btnEl.classList.add('correct');
     score += 100 + (streak * 20);
@@ -119,13 +139,16 @@ function submitAnswer(chosenId, btnEl) {
     window.AK_AUDIO.playSuccess();
     triggerConfetti();
 
+    const title = window.AK_I18N ? window.AK_I18N.t('quiz_correct_title') : '🎉 HOORAY! YOU GOT IT RIGHT!';
+    const text = window.AK_I18N ? window.AK_I18N.t('quiz_correct_text', { name: locTargetName, sci: currentTarget.scientific, tagline: currentTarget.tagline }) : `I am the <strong>${locTargetName}</strong> (${currentTarget.scientific})! ${currentTarget.tagline}`;
+
     feedbackBox.className = 'quiz-feedback-box success-feedback';
     feedbackBox.innerHTML = `
-      <div class="feedback-title">🎉 HOORAY! YOU GOT IT RIGHT!</div>
-      <p>I am the <strong>${currentTarget.name}</strong> (${currentTarget.scientific})! ${currentTarget.tagline}</p>
+      <div class="feedback-title">${title}</div>
+      <p>${text}</p>
       <div class="feedback-actions">
-        <button class="btn-primary" onclick="window.app.openAnimalDetail('${currentTarget.id}')">📖 Read Full Story</button>
-        <button class="btn-success" onclick="loadNewQuestion()">Next Mystery Creature ➡️</button>
+        <button class="btn-primary" onclick="window.app.openAnimalDetail('${currentTarget.id}')">${btnReadStory}</button>
+        <button class="btn-success" onclick="loadNewQuestion()">${btnNext}</button>
       </div>
     `;
   } else {
@@ -135,18 +158,21 @@ function submitAnswer(chosenId, btnEl) {
 
     // Highlight the correct one
     allBtns.forEach(b => {
-      if (b.innerText.includes(currentTarget.name)) {
+      if (b.innerText.includes(currentTarget.name) || b.innerText.includes(locTargetName)) {
         b.classList.add('correct');
       }
     });
 
+    const title = window.AK_I18N ? window.AK_I18N.t('quiz_wrong_title') : '🐾 Nice Try!';
+    const text = window.AK_I18N ? window.AK_I18N.t('quiz_wrong_text', { name: locTargetName, sci: currentTarget.scientific }) : `The mystery creature was the <strong>${locTargetName}</strong> (${currentTarget.scientific})!`;
+
     feedbackBox.className = 'quiz-feedback-box wrong-feedback';
     feedbackBox.innerHTML = `
-      <div class="feedback-title">🐾 Nice Try!</div>
-      <p>The mystery creature was the <strong>${currentTarget.name}</strong> (${currentTarget.scientific})!</p>
+      <div class="feedback-title">${title}</div>
+      <p>${text}</p>
       <div class="feedback-actions">
-        <button class="btn-primary" onclick="window.app.openAnimalDetail('${currentTarget.id}')">📖 Learn About It</button>
-        <button class="btn-secondary" onclick="loadNewQuestion()">Try Another ➡️</button>
+        <button class="btn-primary" onclick="window.app.openAnimalDetail('${currentTarget.id}')">${btnLearnAbout}</button>
+        <button class="btn-secondary" onclick="loadNewQuestion()">${btnTryAnother}</button>
       </div>
     `;
   }
