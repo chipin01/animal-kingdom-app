@@ -1632,6 +1632,20 @@ class AnimalKingdomApp {
     this.clearGlobalSearch();
   }
 
+  triggerGlobalSearch() {
+    const globalInput = document.getElementById('global-search-input');
+    const q = globalInput ? globalInput.value.trim() : '';
+    if (q) {
+      this.closeGlobalDropdown();
+      this.showAllSearchResults(q);
+      if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
+        window.AK_AUDIO.playPop(520);
+      }
+    } else if (globalInput) {
+      globalInput.focus();
+    }
+  }
+
   triggerHeroSearch() {
     const heroInput = document.getElementById('hero-search-input');
     if (heroInput && heroInput.value.trim()) {

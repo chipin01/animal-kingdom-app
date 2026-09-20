@@ -45,65 +45,65 @@
         </div>
       </div>
 
-      <!-- Center Column: Search & Settings -->
-      <div class="header-center-col" style="display: flex; flex-direction: column; flex: 1; max-width: 440px; margin: 0 12px; gap: 8px;">
-        <!-- Global Search Bar -->
-        <div class="header-search-wrap" style="margin: 0; max-width: 100%;">
+      <!-- Main Column: Search Bar ON TOP, ALL BUTTONS DIRECTLY UNDER IT -->
+      <div class="header-main-col">
+        <!-- Global Search Bar with Search Button -->
+        <div class="header-search-wrap">
           <div class="search-input-box">
             <span class="search-icon-symbol">🔍</span>
             <input type="text" id="global-search-input" data-i18n-placeholder="search_placeholder" placeholder="Search 780+ species, reptiles & gems..." autocomplete="off" spellcheck="false">
             <button id="global-search-clear" class="btn-clear-search-global hidden" onclick="window.app.clearGlobalSearch()" title="Clear search">✕</button>
-            <span class="search-shortcut-badge" title="Press / key to search">/</span>
+            <button class="btn-header-search-go" onclick="window.app && window.app.triggerGlobalSearch()" title="Search All Species">
+              Search 🚀
+            </button>
           </div>
           <!-- Live Autocomplete Dropdown -->
           <div id="global-search-dropdown" class="global-search-dropdown hidden"></div>
         </div>
-        
-        <!-- Settings Row under search -->
-        <div class="header-settings-row" style="display: flex; justify-content: center; align-items: center; gap: 8px;">
-          <button class="btn-icon btn-theme-toggle" id="theme-toggle-btn" onclick="window.app && window.app.toggleTheme()" title="Toggle Light / Dark Mode" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
+
+        <!-- ALL THE BUTTONS DIRECTLY UNDER THE SEARCH (Small & Compact) -->
+        <div class="header-buttons-row">
+          <!-- System Quick Controls (Small) -->
+          <button class="btn-small-icon btn-theme-toggle" id="theme-toggle-btn" onclick="window.app && window.app.toggleTheme()" title="Toggle Light / Dark Mode">
             ☀️
           </button>
-          <button class="btn-icon" id="audio-toggle-btn" onclick="const s = window.AK_AUDIO.toggleSound(); this.innerText = s ? '🔊' : '🔇';" title="Toggle Sound Effects" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
+          <button class="btn-small-icon" id="audio-toggle-btn" onclick="const s = window.AK_AUDIO.toggleSound(); this.innerText = s ? '🔊' : '🔇';" title="Toggle Sound Effects">
             🔊
           </button>
-          <button class="btn-icon" id="bg-setting-btn" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
-            🖼️
-          </button>
-          <!-- Multi-Language Switcher (English / 繁體中文 / Español) -->
-          <div class="lang-switch-wrap" id="lang-switcher" title="Switch Language / 切換語言 / Cambiar Idioma">
+          <div class="lang-switch-wrap small-lang" id="lang-switcher" title="Switch Language / 切換語言 / Cambiar Idioma">
             <button class="btn-lang-toggle active" data-lang="en" onclick="window.app && window.app.setLanguage('en')" title="English">EN</button>
             <button class="btn-lang-toggle" data-lang="zh" onclick="window.app && window.app.setLanguage('zh')" title="繁體中文 (Traditional Chinese)">中</button>
             <button class="btn-lang-toggle" data-lang="es" onclick="window.app && window.app.setLanguage('es')" title="Español (Spanish)">ES</button>
           </div>
-        </div>
-      </div>
 
-      <div class="header-controls">
-        <button class="btn-header-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
-          <span data-i18n="nav_habitats">🖼️ Habitats</span>
-        </button>
-        <button class="btn-header-pill btn-gallery-glow" onclick="window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()" title="Explore Traditional Wildlife Art Gallery">
-          <span data-i18n="nav_gallery">🎨 Art Gallery</span>
-        </button>
-        <button class="btn-header-pill btn-weather-glow" onclick="window.AK_WEATHER && window.AK_WEATHER.openWeatherModal()" title="Interactive Animal Weather Simulator & Irvine Radar">
-          <span data-i18n="nav_weather">🌦️ Animal Weather</span> <span class="badge-live-pulse">LIVE</span>
-        </button>
-        <button class="btn-header-pill btn-anatomy-glow" onclick="window.AK_ANATOMY && window.AK_ANATOMY.openAnatomyModal()" title="Inside Animal X-Ray & Anatomy Scanner">
-          <span data-i18n="nav_anatomy">🔬 Anatomy X-Ray</span>
-        </button>
-        <button class="btn-header-pill btn-migration-glow" onclick="window.AK_MIGRATION && window.AK_MIGRATION.openMigrationModal()" title="Live Global Wildlife Migration & GPS Tracker">
-          <span data-i18n="nav_migration">🗺️ Migration Map</span> <span class="badge-live-pulse">🔴 LIVE</span>
-        </button>
-        <button class="btn-header-pill btn-arena-glow" onclick="window.app.openBattleArena()" title="Creature Face-Off Battle Arena">
-          <span data-i18n="nav_arena">⚔️ Battle Arena</span>
-        </button>
-        <button class="btn-header-pill" onclick="window.app.openQuiz()" title="Play Mystery Safari Quiz">
-          <span data-i18n="nav_quiz">🎮 Quiz Game</span>
-        </button>
-        <button class="btn-header-pill" onclick="window.app.openFavoritesModal()" title="View Favorites">
-          <span data-i18n="nav_favorites">❤️ Favorites</span> (<span id="favorites-counter">0</span>)
-        </button>
+          <span class="header-btn-sep"></span>
+
+          <!-- Interactive Feature Buttons (Small) -->
+          <button class="btn-header-pill btn-small-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
+            <span data-i18n="nav_habitats">🖼️ Habitats</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-gallery-glow" onclick="window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()" title="Explore Traditional Wildlife Art Gallery">
+            <span data-i18n="nav_gallery">🎨 Art</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-weather-glow" onclick="window.AK_WEATHER && window.AK_WEATHER.openWeatherModal()" title="Interactive Animal Weather Simulator & Irvine Radar">
+            <span data-i18n="nav_weather">🌦️ Weather</span> <span class="badge-live-pulse-sm">LIVE</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-anatomy-glow" onclick="window.AK_ANATOMY && window.AK_ANATOMY.openAnatomyModal()" title="Inside Animal X-Ray & Anatomy Scanner">
+            <span data-i18n="nav_anatomy">🔬 Anatomy</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-migration-glow" onclick="window.AK_MIGRATION && window.AK_MIGRATION.openMigrationModal()" title="Live Global Wildlife Migration & GPS Tracker">
+            <span data-i18n="nav_migration">🗺️ Migration</span> <span class="badge-live-pulse-sm">LIVE</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-arena-glow" onclick="window.app.openBattleArena()" title="Creature Face-Off Battle Arena">
+            <span data-i18n="nav_arena">⚔️ Arena</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill" onclick="window.app.openQuiz()" title="Play Mystery Safari Quiz">
+            <span data-i18n="nav_quiz">🎮 Quiz</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill" onclick="window.app.openFavoritesModal()" title="View Favorites">
+            <span data-i18n="nav_favorites">❤️ Favs</span> (<span id="favorites-counter">0</span>)
+          </button>
+        </div>
       </div>
     </div>
   </header>
