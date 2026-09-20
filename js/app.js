@@ -206,6 +206,7 @@ class AnimalKingdomApp {
 
   init() {
     this.currentView = 'home';
+    this.initI18n();
     this.applyTheme();
     this.initBackgroundSetting();
     this.showHomeView(false);
@@ -214,6 +215,48 @@ class AnimalKingdomApp {
     this.setupGlobalSearch();
     this.updateFavoritesCount();
     window.AK_GAME.initGame();
+  }
+
+  initI18n() {
+    if (window.AK_I18N) {
+      window.AK_I18N.updateSwitcherButtons();
+      window.AK_I18N.applyToDom();
+    }
+  }
+
+  setLanguage(lang) {
+    if (!window.AK_I18N) return;
+    if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
+      window.AK_AUDIO.playPop(520);
+    }
+    window.AK_I18N.setLanguage(lang);
+    const langNames = { en: 'English', zh: '繁體中文 (Traditional Chinese)', es: 'Español' };
+    const label = langNames[lang] || lang;
+    const toastMsg = window.AK_I18N.t('toast_lang_switched') || `🌐 Language switched to: ${label}`;
+    this.showToast(toastMsg);
+  }
+
+  onLanguageChange(lang) {
+    // Re-render current active view
+    if (this.currentView === 'home') {
+      this.renderAnimalOfTheDay();
+    } else if (this.currentView === 'category') {
+      this.renderCategoryZone();
+    }
+
+    // If modal is open, re-render modal with translated texts
+    if (this.currentAnimalId) {
+      const modal = document.getElementById('animal-modal');
+      if (modal && !modal.classList.contains('hidden')) {
+        this.openAnimalDetail(this.currentAnimalId);
+      }
+    }
+
+    // Also update background modal cards if open
+    const bgModal = document.getElementById('bg-settings-modal');
+    if (bgModal && !bgModal.classList.contains('hidden')) {
+      this.renderBackgroundCards();
+    }
   }
 
   toggleTheme() {
@@ -566,48 +609,65 @@ class AnimalKingdomApp {
     if (!aodData || !aodData.animal) return;
     const a = aodData.animal;
     const isFav = this.favorites.has(a.id);
-    const itemType = a.category === 'gemstones' ? 'GEMSTONE OF THE DAY' : (a.category === 'plants' ? 'PLANT OF THE DAY' : (a.category === 'reptiles' ? 'REPTILE OF THE DAY' : (a.category === 'birds' ? 'BIRD OF THE DAY' : 'ANIMAL OF THE DAY')));
+    const itemType = a.category === 'gemstones' ? (window.AK_I18N ? window.AK_I18N.t('aod_item_gem') : 'GEMSTONE OF THE DAY') :
+                     (a.category === 'plants' ? (window.AK_I18N ? window.AK_I18N.t('aod_item_plant') : 'PLANT OF THE DAY') :
+                     (a.category === 'reptiles' ? (window.AK_I18N ? window.AK_I18N.t('aod_item_reptile') : 'REPTILE OF THE DAY') :
+                     (a.category === 'birds' ? (window.AK_I18N ? window.AK_I18N.t('aod_item_bird') : 'BIRD OF THE DAY') :
+                     (window.AK_I18N ? window.AK_I18N.t('aod_item_animal') : 'ANIMAL OF THE DAY'))));
     const soundIcon = a.category === 'gemstones' ? '🔔' : (a.category === 'plants' ? '🌱' : '🔊');
-    const soundLabel = a.category === 'gemstones' ? 'Chime' : (a.category === 'plants' ? 'Nature' : 'Sound');
+    const soundLabel = a.category === 'gemstones' ? (window.AK_I18N ? window.AK_I18N.t('card_chime') : 'Chime') :
+                       (a.category === 'plants' ? (window.AK_I18N ? window.AK_I18N.t('card_nature') : 'Nature') :
+                       (window.AK_I18N ? window.AK_I18N.t('card_sound') : 'Sound'));
+    const localizedName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
+    const localizedStatus = window.AK_I18N ? window.AK_I18N.getStatusName(a.endangered) : a.endangered;
+    const localizedCat = window.AK_I18N ? window.AK_I18N.t('zone_' + a.category) : (this.categoryMeta[a.category] ? this.categoryMeta[a.category].title : a.category);
+
+    const surpriseBadge = window.AK_I18N ? window.AK_I18N.t('aod_surprise_spotlight') : 'SURPRISE SPOTLIGHT';
+    const specHabitatLabel = window.AK_I18N ? window.AK_I18N.t('spec_habitat') : 'Habitat';
+    const specDietLabel = a.category === 'gemstones' ? (window.AK_I18N ? window.AK_I18N.t('spec_hardness') : 'Hardness') : (window.AK_I18N ? window.AK_I18N.t('spec_diet') : 'Diet');
+    const specFactLabel = window.AK_I18N ? window.AK_I18N.t('spec_fact') : 'Fact';
+    const btnStoryLabel = window.AK_I18N ? window.AK_I18N.t('btn_story') : '📖 Story';
+    const btnSurpriseLabel = window.AK_I18N ? window.AK_I18N.t('btn_surprise') : '🎲 Surprise Me';
+    const btnFullInfoLabel = window.AK_I18N ? window.AK_I18N.t('btn_full_info') : '🔍 Full Info ➡️';
 
     aodContainer.innerHTML = `
       <div class="aod-compact-card">
         <div class="aod-compact-thumb-box" onclick="window.app.openAnimalDetail('${a.id}')" title="Click to view full card details">
           <img src="${this.formatImageUrl(a.image, 500)}" alt="${a.name}" class="aod-compact-img" onerror="window.app.handleImageError(this, '${a.category}', '${a.emoji}', '${a.name.replace(/'/g, "\\'")}')">
           <div class="aod-compact-img-badges">
-            <span class="aod-cat-tag ${a.category}">${this.categoryMeta[a.category] ? this.categoryMeta[a.category].emoji : '🐾'} ${this.categoryMeta[a.category] ? this.categoryMeta[a.category].title : a.category}</span>
-            <span class="aod-status-tag status-${this.getStatusClass(a.endangered)}">${a.endangered}</span>
+            <span class="aod-cat-tag ${a.category}">${this.categoryMeta[a.category] ? this.categoryMeta[a.category].emoji : '🐾'} ${localizedCat}</span>
+            <span class="aod-status-tag status-${this.getStatusClass(a.endangered)}">${localizedStatus}</span>
           </div>
         </div>
         <div class="aod-compact-info">
           <div class="aod-compact-top-bar">
-            <span class="aod-compact-badge">⭐ ${aodData.isToday ? itemType : 'SURPRISE SPOTLIGHT'} • ${aodData.dateStr}</span>
+            <span class="aod-compact-badge">⭐ ${aodData.isToday ? itemType : surpriseBadge} • ${aodData.dateStr}</span>
             <button class="btn-fav btn-compact-fav ${isFav ? 'active' : ''}" onclick="window.app.toggleFavorite('${a.id}', this)" title="Save to Favorites">
               ${isFav ? '❤️' : '🤍'}
             </button>
           </div>
           <div class="aod-compact-title-row" onclick="window.app.openAnimalDetail('${a.id}')">
-            <h3 class="aod-compact-title">${a.emoji} ${a.name}</h3>
+            <h3 class="aod-compact-title">${a.emoji} ${localizedName}</h3>
             <span class="aod-compact-sci">${a.scientific}</span>
           </div>
           <p class="aod-compact-tagline">"${this.truncateText(a.tagline, 120)}"</p>
           <div class="aod-compact-specs">
-            <span class="compact-spec-item">🌍 <strong>Habitat:</strong> ${this.truncateText(a.habitat, 34)}</span>
-            <span class="compact-spec-item">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} <strong>${a.category === 'gemstones' ? 'Hardness' : 'Diet'}:</strong> ${this.truncateText(a.diet, 30)}</span>
-            <span class="compact-spec-item">💡 <strong>Fact:</strong> ${this.truncateText(a.funFact, 48)}</span>
+            <span class="compact-spec-item">🌍 <strong>${specHabitatLabel}:</strong> ${this.truncateText(a.habitat, 34)}</span>
+            <span class="compact-spec-item">${a.category === 'gemstones' ? '💎' : (a.category === 'plants' ? '🌱' : '🍽️')} <strong>${specDietLabel}:</strong> ${this.truncateText(a.diet, 30)}</span>
+            <span class="compact-spec-item">💡 <strong>${specFactLabel}:</strong> ${this.truncateText(a.funFact, 48)}</span>
           </div>
           <div class="aod-compact-actions">
             <button class="btn-compact-act btn-listen" onclick="window.app.readAloud('${a.id}', this)" title="Listen to read-aloud story">
-              📖 Story
+              ${btnStoryLabel}
             </button>
             <button class="btn-compact-act btn-sound" onclick="window.app.playSound('${a.id}', this)" title="Hear audio vocalization">
               ${soundIcon} ${soundLabel}
             </button>
             <button class="btn-compact-act btn-surprise" onclick="window.app.surpriseMe()" title="Pick random creature or rock">
-              🎲 Surprise Me
+              ${btnSurpriseLabel}
             </button>
             <button class="btn-compact-act btn-open-card" onclick="window.app.openAnimalDetail('${a.id}')" title="Open full information modal">
-              🔍 Full Info ➡️
+              ${btnFullInfoLabel}
             </button>
           </div>
         </div>
@@ -795,17 +855,17 @@ class AnimalKingdomApp {
     const counterEl = document.getElementById('category-count-badge');
     if (counterEl) {
       if (this.isGlobalSearch) {
-        counterEl.innerText = `Found ${items.length} species & gems across all zones`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('found_global', { count: items.length }) : `Found ${items.length} species & gems across all zones`;
       } else if (this.currentCategory === 'gemstones') {
-        counterEl.innerText = `Showing ${items.length} Gemstones & Minerals`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('showing_gems', { count: items.length }) : `Showing ${items.length} Gemstones & Minerals`;
       } else if (this.currentCategory === 'reptiles') {
-        counterEl.innerText = `Showing ${items.length} Reptiles & Serpents`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('showing_reptiles', { count: items.length }) : `Showing ${items.length} Reptiles & Serpents`;
       } else if (this.currentCategory === 'birds') {
-        counterEl.innerText = `Showing ${items.length} Bird Species`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('showing_birds', { count: items.length }) : `Showing ${items.length} Bird Species`;
       } else if (this.currentCategory === 'land') {
-        counterEl.innerText = `Showing ${items.length} Land Animals`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('showing_land', { count: items.length }) : `Showing ${items.length} Land Animals`;
       } else {
-        counterEl.innerText = `Showing ${items.length} species`;
+        counterEl.innerText = window.AK_I18N ? window.AK_I18N.t('showing_species', { count: items.length }) : `Showing ${items.length} species`;
       }
     }
 
@@ -813,9 +873,9 @@ class AnimalKingdomApp {
       gridEl.innerHTML = `
         <div class="empty-state">
           <div class="empty-icon">🔍</div>
-          <h3>No creatures or specimens found</h3>
-          <p>Try searching for a different keyword or clear filters!</p>
-          <button class="btn-secondary" onclick="window.app.clearSearch()">Clear Filters</button>
+          <h3>${window.AK_I18N ? window.AK_I18N.t('empty_title') : 'No creatures or specimens found'}</h3>
+          <p>${window.AK_I18N ? window.AK_I18N.t('empty_desc') : 'Try searching for a different keyword or clear filters!'}</p>
+          <button class="btn-secondary" onclick="window.app.clearSearch()">${window.AK_I18N ? window.AK_I18N.t('btn_clear_filters') : 'Clear Filters'}</button>
         </div>
       `;
       return;
@@ -824,22 +884,29 @@ class AnimalKingdomApp {
     gridEl.innerHTML = items.map(a => {
       const isFav = this.favorites.has(a.id);
       const soundIcon = a.category === 'gemstones' ? '🔔' : (a.category === 'plants' ? '🌱' : '🔊');
+      const soundLabel = a.category === 'gemstones' ? (window.AK_I18N ? window.AK_I18N.t('card_chime') : 'Chime') :
+                         (a.category === 'plants' ? (window.AK_I18N ? window.AK_I18N.t('card_nature') : 'Nature') :
+                         (window.AK_I18N ? window.AK_I18N.t('card_sound') : 'Sound'));
       const soundTitle = a.category === 'gemstones' ? 'Crystal Chime' : (a.category === 'plants' ? 'Nature Chime' : 'Hear Animal Sound');
+      const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
+      const locStatus = window.AK_I18N ? window.AK_I18N.getStatusName(a.endangered) : a.endangered;
+      const learnMoreText = window.AK_I18N ? window.AK_I18N.t('card_learn_more') : 'Learn More & Story ➡️';
+
       return `
         <div class="species-card" onclick="window.app.openAnimalDetail('${a.id}')">
           <div class="card-thumb-wrap">
             <img class="card-thumb" src="${this.formatImageUrl(a.image, 500)}" alt="${a.name}" loading="lazy" onerror="window.app.handleImageError(this, '${a.category}', '${a.emoji}', '${a.name.replace(/'/g, "\\'")}')">
-            <span class="badge badge-status status-${this.getStatusClass(a.endangered)}">${a.endangered}</span>
+            <span class="badge badge-status status-${this.getStatusClass(a.endangered)}">${locStatus}</span>
             <button class="card-fav-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); window.app.toggleFavorite('${a.id}', this)" title="Save to Favorites">
               ${isFav ? '❤️' : '🤍'}
             </button>
             <button class="card-sound-btn" onclick="event.stopPropagation(); window.app.playSound('${a.id}', this)" title="${soundTitle}">
-              ${soundIcon} Sound
+              ${soundIcon} ${soundLabel}
             </button>
           </div>
           <div class="card-body">
             ${a.badgeText ? `<div class="card-geo-badge">${a.badgeText}</div>` : ''}
-            <h3 class="card-title">${a.emoji} ${a.name}</h3>
+            <h3 class="card-title">${a.emoji} ${locName}</h3>
             <div class="card-sci">${a.scientific}</div>
             <p class="card-tagline">${a.tagline}</p>
             <div class="card-meta-pills">
@@ -848,7 +915,7 @@ class AnimalKingdomApp {
             </div>
           </div>
           <div class="card-footer">
-            <span class="learn-more">Learn More & Story ➡️</span>
+            <span class="learn-more">${learnMoreText}</span>
           </div>
         </div>
       `;
@@ -895,17 +962,52 @@ class AnimalKingdomApp {
     const isPlant = animal.category === 'plants';
     const isReptile = animal.category === 'reptiles';
 
-    const box1Label = isGem ? 'Geological Origin & Mine Locations' : (isPlant ? 'Native Region & Climate' : (isReptile ? 'Native Range & Ecosystem' : 'Where They Live (Habitat)'));
+    const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(animal) : animal.name;
+    const locStatus = window.AK_I18N ? window.AK_I18N.getStatusName(animal.endangered) : animal.endangered;
+    const locPrevName = window.AK_I18N ? window.AK_I18N.getSpeciesName(prevAnimal) : prevAnimal.name;
+    const locNextName = window.AK_I18N ? window.AK_I18N.getSpeciesName(nextAnimal) : nextAnimal.name;
+    const locCat = window.AK_I18N ? window.AK_I18N.t('zone_' + animal.category) : (catMeta ? catMeta.title : animal.category);
+
+    const box1Label = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_origin_gem') : 'Geological Origin & Mine Locations') :
+                      (isPlant ? (window.AK_I18N ? window.AK_I18N.t('modal_origin_plant') : 'Native Region & Climate') :
+                      (isReptile ? (window.AK_I18N ? window.AK_I18N.t('modal_origin_reptile') : 'Native Range & Ecosystem') :
+                      (window.AK_I18N ? window.AK_I18N.t('modal_origin_habitat') : 'Where They Live (Habitat)')));
     const box1Icon = isGem ? '⛰️' : (isPlant ? '🌿' : (isReptile ? '🗺️' : '🌍'));
 
-    const box2Label = isGem ? 'Chemical Formula & Crystal System' : (isPlant ? 'Sunlight & Soil Needs' : (isReptile ? 'Diet & Hunting Strategy' : 'What They Eat (Diet)'));
+    const box2Label = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_diet_gem') : 'Chemical Formula & Crystal System') :
+                      (isPlant ? (window.AK_I18N ? window.AK_I18N.t('modal_diet_plant') : 'Sunlight & Soil Needs') :
+                      (isReptile ? (window.AK_I18N ? window.AK_I18N.t('modal_diet_reptile') : 'Diet & Hunting Strategy') :
+                      (window.AK_I18N ? window.AK_I18N.t('modal_diet_label') : 'What They Eat (Diet)')));
     const box2Icon = isGem ? '🔬' : (isPlant ? '☀️' : (isReptile ? '🦗' : '🍽️'));
 
-    const box3Label = isGem ? 'Gemstone Rarity & Status' : (isPlant ? 'Blooming Season & Status' : (isReptile ? 'Conservation Status' : 'Are They Endangered? (Status)'));
+    const box3Label = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_status_gem') : 'Gemstone Rarity & Status') :
+                      (isPlant ? (window.AK_I18N ? window.AK_I18N.t('modal_status_plant') : 'Blooming Season & Status') :
+                      (isReptile ? (window.AK_I18N ? window.AK_I18N.t('modal_status_reptile') : 'Conservation Status') :
+                      (window.AK_I18N ? window.AK_I18N.t('modal_status_label') : 'Are They Endangered? (Status)')));
     const box3Icon = isGem ? '💎' : (isPlant ? '🌸' : (isReptile ? '🛡️' : '🛡️'));
 
-    const box4Label = isGem ? 'Mohs Hardness & Durability' : (isPlant ? 'Pollinators & Garden Uses' : (isReptile ? 'Predators, Defense & Venom' : 'What Are Their Predators?'));
+    const box4Label = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_pred_gem') : 'Mohs Hardness & Durability') :
+                      (isPlant ? (window.AK_I18N ? window.AK_I18N.t('modal_pred_plant') : 'Pollinators & Garden Uses') :
+                      (isReptile ? (window.AK_I18N ? window.AK_I18N.t('modal_pred_reptile') : 'Predators, Defense & Venom') :
+                      (window.AK_I18N ? window.AK_I18N.t('modal_pred_label') : 'What Are Their Predators?')));
     const box4Icon = isGem ? '🔨' : (isPlant ? '🐝' : (isReptile ? '⚠️' : '⚠️'));
+
+    const overviewTitle = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_story_gem_overview') : '💎 Geological Discovery & Overview') :
+                          (isReptile ? (window.AK_I18N ? window.AK_I18N.t('modal_story_reptile_overview') : '🦎 Reptilian Profile & Overview') :
+                          (window.AK_I18N ? window.AK_I18N.t('modal_story_overview') : '📖 Story & Overview'));
+
+    const soundBtnLabel = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_sound_gem') : '🔔 Crystal Chime') :
+                          (isPlant ? (window.AK_I18N ? window.AK_I18N.t('modal_sound_plant') : '🌱 Nature Chime') :
+                          (window.AK_I18N ? window.AK_I18N.t('modal_sound_animal') : '🔊 Animal Sound'));
+
+    const storyBtnLabel = isGem ? (window.AK_I18N ? window.AK_I18N.t('modal_story_gem') : '📖 Crystal Story') :
+                          (window.AK_I18N ? window.AK_I18N.t('modal_story_read') : '📖 Listen to Story');
+
+    const favBtnLabel = isFav ? (window.AK_I18N ? window.AK_I18N.t('modal_fav_saved') : '❤️ Saved') :
+                        (window.AK_I18N ? window.AK_I18N.t('modal_fav_add') : '🤍 Favorite');
+
+    const xrayBtnLabel = window.AK_I18N ? window.AK_I18N.t('modal_xray') : '🔬 X-Ray Anatomy';
+    const arenaBtnLabel = window.AK_I18N ? window.AK_I18N.t('modal_arena') : '⚔️ Send to Arena';
 
     const howTheyLive = window.CardKnowledgeEngine ? window.CardKnowledgeEngine.getHowTheyLive(animal) : [];
     const superpowers = window.CardKnowledgeEngine ? window.CardKnowledgeEngine.getSuperpowers(animal) : [];
@@ -918,33 +1020,33 @@ class AnimalKingdomApp {
         <div class="modal-hero-image">
           <img src="${this.formatImageUrl(animal.image, 900)}" alt="${animal.name}" onerror="window.app.handleImageError(this, '${animal.category}', '${animal.emoji}', '${animal.name.replace(/'/g, "\\'")}')">
           <div class="modal-hero-badges">
-            <span class="badge badge-category">${catMeta ? catMeta.emoji + ' ' + catMeta.title : '💎 Gemstones'}</span>
+            <span class="badge badge-category">${catMeta ? catMeta.emoji + ' ' + locCat : '💎 ' + locCat}</span>
             ${animal.badgeText ? `<span class="badge badge-geo">${animal.badgeText}</span>` : ''}
-            <span class="badge badge-status status-${this.getStatusClass(animal.endangered)}">${animal.endangered}</span>
+            <span class="badge badge-status status-${this.getStatusClass(animal.endangered)}">${locStatus}</span>
           </div>
         </div>
 
         <div class="modal-body-content">
           <div class="modal-header-row">
             <div>
-              <h2 class="modal-animal-name">${animal.emoji} ${animal.name}</h2>
+              <h2 class="modal-animal-name">${animal.emoji} ${locName}</h2>
               <div class="modal-sci-name">${isGem ? 'Composition & Hardness' : (isPlant ? 'Botanical Name' : (isReptile ? 'Taxonomy / Scientific' : 'Scientific'))}: <em>${animal.scientific}</em></div>
             </div>
               ${!isGem && !isPlant ? `
               <button class="btn-voice-sound" style="background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%); color: #fff; border: 1px solid #818cf8;" onclick="window.AK_ANATOMY.openAnatomyModal('${animal.id}')" title="Scan Inside Skeleton, Digestion & Organs">
-                🔬 X-Ray Anatomy
+                ${xrayBtnLabel}
               </button>
               <button class="btn-voice-sound" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: #fff; border: 1px solid #f87171;" onclick="window.app.openBattleArena('${animal.id}')" title="Test in Creature Face-Off Arena">
-                ⚔️ Send to Arena
+                ${arenaBtnLabel}
               </button>` : ''}
-              <button class="btn-voice-sound" id="modal-sound-btn" onclick="window.app.playSound('${animal.id}', this)" title="Hear Real Animal Call / Sound">
-                ${isGem ? '🔔 Crystal Chime' : (isPlant ? '🌱 Nature Chime' : '🔊 Animal Sound')}
+              <button class="btn-voice-sound" id="modal-sound-btn" onclick="window.app.playSound('${animal.id}', this)" title="Hear Real Sound">
+                ${soundBtnLabel}
               </button>
               <button class="btn-voice-read" id="modal-narrate-btn" onclick="window.app.readAloud('${animal.id}', this)" title="Read Aloud Full Story">
-                ${isGem ? '📖 Crystal Story' : '📖 Listen to Story'}
+                ${storyBtnLabel}
               </button>
               <button class="btn-fav-large ${isFav ? 'active' : ''}" onclick="window.app.toggleFavorite('${animal.id}', this)">
-                ${isFav ? '❤️ Saved' : '🤍 Favorite'}
+                ${favBtnLabel}
               </button>
             </div>
           </div>
@@ -952,7 +1054,7 @@ class AnimalKingdomApp {
           <div class="modal-tagline-quote">"${animal.tagline}"</div>
 
           <div class="modal-section-box">
-            <h4 class="box-heading">${isGem ? '💎 Geological Discovery & Overview' : (isReptile ? '🦎 Reptilian Profile & Overview' : '📖 Story & Overview')}</h4>
+            <h4 class="box-heading">${overviewTitle}</h4>
             <p class="modal-desc-text">${animal.description}</p>
           </div>
 
@@ -1017,7 +1119,7 @@ class AnimalKingdomApp {
               <div class="box-icon">${box3Icon}</div>
               <div>
                 <strong>${box3Label}</strong>
-                <p>${animal.endangered}</p>
+                <p>${locStatus}</p>
               </div>
             </div>
 
@@ -1037,10 +1139,10 @@ class AnimalKingdomApp {
 
           <div class="modal-nav-arrows">
             <button class="btn-nav-prev" onclick="window.app.openAnimalDetail('${prevAnimal.id}')">
-              ⬅️ ${prevAnimal.name}
+              ⬅️ ${locPrevName}
             </button>
             <button class="btn-nav-next" onclick="window.app.openAnimalDetail('${nextAnimal.id}')">
-              ${nextAnimal.name} ➡️
+              ${locNextName} ➡️
             </button>
           </div>
         </div>

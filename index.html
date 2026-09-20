@@ -40,8 +40,8 @@
           <img src="images/logo.jpg" alt="Animal Kingdom Cub Emblem" class="logo-mascot-img">
         </div>
         <div class="logo-text">
-          <h1 class="logo-title">THE ANIMAL KINGDOM</h1>
-          <span class="logo-badge">780+ Creatures, Plants & Gemstones</span>
+          <h1 class="logo-title" data-i18n="logo_title">THE ANIMAL KINGDOM</h1>
+          <span class="logo-badge" data-i18n="logo_badge">780+ Creatures, Plants & Gemstones</span>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         <div class="header-search-wrap" style="margin: 0; max-width: 100%;">
           <div class="search-input-box">
             <span class="search-icon-symbol">🔍</span>
-            <input type="text" id="global-search-input" placeholder="Search 780+ species, reptiles & gems..." autocomplete="off" spellcheck="false">
+            <input type="text" id="global-search-input" data-i18n-placeholder="search_placeholder" placeholder="Search 780+ species, reptiles & gems..." autocomplete="off" spellcheck="false">
             <button id="global-search-clear" class="btn-clear-search-global hidden" onclick="window.app.clearGlobalSearch()" title="Clear search">✕</button>
             <span class="search-shortcut-badge" title="Press / key to search">/</span>
           </div>
@@ -60,7 +60,7 @@
         </div>
         
         <!-- Settings Row under search -->
-        <div class="header-settings-row" style="display: flex; justify-content: center; gap: 8px;">
+        <div class="header-settings-row" style="display: flex; justify-content: center; align-items: center; gap: 8px;">
           <button class="btn-icon btn-theme-toggle" id="theme-toggle-btn" onclick="window.app && window.app.toggleTheme()" title="Toggle Light / Dark Mode" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
             ☀️
           </button>
@@ -70,33 +70,39 @@
           <button class="btn-icon" id="bg-setting-btn" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers" style="font-size: 1rem; width: 32px; height: 32px; padding: 0;">
             🖼️
           </button>
+          <!-- Multi-Language Switcher (English / 繁體中文 / Español) -->
+          <div class="lang-switch-wrap" id="lang-switcher" title="Switch Language / 切換語言 / Cambiar Idioma">
+            <button class="btn-lang-toggle active" data-lang="en" onclick="window.app && window.app.setLanguage('en')" title="English">EN</button>
+            <button class="btn-lang-toggle" data-lang="zh" onclick="window.app && window.app.setLanguage('zh')" title="繁體中文 (Traditional Chinese)">中</button>
+            <button class="btn-lang-toggle" data-lang="es" onclick="window.app && window.app.setLanguage('es')" title="Español (Spanish)">ES</button>
+          </div>
         </div>
       </div>
 
       <div class="header-controls">
         <button class="btn-header-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
-          🖼️ Habitats
+          <span data-i18n="nav_habitats">🖼️ Habitats</span>
         </button>
         <button class="btn-header-pill btn-gallery-glow" onclick="window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()" title="Explore Traditional Wildlife Art Gallery">
-          🎨 Art Gallery
+          <span data-i18n="nav_gallery">🎨 Art Gallery</span>
         </button>
         <button class="btn-header-pill btn-weather-glow" onclick="window.AK_WEATHER && window.AK_WEATHER.openWeatherModal()" title="Interactive Animal Weather Simulator & Irvine Radar">
-          🌦️ Animal Weather <span class="badge-live-pulse">LIVE</span>
+          <span data-i18n="nav_weather">🌦️ Animal Weather</span> <span class="badge-live-pulse">LIVE</span>
         </button>
         <button class="btn-header-pill btn-anatomy-glow" onclick="window.AK_ANATOMY && window.AK_ANATOMY.openAnatomyModal()" title="Inside Animal X-Ray & Anatomy Scanner">
-          🔬 Anatomy X-Ray
+          <span data-i18n="nav_anatomy">🔬 Anatomy X-Ray</span>
         </button>
         <button class="btn-header-pill btn-migration-glow" onclick="window.AK_MIGRATION && window.AK_MIGRATION.openMigrationModal()" title="Live Global Wildlife Migration & GPS Tracker">
-          🗺️ Migration Map <span class="badge-live-pulse">🔴 LIVE</span>
+          <span data-i18n="nav_migration">🗺️ Migration Map</span> <span class="badge-live-pulse">🔴 LIVE</span>
         </button>
         <button class="btn-header-pill btn-arena-glow" onclick="window.app.openBattleArena()" title="Creature Face-Off Battle Arena">
-          ⚔️ Battle Arena
+          <span data-i18n="nav_arena">⚔️ Battle Arena</span>
         </button>
         <button class="btn-header-pill" onclick="window.app.openQuiz()" title="Play Mystery Safari Quiz">
-          🎮 Quiz Game
+          <span data-i18n="nav_quiz">🎮 Quiz Game</span>
         </button>
         <button class="btn-header-pill" onclick="window.app.openFavoritesModal()" title="View Favorites">
-          ❤️ Favorites (<span id="favorites-counter">0</span>)
+          <span data-i18n="nav_favorites">❤️ Favorites</span> (<span id="favorites-counter">0</span>)
         </button>
       </div>
     </div>
@@ -110,8 +116,8 @@
       <!-- COMPACT ANIMAL / PLANT / ROCK OF THE DAY -->
       <section class="hub-hero-section compact-hub">
         <div class="compact-hub-header">
-          <span class="badge-hub">🌟 HOME HUB</span>
-          <span class="compact-hub-subtitle">Daily Featured Discovery from Earth's Wild Kingdoms</span>
+          <span class="badge-hub" data-i18n="hub_badge">🌟 HOME HUB</span>
+          <span class="compact-hub-subtitle" data-i18n="hub_subtitle">Daily Featured Discovery from Earth's Wild Kingdoms</span>
         </div>
         <div id="aod-container" class="aod-wrapper">
           <!-- Rendered dynamically by animalOfDay.js & app.js -->
@@ -123,19 +129,19 @@
       <!-- ========================================================= -->
       <section class="new-apps-showcase-section">
         <div class="new-badge-container">
-          <span class="badge-new-flash">✨ NEW</span>
-          <h2 class="new-section-title">Cool Interactive Apps &amp; Fine Art Studio</h2>
-          <p class="new-section-subtitle">Jump into our newest high-speed interactive tools, fine-art galleries, and live scientific trackers!</p>
+          <span class="badge-new-flash" data-i18n="new_badge">✨ NEW</span>
+          <h2 class="new-section-title" data-i18n="new_section_title">Cool Interactive Apps &amp; Fine Art Studio</h2>
+          <p class="new-section-subtitle" data-i18n="new_section_sub">Jump into our newest high-speed interactive tools, fine-art galleries, and live scientific trackers!</p>
         </div>
 
         <!-- Featured App Hero: Fine Art Gallery & Voice Studio -->
         <div class="cool-app-featured-banner" onclick="window.AK_ART_GALLERY &amp;&amp; window.AK_ART_GALLERY.openGalleryModal()" title="Launch Art Gallery">
-          <div class="cool-app-badge-tag">🔥 BRAND NEW COOL APP</div>
+          <div class="cool-app-badge-tag" data-i18n="art_badge">🔥 BRAND NEW COOL APP</div>
           <div class="cool-app-banner-content">
             <div class="cool-app-info">
-              <span class="cool-app-cat-label">🎨 FINE ART &amp; NARRATION STUDIO</span>
-              <h3 class="cool-app-heading">Wildlife Masterpiece Art Gallery</h3>
-              <p class="cool-app-desc">
+              <span class="cool-app-cat-label" data-i18n="art_label">🎨 FINE ART &amp; NARRATION STUDIO</span>
+              <h3 class="cool-app-heading" data-i18n="art_title">Wildlife Masterpiece Art Gallery</h3>
+              <p class="cool-app-desc" data-i18n-html="art_desc">
                 Step into a fine-art museum featuring live wildlife rendered in authentic <strong>Pastel</strong>, <strong>Watercolor</strong>, <strong>Colored Pencil</strong>, and <strong>Acrylic Paint</strong>. Inspect intricate traditional techniques with full voice narration!
               </p>
               <div class="cool-app-tags-row">
@@ -146,7 +152,7 @@
                 <span class="cool-app-pill">🔊 Voice Narration</span>
               </div>
               <div class="cool-app-btn-row">
-                <button class="btn-launch-cool-app" onclick="event.stopPropagation(); window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()">
+                <button class="btn-launch-cool-app" data-i18n="art_launch" onclick="event.stopPropagation(); window.AK_ART_GALLERY && window.AK_ART_GALLERY.openGalleryModal()">
                   🚀 Launch Art Gallery Now →
                 </button>
               </div>
@@ -176,10 +182,10 @@
             <div class="cool-card-icon-wrap bg-weather">🌦️</div>
             <div class="cool-card-text">
               <div class="cool-card-header-row">
-                <h4 class="cool-card-title">Animal Weather Simulator</h4>
+                <h4 class="cool-card-title" data-i18n="cool_weather_title">Animal Weather Simulator</h4>
                 <span class="cool-card-badge live">LIVE</span>
               </div>
-              <p class="cool-card-desc">Simulate 8 real-world biomes &amp; sync with live Irvine, California weather radar.</p>
+              <p class="cool-card-desc" data-i18n="cool_weather_desc">Simulate 8 real-world biomes &amp; sync with live Irvine, California weather radar.</p>
             </div>
             <span class="cool-card-arrow">→</span>
           </div>
@@ -188,10 +194,10 @@
             <div class="cool-card-icon-wrap bg-anatomy">🔬</div>
             <div class="cool-card-text">
               <div class="cool-card-header-row">
-                <h4 class="cool-card-title">Anatomy X-Ray Scanner</h4>
+                <h4 class="cool-card-title" data-i18n="cool_anatomy_title">Anatomy X-Ray Scanner</h4>
                 <span class="cool-card-badge">HOT</span>
               </div>
-              <p class="cool-card-desc">Inspect inside animal skeletons, muscular systems, and internal organ bio-layers.</p>
+              <p class="cool-card-desc" data-i18n="cool_anatomy_desc">Inspect inside animal skeletons, muscular systems, and internal organ bio-layers.</p>
             </div>
             <span class="cool-card-arrow">→</span>
           </div>
@@ -200,10 +206,10 @@
             <div class="cool-card-icon-wrap bg-migration">🗺️</div>
             <div class="cool-card-text">
               <div class="cool-card-header-row">
-                <h4 class="cool-card-title">Global Wildlife Migration</h4>
+                <h4 class="cool-card-title" data-i18n="cool_migration_title">Global Wildlife Migration</h4>
                 <span class="cool-card-badge live">LIVE GPS</span>
               </div>
-              <p class="cool-card-desc">Track real-time GPS telemetry routes of whales, hawks, monarch butterflies &amp; turtles.</p>
+              <p class="cool-card-desc" data-i18n="cool_migration_desc">Track real-time GPS telemetry routes of whales, hawks, monarch butterflies &amp; turtles.</p>
             </div>
             <span class="cool-card-arrow">→</span>
           </div>
@@ -212,10 +218,10 @@
             <div class="cool-card-icon-wrap bg-arena">⚔️</div>
             <div class="cool-card-text">
               <div class="cool-card-header-row">
-                <h4 class="cool-card-title">Safari Battle Arena</h4>
+                <h4 class="cool-card-title" data-i18n="cool_arena_title">Safari Battle Arena</h4>
                 <span class="cool-card-badge">VS</span>
               </div>
-              <p class="cool-card-desc">Simulate stat-based matchups between creatures (e.g., Lion vs Tiger).</p>
+              <p class="cool-card-desc" data-i18n="cool_arena_desc">Simulate stat-based matchups between creatures (e.g., Lion vs Tiger).</p>
             </div>
             <span class="cool-card-arrow">→</span>
           </div>
@@ -224,15 +230,13 @@
             <div class="cool-card-icon-wrap bg-time">⏳</div>
             <div class="cool-card-text">
               <div class="cool-card-header-row">
-                <h4 class="cool-card-title">Evolution Time Machine</h4>
+                <h4 class="cool-card-title" data-i18n="cool_time_title">Evolution Time Machine</h4>
                 <span class="cool-card-badge new">NEW</span>
               </div>
-              <p class="cool-card-desc">Travel back millions of years to see the giant ancient ancestors of modern animals.</p>
+              <p class="cool-card-desc" data-i18n="cool_time_desc">Travel back millions of years to see the giant ancient ancestors of modern animals.</p>
             </div>
             <span class="cool-card-arrow">➔</span>
           </div>
-
-          
 
         </div>
       </section>
@@ -240,21 +244,24 @@
       <!-- QUICK SEARCH & DISCOVERY BAR -->
       <section class="quick-search-section">
         <div class="quick-search-card">
+      <!-- QUICK SEARCH & DISCOVERY BAR -->
+      <section class="quick-search-section">
+        <div class="quick-search-card">
           <div class="quick-search-header">
-            <span class="quick-search-badge">🔎 EXPEDITION SEARCH</span>
-            <h3 class="quick-search-title">Search Any Creature, Plant, Reptile, or Gemstone</h3>
-            <p class="quick-search-desc">Search through all 780+ species, reptiles, and minerals by common name, scientific name, diet, or habitat!</p>
+            <span class="quick-search-badge" data-i18n="search_badge">🔎 EXPEDITION SEARCH</span>
+            <h3 class="quick-search-title" data-i18n="search_title">Search Any Creature, Plant, Reptile, or Gemstone</h3>
+            <p class="quick-search-desc" data-i18n="search_desc">Search through all 780+ species, reptiles, and minerals by common name, scientific name, diet, or habitat!</p>
           </div>
 
           <div class="quick-search-input-wrap">
             <span class="quick-input-icon">🔍</span>
-            <input type="text" id="hero-search-input" placeholder="Search across 840+ species (e.g. Leopard Gecko, Ball Python, King Cobra, Chameleon, Rose, Diamond)..." autocomplete="off" spellcheck="false">
+            <input type="text" id="hero-search-input" data-i18n-placeholder="search_hero_placeholder" placeholder="Search across 840+ species (e.g. Leopard Gecko, Ball Python, King Cobra, Chameleon, Rose, Diamond)..." autocomplete="off" spellcheck="false">
             <button id="hero-search-clear" class="btn-clear-search-hero hidden" onclick="window.app.clearHeroSearch()" title="Clear and exit search">✕</button>
-            <button class="btn-quick-search-go" onclick="window.app.triggerHeroSearch()">Search All 🚀</button>
+            <button class="btn-quick-search-go" data-i18n="btn_search_go" onclick="window.app.triggerHeroSearch()">Search All 🚀</button>
           </div>
 
           <div class="popular-search-tags">
-            <span class="tags-label">Popular Searches:</span>
+            <span class="tags-label" data-i18n="popular_searches_label">Popular Searches:</span>
             <button class="tag-pill" onclick="window.app.applySearchTag('Leopard Gecko')">🦎 Leopard Gecko</button>
             <button class="tag-pill" onclick="window.app.applySearchTag('Ball Python')">🐍 Ball Python</button>
             <button class="tag-pill" onclick="window.app.applySearchTag('King Cobra')">👑 King Cobra</button>
@@ -277,9 +284,9 @@
       <section class="animal-zone-section" id="animal-zone">
         <div class="zone-header" id="animal-zone-header">
           <div class="zone-title-wrap">
-            <span class="badge-zone">🐾 DISCOVERY ZONES</span>
-            <h2 class="zone-main-title">Earth Discovery Zones</h2>
-            <p class="zone-instructions">Select any zone below to enter its gallery and view all species, reptiles, plants, or gemstones!</p>
+            <span class="badge-zone" data-i18n="zones_badge">🐾 DISCOVERY ZONES</span>
+            <h2 class="zone-main-title" data-i18n="zones_title">Earth Discovery Zones</h2>
+            <p class="zone-instructions" data-i18n="zones_desc">Select any zone below to enter its gallery and view all species, reptiles, plants, or gemstones!</p>
           </div>
         </div>
 
@@ -289,12 +296,12 @@
           <button class="cat-nav-btn" data-category="amphibians" onclick="window.app.selectCategory('amphibians')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Red-eyed_Tree_Frog_%28Agalychnis_callidryas%29_1.png/500px-Red-eyed_Tree_Frog_%28Agalychnis_callidryas%29_1.png&w=500&output=jpg" alt="Frog" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1579380656108-328e8042d0ae?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">94 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_amphibians">94 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🐸</div>
-              <h3 class="cat-btn-name">Amphibians</h3>
-              <span class="cat-btn-desc">Explore Frogs & Salamanders →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_amphibians">Amphibians</h3>
+              <span class="cat-btn-desc" data-i18n="zone_amphibians_sub">Explore Frogs & Salamanders →</span>
             </div>
           </button>
 
@@ -302,12 +309,12 @@
           <button class="cat-nav-btn" data-category="insects" onclick="window.app.selectCategory('insects')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/500px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg&w=500&output=jpg" alt="Butterfly" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">94 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_insects">94 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🦋</div>
-              <h3 class="cat-btn-name">Insects</h3>
-              <span class="cat-btn-desc">Explore Butterflies & Beetles →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_insects">Insects</h3>
+              <span class="cat-btn-desc" data-i18n="zone_insects_sub">Explore Butterflies & Beetles →</span>
             </div>
           </button>
 
@@ -315,12 +322,12 @@
           <button class="cat-nav-btn" data-category="marine" onclick="window.app.selectCategory('marine')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Killerwhales_jumping.jpg/500px-Killerwhales_jumping.jpg&w=500&output=jpg" alt="Killer Whale" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">94 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_marine">94 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🐋</div>
-              <h3 class="cat-btn-name">Marine</h3>
-              <span class="cat-btn-desc">Explore Whales & Sharks →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_marine">Marine</h3>
+              <span class="cat-btn-desc" data-i18n="zone_marine_sub">Explore Whales & Sharks →</span>
             </div>
           </button>
 
@@ -328,12 +335,12 @@
           <button class="cat-nav-btn" data-category="land" onclick="window.app.selectCategory('land')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/500px-020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg&w=500&output=jpg" alt="Lion" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">115 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_land">115 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🦁</div>
-              <h3 class="cat-btn-name">Land Animals</h3>
-              <span class="cat-btn-desc">Explore Lions & Savanna Wildlife →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_land">Land Animals</h3>
+              <span class="cat-btn-desc" data-i18n="zone_land_sub">Explore Lions & Savanna Wildlife →</span>
             </div>
           </button>
 
@@ -341,12 +348,12 @@
           <button class="cat-nav-btn" data-category="birds" onclick="window.app.selectCategory('birds')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F56%2FAegithalos_caudatus_front-on_2.jpg&w=500&output=jpg" alt="Japanese Snow Fairy" class="cat-btn-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/56/Aegithalos_caudatus_front-on_2.jpg'">
-              <span class="cat-btn-badge">Global Atlas</span>
+              <span class="cat-btn-badge" data-i18n="species_count_birds">Global Atlas</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🐦</div>
-              <h3 class="cat-btn-name">Birds</h3>
-              <span class="cat-btn-desc">Explore Avian & Songbirds →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_birds">Birds</h3>
+              <span class="cat-btn-desc" data-i18n="zone_birds_sub">Explore Avian & Songbirds →</span>
             </div>
           </button>
 
@@ -354,12 +361,12 @@
           <button class="cat-nav-btn" data-category="plants" onclick="window.app.selectCategory('plants')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fcb%2FHibiscus_flower_TZ.jpg%2F800px-Hibiscus_flower_TZ.jpg&w=500&output=jpg" alt="Flowers & Plants" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">129 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_plants">129 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🌸</div>
-              <h3 class="cat-btn-name">Flowers & Plants</h3>
-              <span class="cat-btn-desc">Explore Flora & Blossoms →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_plants">Flowers & Plants</h3>
+              <span class="cat-btn-desc" data-i18n="zone_plants_sub">Explore Flora & Blossoms →</span>
             </div>
           </button>
 
@@ -367,12 +374,12 @@
           <button class="cat-nav-btn" data-category="gemstones" onclick="window.app.selectCategory('gemstones')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd7%2FClassic_brilliant_cut_diamond.jpg%2F800px-Classic_brilliant_cut_diamond.jpg&w=500&output=jpg" alt="Diamond Gemstone" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">108 Gemstones</span>
+              <span class="cat-btn-badge" data-i18n="species_count_gemstones">108 Gemstones</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">💎</div>
-              <h3 class="cat-btn-name">Gemstones & Minerals</h3>
-              <span class="cat-btn-desc">Explore Crystals & Diamonds →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_gemstones">Gemstones & Minerals</h3>
+              <span class="cat-btn-desc" data-i18n="zone_gemstones_sub">Explore Crystals & Diamonds →</span>
             </div>
           </button>
 
@@ -380,12 +387,12 @@
           <button class="cat-nav-btn" data-category="reptiles" onclick="window.app.selectCategory('reptiles')">
             <div class="cat-btn-img-box">
               <img src="https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F4%2F4d%2FChamaeleo_calyptratus_20070408_01.jpg%2F800px-Chamaeleo_calyptratus_20070408_01.jpg&w=500&output=jpg" alt="Chameleon Reptile" class="cat-btn-img" onerror="this.src='https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=600&q=80'">
-              <span class="cat-btn-badge">111 Species</span>
+              <span class="cat-btn-badge" data-i18n="species_count_reptiles">111 Species</span>
             </div>
             <div class="cat-btn-content">
               <div class="cat-btn-icon">🦎</div>
-              <h3 class="cat-btn-name">Reptiles</h3>
-              <span class="cat-btn-desc">Explore Chameleons & Serpents →</span>
+              <h3 class="cat-btn-name" data-i18n="zone_reptiles">Reptiles</h3>
+              <span class="cat-btn-desc" data-i18n="zone_reptiles_sub">Explore Chameleons & Serpents →</span>
             </div>
           </button>
         </div>
@@ -398,20 +405,20 @@
       <!-- Top Zone Navigation with Back to Home Button & Quick Switcher -->
       <div class="category-view-nav">
         <button class="btn-back-home" onclick="window.app.showHomeView()" title="Back to Home Categories">
-          <span class="back-arrow-icon">←</span> Back to All Discovery Zones
+          <span class="back-arrow-icon">←</span> <span data-i18n="back_home">Back to All Discovery Zones</span>
         </button>
 
         <div class="category-quick-switcher">
-          <span class="switcher-label">Quick Switch:</span>
+          <span class="switcher-label" data-i18n="quick_switch_label">Quick Switch:</span>
           <div class="switcher-pills-row">
-            <button class="cat-switch-pill" data-cat="amphibians" onclick="window.app.selectCategory('amphibians')">🐸 Amphibians</button>
-            <button class="cat-switch-pill" data-cat="insects" onclick="window.app.selectCategory('insects')">🦋 Insects</button>
-            <button class="cat-switch-pill" data-cat="marine" onclick="window.app.selectCategory('marine')">🐋 Marine</button>
-            <button class="cat-switch-pill" data-cat="land" onclick="window.app.selectCategory('land')">🦁 Land</button>
-            <button class="cat-switch-pill" data-cat="birds" onclick="window.app.selectCategory('birds')">🐦 Birds</button>
-            <button class="cat-switch-pill" data-cat="plants" onclick="window.app.selectCategory('plants')">🌸 Plants</button>
-            <button class="cat-switch-pill" data-cat="gemstones" onclick="window.app.selectCategory('gemstones')">💎 Gemstones</button>
-            <button class="cat-switch-pill" data-cat="reptiles" onclick="window.app.selectCategory('reptiles')">🦎 Reptiles</button>
+            <button class="cat-switch-pill" data-cat="amphibians" onclick="window.app.selectCategory('amphibians')" data-i18n="zone_amphibians">🐸 Amphibians</button>
+            <button class="cat-switch-pill" data-cat="insects" onclick="window.app.selectCategory('insects')" data-i18n="zone_insects">🦋 Insects</button>
+            <button class="cat-switch-pill" data-cat="marine" onclick="window.app.selectCategory('marine')" data-i18n="zone_marine">🐋 Marine</button>
+            <button class="cat-switch-pill" data-cat="land" onclick="window.app.selectCategory('land')" data-i18n="zone_land">🦁 Land</button>
+            <button class="cat-switch-pill" data-cat="birds" onclick="window.app.selectCategory('birds')" data-i18n="zone_birds">🐦 Birds</button>
+            <button class="cat-switch-pill" data-cat="plants" onclick="window.app.selectCategory('plants')" data-i18n="zone_plants">🌸 Plants</button>
+            <button class="cat-switch-pill" data-cat="gemstones" onclick="window.app.selectCategory('gemstones')" data-i18n="zone_gemstones">💎 Gemstones</button>
+            <button class="cat-switch-pill" data-cat="reptiles" onclick="window.app.selectCategory('reptiles')" data-i18n="zone_reptiles">🦎 Reptiles</button>
           </div>
         </div>
       </div>
@@ -430,24 +437,24 @@
         <div class="zone-filters-row">
           <div class="search-box">
             <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="Search by name, diet, habitat, or superpower..." autocomplete="off">
+            <input type="text" id="search-input" data-i18n-placeholder="zone_search_placeholder" placeholder="Search by name, diet, habitat, or superpower..." autocomplete="off">
             <button id="search-clear-btn" class="btn-clear-search hidden" onclick="window.app.clearSearch()" title="Clear and exit search">✕</button>
           </div>
 
           <div class="filter-pills-group">
-            <button class="filter-pill active" onclick="window.app.setFilter('all', this)">All Species</button>
-            <button class="filter-pill hidden" id="filter-pill-common" onclick="window.app.setFilter('common', this)">🏡 Pets & Common</button>
-            <button class="filter-pill hidden" id="filter-pill-flowers" onclick="window.app.setFilter('flowers', this)">🌸 Flowers & Blossoms</button>
-            <button class="filter-pill hidden" id="filter-pill-herbs" onclick="window.app.setFilter('herbs', this)">🌿 Fragrant Herbs</button>
-            <button class="filter-pill hidden" id="filter-pill-precious" onclick="window.app.setFilter('precious', this)">💎 Precious Gems</button>
-            <button class="filter-pill hidden" id="filter-pill-quartz" onclick="window.app.setFilter('quartz', this)">🔮 Quartz & Crystals</button>
-            <button class="filter-pill hidden" id="filter-pill-rare" onclick="window.app.setFilter('rare', this)">✨ Rare Minerals</button>
-            <button class="filter-pill hidden" id="filter-pill-lizards" onclick="window.app.setFilter('lizards', this)">🦎 Lizards & Geckos</button>
-            <button class="filter-pill hidden" id="filter-pill-snakes" onclick="window.app.setFilter('snakes', this)">🐍 Snakes & Serpents</button>
-            <button class="filter-pill hidden" id="filter-pill-turtles" onclick="window.app.setFilter('turtles', this)">🐢 Turtles & Tortoises</button>
-            <button class="filter-pill hidden" id="filter-pill-crocs" onclick="window.app.setFilter('crocs', this)">🐊 Crocodilians</button>
-            <button class="filter-pill" id="filter-pill-endangered" onclick="window.app.setFilter('endangered', this)">⚠️ Endangered</button>
-            <button class="filter-pill" id="filter-pill-leastconcern" onclick="window.app.setFilter('least_concern', this)">✅ Least Concern</button>
+            <button class="filter-pill active" data-i18n="filter_all" onclick="window.app.setFilter('all', this)">All Species</button>
+            <button class="filter-pill hidden" id="filter-pill-common" data-i18n="filter_common" onclick="window.app.setFilter('common', this)">🏡 Pets & Common</button>
+            <button class="filter-pill hidden" id="filter-pill-flowers" data-i18n="filter_flowers" onclick="window.app.setFilter('flowers', this)">🌸 Flowers & Blossoms</button>
+            <button class="filter-pill hidden" id="filter-pill-herbs" data-i18n="filter_herbs" onclick="window.app.setFilter('herbs', this)">🌿 Fragrant Herbs</button>
+            <button class="filter-pill hidden" id="filter-pill-precious" data-i18n="filter_precious" onclick="window.app.setFilter('precious', this)">💎 Precious Gems</button>
+            <button class="filter-pill hidden" id="filter-pill-quartz" data-i18n="filter_quartz" onclick="window.app.setFilter('quartz', this)">🔮 Quartz & Crystals</button>
+            <button class="filter-pill hidden" id="filter-pill-rare" data-i18n="filter_rare" onclick="window.app.setFilter('rare', this)">✨ Rare Minerals</button>
+            <button class="filter-pill hidden" id="filter-pill-lizards" data-i18n="filter_lizards" onclick="window.app.setFilter('lizards', this)">🦎 Lizards & Geckos</button>
+            <button class="filter-pill hidden" id="filter-pill-snakes" data-i18n="filter_snakes" onclick="window.app.setFilter('snakes', this)">🐍 Snakes & Serpents</button>
+            <button class="filter-pill hidden" id="filter-pill-turtles" data-i18n="filter_turtles" onclick="window.app.setFilter('turtles', this)">🐢 Turtles & Tortoises</button>
+            <button class="filter-pill hidden" id="filter-pill-crocs" data-i18n="filter_crocs" onclick="window.app.setFilter('crocs', this)">🐊 Crocodilians</button>
+            <button class="filter-pill" id="filter-pill-endangered" data-i18n="filter_endangered" onclick="window.app.setFilter('endangered', this)">⚠️ Endangered</button>
+            <button class="filter-pill" id="filter-pill-leastconcern" data-i18n="filter_least_concern" onclick="window.app.setFilter('least_concern', this)">✅ Least Concern</button>
           </div>
         </div>
 
@@ -1155,11 +1162,11 @@
       <div class="bg-modal-header">
         <div class="modal-header-text">
           <div class="bg-badge-pill-row">
-            <span class="bg-badge-pill">🌍 EXPEDITION ENVIRONMENT</span>
-            <span class="bg-badge-pill sub">Photorealistic Biomes</span>
+            <span class="bg-badge-pill" data-i18n="bg_env_badge">🌍 EXPEDITION ENVIRONMENT</span>
+            <span class="bg-badge-pill sub" data-i18n="bg_env_sub">Photorealistic Biomes</span>
           </div>
-          <h2 class="bg-modal-title">🖼️ Realistic Wildlife Habitats &amp; Wallpapers</h2>
-          <p class="bg-modal-subtitle">Immerse your journey in breathtaking, photorealistic natural biomes. Select a habitat to transform your safari view across every discovery zone.</p>
+          <h2 class="bg-modal-title" data-i18n="bg_modal_title">🖼️ Realistic Wildlife Habitats &amp; Wallpapers</h2>
+          <p class="bg-modal-subtitle" data-i18n="bg_modal_sub">Immerse your journey in breathtaking, photorealistic natural biomes. Select a habitat to transform your safari view across every discovery zone.</p>
         </div>
         <button class="modal-close-btn" onclick="window.app.closeBackgroundModal()" title="Close Background Settings">✕</button>
       </div>
@@ -1178,31 +1185,31 @@
             <input type="file" id="bg-file-upload-input" accept="image/*" style="display: none;" onchange="window.app.handleLocalFileUpload(event)" />
             <div class="bg-dropzone-icon">📁</div>
             <div class="bg-dropzone-text">
-              <strong>Upload Photo from Your Computer</strong>
-              <span>Click to browse your photos or drop an image file (.jpg, .png, .webp)</span>
+              <strong data-i18n="bg_upload_title">Upload Photo from Your Computer</strong>
+              <span data-i18n="bg_upload_sub">Click to browse your photos or drop an image file (.jpg, .png, .webp)</span>
             </div>
-            <button type="button" class="bg-btn-browse">Browse Device</button>
+            <button type="button" class="bg-btn-browse" data-i18n="bg_btn_browse">Browse Device</button>
           </div>
 
           <!-- Web URL Alternative -->
           <div class="bg-custom-url-header" style="margin-top: 18px;">
             <span style="font-size: 1.2rem;">🌐</span>
             <div>
-              <div class="bg-custom-url-title">Or Use Web Image URL</div>
-              <div class="bg-custom-url-subtitle">Paste a direct web link to an online wallpaper (.jpg, .png, .webp):</div>
+              <div class="bg-custom-url-title" data-i18n="bg_url_title">Or Use Web Image URL</div>
+              <div class="bg-custom-url-subtitle" data-i18n="bg_url_sub">Paste a direct web link to an online wallpaper (.jpg, .png, .webp):</div>
             </div>
           </div>
           <div class="bg-custom-url-form">
             <input type="url" id="bg-custom-url-input" placeholder="https://images.unsplash.com/photo-..." spellcheck="false" autocomplete="off" />
-            <button class="bg-btn-apply" onclick="window.app.applyCustomBackgroundUrl()">Apply URL</button>
+            <button class="bg-btn-apply" data-i18n="bg_apply_url" onclick="window.app.applyCustomBackgroundUrl()">Apply URL</button>
           </div>
         </div>
       </div>
 
       <!-- Modal Footer -->
       <div class="bg-modal-footer">
-        <button class="bg-btn-reset" onclick="window.app.resetDefaultBackground()" title="Reset to dynamic theme background">🔄 Reset to Default Theme</button>
-        <button class="bg-btn-done" onclick="window.app.closeBackgroundModal()">Close</button>
+        <button class="bg-btn-reset" data-i18n="bg_reset_btn" onclick="window.app.resetDefaultBackground()" title="Reset to dynamic theme background">🔄 Reset to Default Theme</button>
+        <button class="bg-btn-done" data-i18n="btn_close" onclick="window.app.closeBackgroundModal()">Close</button>
       </div>
     </div>
   </div>
@@ -1213,7 +1220,7 @@
   <!-- Footer -->
   <footer class="app-footer">
     <div class="footer-content">
-      <p>🌿 <strong>THE ANIMAL &amp; EARTH KINGDOM</strong> • Built for explorers of every age! 840 species, plants &amp; minerals across 8 wild discovery zones.</p>
+      <p data-i18n-html="footer_text">🌿 <strong>THE ANIMAL &amp; EARTH KINGDOM</strong> • Built for explorers of every age! 840 species, plants &amp; minerals across 8 wild discovery zones.</p>
     </div>
   </footer>
 
@@ -1229,6 +1236,7 @@
   <script src="data/reptiles.js"></script>
   <script src="data/animalSounds.js"></script>
   <script src="data/cool_animals.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/cardDeepKnowledge.js"></script>
   <script src="js/battleEngine.js"></script>
   <script src="js/audio.js"></script>
