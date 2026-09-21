@@ -1,27 +1,38 @@
 @echo off
-cls
+setlocal
+title Animal Kingdom - GitHub Uploader
+
 echo =======================================================
 echo   THE ANIMAL KINGDOM APP - GITHUB UPLOADER
 echo =======================================================
 echo.
-echo NOTE: If Git shows a one-time code (like ABCD-1234):
-echo 1. Open your browser to: https://github.com/login/device
-echo 2. Enter that code and click "Continue / Authorize"
+echo Uploading to GitHub repository (origin/main)...
+echo (Your web browser may open to authorize GitHub)
+echo.
+
+git push origin main
+set PUSH_RESULT=%ERRORLEVEL%
+
+echo.
+if %PUSH_RESULT% equ 0 (
+    echo =======================================================
+    echo  SUCCESS: All changes are now live on GitHub!
+    echo =======================================================
+    echo.
+    echo Live site: https://chipin01.github.io/animal-kingdom-app/
+    echo.
+) else (
+    echo =======================================================
+    echo  Push not completed yet (Code: %PUSH_RESULT%).
+    echo =======================================================
+    echo.
+    echo If your browser opened, click "Authorize".
+    echo If it showed a code, enter it at: https://github.com/login/device
+    echo.
+)
+
 echo.
 echo =======================================================
-echo Uploading all 9 commits to GitHub (origin main)...
+echo This window will stay open so you can read everything.
 echo =======================================================
-git push origin main
-if %ERRORLEVEL% equ 0 (
-    echo.
-    echo =======================================================
-    echo SUCCESS: All changes successfully pushed to GitHub!
-    echo Visit your live site:
-    echo https://chipin01.github.io/animal-kingdom-app/
-    echo =======================================================
-) else (
-    echo.
-    echo If it showed a code above, please enter it at:
-    echo https://github.com/login/device
-)
-pause
+set /p DUMMY="Press Enter to close this window: "
