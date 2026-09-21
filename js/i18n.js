@@ -1360,34 +1360,83 @@
     },
 
     getSpeciesTagline(animal, lang = this.currentLang) {
-      if (!animal || !animal.tagline) return '';
-      if (lang === 'en') return animal.tagline;
-      return this.translateBioText(animal.tagline, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.tagline || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.tagZh : bio.tagEs;
+      }
+      return this.translateBioText(animal.tagline || '', lang);
     },
 
     getSpeciesHabitat(animal, lang = this.currentLang) {
-      if (!animal || !animal.habitat) return '';
-      return this.translateBioText(animal.habitat, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.habitat || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.habZh : bio.habEs;
+      }
+      return this.translateBioText(animal.habitat || '', lang);
     },
 
     getSpeciesDiet(animal, lang = this.currentLang) {
-      if (!animal || !animal.diet) return '';
-      return this.translateBioText(animal.diet, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.diet || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.dietZh : bio.dietEs;
+      }
+      return this.translateBioText(animal.diet || '', lang);
     },
 
     getSpeciesPredators(animal, lang = this.currentLang) {
-      if (!animal || !animal.predators) return '';
-      return this.translateBioText(animal.predators, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.predators || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.predZh : bio.predEs;
+      }
+      return this.translateBioText(animal.predators || '', lang);
     },
 
     getSpeciesFunFact(animal, lang = this.currentLang) {
-      if (!animal || !animal.funFact) return '';
-      return this.translateBioText(animal.funFact, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.funFact || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.funZh : bio.funEs;
+      }
+      return this.translateBioText(animal.funFact || '', lang);
     },
 
     getSpeciesDescription(animal, lang = this.currentLang) {
-      if (!animal || !animal.description) return '';
-      return this.translateBioText(animal.description, lang);
+      if (!animal) return '';
+      if (lang === 'en') return animal.description || '';
+      if (window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[animal.id]) {
+        const bio = window.AK_SPECIES_BIO[animal.id];
+        return lang === 'zh' ? bio.descZh : bio.descEs;
+      }
+      return this.translateBioText(animal.description || '', lang);
+    },
+
+    getSpeciesBadge(badgeText, lang = this.currentLang) {
+      if (!badgeText) return '';
+      if (lang === 'en') return badgeText;
+      if (lang === 'zh') {
+        if (badgeText.includes('Hokkaido Snow Fairy')) return '🇯🇵 北海道雪之妖精';
+        if (badgeText.includes('State Bird')) {
+          return badgeText.replace('State Bird', '州鳥');
+        }
+        return badgeText;
+      }
+      if (lang === 'es') {
+        if (badgeText.includes('Hokkaido Snow Fairy')) return '🇯🇵 Hada de la Nieve de Hokkaido';
+        if (badgeText.includes('State Bird')) {
+          return badgeText.replace('State Bird', 'Ave Estatal');
+        }
+        return badgeText;
+      }
+      return badgeText;
     },
 
     getStatusName(status) {
@@ -1430,6 +1479,9 @@
       if (!animal) return '';
       const name = this.getSpeciesName(animal);
       const cat = animal.category || '';
+      const hab = this.getSpeciesHabitat(animal, lang);
+      const diet = this.getSpeciesDiet(animal, lang);
+      const funFact = this.getSpeciesFunFact(animal, lang);
 
       if (lang === 'zh') {
         const catMap = {
@@ -1444,29 +1496,14 @@
         };
         const catName = catMap[cat] || '珍奇生靈';
         
-        let intro = `歡迎探索${name}！牠是神奇的${catName}。`;
+        let intro = `歡迎探索${name}！這是神奇的${catName}。`;
         if (cat === 'gemstones') {
           intro = `歡迎欣賞${name}！這是一件經過大自然億萬年地質淬鍊的珍貴${catName}。`;
         } else if (cat === 'plants') {
           intro = `歡迎走進植物王國，認識${name}！這是一種充滿生機的${catName}。`;
         }
 
-        let body = '';
-        if (animal.habitat) {
-          body += `主要棲息或產於${animal.habitat}。`;
-        }
-        if (animal.diet) {
-          if (cat === 'gemstones') {
-            body += `化學成分與晶體結構為${animal.diet}。`;
-          } else if (cat === 'plants') {
-            body += `生長需要充足的${animal.diet}。`;
-          } else {
-            body += `在日常生活中，主要以${animal.diet}為食。`;
-          }
-        }
-        if (animal.funFact) {
-          body += `趣味小知識：${animal.funFact}。`;
-        }
+        let body = `原生生境：${hab}。營養與生存特性：${diet}。趣味小知識：${funFact}`;
         return intro + body;
       }
 
@@ -1483,16 +1520,7 @@
         };
         const catNameEs = catMapEs[cat] || 'espécimen salvaje';
         let introEs = `¡Te damos la bienvenida a descubrir a: ${name}! Es un ${catNameEs}.`;
-        let bodyEs = '';
-        if (animal.habitat) {
-          bodyEs += ` Su hábitat natural se encuentra en ${animal.habitat}.`;
-        }
-        if (animal.diet) {
-          bodyEs += ` Su dieta o sustento incluye: ${animal.diet}.`;
-        }
-        if (animal.funFact) {
-          bodyEs += ` Dato curioso: ${animal.funFact}.`;
-        }
+        let bodyEs = ` Hábitat natural: ${hab}. Dieta y características: ${diet}. Dato curioso: ${funFact}`;
         return introEs + bodyEs;
       }
 

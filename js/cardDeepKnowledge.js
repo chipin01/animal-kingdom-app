@@ -25,10 +25,11 @@
       const activeLang = this._getActiveLang(lang);
       const cat = item.category;
       const name = this._getName(item);
-      const sci = item.scientific || '';
-      const hab = item.habitat || 'diverse ecosystems worldwide';
-      const diet = item.diet || 'specialized sustenance';
-      const pred = item.predators || 'various natural challenges';
+      const sci = window.AK_I18N ? (cat === 'gemstones' ? window.AK_I18N.translateBioText(item.scientific || '', activeLang) : (item.scientific || '')) : (item.scientific || '');
+      const hab = window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(item, activeLang) : (item.habitat || 'diverse ecosystems worldwide');
+      const diet = window.AK_I18N ? window.AK_I18N.getSpeciesDiet(item, activeLang) : (item.diet || 'specialized sustenance');
+      const pred = window.AK_I18N ? window.AK_I18N.getSpeciesPredators(item, activeLang) : (item.predators || 'various natural challenges');
+      const status = window.AK_I18N ? window.AK_I18N.getStatusName(item.endangered) : (item.endangered || '旺盛生長');
 
       // -------------------------------------------------------------
       // TRADITIONAL CHINESE (zh)
@@ -44,7 +45,7 @@
         if (cat === 'plants') {
           return [
             `**原生棲地與生長環境**：${name}（*${sci}*）生長於${hab}。在長期演化中，牠高度適應當地的氣候與微環境，藉由${diet}的滋養，深扎強健的根系於土壤之中，高效吸收地下水分與關鍵礦物質元素。`,
-            `**生命週期與生態共生**：在每年蓬勃生長季節，${name}展開葉片捕捉陽光進行光合作用。花期來臨時（${item.endangered || '季節性盛開'}），綻放絢麗的花朵，吸引蜜蜂、蝴蝶等傳粉者進行生態授粉，同時合成次生代謝物以抵禦草食性威脅（${pred}），構成森林與草地中不可或缺的生命篇章。`
+            `**生命週期與生態共生**：在每年蓬勃生長季節，${name}展開葉片捕捉陽光進行光合作用。花期來臨時（${status || '季節性盛開'}），綻放絢麗的花朵，吸引蜜蜂、蝴蝶等傳粉者進行生態授粉，同時合成次生代謝物以抵禦草食性威脅（${pred}），構成森林與草地中不可或缺的生命篇章。`
           ];
         }
 
@@ -104,7 +105,7 @@
         if (cat === 'plants') {
           return [
             `**Hábitat Natural y Crecimiento**: ${name} (*${sci}*) prospera en ${hab}. Adaptada al clima local, florece con ${diet}, desarrollando raíces profundas para absorber agua subterránea y minerales vitales.`,
-            `**Ciclo de Vida y Polinización**: A lo largo de las estaciones, captura la luz solar mediante fotosíntesis. Durante su floración (${item.endangered || 'Temporada de floración'}), interactúa con polinizadores nativos mientras se defiende de herbívoros (${pred}).`
+            `**Ciclo de Vida y Polinización**: A lo largo de las estaciones, captura la luz solar mediante fotosíntesis. Durante su floración (${status || 'Temporada de floración'}), interactúa con polinizadores nativos mientras se defiende de herbívoros (${pred}).`
           ];
         }
 
@@ -216,8 +217,8 @@
       const activeLang = this._getActiveLang(lang);
       const cat = item.category;
       const name = this._getName(item);
-      const sci = item.scientific || '';
-      const fact = item.funFact || '';
+      const sci = window.AK_I18N ? (cat === 'gemstones' ? window.AK_I18N.translateBioText(item.scientific || '', activeLang) : (item.scientific || '')) : (item.scientific || '');
+      const fact = window.AK_I18N ? window.AK_I18N.getSpeciesFunFact(item, activeLang) : (item.funFact || '');
 
       if (activeLang === 'zh') {
         if (cat === 'gemstones') {
@@ -284,7 +285,7 @@
       const activeLang = this._getActiveLang(lang);
       const cat = item.category;
       const name = this._getName(item);
-      const sci = item.scientific || '';
+      const sci = window.AK_I18N ? (cat === 'gemstones' ? window.AK_I18N.translateBioText(item.scientific || '', activeLang) : (item.scientific || '')) : (item.scientific || '');
 
       if (activeLang === 'zh') {
         if (cat === 'gemstones') {

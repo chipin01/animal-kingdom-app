@@ -210,6 +210,7 @@ class AnimalKingdomApp {
     this.applyTheme();
     this.initBackgroundSetting();
     this.showHomeView(false);
+    this.renderPopularSearchTags();
     this.renderAnimalOfTheDay();
     this.setupEventListeners();
     this.setupGlobalSearch();
@@ -240,6 +241,8 @@ class AnimalKingdomApp {
     if (window.AK_I18N) {
       window.AK_I18N.applyToDom();
     }
+
+    this.renderPopularSearchTags();
 
     // Re-render current active view
     if (this.currentView === 'home') {
@@ -285,6 +288,24 @@ class AnimalKingdomApp {
     const tmModal = document.getElementById('time-machine-modal');
     if (tmModal && !tmModal.classList.contains('hidden') && window.AK_TIME_MACHINE && window.AK_TIME_MACHINE.updateStage) {
       window.AK_TIME_MACHINE.updateStage();
+    }
+
+    // If anatomy scanner is open, re-render
+    const anatomyModal = document.getElementById('anatomy-modal');
+    if (anatomyModal && !anatomyModal.classList.contains('hidden') && window.AK_ANATOMY && window.AK_ANATOMY.renderAnatomyUI) {
+      window.AK_ANATOMY.renderAnatomyUI();
+    }
+
+    // If migration modal is open, re-render
+    const migrationModal = document.getElementById('migration-modal');
+    if (migrationModal && !migrationModal.classList.contains('hidden') && window.AK_MIGRATION && window.AK_MIGRATION.renderDetails) {
+      window.AK_MIGRATION.renderDetails();
+    }
+
+    // If weather simulator modal is open, re-render
+    const weatherModal = document.getElementById('weather-modal');
+    if (weatherModal && !weatherModal.classList.contains('hidden') && window.AK_WEATHER && window.AK_WEATHER.renderCurrentSpecimen) {
+      window.AK_WEATHER.renderCurrentSpecimen();
     }
   }
 
@@ -870,9 +891,17 @@ class AnimalKingdomApp {
     if (this.searchQuery.trim() !== '') {
       const queryWords = this.searchQuery.toLowerCase().split(/\s+/).filter(w => w.length > 0);
       items = items.filter(i => {
+        const trans = window.AK_SPECIES_NAMES && window.AK_SPECIES_NAMES[i.id];
+        const bio = window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[i.id];
         const fullText = [
           i.name, i.scientific, i.jurisdiction, i.badgeText, i.category,
-          i.habitat, i.diet, i.description, i.endangered, i.funFact, i.predators, i.tagline
+          i.habitat, i.diet, i.description, i.endangered, i.funFact, i.predators, i.tagline,
+          trans ? trans.zh : '', trans ? trans.es : '',
+          bio ? bio.habZh : '', bio ? bio.habEs : '',
+          bio ? bio.dietZh : '', bio ? bio.dietEs : '',
+          bio ? bio.descZh : '', bio ? bio.descEs : '',
+          bio ? bio.funZh : '', bio ? bio.funEs : '',
+          bio ? bio.tagZh : '', bio ? bio.tagEs : ''
         ].filter(Boolean).join(' ').toLowerCase();
         
         // Return true if ALL words in the query exist somewhere in the animal's text profile
@@ -920,6 +949,7 @@ class AnimalKingdomApp {
       const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
       const locStatus = window.AK_I18N ? window.AK_I18N.getStatusName(a.endangered) : a.endangered;
       const learnMoreText = window.AK_I18N ? window.AK_I18N.t('card_learn_more') : 'Learn More & Story ➡️';
+      const locBadge = a.badgeText ? (window.AK_I18N ? window.AK_I18N.getSpeciesBadge(a.badgeText) : a.badgeText) : '';
 
       return `
         <div class="species-card" onclick="window.app.openAnimalDetail('${a.id}')">
@@ -934,7 +964,7 @@ class AnimalKingdomApp {
             </button>
           </div>
           <div class="card-body">
-            ${a.badgeText ? `<div class="card-geo-badge">${a.badgeText}</div>` : ''}
+            ${locBadge ? `<div class="card-geo-badge">${locBadge}</div>` : ''}
             <h3 class="card-title">${a.emoji} ${locName}</h3>
             <div class="card-sci">${a.scientific}</div>
             <p class="card-tagline">${window.AK_I18N ? window.AK_I18N.getSpeciesTagline(a) : a.tagline}</p>
@@ -1087,7 +1117,7 @@ class AnimalKingdomApp {
           <img src="${this.formatImageUrl(animal.image, 900)}" alt="${animal.name}" onerror="window.app.handleImageError(this, '${animal.category}', '${animal.emoji}', '${animal.name.replace(/'/g, "\\'")}')">
           <div class="modal-hero-badges">
             <span class="badge badge-category">${catMeta ? catMeta.emoji + ' ' + locCat : '💎 ' + locCat}</span>
-            ${animal.badgeText ? `<span class="badge badge-geo">${animal.badgeText}</span>` : ''}
+            ${animal.badgeText ? `<span class="badge badge-geo">${window.AK_I18N ? window.AK_I18N.getSpeciesBadge(animal.badgeText) : animal.badgeText}</span>` : ''}
             <span class="badge badge-status status-${this.getStatusClass(animal.endangered)}">${locStatus}</span>
           </div>
         </div>
@@ -1634,11 +1664,17 @@ class AnimalKingdomApp {
     const results = this.searchAllSpecies(query);
 
     if (results.length === 0) {
+      const emptyTitle = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? `未找到與「${query}」相關的物種` :
+                         (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? `No se encontraron especies para "${query}"` :
+                         `No species found for "${query}"`);
+      const emptyHint = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '請嘗試搜尋「青蛙」、「獅子」、「肉食性」、「雨林」或「瀕危」' :
+                        (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? 'Prueba buscando "rana", "león", "carnívoro", "selva" o "amenazada"' :
+                        'Try searching "frog", "lion", "carnivore", "rainforest", or "endangered"');
       dropdown.innerHTML = `
         <div class="search-empty-state">
           <div style="font-size: 1.8rem; margin-bottom: 6px;">🔍</div>
-          <strong>No species found for "${query}"</strong>
-          <p style="font-size: 0.82rem; color: #78716c; margin-top: 4px;">Try searching "frog", "lion", "carnivore", "rainforest", or "endangered"</p>
+          <strong>${emptyTitle}</strong>
+          <p style="font-size: 0.82rem; color: #78716c; margin-top: 4px;">${emptyHint}</p>
         </div>
       `;
       dropdown.classList.remove('hidden');
@@ -1646,31 +1682,42 @@ class AnimalKingdomApp {
     }
 
     const topResults = results.slice(0, 7);
+    const headerCount = window.AK_I18N ? window.AK_I18N.t('found_global', { count: results.length }) : `Found ${results.length} species across all zones`;
+    const headerNav = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? '↑↓ 導航 • Enter 選擇' :
+                      (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? '↑↓ navegar • Enter seleccionar' :
+                      '↑↓ to navigate • Enter to select');
+    const footerText = window.AK_I18N && window.AK_I18N.getLanguage() === 'zh' ? `在探索專區查看全部 ${results.length} 個結果 ➡️` :
+                       (window.AK_I18N && window.AK_I18N.getLanguage() === 'es' ? `Ver todos los ${results.length} resultados en la Zona ➡️` :
+                       `Show all ${results.length} results in Animal Zone ➡️`);
 
     dropdown.innerHTML = `
       <div class="dropdown-header-bar">
-        <span>Found ${results.length} species across all zones</span>
-        <span style="font-size: 0.75rem; color: #94a3b8;">↑↓ to navigate • Enter to select</span>
+        <span>${headerCount}</span>
+        <span style="font-size: 0.75rem; color: #94a3b8;">${headerNav}</span>
       </div>
       <div class="search-dropdown-list">
-        ${topResults.map(a => `
+        ${topResults.map(a => {
+          const locName = window.AK_I18N ? window.AK_I18N.getSpeciesName(a) : a.name;
+          const locCat = window.AK_I18N ? window.AK_I18N.t('zone_' + a.category) : a.category;
+          const locHab = window.AK_I18N ? window.AK_I18N.getSpeciesHabitat(a) : a.habitat;
+          return `
           <div class="search-dropdown-item" onclick="window.app.openAnimalDetail('${a.id}'); window.app.closeGlobalDropdown();">
             <img class="search-dropdown-thumb" src="${this.formatImageUrl(a.image, 100)}" alt="${a.name}" onerror="window.app.handleImageError(this, '${a.category}', '${a.emoji}', '${a.name.replace(/'/g, "\\'")}')">
             <div class="search-dropdown-info">
               <div class="search-dropdown-title-row">
-                <span class="search-dropdown-name">${a.emoji} ${this.highlightMatch(a.name, query)}</span>
-                <span class="dropdown-cat-tag ${a.category}">${a.category}</span>
+                <span class="search-dropdown-name">${a.emoji} ${this.highlightMatch(locName, query)}</span>
+                <span class="dropdown-cat-tag ${a.category}">${locCat}</span>
               </div>
               <div class="search-dropdown-sub">
-                <em>${a.scientific}</em> • 🌍 ${a.habitat}
+                <em>${a.scientific}</em> • 🌍 ${this.truncateText(locHab, 36)}
               </div>
             </div>
           </div>
-        `).join('')}
+        `}).join('')}
       </div>
       <div class="search-dropdown-footer">
         <button class="btn-see-all-results" onclick="window.app.showAllSearchResults('${query.replace(/'/g, "\\'")}')">
-          Show all ${results.length} results in Animal Zone ➡️
+          ${footerText}
         </button>
       </div>
     `;
@@ -1729,6 +1776,70 @@ class AnimalKingdomApp {
     this.showAllSearchResults(tag);
   }
 
+  renderPopularSearchTags() {
+    const container = document.getElementById('popular-search-tags-container');
+    if (!container) return;
+    const lang = window.AK_I18N ? window.AK_I18N.getLanguage() : 'en';
+    const label = window.AK_I18N ? window.AK_I18N.t('popular_searches_label') : 'Popular Searches:';
+
+    const tagsByLang = {
+      zh: [
+        { label: '🦎 豹紋守宮', query: '豹紋守宮' },
+        { label: '🐍 球蟒', query: '球蟒' },
+        { label: '👑 眼鏡王蛇', query: '眼鏡王蛇' },
+        { label: '🦎 鬃獅蜥', query: '鬃獅蜥' },
+        { label: '🐢 箱龜', query: '箱龜' },
+        { label: '💎 天然鑽石', query: '鑽石' },
+        { label: '💚 祖母綠', query: '祖母綠' },
+        { label: '🌹 玫瑰', query: '玫瑰' },
+        { label: '❄️ 雪之妖精 (銀喉長尾山雀)', query: '雪之妖精' },
+        { label: '🦎 墨西哥蠑螈', query: '墨西哥蠑螈' },
+        { label: '🦁 非洲獅', query: '非洲獅' },
+        { label: '🐋 虎鯨', query: '虎鯨' },
+        { label: '🦋 帝王斑蝶', query: '帝王斑蝶' },
+        { label: '🦅 紅尾鵟', query: '紅尾鵟' }
+      ],
+      es: [
+        { label: '🦎 Gecko Leopardo', query: 'Gecko Leopardo' },
+        { label: '🐍 Pitón Real', query: 'Pitón Real' },
+        { label: '👑 Cobra Real', query: 'Cobra Real' },
+        { label: '🦎 Dragón Barbudo', query: 'Dragón Barbudo' },
+        { label: '🐢 Tortuga de Caja', query: 'Tortuga de Caja' },
+        { label: '💎 Diamante', query: 'Diamante' },
+        { label: '💚 Esmeralda', query: 'Esmeralda' },
+        { label: '🌹 Rosa', query: 'Rosa' },
+        { label: '❄️ Hada de la Nieve', query: 'Hada de la Nieve' },
+        { label: '🦎 Ajolote', query: 'Ajolote' },
+        { label: '🦁 León Africano', query: 'León' },
+        { label: '🐋 Orca', query: 'Orca' },
+        { label: '🦋 Mariposa Monarca', query: 'Monarca' },
+        { label: '🦅 Halcón Colirrojo', query: 'Halcón' }
+      ],
+      en: [
+        { label: '🦎 Leopard Gecko', query: 'Leopard Gecko' },
+        { label: '🐍 Ball Python', query: 'Ball Python' },
+        { label: '👑 King Cobra', query: 'King Cobra' },
+        { label: '🦎 Bearded Dragon', query: 'Bearded Dragon' },
+        { label: '🐢 Box Turtle', query: 'Eastern Box Turtle' },
+        { label: '💎 Diamond', query: 'Diamond' },
+        { label: '💚 Emerald', query: 'Emerald' },
+        { label: '🌹 Rose', query: 'Rose' },
+        { label: '❄️ Snow Fairy (Shima Enaga)', query: 'Snow Fairy' },
+        { label: '🦎 Axolotl', query: 'Axolotl' },
+        { label: '🦁 Lion', query: 'African Lion' },
+        { label: '🐋 Orca', query: 'Killer Whale' },
+        { label: '🦋 Monarch', query: 'Monarch Butterfly' },
+        { label: '🦅 Hawk', query: 'Red-Tailed Hawk' }
+      ]
+    };
+
+    const tags = tagsByLang[lang] || tagsByLang.en;
+    container.innerHTML = `
+      <span class="tags-label" data-i18n="popular_searches_label">${label}</span>
+      ${tags.map(t => `<button class="tag-pill" onclick="window.app.applySearchTag('${t.query.replace(/'/g, "\\'")}')">${t.label}</button>`).join('')}
+    `;
+  }
+
   showAllSearchResults(query) {
     if (!query || !query.trim()) return;
     this.currentView = 'category';
@@ -1764,23 +1875,27 @@ class AnimalKingdomApp {
     const q = query.toLowerCase().trim();
     const all = window.AK_AOD.getAllAnimals();
 
-    return all.filter(a => 
-      a.name.toLowerCase().includes(q) ||
-      a.scientific.toLowerCase().includes(q) ||
-      a.category.toLowerCase().includes(q) ||
-      a.habitat.toLowerCase().includes(q) ||
-      a.diet.toLowerCase().includes(q) ||
-      a.description.toLowerCase().includes(q) ||
-      a.endangered.toLowerCase().includes(q) ||
-      a.funFact.toLowerCase().includes(q) ||
-      a.predators.toLowerCase().includes(q)
-    ).sort((x, y) => {
-      const xName = x.name.toLowerCase();
-      const yName = y.name.toLowerCase();
-      if (xName === q && yName !== q) return -1;
-      if (yName === q && xName !== q) return 1;
-      if (xName.startsWith(q) && !yName.startsWith(q)) return -1;
-      if (yName.startsWith(q) && !xName.startsWith(q)) return 1;
+    return all.filter(a => {
+      const trans = window.AK_SPECIES_NAMES && window.AK_SPECIES_NAMES[a.id];
+      const bio = window.AK_SPECIES_BIO && window.AK_SPECIES_BIO[a.id];
+      const full = [
+        a.name, a.scientific, a.category, a.habitat, a.diet, a.description, a.endangered, a.funFact, a.predators,
+        trans ? trans.zh : '', trans ? trans.es : '',
+        bio ? bio.habZh : '', bio ? bio.habEs : '',
+        bio ? bio.dietZh : '', bio ? bio.dietEs : '',
+        bio ? bio.descZh : '', bio ? bio.descEs : '',
+        bio ? bio.funZh : '', bio ? bio.funEs : '',
+        bio ? bio.tagZh : '', bio ? bio.tagEs : ''
+      ].filter(Boolean).join(' ').toLowerCase();
+
+      return full.includes(q);
+    }).sort((x, y) => {
+      const xLoc = (window.AK_I18N ? window.AK_I18N.getSpeciesName(x) : x.name).toLowerCase();
+      const yLoc = (window.AK_I18N ? window.AK_I18N.getSpeciesName(y) : y.name).toLowerCase();
+      if (xLoc === q && yLoc !== q) return -1;
+      if (yLoc === q && xLoc !== q) return 1;
+      if (xLoc.startsWith(q) && !yLoc.startsWith(q)) return -1;
+      if (yLoc.startsWith(q) && !xLoc.startsWith(q)) return 1;
       return 0;
     });
   }
