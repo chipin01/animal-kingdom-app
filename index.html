@@ -79,7 +79,21 @@
 
           <span class="header-btn-sep"></span>
 
+          <!-- Coin Wallet Pill -->
+          <div class="header-coin-pill" onclick="window.AK_QUESTS && window.AK_QUESTS.openShopModal()" title="Coins balance / Click to open Card Shop">
+            🪙 <span id="header-coin-counter">150</span>
+          </div>
+
           <!-- Interactive Feature Buttons (Small) -->
+          <button class="btn-header-pill btn-small-pill btn-quest-glow" onclick="window.AK_QUESTS && window.AK_QUESTS.openQuestModal()" title="Explore Animal Quests and earn coins!">
+            <span data-i18n="nav_quests">📜 Quests</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #10b981, #eab308);">NEW</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-shop-glow" onclick="window.AK_QUESTS && window.AK_QUESTS.openShopModal()" title="Buy and sell creature cards!">
+            <span data-i18n="nav_card_shop">🃏 Card Shop</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-gauntlet-glow" onclick="window.AK_QUESTS && window.AK_QUESTS.openGauntletModal()" title="4-Stage Arena Gauntlet: Battle from a bug to the apex titan!">
+            <span data-i18n="nav_arena_gauntlet">⚔️ 4-Stage Arena</span> <span class="badge-live-pulse-sm">BOSS</span>
+          </button>
           <button class="btn-header-pill btn-small-pill btn-identifier-glow" onclick="window.AK_IDENTIFIER && window.AK_IDENTIFIER.openModal()" title="Describe what you saw or answer 5 questions to identify species & plants!">
             <span data-i18n="nav_identifier">🧭 What Did I See?</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #10b981, #06b6d4);">NEW</span>
           </button>
@@ -185,6 +199,42 @@
         <!-- Quick Access Grid for Other Cool Apps -->
         <div class="cool-apps-grid">
           
+          <div class="cool-app-card" onclick="window.AK_QUESTS && window.AK_QUESTS.openQuestModal()" title="Launch Animal Quest Library" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(6, 78, 59, 0.18);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #10b981, #eab308); color: #fff;">📜</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_quests_title">Animal Quest Library & Coins</h4>
+                <span class="cool-card-badge" style="background: #10b981; color: #fff;">NEW 20+</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_quests_desc">Complete 20+ wildlife quests across 4 difficulty tiers to earn coins for the Card Shop!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_QUESTS && window.AK_QUESTS.openShopModal()" title="Launch Card Shop & Collectors Deck" style="border: 1px solid rgba(168, 85, 247, 0.4); background: rgba(88, 28, 135, 0.18);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff;">🃏</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_card_shop_title">Card Shop & Collectors Deck</h4>
+                <span class="cool-card-badge" style="background: #a855f7; color: #fff;">BUY / SELL</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_card_shop_desc">Buy new creature battle cards or sell unwanted ones back for coins!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_QUESTS && window.AK_QUESTS.openGauntletModal()" title="Launch 4-Stage Arena Gauntlet" style="border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(127, 29, 29, 0.18);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #ef4444, #f97316); color: #fff;">⚔️</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_gauntlet_title">4-Stage Progressive Arena</h4>
+                <span class="cool-card-badge" style="background: #ef4444; color: #fff;">BOSS</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_gauntlet_desc">Put your cards in the ring! Battle a bug in Stage 1 and advance through 4 stages of beasts!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
           <div class="cool-app-card" onclick="window.AK_IDENTIFIER && window.AK_IDENTIFIER.openModal()" title="Launch Nature Detective Identifier" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(6, 78, 59, 0.15);">
             <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #059669, #0d9488); color: #fff;">🧭</div>
             <div class="cool-card-text">
@@ -1252,6 +1302,21 @@
     <div id="flashcard-modal-content" class="flashcard-modal-window"></div>
   </div>
 
+  <!-- ANIMAL QUEST LIBRARY MODAL -->
+  <div id="quest-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_QUESTS.closeQuestModal()">
+    <div id="quest-modal-content" class="quest-modal-window"></div>
+  </div>
+
+  <!-- CARD SHOP & COLLECTORS DECK MODAL -->
+  <div id="card-shop-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_QUESTS.closeShopModal()">
+    <div id="card-shop-modal-content" class="shop-modal-window"></div>
+  </div>
+
+  <!-- 4-STAGE ARENA GAUNTLET MODAL -->
+  <div id="gauntlet-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_QUESTS.closeGauntletModal()">
+    <div id="gauntlet-modal-content" class="gauntlet-modal-window"></div>
+  </div>
+
   <!-- Confetti Layer -->
   <div id="confetti-layer" class="confetti-layer"></div>
 
@@ -1289,6 +1354,7 @@
   <script src="js/timeMachine.js"></script>
   <script src="js/specimenIdentifier.js"></script>
   <script src="js/flashcardSprint.js"></script>
+  <script src="js/questSystem.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

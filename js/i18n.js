@@ -25,6 +25,9 @@
       nav_favorites: '❤️ Favs',
       nav_identifier: '🧭 What Did I See?',
       nav_flashcards: '🎴 Flashcards',
+      nav_quests: '📜 Quests',
+      nav_card_shop: '🃏 Card Shop',
+      nav_arena_gauntlet: '⚔️ 4-Stage Arena',
 
       // Home Hub
       hub_badge: '🌟 HOME HUB',
@@ -49,6 +52,12 @@
       cool_time_desc: 'Travel back millions of years to see the giant ancient ancestors of modern animals.',
       cool_flashcards_title: 'Wildlife Flashcard Sprint',
       cool_flashcards_desc: 'Study 5 randomized creature cards with 3D flip dossiers, then test your memory on habitat, diet & characteristics!',
+      cool_quests_title: 'Animal Quest Library & Coins',
+      cool_quests_desc: 'Complete 20+ wildlife quests across 4 difficulty tiers to earn coins for the Card Shop!',
+      cool_card_shop_title: 'Card Shop & Collectors Deck',
+      cool_card_shop_desc: 'Buy new creature battle cards or sell unwanted ones back for coins!',
+      cool_gauntlet_title: '4-Stage Progressive Arena',
+      cool_gauntlet_desc: 'Put your cards in the ring! Battle a bug in Stage 1 and advance through 4 stages of beasts!',
 
       // Search Section
       search_badge: '🔎 EXPEDITION SEARCH',
@@ -313,9 +322,96 @@
 
       // Toast feedback
       toast_lang_switched: '🌐 Language switched to: English',
-      toast_wallpaper_set: '🏞️ Wallpaper set to: {title}!',
-      toast_photo_uploaded: '🎉 Your uploaded photo is now your background!',
-      toast_reset_bg: '🔄 Reset to default theme background.',
+      // Quests Q&A
+      q_n1_name: 'The Fluttering Pollinator',
+      q_n1_desc: 'Learn about gentle harmless pollinators in wild meadows.',
+      q_n1_q: 'What do Monarch Butterflies feed on as adults?',
+      q_n1_opt1: 'Tree bark', q_n1_opt2: 'Flower nectar', q_n1_opt3: 'Fish scales', q_n1_opt4: 'Earthworms',
+
+      q_n2_name: 'Rainforest Tree Climber',
+      q_n2_desc: 'Investigate bright amphibians living in humid canopies.',
+      q_n2_q: 'How do Red-Eyed Tree Frogs stick to smooth wet leaves?',
+      q_n2_opt1: 'Magnetic claws', q_n2_opt2: 'Sharp bird talons', q_n2_opt3: 'Sticky suction pads on toes', q_n2_opt4: 'Heavy weights',
+
+      q_n3_name: 'Garden Crop Protector',
+      q_n3_desc: 'Study small armored insects protecting garden crops.',
+      q_n3_q: 'What do Seven-Spotted Ladybugs eat to help farmers?',
+      q_n3_opt1: 'Crop-damaging aphids', q_n3_opt2: 'Stones', q_n3_opt3: 'Tree roots', q_n3_opt4: 'Plastic',
+
+      q_n4_name: 'Clever Avian Mimic',
+      q_n4_desc: 'Discover talking avian masters in tropical canopies.',
+      q_n4_q: 'What special cognitive ability are African Grey Parrots famous for?',
+      q_n4_opt1: 'Underwater breathing', q_n4_opt2: 'Mimicking human speech & reasoning', q_n4_opt3: 'Running 60 mph', q_n4_opt4: 'Hibernating for 3 years',
+
+      q_n5_name: 'The Shelled Traveler',
+      q_n5_desc: 'Observe slow gastropods carrying their own calcium homes.',
+      q_n5_q: 'What is a garden snail shell mainly made of?',
+      q_n5_opt1: 'Iron metal', q_n5_opt2: 'Wood fibers', q_n5_opt3: 'Calcium carbonate', q_n5_opt4: 'Solid ice',
+
+      q_a1_name: 'Desert Heat Sensor',
+      q_a1_desc: 'Uncover how pit vipers hunt in total pitch-black darkness.',
+      q_a1_q: 'What special organs do rattlesnakes use to detect prey in the dark?',
+      q_a1_opt1: 'Infrared thermal heat pits', q_a1_opt2: 'Radio antennas', q_a1_opt3: 'Flashlights', q_a1_opt4: 'Echolocation sonar',
+
+      q_a2_name: 'Ocean Electro-Sense',
+      q_a2_desc: 'Explore the electro-reception sixth sense of open-ocean sharks.',
+      q_a2_q: 'What are the Ampullae of Lorenzini on sharks used for?',
+      q_a2_opt1: 'Generating electric shocks', q_a2_opt2: 'Detecting faint heartbeat electrical signals', q_a2_opt3: 'Filtering salt water', q_a2_opt4: 'Blowing bubbles',
+
+      q_a3_name: 'Savannah Speed Demon',
+      q_a3_desc: 'Analyze the mechanics of the fastest land animal on Earth.',
+      q_a3_q: 'How fast can an African Cheetah accelerate from 0 to 60 mph?',
+      q_a3_opt1: '30 seconds', q_a3_opt2: '10 seconds', q_a3_opt3: 'Just 3 seconds', q_a3_opt4: '1 minute',
+
+      q_a4_name: 'Silent Sky Phantom',
+      q_a4_desc: 'Inspect the acoustic design of nighttime raptor feathers.',
+      q_a4_q: 'Why can a Barn Owl fly completely silently over unsuspecting prey?',
+      q_a4_opt1: 'Serrated comb fringes on wing feathers', q_a4_opt2: 'Jet engines', q_a4_opt3: 'Flying backwards', q_a4_opt4: 'Zero gravity',
+
+      q_a5_name: 'Fearless Honey Badger',
+      q_a5_desc: 'Investigate the toughest, most fearless mammal pound-for-pound.',
+      q_a5_q: 'What allows Honey Badgers to survive venomous snake bites?',
+      q_a5_opt1: 'Steel plates', q_a5_opt2: 'Natural venom immunity & thick rubbery skin', q_a5_opt3: 'Drinking milk', q_a5_opt4: 'Hiding underground',
+
+      q_m1_name: 'Jungle Heavyweight',
+      q_m1_desc: 'Study the world\'s largest wild feline in Asian forests.',
+      q_m1_q: 'Unlike most other cats, what aquatic activity do tigers famously love?',
+      q_m1_opt1: 'Deep sea diving', q_m1_opt2: 'Surfing waves', q_m1_opt3: 'Swimming across wide rivers and lakes', q_m1_opt4: 'Drinking salt water',
+
+      q_m2_name: 'Sky Sovereign Grip',
+      q_m2_desc: 'Examine the talon crushing power of North American sea eagles.',
+      q_m2_q: 'What is the crushing grip force of a Bald Eagle\'s talons?',
+      q_m2_opt1: 'Over 400 PSI (pounds per square inch)', q_m2_opt2: '10 PSI', q_m2_opt3: '5 PSI', q_m2_opt4: '50 PSI',
+
+      q_m3_name: 'The Prehistoric Death Roll',
+      q_m3_desc: 'Learn the apex aquatic maneuver of saltwater crocodiles.',
+      q_m3_q: 'What deadly maneuver do crocodiles use to subdue large prey underwater?',
+      q_m3_opt1: 'Tail slaps', q_m3_opt2: 'The violent spinning Death Roll', q_m3_opt3: 'Jumping 20 feet high', q_m3_opt4: 'Hypnosis',
+
+      q_m4_name: 'Pack Tactics Coordinator',
+      q_m4_desc: 'Discover how cooperative endurance hunting dominates the wilderness.',
+      q_m4_q: 'How far can a wolf pack pursue prey during a long-distance endurance hunt?',
+      q_m4_opt1: '100 yards', q_m4_opt2: '500 feet', q_m4_opt3: 'Over 30 miles without tiring', q_m4_opt4: '1 mile only',
+
+      q_l1_name: 'Monarch of the Savanna',
+      q_l1_desc: 'Uncover the social hierarchy of wild lion prides.',
+      q_l1_q: 'How far away can an adult male lion\'s thunderous roar be heard?',
+      q_l1_opt1: 'Up to 5 miles (8 kilometers) away', q_l1_opt2: '100 feet', q_l1_opt3: '500 meters', q_l1_opt4: 'Half a mile',
+
+      q_l2_name: 'Arctic Ice Titan',
+      q_l2_desc: 'Explore the heat adaptations of the world\'s largest land carnivore.',
+      q_l2_q: 'What color is a Polar Bear\'s skin underneath its thick translucent fur?',
+      q_l2_opt1: 'Pure white', q_l2_opt2: 'Jet black (to absorb solar warmth)', q_l2_opt3: 'Bright pink', q_l2_opt4: 'Golden yellow',
+
+      q_l3_name: 'Prehistoric Apex Jaws',
+      q_l3_desc: 'Analyze the devastating biomechanics of Tyrannosaurus Rex.',
+      q_l3_q: 'What estimated bite force did a full-grown Tyrannosaurus Rex possess?',
+      q_l3_opt1: '500 PSI', q_l3_opt2: '1,500 PSI', q_l3_opt3: 'Up to 12,800 PSI (bone-crushing)', q_l3_opt4: '3,000 PSI',
+
+      q_l4_name: 'Earth Kingdom Supreme Master',
+      q_l4_desc: 'Demonstrate total mastery over Earth\'s grand biodiversity.',
+      q_l4_q: 'What is the total number of species, biomes, and minerals featured in this app?',
+      q_l4_opt1: 'Over 840 specimens across 8 distinct discovery zones', q_l4_opt2: '100', q_l4_opt3: '200', q_l4_opt4: '500',
 
       // Footer
       footer_text: '🌿 THE ANIMAL & EARTH KINGDOM • Built for explorers of every age! 840 species, plants & minerals across 8 wild discovery zones.'
@@ -336,6 +432,9 @@
       nav_favorites: '❤️ 我的最愛',
       nav_identifier: '🧭 辨識物種',
       nav_flashcards: '🎴 記憶翻牌',
+      nav_quests: '📜 任務庫',
+      nav_card_shop: '🃏 卡牌商店',
+      nav_arena_gauntlet: '⚔️ 4 關擂台',
 
       // Home Hub
       hub_badge: '🌟 探索首頁',
@@ -360,6 +459,12 @@
       cool_time_desc: '穿越數百萬年時光，探訪現代動物的史前巨型祖先。',
       cool_flashcards_title: '野生動物記憶翻牌挑戰',
       cool_flashcards_desc: '隨機抽取 5 張物種卡片進行 3D 翻牌速記，並挑戰棲息地、飲食與特徵問答！',
+      cool_quests_title: '動物任務圖書館與金幣',
+      cool_quests_desc: '完成 4 種難度的 20+ 個自然任務，賺取金幣至卡牌商店選購王牌！',
+      cool_card_shop_title: '卡牌商店與收藏牌組',
+      cool_card_shop_desc: '購買各階野生動物戰鬥卡，或將多餘卡片折價售出換取金幣！',
+      cool_gauntlet_title: '4 關漸進式競技場挑戰',
+      cool_gauntlet_desc: '派遣你的卡牌出戰！第 1 關迎擊巨蟲，連闖 4 關挑戰遠古泰坦！',
 
       // Search Section
       search_badge: '🔎 探險搜尋',
@@ -628,6 +733,97 @@
       toast_photo_uploaded: '🎉 您上傳的照片已成為背景！',
       toast_reset_bg: '🔄 已重置為預設主題背景。',
 
+      // Quests Q&A
+      q_n1_name: '翩翩起舞的傳粉者',
+      q_n1_desc: '認識荒野草甸中溫柔無害的自然傳粉精靈。',
+      q_n1_q: '成年的帝王斑蝶平時主要以什麼為食？',
+      q_n1_opt1: '樹皮', q_n1_opt2: '花蜜', q_n1_opt3: '魚鱗', q_n1_opt4: '蚯蚓',
+
+      q_n2_name: '雨林攀樹小能手',
+      q_n2_desc: '探訪棲息在潮濕樹冠層的鮮豔兩棲精靈。',
+      q_n2_q: '紅眼樹蛙是如何牢牢吸附在光滑濕潤的樹葉上的？',
+      q_n2_opt1: '磁性利爪', q_n2_opt2: '鋒利鷹爪', q_n2_opt3: '腳趾末端的黏性吸盤', q_n2_opt4: '沉重負重',
+
+      q_n3_name: '農田花園小衛士',
+      q_n3_desc: '研究保護農作物不受害蟲侵害的小甲蟲。',
+      q_n3_q: '七星瓢蟲主要捕食什麼來幫助農夫保護作物？',
+      q_n3_opt1: '危害作物的蚜蟲', q_n3_opt2: '小石子', q_n3_opt3: '樹木主根', q_n3_opt4: '塑膠碎片',
+
+      q_n4_name: '聰穎的模仿大師',
+      q_n4_desc: '探索熱帶樹冠中語言與理解能力非凡的飛禽。',
+      q_n4_q: '非洲灰鸚鵡以什麼樣令人驚嘆的認知能力著稱？',
+      q_n4_opt1: '水下呼吸', q_n4_opt2: '模仿人類語音與簡單邏輯理解', q_n4_opt3: '時速 100 公里奔跑', q_n4_opt4: '連續冬眠 3 年',
+
+      q_n5_name: '揹著房子的旅行家',
+      q_n5_desc: '觀察背負著堅實鈣質外殼緩慢前行的腹足綱生物。',
+      q_n5_q: '庭園蝸牛堅硬的外殼主要由什麼物質構成？',
+      q_n5_opt1: '金屬生鐵', q_n5_opt2: '木質纖維', q_n5_opt3: '碳酸鈣晶體', q_n5_opt4: '固態冰塊',
+
+      q_a1_name: '荒漠熱感應追蹤',
+      q_a1_desc: '揭秘響尾蛇如何在伸手不見五指的黑夜中鎖定獵物。',
+      q_a1_q: '響尾蛇利用什麼特殊器官在黑夜中精準感應獵物？',
+      q_a1_opt1: '紅外線感熱唇窩', q_a1_opt2: '無線電天線', q_a1_opt3: '自體手電筒', q_a1_opt4: '回聲定位聲納',
+
+      q_a2_name: '海洋生物電感應',
+      q_a2_desc: '探索遠洋鯊魚所擁有的第六感生物感官。',
+      q_a2_q: '鯊魚頭部的「羅倫氏壺腹」主要是用來感測什麼？',
+      q_a2_opt1: '發射強烈電擊', q_a2_opt2: '感應生物心跳所產生的微弱電場', q_a2_opt3: '過濾高鹽海水', q_a2_opt4: '吹出空氣水泡',
+
+      q_a3_name: '荒野草原極速疾風',
+      q_a3_desc: '剖析地球陸地奔跑速度最快的動物身體構造。',
+      q_a3_q: '非洲獵豹從靜止加速到時速 100 公里大約需要多久？',
+      q_a3_opt1: '30 秒', q_a3_opt2: '10 秒', q_a3_opt3: '僅需約 3 秒', q_a3_opt4: '1 分鐘',
+
+      q_a4_name: '靜夜無聲幽靈猛禽',
+      q_a4_desc: '考察夜行猛禽羽翼的消音空氣動力學結構。',
+      q_a4_q: '為什麼倉鴞在掠過獵物頭頂時能夠做到完全無聲？',
+      q_a4_opt1: '羽翼外緣特有的微細鋸齒梳狀消音構造', q_a4_opt2: '渦輪推進', q_a4_opt3: '倒著飛行', q_a4_opt4: '無重力漂浮',
+
+      q_a5_name: '無所畏懼的平頭戰神',
+      q_a5_desc: '探究自然界公認按體重比例最英勇頑強的哺乳動物。',
+      q_a5_q: '蜜獾在被毒蛇咬傷後為什麼通常能夠安然無恙？',
+      q_a5_opt1: '裝有鋼鐵防護', q_a5_opt2: '體內天然蛇毒抗體免疫與厚韌橡膠狀皮毛', q_a5_opt3: '喝下大量牛奶', q_a5_opt4: '躲進地底深處',
+
+      q_m1_name: '亞洲叢林巨獸',
+      q_m1_desc: '認識地球上體型最大的貓科猛獸生活習性。',
+      q_m1_q: '與大多數怕水的貓科動物截然不同，孟加拉虎特別喜愛什麼活動？',
+      q_m1_opt1: '深海潛水', q_m1_opt2: '衝浪遊戲', q_m1_opt3: '在寬闊大河與湖泊中暢游戲水', q_m1_opt4: '飲用海水',
+
+      q_m2_name: '蒼穹霸主碎骨握力',
+      q_m2_desc: '檢視白頭海鵰捕魚掠食時強大的腳爪力量。',
+      q_m2_q: '成鳥白頭海鵰雙爪的握力能達到多少數值？',
+      q_m2_opt1: '超過 400 PSI（相當於人類握力的十倍以上）', q_m2_opt2: '10 PSI', q_m2_opt3: '5 PSI', q_m2_opt4: '50 PSI',
+
+      q_m3_name: '遠古傳承死亡翻滾',
+      q_m3_desc: '探索鹹水鱷在水下獵殺大型獵物的終極獵術。',
+      q_m3_q: '鱷魚在水下捕獲獵物後會使出什麼招牌致命招數？',
+      q_m3_opt1: '尾部拍打', q_m3_opt2: '高速旋轉撕裂的「死亡翻滾」', q_m3_opt3: '跳出水面 6 公尺', q_m3_opt4: '催眠術',
+
+      q_m4_name: '群獵戰術指揮家',
+      q_m4_desc: '探究狼群如何以卓越耐力與默契配合制霸荒原。',
+      q_m4_q: '在長途耐力追捕中，狼群最遠能持續追蹤獵物多久？',
+      q_m4_opt1: '100 公尺', q_m4_opt2: '500 英尺', q_m4_opt3: '超過 50 公里而不顯疲態', q_m4_opt4: '僅能追捕 1 公里',
+
+      q_l1_name: '熱帶稀樹草原之王',
+      q_l1_desc: '揭秘野生獅群的家族階層與統治秩序。',
+      q_l1_q: '成年雄獅震動草原的吼聲最遠可以在多遠之外聽見？',
+      q_l1_opt1: '最遠達 8 公里（5 英里）之外', q_l1_opt2: '30 公尺', q_l1_opt3: '500 公尺', q_l1_opt4: '半英里',
+
+      q_l2_name: '極地冰原白色泰坦',
+      q_l2_desc: '考察地球上體型最大的陸生肉食性巨獸抗寒機制。',
+      q_l2_q: '北極熊濃密透明毛髮下方的真正皮膚顏色是什麼？',
+      q_l2_opt1: '雪白純色', q_l2_opt2: '純黑色（用以吸收太陽輻射熱能）', q_l2_opt3: '淡粉紅色', q_l2_opt4: '亮黃色',
+
+      q_l3_name: '史前毀滅性巨顎',
+      q_l3_desc: '分析雷克斯暴龍令人聞風喪膽的生物力學結構。',
+      q_l3_q: '成年霸王龍（T-Rex）被科學界測算的咬合力約為多少？',
+      q_l3_opt1: '500 PSI', q_l3_opt2: '1,500 PSI', q_l3_opt3: '高達約 12,800 PSI（足以咬碎任何骨骼）', q_l3_opt4: '3,000 PSI',
+
+      q_l4_name: '地球王國全能博物家',
+      q_l4_desc: '展現對地球各自然展區豐富多樣性的全面認知。',
+      q_l4_q: '本應用程式總共收錄了多少珍稀物種、植物與礦物標本？',
+      q_l4_opt1: '橫跨 8 大展區的超過 840 種物種與自然礦物', q_l4_opt2: '100 種', q_l4_opt3: '200 種', q_l4_opt4: '500 種',
+
       // Footer
       footer_text: '🌿 動物與地球王國 • 為全年齡探險家打造！8 大狂野探索展區，涵蓋 840+ 種物種、植物與礦物。'
     },
@@ -647,6 +843,9 @@
       nav_favorites: '❤️ Favoritos',
       nav_identifier: '🧭 ¿Qué vi?',
       nav_flashcards: '🎴 Tarjetas',
+      nav_quests: '📜 Misiones',
+      nav_card_shop: '🃏 Tienda de Cartas',
+      nav_arena_gauntlet: '⚔️ Arena 4 Fases',
 
       // Home Hub
       hub_badge: '🌟 CENTRO PRINCIPAL',
@@ -671,6 +870,12 @@
       cool_time_desc: 'Viaja millones de años atrás para ver a los ancestros gigantescos de los animales modernos.',
       cool_flashcards_title: 'Sprint de Tarjetas Silvestres',
       cool_flashcards_desc: '¡Estudia 5 tarjetas aleatorias en 3D y pon a prueba tu memoria sobre hábitat, dieta y características!',
+      cool_quests_title: 'Biblioteca de Misiones y Monedas',
+      cool_quests_desc: '¡Completa más de 20 misiones en 4 niveles para ganar monedas y comprar cartas de batalla!',
+      cool_card_shop_title: 'Tienda de Cartas y Colección',
+      cool_card_shop_desc: '¡Compra cartas de animales o vende las que no uses por monedas para entrar a la Arena!',
+      cool_gauntlet_title: 'Arena Progresiva de 4 Fases',
+      cool_gauntlet_desc: '¡Pon tus cartas en el ring! ¡Vence a un insecto en Fase 1 y llega hasta el titán supremo!',
 
       // Search Section
       search_badge: '🔎 BÚSQUEDA DE EXPEDICIÓN',
@@ -938,6 +1143,97 @@
       toast_wallpaper_set: '🏞️ ¡Fondo establecido en: {title}!',
       toast_photo_uploaded: '🎉 ¡Tu foto subida ahora es tu fondo!',
       toast_reset_bg: '🔄 Restablecido al fondo predeterminado del tema.',
+
+      // Quests Q&A
+      q_n1_name: 'El Polinizador Alado',
+      q_n1_desc: 'Aprende sobre polinizadores pacíficos e inofensivos de las praderas.',
+      q_n1_q: '¿De qué se alimentan las mariposas monarca adultas?',
+      q_n1_opt1: 'Corteza de árbol', q_n1_opt2: 'Néctar de flores', q_n1_opt3: 'Escamas de pez', q_n1_opt4: 'Lombrices',
+
+      q_n2_name: 'Trepador de la Selva',
+      q_n2_desc: 'Investiga anfibios brillantes de los húmedos árboles tropicales.',
+      q_n2_q: '¿Cómo se adhieren las ranas arbóreas de ojos rojos a las hojas húmedas?',
+      q_n2_opt1: 'Garras magnéticas', q_n2_opt2: 'Garras de ave rapaz', q_n2_opt3: 'Almohadillas adhesivas en dedos', q_n2_opt4: 'Pesas pesadas',
+
+      q_n3_name: 'Guardián del Huerto',
+      q_n3_desc: 'Estudia insectos acorazados que defienden los cultivos agrícolas.',
+      q_n3_q: '¿Qué comen las mariquitas de siete puntos que ayuda a los agricultores?',
+      q_n3_opt1: 'Pulgones dañinos', q_n3_opt2: 'Piedras', q_n3_opt3: 'Raíces de árboles', q_n3_opt4: 'Plástico',
+
+      q_n4_name: 'El Sabio Imitador',
+      q_n4_desc: 'Descubre aves parlantes en las copas de los árboles tropicales.',
+      q_n4_q: '¿Por qué habilidad cognitiva especial son famosos los loros grises africanos?',
+      q_n4_opt1: 'Respiración acuática', q_n4_opt2: 'Imitar el habla y razonamiento humano', q_n4_opt3: 'Correr a 100 km/h', q_n4_opt4: 'Hibernar 3 años',
+
+      q_n5_name: 'El Viajero con Concha',
+      q_n5_desc: 'Observa gasterópodos que transportan su propio hogar de calcio.',
+      q_n5_q: '¿De qué está compuesta principalmente la concha del caracol de jardín?',
+      q_n5_opt1: 'Hierro metálico', q_n5_opt2: 'Fibras de madera', q_n5_opt3: 'Carbonato de calcio', q_n5_opt4: 'Hielo sólido',
+
+      q_a1_name: 'Sensor Térmico del Desierto',
+      q_a1_desc: 'Descubre cómo cazan las víboras en oscuridad total.',
+      q_a1_q: '¿Qué órganos especiales usan las serpientes de cascabel para detectar presas?',
+      q_a1_opt1: 'Fosas termorreceptoras infrarrojas', q_a1_opt2: 'Antenas de radio', q_a1_opt3: 'Linternas', q_a1_opt4: 'Sonar de ecolocalización',
+
+      q_a2_name: 'Electrorrecepción Marina',
+      q_a2_desc: 'Explora el sexto sentido de los tiburones en altamar.',
+      q_a2_q: '¿Para qué sirven las ampollas de Lorenzini en los tiburones?',
+      q_a2_opt1: 'Generar descargas eléctricas', q_a2_opt2: 'Detectar débiles campos eléctricos de latidos', q_a2_opt3: 'Filtrar agua salada', q_a2_opt4: 'Soplar burbujas',
+
+      q_a3_name: 'Rayo de la Sabana',
+      q_a3_desc: 'Analiza la anatomía del animal terrestre más veloz de la Tierra.',
+      q_a3_q: '¿En cuánto tiempo acelera un guepardo africano de 0 a 100 km/h?',
+      q_a3_opt1: '30 segundos', q_a3_opt2: '10 segundos', q_a3_opt3: 'Solo 3 segundos', q_a3_opt4: '1 minuto',
+
+      q_a4_name: 'Fantasma Silencioso del Aire',
+      q_a4_desc: 'Inspecciona la acústica de las plumas de rapaces nocturnas.',
+      q_a4_q: '¿Por qué las lechuzas comunes vuelan de forma 100% silenciosa?',
+      q_a4_opt1: 'Flecos aserrados especiales en las plumas de las alas', q_a4_opt2: 'Motores a reacción', q_a4_opt3: 'Volar hacia atrás', q_a4_opt4: 'Gravedad cero',
+
+      q_a5_name: 'El Imparable Tejón Melero',
+      q_a5_desc: 'Investiga el mamífero más valiente del planeta.',
+      q_a5_q: '¿Qué permite a los tejones meleros sobrevivir a mordeduras de serpientes venenosas?',
+      q_a5_opt1: 'Placas de metal', q_a5_opt2: 'Inmunidad natural a venenos y piel gomosa gruesa', q_a5_opt3: 'Beber leche', q_a5_opt4: 'Ocultarse bajo tierra',
+
+      q_m1_name: 'Titán Felino de la Jungla',
+      q_m1_desc: 'Estudia el felino silvestre más grande del planeta.',
+      q_m1_q: 'A diferencia de casi todos los demás felinos, ¿qué actividad adoran los tigres?',
+      q_m1_opt1: 'Buceo profundo', q_m1_opt2: 'Surf en olas', q_m1_opt3: 'Nadar en anchos ríos y lagos', q_m1_opt4: 'Beber agua marina',
+
+      q_m2_name: 'Garras Soberanas del Cielo',
+      q_m2_desc: 'Examina la fuerza de aplastamiento de las garras del águila calva.',
+      q_m2_q: '¿Cuál es la fuerza de presión de las garras de un águila calva?',
+      q_m2_opt1: 'Más de 400 PSI (libras por pulgada cuadrada)', q_m2_opt2: '10 PSI', q_m2_opt3: '5 PSI', q_m2_opt4: '50 PSI',
+
+      q_m3_name: 'El Giro Mortal del Cocodrilo',
+      q_m3_desc: 'Conoce la maniobra acuática definitiva del cocodrilo marino.',
+      q_m3_q: '¿Qué mortífera maniobra usan los cocodrilos para someter presas bajo el agua?',
+      q_m3_opt1: 'Golpes de cola', q_m3_opt2: 'El violento giro giratorio "Death Roll"', q_m3_opt3: 'Saltar 6 metros de altura', q_m3_opt4: 'Hipnosis',
+
+      q_m4_name: 'Táctica de Manada Inagotable',
+      q_m4_desc: 'Descubre cómo la cooperación y resistencia dominan la taiga.',
+      q_m4_q: '¿Qué distancia puede perseguir una manada de lobos durante una cacería de resistencia?',
+      q_m4_opt1: '100 metros', q_m4_opt2: '500 pies', q_m4_opt3: 'Más de 50 kilómetros sin fatigarse', q_m4_opt4: '1 kilómetro solamente',
+
+      q_l1_name: 'Monarca de la Sabana Africana',
+      q_l1_desc: 'Descubre la jerarquía social de las manadas de leones.',
+      q_l1_q: '¿A qué distancia máxima se puede escuchar el rugido de un león macho adulto?',
+      q_l1_opt1: 'Hasta a 8 kilómetros (5 millas) de distancia', q_l1_opt2: '30 metros', q_l1_opt3: '500 metros', q_l1_opt4: 'Media milla',
+
+      q_l2_name: 'Titán Blanco del Ártico',
+      q_l2_desc: 'Explora las adaptaciones térmicas del mayor carnívoro terrestre.',
+      q_l2_q: '¿De qué color es la piel del oso polar bajo su espeso pelaje translúcido?',
+      q_l2_opt1: 'Blanca como la nieve', q_l2_opt2: 'Negro azabache (para absorber el calor solar)', q_l2_opt3: 'Rosa brillante', q_l2_opt4: 'Amarilla dorada',
+
+      q_l3_name: 'Fuerza Mordedora Prehistórica',
+      q_l3_desc: 'Analiza la biomecánica destructiva del Tiranosaurio Rex.',
+      q_l3_q: '¿Cuál era la fuerza de mordedura estimada de un T-Rex adulto?',
+      q_l3_opt1: '500 PSI', q_l3_opt2: '1,500 PSI', q_l3_opt3: 'Hasta 12,800 PSI (capaz de triturar huesos)', q_l3_opt4: '3,000 PSI',
+
+      q_l4_name: 'Gran Maestro del Reino Natural',
+      q_l4_desc: 'Demuestra maestría absoluta sobre la biodiversidad de la Tierra.',
+      q_l4_q: '¿Cuántos especímenes, plantas y minerales hay en total en esta aplicación?',
+      q_l4_opt1: 'Más de 840 especímenes en 8 zonas salvajes de descubrimiento', q_l4_opt2: '100', q_l4_opt3: '200', q_l4_opt4: '500',
 
       // Footer
       footer_text: '🌿 EL REINO ANIMAL Y DE LA TIERRA • ¡Diseñado para exploradores de todas las edades! Más de 840 especies, plantas y minerales en 8 zonas salvajes.'

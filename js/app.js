@@ -319,6 +319,23 @@ class AnimalKingdomApp {
     if (fcModal && !fcModal.classList.contains('hidden') && window.AK_FLASHCARDS && window.AK_FLASHCARDS.render) {
       window.AK_FLASHCARDS.render();
     }
+
+    // If quest, shop, or gauntlet modal is open, re-render & update coins
+    if (window.AK_QUESTS) {
+      window.AK_QUESTS.updateHeaderCoinDisplay();
+      const qModal = document.getElementById('quest-modal');
+      if (qModal && !qModal.classList.contains('hidden')) {
+        window.AK_QUESTS.renderQuestLibrary();
+      }
+      const sModal = document.getElementById('card-shop-modal');
+      if (sModal && !sModal.classList.contains('hidden')) {
+        window.AK_QUESTS.renderShop();
+      }
+      const gModal = document.getElementById('gauntlet-modal');
+      if (gModal && !gModal.classList.contains('hidden')) {
+        window.AK_QUESTS.renderGauntlet();
+      }
+    }
   }
 
   toggleTheme() {

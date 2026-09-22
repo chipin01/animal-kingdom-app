@@ -9736,5 +9736,971 @@ body.light-mode .score-target-info h4 {
   }
 }
 
+/* ==========================================================================
+   QUEST LIBRARY, CARD SHOP & 4-STAGE ARENA GAUNTLET STYLES
+   ========================================================================== */
 
+/* Header Coin Counter Pill */
+.header-coin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.22), rgba(245, 158, 11, 0.32));
+  border: 1px solid rgba(234, 179, 8, 0.65);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #facc15;
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
+.header-coin-pill:hover {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.35), rgba(245, 158, 11, 0.45));
+  transform: scale(1.06);
+  box-shadow: 0 0 18px rgba(234, 179, 8, 0.5);
+}
+
+.coin-bump {
+  animation: coinBumpAnim 0.35s ease;
+}
+
+@keyframes coinBumpAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); color: #fff; }
+  100% { transform: scale(1); }
+}
+
+/* Header Glow Buttons */
+.btn-quest-glow {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(234, 179, 8, 0.25)) !important;
+  border-color: rgba(16, 185, 129, 0.65) !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+}
+
+.btn-quest-glow:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.38), rgba(234, 179, 8, 0.4)) !important;
+  transform: translateY(-1px);
+}
+
+.btn-shop-glow {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(99, 102, 241, 0.25)) !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
+  color: #c084fc !important;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+}
+
+.btn-shop-glow:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.38), rgba(99, 102, 241, 0.4)) !important;
+  transform: translateY(-1px);
+}
+
+.btn-gauntlet-glow {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(249, 115, 22, 0.28)) !important;
+  border-color: rgba(239, 68, 68, 0.65) !important;
+  color: #f87171 !important;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+}
+
+.btn-gauntlet-glow:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.42), rgba(249, 115, 22, 0.45)) !important;
+  transform: translateY(-1px);
+}
+
+/* Modals */
+.quest-modal-window,
+.shop-modal-window,
+.gauntlet-modal-window {
+  background: #090e17;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  width: 95%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 0, 0, 0.4);
+  animation: gameModalIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quest-modal-window { border-color: rgba(16, 185, 129, 0.4); }
+.shop-modal-window { border-color: rgba(168, 85, 247, 0.4); }
+.gauntlet-modal-window { border-color: rgba(239, 68, 68, 0.45); }
+
+@keyframes gameModalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.game-modal-container {
+  padding: 30px 28px 36px;
+  position: relative;
+}
+
+.game-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.game-modal-close:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.game-modal-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.game-wallet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #facc15;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.game-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #f8fafc;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.game-modal-sub {
+  font-size: 0.94rem;
+  color: #94a3b8;
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+.shop-resale-hint {
+  font-size: 0.82rem;
+  color: #f59e0b;
+  margin: 8px 0 0 0;
+}
+
+/* Tabs row */
+.game-tabs-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-tab-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.game-tab-btn:hover {
+  background: rgba(30, 41, 59, 0.9);
+  color: #fff;
+}
+
+.game-tab-btn.active {
+  background: #3b82f6;
+  border-color: #60a5fa;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   QUESTS GRID
+   -------------------------------------------------------------------------- */
+.quests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+.quest-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.quest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.quest-tier-novice { border-left: 4px solid #10b981; }
+.quest-tier-adept { border-left: 4px solid #3b82f6; }
+.quest-tier-master { border-left: 4px solid #a855f7; }
+.quest-tier-legendary { border-left: 4px solid #eab308; }
+
+.quest-claimed-card {
+  opacity: 0.72;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  background: rgba(6, 78, 59, 0.15) !important;
+}
+
+.quest-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.quest-icon-badge {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.quest-header-meta {
+  flex-grow: 1;
+}
+
+.quest-tier-pill {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 3px;
+}
+
+.tier-novice { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.tier-adept { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.tier-master { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+.tier-legendary { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+
+.quest-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.quest-coin-badge {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #facc15;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.quest-desc {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  margin: 0 0 14px 0;
+  line-height: 1.4;
+}
+
+.quest-interactive-box {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.quest-q-prompt {
+  font-size: 0.86rem;
+  color: #f1f5f9;
+  margin: 0 0 10px 0;
+}
+
+.quest-options-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-quest-opt {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.btn-quest-opt:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.btn-quest-opt.opt-correct {
+  background: rgba(16, 185, 129, 0.3) !important;
+  border-color: #10b981 !important;
+  color: #a7f3d0 !important;
+  font-weight: 700 !important;
+}
+
+.quest-card-footer {
+  font-size: 0.8rem;
+}
+
+.quest-claimed-tag {
+  color: #34d399;
+  font-weight: 800;
+}
+
+.quest-status-pending {
+  color: #eab308;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   COLLECTOR CARDS SHOP
+   -------------------------------------------------------------------------- */
+.cards-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.collector-card {
+  background: #0d1525;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.collector-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7);
+}
+
+.collector-card.rarity-common { border-color: rgba(148, 163, 184, 0.4); }
+.collector-card.rarity-uncommon { border-color: rgba(16, 185, 129, 0.5); }
+.collector-card.rarity-rare { border-color: rgba(59, 130, 246, 0.6); }
+.collector-card.rarity-legendary { border-color: rgba(234, 179, 8, 0.75); box-shadow: 0 0 20px rgba(234, 179, 8, 0.2); }
+
+.card-is-owned {
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.6);
+}
+
+.card-is-active {
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.5), inset 0 0 0 2px #ef4444;
+}
+
+.card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: #000;
+  overflow: hidden;
+}
+
+.card-shop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-rarity-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.badge-common { background: rgba(15, 23, 42, 0.85); color: #cbd5e1; }
+.badge-uncommon { background: #059669; color: #fff; }
+.badge-rare { background: #2563eb; color: #fff; }
+.badge-legendary { background: #d97706; color: #fff; }
+
+.card-owned-banner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(16, 185, 129, 0.9);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.card-shop-body {
+  padding: 14px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-row {
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.card-sci {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.card-rpg-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  padding: 6px 8px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rpg-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-lbl {
+  font-size: 0.64rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.rpg-stat strong {
+  font-size: 0.88rem;
+  color: #f8fafc;
+}
+
+.card-special-ability {
+  font-size: 0.78rem;
+  color: #facc15;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.card-shop-desc {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.card-actions-box {
+  padding: 12px 16px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-buy-card {
+  width: 100%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-buy-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+}
+
+.owned-actions-dual {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 6px;
+}
+
+.btn-select-card {
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-select-card:hover {
+  background: #2563eb;
+}
+
+.btn-select-card.active-fighter {
+  background: rgba(239, 68, 68, 0.8);
+  border: 1px solid #ef4444;
+}
+
+.btn-sell-card {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sell-card:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   4-STAGE ARENA GAUNTLET
+   -------------------------------------------------------------------------- */
+.gauntlet-arena-container {
+  max-width: 860px;
+}
+
+.arena-header-bar {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.stage-stepper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.step-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-family: var(--font-display);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.step-dot.cleared {
+  background: #10b981;
+  border-color: #34d399;
+  color: #fff;
+}
+
+.step-dot.active {
+  background: #ef4444;
+  border-color: #f87171;
+  color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5);
+}
+
+.arena-stage-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #f8fafc;
+  margin: 0 0 4px 0;
+}
+
+.arena-stage-sub {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  margin: 0 0 8px 0;
+}
+
+.stage-reward-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #facc15;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  padding: 3px 12px;
+  border-radius: 16px;
+}
+
+/* Battle Ring */
+.arena-battle-ring {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.fighter-panel {
+  background: rgba(15, 23, 42, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.fighter-player { border-color: rgba(59, 130, 246, 0.5); }
+.fighter-opponent { border-color: rgba(239, 68, 68, 0.5); }
+
+.fighter-defeated {
+  filter: grayscale(1) opacity(0.5);
+  transform: scale(0.95);
+}
+
+.fighter-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #60a5fa;
+  margin-bottom: 8px;
+}
+
+.fighter-tag.stage-tag { color: #f87171; }
+
+.fighter-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  margin: 0 auto 10px auto;
+  display: block;
+}
+
+.fighter-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0 0 10px 0;
+}
+
+.fighter-hp-wrap {
+  margin-bottom: 10px;
+}
+
+.hp-num {
+  font-family: monospace;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+}
+
+.hp-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.player-hp { background: linear-gradient(90deg, #10b981, #3b82f6); }
+.opponent-hp { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+.fighter-quick-stats {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.arena-vs-col {
+  text-align: center;
+}
+
+.vs-burst-badge {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #f59e0b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  border: 2px dashed rgba(245, 158, 11, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Console & Action Buttons */
+.arena-action-console {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+}
+
+.turn-indicator {
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.turn-player { color: #38bdf8; }
+.turn-enemy { color: #f87171; }
+
+.arena-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.btn-arena-action {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-act-attack {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #fff;
+}
+
+.btn-act-attack:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.btn-act-special {
+  background: linear-gradient(135deg, #eab308 0%, #f97316 100%);
+  color: #fff;
+}
+
+.btn-act-special:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(234, 179, 8, 0.4);
+}
+
+.btn-act-guard {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  color: #fff;
+}
+
+.btn-act-guard:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(100, 116, 139, 0.4);
+}
+
+.btn-arena-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Result banner */
+.arena-result-banner {
+  text-align: center;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.banner-victory {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #a7f3d0;
+}
+
+.banner-defeat {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #fca5a5;
+}
+
+.arena-result-banner h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin: 0 0 14px 0;
+}
+
+.result-actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-advance-stage {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  border: none !important;
+  padding: 10px 22px !important;
+  border-radius: 20px !important;
+  cursor: pointer;
+}
+
+.btn-retry-stage {
+  background: #3b82f6;
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-shop-redirect {
+  background: rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Battle Log */
+.arena-combat-log {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.log-heading {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0 0 8px 0;
+}
+
+.log-feed {
+  max-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-entry {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+/* Light Mode Overrides */
+body.light-mode .quest-modal-window,
+body.light-mode .shop-modal-window,
+body.light-mode .gauntlet-modal-window {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+body.light-mode .game-modal-title { color: #0f172a; }
+body.light-mode .game-modal-sub { color: #475569; }
+body.light-mode .quest-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+body.light-mode .quest-card-title { color: #0f172a; }
+body.light-mode .quest-desc { color: #475569; }
+body.light-mode .quest-interactive-box { background: #f1f5f9; }
+body.light-mode .quest-q-prompt { color: #0f172a; }
+body.light-mode .btn-quest-opt {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+body.light-mode .collector-card {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+body.light-mode .card-name { color: #0f172a; }
+body.light-mode .card-rpg-stats { background: #f1f5f9; }
+body.light-mode .rpg-stat strong { color: #0f172a; }
+body.light-mode .fighter-panel {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+body.light-mode .fighter-name { color: #0f172a; }
+body.light-mode .arena-stage-title { color: #0f172a; }
+body.light-mode .arena-stage-sub { color: #475569; }
+body.light-mode .arena-action-console { background: #f8fafc; }
+body.light-mode .arena-combat-log { background: #f1f5f9; }
+body.light-mode .log-entry { color: #334155; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .quests-grid { grid-template-columns: 1fr; }
+  .quest-options-row { grid-template-columns: 1fr; }
+  .cards-shop-grid { grid-template-columns: 1fr; }
+  .arena-battle-ring {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .arena-action-buttons { grid-template-columns: 1fr; }
+  .fighter-avatar { width: 70px; height: 70px; }
+}
