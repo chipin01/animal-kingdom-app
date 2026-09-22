@@ -24,6 +24,7 @@
       nav_quiz: '🎮 Quiz',
       nav_favorites: '❤️ Favs',
       nav_identifier: '🧭 What Did I See?',
+      nav_flashcards: '🎴 Flashcards',
 
       // Home Hub
       hub_badge: '🌟 HOME HUB',
@@ -46,6 +47,8 @@
       cool_arena_desc: 'Simulate stat-based matchups between creatures (e.g., Lion vs Tiger).',
       cool_time_title: 'Evolution Time Machine',
       cool_time_desc: 'Travel back millions of years to see the giant ancient ancestors of modern animals.',
+      cool_flashcards_title: 'Wildlife Flashcard Sprint',
+      cool_flashcards_desc: 'Study 5 randomized creature cards with 3D flip dossiers, then test your memory on habitat, diet & characteristics!',
 
       // Search Section
       search_badge: '🔎 EXPEDITION SEARCH',
@@ -332,6 +335,7 @@
       nav_quiz: '🎮 Safari 問答',
       nav_favorites: '❤️ 我的最愛',
       nav_identifier: '🧭 辨識物種',
+      nav_flashcards: '🎴 記憶翻牌',
 
       // Home Hub
       hub_badge: '🌟 探索首頁',
@@ -354,6 +358,8 @@
       cool_arena_desc: '模擬生物之間基於各項數值的戰力對決（例如：獅子大戰老虎）。',
       cool_time_title: '演化時光機',
       cool_time_desc: '穿越數百萬年時光，探訪現代動物的史前巨型祖先。',
+      cool_flashcards_title: '野生動物記憶翻牌挑戰',
+      cool_flashcards_desc: '隨機抽取 5 張物種卡片進行 3D 翻牌速記，並挑戰棲息地、飲食與特徵問答！',
 
       // Search Section
       search_badge: '🔎 探險搜尋',
@@ -640,6 +646,7 @@
       nav_quiz: '🎮 Trivia',
       nav_favorites: '❤️ Favoritos',
       nav_identifier: '🧭 ¿Qué vi?',
+      nav_flashcards: '🎴 Tarjetas',
 
       // Home Hub
       hub_badge: '🌟 CENTRO PRINCIPAL',
@@ -662,6 +669,8 @@
       cool_arena_desc: 'Simula enfrentamientos basados en estadísticas entre criaturas (ej. León vs Tigre).',
       cool_time_title: 'Máquina del Tiempo de Evolución',
       cool_time_desc: 'Viaja millones de años atrás para ver a los ancestros gigantescos de los animales modernos.',
+      cool_flashcards_title: 'Sprint de Tarjetas Silvestres',
+      cool_flashcards_desc: '¡Estudia 5 tarjetas aleatorias en 3D y pon a prueba tu memoria sobre hábitat, dieta y características!',
 
       // Search Section
       search_badge: '🔎 BÚSQUEDA DE EXPEDICIÓN',

@@ -313,6 +313,12 @@ class AnimalKingdomApp {
     if (idModal && !idModal.classList.contains('hidden') && window.AK_IDENTIFIER && window.AK_IDENTIFIER.render) {
       window.AK_IDENTIFIER.render();
     }
+
+    // If flashcard sprint modal is open, re-render
+    const fcModal = document.getElementById('flashcard-modal');
+    if (fcModal && !fcModal.classList.contains('hidden') && window.AK_FLASHCARDS && window.AK_FLASHCARDS.render) {
+      window.AK_FLASHCARDS.render();
+    }
   }
 
   toggleTheme() {

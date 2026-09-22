@@ -83,6 +83,9 @@
           <button class="btn-header-pill btn-small-pill btn-identifier-glow" onclick="window.AK_IDENTIFIER && window.AK_IDENTIFIER.openModal()" title="Describe what you saw or answer 5 questions to identify species & plants!">
             <span data-i18n="nav_identifier">🧭 What Did I See?</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #10b981, #06b6d4);">NEW</span>
           </button>
+          <button class="btn-header-pill btn-small-pill btn-flashcard-glow" onclick="window.AK_FLASHCARDS && window.AK_FLASHCARDS.openModal()" title="Study 5 randomized wildlife flashcards and test your memory!">
+            <span data-i18n="nav_flashcards">🎴 Flashcards</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">NEW</span>
+          </button>
           <button class="btn-header-pill btn-small-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
             <span data-i18n="nav_habitats">🖼️ Habitats</span>
           </button>
@@ -190,6 +193,18 @@
                 <span class="cool-card-badge" style="background: #10b981; color: #fff;">NEW AI</span>
               </div>
               <p class="cool-card-desc">Describe any creature, plant, or crystal or take the 5-step quiz to identify species from 840+ specimens!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_FLASHCARDS && window.AK_FLASHCARDS.openModal()" title="Launch Flashcard Study & Memory Quiz" style="border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(120, 53, 15, 0.15);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;">🎴</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_flashcards_title">Wildlife Flashcard Sprint</h4>
+                <span class="cool-card-badge" style="background: #f59e0b; color: #fff;">NEW 3D</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_flashcards_desc">Study 5 randomized creature cards with 3D flip dossiers, then test your memory on habitat, diet & characteristics!</p>
             </div>
             <span class="cool-card-arrow">→</span>
           </div>
@@ -1232,6 +1247,11 @@
     <div id="identifier-modal-content" class="identifier-modal-window"></div>
   </div>
 
+  <!-- WILDLIFE FLASHCARD STUDY & MEMORY SPRINT MODAL -->
+  <div id="flashcard-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_FLASHCARDS.closeModal()">
+    <div id="flashcard-modal-content" class="flashcard-modal-window"></div>
+  </div>
+
   <!-- Confetti Layer -->
   <div id="confetti-layer" class="confetti-layer"></div>
 
@@ -1268,6 +1288,7 @@
   <script src="js/artGallery.js"></script>
   <script src="js/timeMachine.js"></script>
   <script src="js/specimenIdentifier.js"></script>
+  <script src="js/flashcardSprint.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
