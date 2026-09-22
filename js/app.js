@@ -307,6 +307,12 @@ class AnimalKingdomApp {
     if (weatherModal && !weatherModal.classList.contains('hidden') && window.AK_WEATHER && window.AK_WEATHER.renderCurrentSpecimen) {
       window.AK_WEATHER.renderCurrentSpecimen();
     }
+
+    // If identifier modal is open, re-render
+    const idModal = document.getElementById('identifier-modal');
+    if (idModal && !idModal.classList.contains('hidden') && window.AK_IDENTIFIER && window.AK_IDENTIFIER.render) {
+      window.AK_IDENTIFIER.render();
+    }
   }
 
   toggleTheme() {

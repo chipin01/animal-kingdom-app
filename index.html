@@ -80,6 +80,9 @@
           <span class="header-btn-sep"></span>
 
           <!-- Interactive Feature Buttons (Small) -->
+          <button class="btn-header-pill btn-small-pill btn-identifier-glow" onclick="window.AK_IDENTIFIER && window.AK_IDENTIFIER.openModal()" title="Describe what you saw or answer 5 questions to identify species & plants!">
+            <span data-i18n="nav_identifier">🧭 What Did I See?</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #10b981, #06b6d4);">NEW</span>
+          </button>
           <button class="btn-header-pill btn-small-pill btn-habitat-glow" onclick="window.app && window.app.openBackgroundModal()" title="Realistic Habitat Backgrounds & Wallpapers">
             <span data-i18n="nav_habitats">🖼️ Habitats</span>
           </button>
@@ -179,6 +182,18 @@
         <!-- Quick Access Grid for Other Cool Apps -->
         <div class="cool-apps-grid">
           
+          <div class="cool-app-card" onclick="window.AK_IDENTIFIER && window.AK_IDENTIFIER.openModal()" title="Launch Nature Detective Identifier" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(6, 78, 59, 0.15);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #059669, #0d9488); color: #fff;">🧭</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title">What Did I See? Identifier</h4>
+                <span class="cool-card-badge" style="background: #10b981; color: #fff;">NEW AI</span>
+              </div>
+              <p class="cool-card-desc">Describe any creature, plant, or crystal or take the 5-step quiz to identify species from 840+ specimens!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
           <div class="cool-app-card" onclick="window.AK_WEATHER &amp;&amp; window.AK_WEATHER.openWeatherModal()" title="Launch Weather Simulator">
             <div class="cool-card-icon-wrap bg-weather">🌦️</div>
             <div class="cool-card-text">
@@ -1212,6 +1227,11 @@
     </div>
   </div>
 
+  <!-- SPECIMEN IDENTIFIER MODAL (What Did I See?) -->
+  <div id="identifier-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_IDENTIFIER.closeModal()">
+    <div id="identifier-modal-content" class="identifier-modal-window"></div>
+  </div>
+
   <!-- Confetti Layer -->
   <div id="confetti-layer" class="confetti-layer"></div>
 
@@ -1247,6 +1267,7 @@
   <script src="js/weatherSimulator.js"></script>
   <script src="js/artGallery.js"></script>
   <script src="js/timeMachine.js"></script>
+  <script src="js/specimenIdentifier.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

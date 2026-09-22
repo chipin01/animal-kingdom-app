@@ -23,6 +23,7 @@
       nav_arena: '⚔️ Battle Arena',
       nav_quiz: '🎮 Quiz',
       nav_favorites: '❤️ Favs',
+      nav_identifier: '🧭 What Did I See?',
 
       // Home Hub
       hub_badge: '🌟 HOME HUB',
@@ -330,6 +331,7 @@
       nav_arena: '⚔️ 對決競技場',
       nav_quiz: '🎮 Safari 問答',
       nav_favorites: '❤️ 我的最愛',
+      nav_identifier: '🧭 辨識物種',
 
       // Home Hub
       hub_badge: '🌟 探索首頁',
@@ -637,6 +639,7 @@
       nav_arena: '⚔️ Arena de Batalla',
       nav_quiz: '🎮 Trivia',
       nav_favorites: '❤️ Favoritos',
+      nav_identifier: '🧭 ¿Qué vi?',
 
       // Home Hub
       hub_badge: '🌟 CENTRO PRINCIPAL',
