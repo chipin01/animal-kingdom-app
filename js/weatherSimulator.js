@@ -154,6 +154,10 @@ class AnimalWeatherSimulator {
     if (!modal) return;
     modal.classList.remove('hidden');
 
+    if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+      window.AK_QUESTS.recordStat('weatherSims', 1);
+    }
+
     this.initCanvas();
     this.setPreset(this.currentWeather, false);
     this.calculateIrvineWeather();

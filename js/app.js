@@ -1033,6 +1033,10 @@ class AnimalKingdomApp {
     this.currentAnimalId = id;
     window.AK_AUDIO.playPop(550);
 
+    if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+      window.AK_QUESTS.recordStat('detailsInspected', 1);
+    }
+
     const modal = document.getElementById('animal-modal');
     const content = document.getElementById('animal-modal-content');
     if (!modal || !content) return;

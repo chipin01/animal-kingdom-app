@@ -420,6 +420,10 @@ class AnimalAnatomyScanner {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
+    if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+      window.AK_QUESTS.recordStat('anatomyScans', 1);
+    }
+
     const all = this.getAllLivingAnimals();
     let targetAnimal = null;
 

@@ -125,6 +125,10 @@ class PrehistoricTimeMachine {
     if (modal) {
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+        window.AK_QUESTS.recordStat('timeTravels', 1);
+      }
       this.renderMenu();
       this.loadPair(this.currentPairId);
       

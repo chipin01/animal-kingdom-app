@@ -433,6 +433,10 @@ class WildlifeMigrationTracker {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
+    if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+      window.AK_QUESTS.recordStat('migrationsTracked', 1);
+    }
+
     this.renderMonthSelector();
     this.updateStatusBanner();
     this.renderMigrationSidebar();

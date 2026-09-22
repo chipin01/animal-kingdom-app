@@ -6,338 +6,498 @@
 (function(window) {
   'use strict';
 
+  // Helper to get reliable image url with Weserv proxy
+  function formatWeservUrl(url, width = 500) {
+    if (!url) return '';
+    let target = url;
+    if (target.includes('images.weserv.nl')) {
+      try {
+        const parsed = new URL(target);
+        const inner = parsed.searchParams.get('url');
+        if (inner) target = decodeURIComponent(inner);
+      } catch (e) {}
+    }
+    if (target.includes('upload.wikimedia.org')) {
+      const cleanUrl = target.split('?')[0];
+      return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&w=${width}&output=jpg`;
+    }
+    return target;
+  }
+
   // --------------------------------------------------------------------------
-  // 1. QUEST REGISTRY (20+ Quests Across 4 Difficulty Tiers)
+  // 1. QUEST REGISTRY (Action Milestones + Deep Wildlife Knowledge Challenges)
   // --------------------------------------------------------------------------
   const QUEST_DEFINITIONS = [
-    // --- NOVICE (50 - 100 Coins) ---
+    // ========================================================================
+    // --- ACTION MILESTONES (MUCH HARDER, PROGRESS TRACKED IN REAL-TIME) ---
+    // ========================================================================
+    {
+      id: 'quest-flashcard-master',
+      tier: 'legendary',
+      type: 'milestone',
+      statKey: 'flashcardWins',
+      target: 3,
+      coins: 1000,
+      icon: '🎴',
+      name: 'Flashcard Sprint Master',
+      name_zh: '記憶翻牌特訓大師',
+      name_es: 'Maestro de Tarjetas de Memoria',
+      desc: 'Achieve a perfect 3/3 score in the Wildlife Flashcard Study & Quiz Challenge 3 times!',
+      desc_zh: '在野生動物記憶翻牌與特訓問答中獲得 3/3 滿分達 3 次！',
+      desc_es: '¡Consigue una puntuación perfecta de 3/3 en el Reto de Tarjetas de Memoria 3 veces!',
+      actionText: 'Launch Flashcards 🎴 ➡️',
+      actionText_zh: '開啟記憶翻牌特訓 🎴 ➡️',
+      actionText_es: 'Abrir Tarjetas 🎴 ➡️',
+      actionFn: "if(window.AK_FLASHCARDS) window.AK_FLASHCARDS.openModal();"
+    },
+    {
+      id: 'quest-gauntlet-champ',
+      tier: 'legendary',
+      type: 'milestone',
+      statKey: 'gauntletCleared',
+      target: 1,
+      coins: 1200,
+      icon: '👑',
+      name: '4-Stage Arena Gauntlet Champion',
+      name_zh: '4 關競技場終極冠軍',
+      name_es: 'Campeón Supremo del Desafío',
+      desc: 'Defeat all 4 stages of the Arena Gauntlet from the Bug Challenger to the Colossal Mega Titan!',
+      desc_zh: '從第 1 關巨蟲試煉一路戰勝至第 4 關終極泰坦霸主，全破 4 大關卡！',
+      desc_es: '¡Derrota las 4 fases de la Arena desde el Bicho hasta el Titán Colosal!',
+      actionText: 'Enter 4-Stage Arena ⚔️ ➡️',
+      actionText_zh: '進入 4 關競技場 ⚔️ ➡️',
+      actionText_es: 'Entrar a la Arena ⚔️ ➡️',
+      actionFn: "window.AK_QUESTS.openGauntletModal();"
+    },
+    {
+      id: 'quest-collector-supreme',
+      tier: 'master',
+      type: 'milestone',
+      statKey: 'cardsOwned',
+      target: 5,
+      coins: 700,
+      icon: '🃏',
+      name: 'Master Card Collector',
+      name_zh: '生物卡片收藏大師',
+      name_es: 'Maestro Coleccionista de Cartas',
+      desc: 'Collect and own at least 5 different animal battle cards in your Card Shop deck!',
+      desc_zh: '在卡片商店中收集並擁有至少 5 張不同的動物出戰卡片！',
+      desc_es: '¡Colecciona y posee al menos 5 cartas diferentes en tu baraja de la Tienda!',
+      actionText: 'Browse Card Shop 🃏 ➡️',
+      actionText_zh: '前往卡片商店 🃏 ➡️',
+      actionText_es: 'Ir a la Tienda 🃏 ➡️',
+      actionFn: "window.AK_QUESTS.openShopModal();"
+    },
+    {
+      id: 'quest-nature-detective',
+      tier: 'master',
+      type: 'milestone',
+      statKey: 'identifiedCount',
+      target: 3,
+      coins: 600,
+      icon: '🔍',
+      name: 'Nature Detective Pro',
+      name_zh: '自然特徵偵探專家',
+      name_es: 'Detective de la Naturaleza Pro',
+      desc: 'Successfully identify 3 mystery animals or plants using the Specimen Identifier!',
+      desc_zh: '使用神秘標本特徵鑑定器，成功解開並鑑定 3 種動植物！',
+      desc_es: '¡Identifica con éxito 3 especies con el Identificador de Especímenes!',
+      actionText: 'Identify Specimens 🔍 ➡️',
+      actionText_zh: '開啟特徵鑑定器 🔍 ➡️',
+      actionText_es: 'Identificar Criaturas 🔍 ➡️',
+      actionFn: "if(window.AK_IDENTIFIER) window.AK_IDENTIFIER.openModal();"
+    },
+    {
+      id: 'quest-arena-gladiator',
+      tier: 'adept',
+      type: 'milestone',
+      statKey: 'arenaStageWins',
+      target: 5,
+      coins: 500,
+      icon: '⚔️',
+      name: 'Safari Gladiator',
+      name_zh: '荒野競技角鬥士',
+      name_es: 'Gladiador del Safari',
+      desc: 'Win 5 battle rounds against opponents in the 4-Stage Arena Gauntlet!',
+      desc_zh: '在 4 關漸進式競技場挑戰中累計獲勝 5 次戰鬥！',
+      desc_es: '¡Gana 5 rondas de combate en la Arena de 4 Fases!',
+      actionText: 'Battle in Arena ⚔️ ➡️',
+      actionText_zh: '前往競技場 ⚔️ ➡️',
+      actionText_es: 'Luchar en la Arena ⚔️ ➡️',
+      actionFn: "window.AK_QUESTS.openGauntletModal();"
+    },
+    {
+      id: 'quest-field-zoologist',
+      tier: 'adept',
+      type: 'milestone',
+      statKey: 'detailsInspected',
+      target: 10,
+      coins: 400,
+      icon: '📖',
+      name: 'Field Zoologist Explorer',
+      name_zh: '田野動物百科考察家',
+      name_es: 'Zoólogo de Campo Explorador',
+      desc: 'Open and inspect 10 complete wildlife encyclopedia field guide dossiers!',
+      desc_zh: '深入查閱 10 個完整野生動植物百科全書檔案！',
+      desc_es: '¡Abre e inspecciona 10 fichas completas de la enciclopedia de vida silvestre!',
+      actionText: 'Explore Animals 🐾 ➡️',
+      actionText_zh: '探索百科生物 🐾 ➡️',
+      actionText_es: 'Explorar Animales 🐾 ➡️',
+      actionFn: "window.AK_QUESTS.closeQuestModal();"
+    },
+    {
+      id: 'quest-anatomy-expert',
+      tier: 'adept',
+      type: 'milestone',
+      statKey: 'anatomyScans',
+      target: 3,
+      coins: 350,
+      icon: '🔬',
+      name: 'Biomechanical Radiologist',
+      name_zh: '生物解剖 X 光專家',
+      name_es: 'Radiólogo Biomecánico',
+      desc: 'Inspect internal bones, hearts, and organs of 3 animals in the Anatomy Scanner!',
+      desc_zh: '在動物體內透視 X 光掃描儀中檢驗 3 種動物的骨骼與內臟器官！',
+      desc_es: '¡Inspecciona huesos y órganos internos de 3 animales en el Escáner de Rayos X!',
+      actionText: 'Open Anatomy Scanner 🔬 ➡️',
+      actionText_zh: '開啟解剖掃描儀 🔬 ➡️',
+      actionText_es: 'Abrir Escáner 🔬 ➡️',
+      actionFn: "if(window.AK_ANATOMY) window.AK_ANATOMY.openAnatomyModal();"
+    },
+    {
+      id: 'quest-telemetry-nav',
+      tier: 'adept',
+      type: 'milestone',
+      statKey: 'migrationsTracked',
+      target: 3,
+      coins: 350,
+      icon: '🌍',
+      name: 'Global Telemetry Navigator',
+      name_zh: '全球遷徙遙測導航員',
+      name_es: 'Navegador de Telemetría Global',
+      desc: 'Track and analyze 3 global migration flyways across ocean, air, and land!',
+      desc_zh: '在全球野生動物遷徙地圖中追蹤並分析 3 條跨洋陸空遷徙路線！',
+      desc_es: '¡Rastrea 3 rutas de migración global por aire, tierra y mar!',
+      actionText: 'Open Migration Map 🌍 ➡️',
+      actionText_zh: '開啟遷徙地圖 🌍 ➡️',
+      actionText_es: 'Abrir Mapa 🌍 ➡️',
+      actionFn: "if(window.AK_MIGRATION) window.AK_MIGRATION.openMigrationModal();"
+    },
+    {
+      id: 'quest-fossil-voyager',
+      tier: 'adept',
+      type: 'milestone',
+      statKey: 'timeTravels',
+      target: 3,
+      coins: 350,
+      icon: '⏳',
+      name: 'Prehistoric Fossil Hunter',
+      name_zh: '史前演化化石獵人',
+      name_es: 'Cazador de Fósiles Prehistóricos',
+      desc: 'Travel back in time and inspect 3 ancient ancestor fossils in the Prehistoric Time Machine!',
+      desc_zh: '穿越時光，在史前演化時光機中比對 3 種遠古生物化石祖先！',
+      desc_es: '¡Viaja en el tiempo y examina 3 fósiles ancestrales en la Máquina del Tiempo!',
+      actionText: 'Open Time Machine ⌛ ➡️',
+      actionText_zh: '開啟演化時光機 ⌛ ➡️',
+      actionText_es: 'Abrir Máquina ⌛ ➡️',
+      actionFn: "if(window.AK_TIME_MACHINE) window.AK_TIME_MACHINE.openModal();"
+    },
+    {
+      id: 'quest-climate-scientist',
+      tier: 'novice',
+      type: 'milestone',
+      statKey: 'weatherSims',
+      target: 3,
+      coins: 250,
+      icon: '⛈️',
+      name: 'Extreme Climate Scientist',
+      name_zh: '極端氣候生態學者',
+      name_es: 'Científico de Climas Extremos',
+      desc: 'Simulate 3 weather biomes (Rain, Blizzard, Heatwave) in the Weather Simulator!',
+      desc_zh: '在氣候模擬器中模擬 3 種不同氣象生態（暴雨、暴風雪、熱浪）！',
+      desc_es: '¡Simula 3 biomas climáticos en el Simulador Meteorológico!',
+      actionText: 'Simulate Weather 🌦️ ➡️',
+      actionText_zh: '開啟氣候模擬器 🌦️ ➡️',
+      actionText_es: 'Simular Clima 🌦️ ➡️',
+      actionFn: "if(window.AK_WEATHER) window.AK_WEATHER.openWeatherModal();"
+    },
+
+    // ========================================================================
+    // --- NOVICE KNOWLEDGE QUIZ QUESTS (50 - 100 Coins) ---
+    // ========================================================================
     {
       id: 'quest-novice-1',
       tier: 'novice',
+      type: 'quiz_challenge',
       coins: 60,
       icon: '🦋',
-      nameKey: 'q_n1_name',
-      descKey: 'q_n1_desc',
-      type: 'quiz_challenge',
+      name: 'Metamorphosis Mystery',
+      name_zh: '變態蛻變之謎',
+      name_es: 'Misterio de la Metamorfosis',
+      desc: 'Which plant is the exclusive host food for Monarch butterfly caterpillars?',
+      desc_zh: '哪種植物是帝王斑蝶毛毛蟲唯一的專屬寄主食物？',
+      desc_es: '¿Qué planta es el alimento hospedero exclusivo de las orugas de la mariposa monarca?',
       question: {
-        promptKey: 'q_n1_q',
+        prompt: 'What plant must a Monarch butterfly lay its eggs on?',
+        prompt_zh: '帝王斑蝶必須在哪種植物上產卵孵化？',
+        prompt_es: '¿En qué planta debe poner sus huevos la mariposa monarca?',
         options: [
-          { textKey: 'q_n1_opt1', correct: false },
-          { textKey: 'q_n1_opt2', correct: true },
-          { textKey: 'q_n1_opt3', correct: false },
-          { textKey: 'q_n1_opt4', correct: false }
+          { text: 'Oak Tree Leaves', text_zh: '橡樹葉片', text_es: 'Hojas de Roble', correct: false },
+          { text: 'Milkweed (Asclepias)', text_zh: '乳草 (馬利筋)', text_es: 'Algodoncillo (Asclepias)', correct: true },
+          { text: 'Pine Needles', text_zh: '松樹松針', text_es: 'Agujas de Pino', correct: false },
+          { text: 'Clover Grass', text_zh: '三葉草草地', text_es: 'Trébol Común', correct: false }
         ]
       }
     },
     {
       id: 'quest-novice-2',
       tier: 'novice',
+      type: 'quiz_challenge',
       coins: 75,
       icon: '🐸',
-      nameKey: 'q_n2_name',
-      descKey: 'q_n2_desc',
-      type: 'quiz_challenge',
+      name: 'Amphibian Respiration',
+      name_zh: '兩棲呼吸生理學',
+      name_es: 'Respiración de Anfibios',
+      desc: 'How do adult frogs absorb a large portion of oxygen from the surrounding air and water?',
+      desc_zh: '成年青蛙如何從周圍空氣與水中吸收大部分氧氣？',
+      desc_es: '¿Cómo absorben las ranas adultas gran parte del oxígeno del aire y agua?',
       question: {
-        promptKey: 'q_n2_q',
+        prompt: 'Which organ enables amphibians to breathe underwater and on land?',
+        prompt_zh: '哪個器官使兩棲動物能夠在水下與陸地上透氣呼吸？',
+        prompt_es: '¿Qué órgano permite a los anfibios respirar bajo el agua y en tierra?',
         options: [
-          { textKey: 'q_n2_opt1', correct: false },
-          { textKey: 'q_n2_opt2', correct: false },
-          { textKey: 'q_n2_opt3', correct: true },
-          { textKey: 'q_n2_opt4', correct: false }
+          { text: 'Only through feathery gills', text_zh: '僅透過羽狀外鰓', text_es: 'Solo mediante branquias', correct: false },
+          { text: 'Through scales on their belly', text_zh: '透過腹部角質鱗片', text_es: 'A través de escamas ventrales', correct: false },
+          { text: 'Cutaneous permeable moist skin', text_zh: '透氣濕潤的皮膚呼吸', text_es: 'Piel húmeda y permeable cutánea', correct: true },
+          { text: 'Hollow hollow feathers', text_zh: '中空羽毛氣囊', text_es: 'Plumas huecas neumáticas', correct: false }
         ]
       }
     },
     {
       id: 'quest-novice-3',
       tier: 'novice',
+      type: 'quiz_challenge',
       coins: 80,
       icon: '🐞',
-      nameKey: 'q_n3_name',
-      descKey: 'q_n3_desc',
-      type: 'quiz_challenge',
+      name: 'Ladybug Armor Defense',
+      name_zh: '瓢蟲鞘翅防禦術',
+      name_es: 'Defensa de Élitros de Mariquita',
+      desc: 'What is the hard protective outer shell covering a ladybug\'s wings called?',
+      desc_zh: '保護瓢蟲飛行翼的硬質彩色外殼稱為什麼？',
+      desc_es: '¿Cómo se llama la concha dura exterior protectora de una mariquita?',
       question: {
-        promptKey: 'q_n3_q',
+        prompt: 'What is the scientific anatomical name for hardened beetle wing cases?',
+        prompt_zh: '甲蟲硬化前翅的科學解剖學名稱為何？',
+        prompt_es: '¿Cuál es el nombre anatómico de las alas duras protectoras de los escarabajos?',
         options: [
-          { textKey: 'q_n3_opt1', correct: true },
-          { textKey: 'q_n3_opt2', correct: false },
-          { textKey: 'q_n3_opt3', correct: false },
-          { textKey: 'q_n3_opt4', correct: false }
+          { text: 'Elytra (Hardened forewings)', text_zh: '鞘翅 (Elytra)', text_es: 'Élitros (Alas duras protectoras)', correct: true },
+          { text: 'Carapace shield', text_zh: '甲殼背甲', text_es: 'Caparazón dorsal', correct: false },
+          { text: 'Antenna sheath', text_zh: '觸角保護鞘', text_es: 'Vaina antenal', correct: false },
+          { text: 'Thoracic crest', text_zh: '胸部骨刺', text_es: 'Cresta torácica', correct: false }
         ]
       }
     },
     {
       id: 'quest-novice-4',
       tier: 'novice',
+      type: 'quiz_challenge',
       coins: 90,
       icon: '🦜',
-      nameKey: 'q_n4_name',
-      descKey: 'q_n4_desc',
-      type: 'quiz_challenge',
+      name: 'Avian Aerial Dynamics',
+      name_zh: '飛鳥空中輕量化',
+      name_es: 'Dinámica Aérea Aviar',
+      desc: 'Why are birds able to maintain prolonged flight without collapsing under heavy weight?',
+      desc_zh: '鳥類為何能維持長時間飛行而不會因體重過重耗盡體力？',
+      desc_es: '¿Por qué las aves pueden volar mucho tiempo sin colapsar por su peso?',
       question: {
-        promptKey: 'q_n4_q',
+        prompt: 'What adaptation makes bird skeletons exceptionally lightweight?',
+        prompt_zh: '哪種身體構造演化使鳥類骨骼極為輕盈？',
+        prompt_es: '¿Qué adaptación hace que los huesos de las aves sean ultraligeros?',
         options: [
-          { textKey: 'q_n4_opt1', correct: false },
-          { textKey: 'q_n4_opt2', correct: true },
-          { textKey: 'q_n4_opt3', correct: false },
-          { textKey: 'q_n4_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-novice-5',
-      tier: 'novice',
-      coins: 100,
-      icon: '🐌',
-      nameKey: 'q_n5_name',
-      descKey: 'q_n5_desc',
-      type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_n5_q',
-        options: [
-          { textKey: 'q_n5_opt1', correct: false },
-          { textKey: 'q_n5_opt2', correct: false },
-          { textKey: 'q_n5_opt3', correct: true },
-          { textKey: 'q_n5_opt4', correct: false }
+          { text: 'Bones made of soft rubber', text_zh: '骨骼由軟橡膠組成', text_es: 'Huesos de cartílago gomoso', correct: false },
+          { text: 'Hollow pneumatic bones with air sacs', text_zh: '含氣囊的氣腔中空骨骼', text_es: 'Huesos neumáticos huecos con sacos aéreos', correct: true },
+          { text: 'No bones inside wings', text_zh: '翅膀內部完全無骨骼', text_es: 'Alas sin estructura ósea', correct: false },
+          { text: 'Heavy solid iron marrow', text_zh: '密度極高的鐵骨髓', text_es: 'Médula ósea metálica pesada', correct: false }
         ]
       }
     },
 
-    // --- ADEPT (150 - 300 Coins) ---
+    // ========================================================================
+    // --- ADEPT KNOWLEDGE QUIZ QUESTS (150 - 300 Coins) ---
+    // ========================================================================
     {
       id: 'quest-adept-1',
       tier: 'adept',
+      type: 'quiz_challenge',
       coins: 180,
       icon: '🐍',
-      nameKey: 'q_a1_name',
-      descKey: 'q_a1_desc',
-      type: 'quiz_challenge',
+      name: 'Pit Viper Infrared Vision',
+      name_zh: '響尾蛇紅外線熱成像',
+      name_es: 'Visión Infrarroja de la Víbora',
+      desc: 'How do pit vipers pinpoint warm-blooded prey in absolute pitch-black darkness?',
+      desc_zh: '響尾蛇與蝮蛇如何在完全漆黑的夜間精準鎖定溫血獵物？',
+      desc_es: '¿Cómo localizan las víboras a presas de sangre caliente en oscuridad total?',
       question: {
-        promptKey: 'q_a1_q',
+        prompt: 'Which specialized sensory organ senses infrared thermal heat radiations?',
+        prompt_zh: '響尾蛇頭部的哪個特化感覺器官負責感應紅外熱輻射？',
+        prompt_es: '¿Qué órgano sensorial detecta la radiación térmica infrarroja?',
         options: [
-          { textKey: 'q_a1_opt1', correct: true },
-          { textKey: 'q_a1_opt2', correct: false },
-          { textKey: 'q_a1_opt3', correct: false },
-          { textKey: 'q_a1_opt4', correct: false }
+          { text: 'Facial heat-sensing pit organs', text_zh: '臉部紅外熱感唇窩', text_es: 'Fosetas loreales termosensibles', correct: true },
+          { text: 'Vibrating tail rattle', text_zh: '尾巴震動響環', text_es: 'Cascabel en la cola', correct: false },
+          { text: 'Enlarged venom glands', text_zh: '擴大的毒腺囊', text_es: 'Glándulas de veneno agrandadas', correct: false },
+          { text: 'Auditory ear drums', text_zh: '外露聽覺鼓膜', text_es: 'Tímpanos auditivos externos', correct: false }
         ]
       }
     },
     {
       id: 'quest-adept-2',
       tier: 'adept',
+      type: 'quiz_challenge',
       coins: 200,
       icon: '🦈',
-      nameKey: 'q_a2_name',
-      descKey: 'q_a2_desc',
-      type: 'quiz_challenge',
+      name: 'Shark Bio-Electric Sensing',
+      name_zh: '鯊魚生物微電場感應',
+      name_es: 'Electrorrecepción de los Tiburones',
+      desc: 'What organ allows sharks to detect the faint heartbeat of fish buried under ocean sand?',
+      desc_zh: '鯊魚藉由哪種器官能感應埋在沙底的魚類微弱心跳電場？',
+      desc_es: '¿Qué órgano permite a los tiburones detectar el latido cardíaco de presas enterradas en la arena?',
       question: {
-        promptKey: 'q_a2_q',
+        prompt: 'What are the electro-sensory pores on a shark\'s snout called?',
+        prompt_zh: '鯊魚吻端密布的微電感受毛孔稱為什麼？',
+        prompt_es: '¿Cómo se llaman los poros electrorreceptores en el hocico del tiburón?',
         options: [
-          { textKey: 'q_a2_opt1', correct: false },
-          { textKey: 'q_a2_opt2', correct: true },
-          { textKey: 'q_a2_opt3', correct: false },
-          { textKey: 'q_a2_opt4', correct: false }
+          { text: 'Lateral swim bladders', text_zh: '側線魚鰾囊', text_es: 'Vejigas natatorias laterales', correct: false },
+          { text: 'Ampullae of Lorenzini', text_zh: '羅倫氏壺腹 (Ampullae of Lorenzini)', text_es: 'Ampollas de Lorenzini', correct: true },
+          { text: 'Dermal denticle hooks', text_zh: '盾鱗齒鉤', text_es: 'Dentículos dérmicos ganchudos', correct: false },
+          { text: 'Operculum gill slits', text_zh: '硬骨鰓蓋孔', text_es: 'Hendiduras operculares', correct: false }
         ]
       }
     },
     {
       id: 'quest-adept-3',
       tier: 'adept',
-      coins: 220,
+      type: 'quiz_challenge',
+      coins: 240,
       icon: '🐆',
-      nameKey: 'q_a3_name',
-      descKey: 'q_a3_desc',
-      type: 'quiz_challenge',
+      name: 'Cheetah Acceleration Physics',
+      name_zh: '獵豹極限加速度力學',
+      name_es: 'Física de Aceleración del Guepardo',
+      desc: 'How quickly can an adult cheetah accelerate from a complete standstill (0 to 60 mph)?',
+      desc_zh: '成年非洲獵豹從靜止起跑加速至時速近 100 公里需要多少秒？',
+      desc_es: '¿Qué tan rápido acelera un guepardo adulto de 0 a 100 km/h?',
       question: {
-        promptKey: 'q_a3_q',
+        prompt: 'What is the 0 to 60 mph acceleration sprint time of a cheetah?',
+        prompt_zh: '獵豹從 0 到時速 100 公里的爆發衝刺時間大約多久？',
+        prompt_es: '¿En cuántos segundos acelera un guepardo de 0 a 100 km/h?',
         options: [
-          { textKey: 'q_a3_opt1', correct: false },
-          { textKey: 'q_a3_opt2', correct: false },
-          { textKey: 'q_a3_opt3', correct: true },
-          { textKey: 'q_a3_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-adept-4',
-      tier: 'adept',
-      coins: 250,
-      icon: '🦉',
-      nameKey: 'q_a4_name',
-      descKey: 'q_a4_desc',
-      type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_a4_q',
-        options: [
-          { textKey: 'q_a4_opt1', correct: true },
-          { textKey: 'q_a4_opt2', correct: false },
-          { textKey: 'q_a4_opt3', correct: false },
-          { textKey: 'q_a4_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-adept-5',
-      tier: 'adept',
-      coins: 300,
-      icon: '🦡',
-      nameKey: 'q_a5_name',
-      descKey: 'q_a5_desc',
-      type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_a5_q',
-        options: [
-          { textKey: 'q_a5_opt1', correct: false },
-          { textKey: 'q_a5_opt2', correct: true },
-          { textKey: 'q_a5_opt3', correct: false },
-          { textKey: 'q_a5_opt4', correct: false }
+          { text: 'Over 12 seconds', text_zh: '超過 12 秒', text_es: 'Más de 12 segundos', correct: false },
+          { text: 'Around 7 to 8 seconds', text_zh: '約 7 到 8 秒', text_es: 'Entre 7 y 8 segundos', correct: false },
+          { text: 'Under 3 seconds (faster than a sports car!)', text_zh: '小於 3 秒 (超越大多數超級跑車！)', text_es: '¡Menos de 3 segundos (más veloz que un superdeportivo)!', correct: true },
+          { text: 'Exactly 20 seconds', text_zh: '整整 20 秒', text_es: 'Exactamente 20 segundos', correct: false }
         ]
       }
     },
 
-    // --- MASTER (400 - 600 Coins) ---
+    // ========================================================================
+    // --- MASTER KNOWLEDGE QUIZ QUESTS (400 - 600 Coins) ---
+    // ========================================================================
     {
       id: 'quest-master-1',
       tier: 'master',
-      coins: 420,
-      icon: '🐅',
-      nameKey: 'q_m1_name',
-      descKey: 'q_m1_desc',
       type: 'quiz_challenge',
+      coins: 450,
+      icon: '🐅',
+      name: 'Tiger Bite Force Mechanics',
+      name_zh: '老虎咬合力與骨骼力學',
+      name_es: 'Mecánica de Mordida del Tigre',
+      desc: 'What is the estimated canine crushing bite force of a fully grown Bengal Tiger?',
+      desc_zh: '一隻成年孟加拉雄虎的犬齒咬合力大約達到多少 PSI（磅/平方英寸）？',
+      desc_es: '¿Cuál es la fuerza demoledora de mordida de un tigre de Bengala adulto?',
       question: {
-        promptKey: 'q_m1_q',
+        prompt: 'How powerful is a Bengal Tiger\'s canine crushing bite force?',
+        prompt_zh: '孟加拉虎的犬齒咬合力大約是多少？',
+        prompt_es: '¿Cuánta presión ejerce la mordida de un tigre de Bengala?',
         options: [
-          { textKey: 'q_m1_opt1', correct: false },
-          { textKey: 'q_m1_opt2', correct: false },
-          { textKey: 'q_m1_opt3', correct: true },
-          { textKey: 'q_m1_opt4', correct: false }
+          { text: '150 PSI (similar to domestic dog)', text_zh: '150 PSI (相當於小型家犬)', text_es: '150 PSI (como un perro doméstico)', correct: false },
+          { text: '500 PSI', text_zh: '500 PSI', text_es: '500 PSI', correct: false },
+          { text: 'Over 1,050 PSI (can snap bones in a single bite)', text_zh: '超過 1,050 PSI (一口即可咬碎粗大脊椎骨)', text_es: 'Más de 1,050 PSI (aplasta huesos al instante)', correct: true },
+          { text: '80 PSI', text_zh: '80 PSI', text_es: '80 PSI', correct: false }
         ]
       }
     },
     {
       id: 'quest-master-2',
       tier: 'master',
-      coins: 480,
-      icon: '🦅',
-      nameKey: 'q_m2_name',
-      descKey: 'q_m2_desc',
       type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_m2_q',
-        options: [
-          { textKey: 'q_m2_opt1', correct: true },
-          { textKey: 'q_m2_opt2', correct: false },
-          { textKey: 'q_m2_opt3', correct: false },
-          { textKey: 'q_m2_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-master-3',
-      tier: 'master',
       coins: 520,
       icon: '🐊',
-      nameKey: 'q_m3_name',
-      descKey: 'q_m3_desc',
-      type: 'quiz_challenge',
+      name: 'Crocodilian Primeval Valve',
+      name_zh: '鱷魚史前心臟與缺氧潛航',
+      name_es: 'Válvula Primigenia de Cocodrilo',
+      desc: 'Which unique cardiovascular adaptation allows crocodiles to stay submerged for over 2 hours?',
+      desc_zh: '鱷魚擁有哪種獨特的循環系統構造，使其能在水下閉氣埋伏超過 2 小時？',
+      desc_es: '¿Qué adaptación cardíaca única permite a los cocodrilos permanecer sumergidos 2 horas?',
       question: {
-        promptKey: 'q_m3_q',
+        prompt: 'What anatomical heart valve shunts blood away from the lungs during deep dives?',
+        prompt_zh: '潛水時將血液繞過肺部、直接送往重要器官的特殊心臟瓣孔稱為什麼？',
+        prompt_es: '¿Qué válvula cardíaca desvía la sangre de los pulmones durante inmersiones profundas?',
         options: [
-          { textKey: 'q_m3_opt1', correct: false },
-          { textKey: 'q_m3_opt2', correct: true },
-          { textKey: 'q_m3_opt3', correct: false },
-          { textKey: 'q_m3_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-master-4',
-      tier: 'master',
-      coins: 600,
-      icon: '🐺',
-      nameKey: 'q_m4_name',
-      descKey: 'q_m4_desc',
-      type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_m4_q',
-        options: [
-          { textKey: 'q_m4_opt1', correct: false },
-          { textKey: 'q_m4_opt2', correct: false },
-          { textKey: 'q_m4_opt3', correct: true },
-          { textKey: 'q_m4_opt4', correct: false }
+          { text: 'Foramen of Panizza', text_zh: '帕尼札氏孔 (Foramen of Panizza)', text_es: 'Foramen de Panizza', correct: true },
+          { text: 'Tricuspid aquatic flap', text_zh: '三尖瓣水生閉鎖片', text_es: 'Colgajo acuático tricúspide', correct: false },
+          { text: 'Aortic blowhole', text_zh: '主動脈呼吸孔', text_es: 'Espiráculo aórtico', correct: false },
+          { text: 'Venous gill arch', text_zh: '靜脈鰓弓', text_es: 'Arco branquial venoso', correct: false }
         ]
       }
     },
 
-    // --- LEGENDARY (800 - 1500 Coins) ---
+    // ========================================================================
+    // --- LEGENDARY KNOWLEDGE QUIZ QUESTS (800 - 1500 Coins) ---
+    // ========================================================================
     {
       id: 'quest-legendary-1',
       tier: 'legendary',
+      type: 'quiz_challenge',
       coins: 850,
       icon: '🦁',
-      nameKey: 'q_l1_name',
-      descKey: 'q_l1_desc',
-      type: 'quiz_challenge',
+      name: 'Lion Infrasonic Roar Physics',
+      name_zh: '獅王低頻次聲咆哮聲學',
+      name_es: 'Física del Rugido Infrasónico del León',
+      desc: 'At what distance can a male African lion\'s thunderous territorial roar be clearly heard?',
+      desc_zh: '在非洲大草原上，成年雄獅宣示領地的渾厚怒吼最遠可在幾公里外被清晰聽見？',
+      desc_es: '¿A qué distancia puede escucharse el rugido de un león africano macho?',
       question: {
-        promptKey: 'q_l1_q',
+        prompt: 'How far can an African lion\'s roar travel through savanna air?',
+        prompt_zh: '非洲雄獅的震天怒吼聲波最遠可傳遞多遠？',
+        prompt_es: '¿Hasta qué distancia viaja el rugido de un león?',
         options: [
-          { textKey: 'q_l1_opt1', correct: true },
-          { textKey: 'q_l1_opt2', correct: false },
-          { textKey: 'q_l1_opt3', correct: false },
-          { textKey: 'q_l1_opt4', correct: false }
+          { text: 'Up to 5 miles (8 kilometers)', text_zh: '高達 5 英里 (約 8 公里外)', text_es: 'Hasta 5 millas (8 kilómetros)', correct: true },
+          { text: 'Only 200 meters', text_zh: '僅約 200 公尺', text_es: 'Solo 200 metros', correct: false },
+          { text: 'Across the entire continent (500 miles)', text_zh: '橫跨半個非洲大陸 (500 英里)', text_es: '500 millas por todo el continente', correct: false },
+          { text: '1 mile maximum', text_zh: '最多 1 英里', text_es: 'Máximo 1 milla', correct: false }
         ]
       }
     },
     {
       id: 'quest-legendary-2',
       tier: 'legendary',
-      coins: 1000,
-      icon: '🐻‍❄️',
-      nameKey: 'q_l2_name',
-      descKey: 'q_l2_desc',
       type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_l2_q',
-        options: [
-          { textKey: 'q_l2_opt1', correct: false },
-          { textKey: 'q_l2_opt2', correct: true },
-          { textKey: 'q_l2_opt3', correct: false },
-          { textKey: 'q_l2_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-legendary-3',
-      tier: 'legendary',
-      coins: 1200,
+      coins: 1300,
       icon: '🦖',
-      nameKey: 'q_l3_name',
-      descKey: 'q_l3_desc',
-      type: 'quiz_challenge',
+      name: 'Tyrannosaurus Bone-Crusher Bite',
+      name_zh: '霸王龍粉碎骨骼咬合力',
+      name_es: 'Mordida Aplastahuesos de T-Rex',
+      desc: 'Biomechanics calculate that Tyrannosaurus Rex possessed the most devastating bite force in terrestrial history!',
+      desc_zh: '生物力學計算指出，白堊紀晚期霸王龍擁有陸地脊椎動物史上最毀滅性的咬合力！',
+      desc_es: '¡Los biomecánicos calculan que el Tiranosaurio Rex tuvo la mordida más devastadora de la historia terrestre!',
       question: {
-        promptKey: 'q_l3_q',
+        prompt: 'What was the estimated crushing jaw bite force of an adult T-Rex?',
+        prompt_zh: '成年霸王龍的雙顎粉碎咬合力大約達到多少 PSI？',
+        prompt_es: '¿Cuál era la fuerza de mordida demoledora de un T-Rex adulto?',
         options: [
-          { textKey: 'q_l3_opt1', correct: false },
-          { textKey: 'q_l3_opt2', correct: false },
-          { textKey: 'q_l3_opt3', correct: true },
-          { textKey: 'q_l3_opt4', correct: false }
-        ]
-      }
-    },
-    {
-      id: 'quest-legendary-4',
-      tier: 'legendary',
-      coins: 1500,
-      icon: '👑',
-      nameKey: 'q_l4_name',
-      descKey: 'q_l4_desc',
-      type: 'quiz_challenge',
-      question: {
-        promptKey: 'q_l4_q',
-        options: [
-          { textKey: 'q_l4_opt1', correct: true },
-          { textKey: 'q_l4_opt2', correct: false },
-          { textKey: 'q_l4_opt3', correct: false },
-          { textKey: 'q_l4_opt4', correct: false }
+          { text: '1,000 PSI', text_zh: '1,000 PSI', text_es: '1,000 PSI', correct: false },
+          { text: '3,000 PSI', text_zh: '3,000 PSI', text_es: '3,000 PSI', correct: false },
+          { text: 'Over 12,800 PSI (enough to crush solid bone and cars!)', text_zh: '超過 12,800 PSI (足以粉碎任何粗厚骨骼甚至鐵甲！)', text_es: '¡Más de 12,800 PSI (capaz de triturar huesos sólidos y coches)!', correct: true },
+          { text: '500 PSI', text_zh: '500 PSI', text_es: '500 PSI', correct: false }
         ]
       }
     }
@@ -757,7 +917,7 @@
   ];
 
   // --------------------------------------------------------------------------
-  // 3. ARENA 4-STAGE GAUNTLET OPPONENTS
+  // 3. ARENA 4-STAGE GAUNTLET OPPONENTS (Bug -> Scorpion -> Bear -> Croc Boss)
   // --------------------------------------------------------------------------
   const ARENA_STAGES = [
     {
@@ -773,6 +933,7 @@
         name_zh: '泰坦犀角金龜',
         name_es: 'Escarabajo Rinoceronte Titán',
         emoji: '🪲',
+        category: 'insects',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Allomyrina_dichotoma_male.JPG/440px-Allomyrina_dichotoma_male.JPG',
         hp: 60,
         maxHp: 60,
@@ -799,6 +960,7 @@
         name_zh: '以色列金蠍 (死神蠍)',
         name_es: 'Escorpión Amarillo de la Muerte',
         emoji: '🦂',
+        category: 'insects',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Leiurus_quinquestriatus_01.jpg/440px-Leiurus_quinquestriatus_01.jpg',
         hp: 100,
         maxHp: 100,
@@ -825,6 +987,7 @@
         name_zh: '科迪亞克棕熊',
         name_es: 'Oso Pardo Kodiak',
         emoji: '🐻',
+        category: 'land',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/2010-kodiak-bear-1.jpg/440px-2010-kodiak-bear-1.jpg',
         hp: 165,
         maxHp: 165,
@@ -851,6 +1014,7 @@
         name_zh: '遠古灣鱷巨皇',
         name_es: 'Rey Cocodrilo Marino Primigenio',
         emoji: '🐊',
+        category: 'reptiles',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Saltwater_Crocodile_at_Australia_Zoo.jpg/440px-Saltwater_Crocodile_at_Australia_Zoo.jpg',
         hp: 240,
         maxHp: 240,
@@ -876,7 +1040,7 @@
       this.stages = ARENA_STAGES;
 
       // Active state
-      this.activeQuestTab = 'all'; // 'all', 'novice', 'adept', 'master', 'legendary'
+      this.activeQuestTab = 'all'; // 'all', 'milestone', 'novice', 'adept', 'master', 'legendary'
       this.activeShopTab = 'all';  // 'all', 'owned', 'common', 'uncommon', 'rare', 'legendary'
       this.activeCardId = null;    // currently selected battle card
 
@@ -909,11 +1073,25 @@
         localStorage.setItem('ak_claimed_quests', JSON.stringify([]));
       }
 
-      // 4. Default active battle card
+      // 4. Quest Progress Stats
+      if (localStorage.getItem('ak_quest_stats') === null) {
+        localStorage.setItem('ak_quest_stats', JSON.stringify({}));
+      }
+
+      // 5. Default active battle card
       const owned = this.getOwnedCardIds();
       if (owned.length > 0 && !this.activeCardId) {
         this.activeCardId = owned[0];
       }
+    }
+
+    // --- CARD IMAGE URL PROXY HELPER ---
+    getCardImageUrl(card, width = 500) {
+      if (!card || !card.image) return '';
+      if (window.app && window.app.formatImageUrl) {
+        return window.app.formatImageUrl(card.image, width);
+      }
+      return formatWeservUrl(card.image, width);
     }
 
     // --- COIN METHODS ---
@@ -944,6 +1122,45 @@
         el.innerText = this.getCoins();
         el.classList.add('coin-bump');
         setTimeout(() => el.classList.remove('coin-bump'), 400);
+      }
+    }
+
+    // --- STATS & MILESTONE TRACKING ---
+    getStats() {
+      try {
+        return JSON.parse(localStorage.getItem('ak_quest_stats') || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    getStat(key) {
+      if (key === 'cardsOwned') {
+        return this.getOwnedCardIds().length;
+      }
+      const stats = this.getStats();
+      return stats[key] || 0;
+    }
+
+    recordStat(key, increment = 1) {
+      const stats = this.getStats();
+      stats[key] = (stats[key] || 0) + increment;
+      localStorage.setItem('ak_quest_stats', JSON.stringify(stats));
+
+      // Notify if a milestone quest was just reached
+      const quest = this.quests.find(q => q.type === 'milestone' && q.statKey === key && !this.isQuestClaimed(q.id));
+      if (quest) {
+        const currentVal = this.getStat(key);
+        if (currentVal >= quest.target) {
+          const name = this.getQuestName(quest);
+          this.showToast(`🎯 Quest Milestone Unlocked: "${name}"! Claim +${quest.coins} 🪙 in Quests!`);
+        }
+      }
+
+      // If quest modal is currently open, live re-render
+      const modal = document.getElementById('quest-modal');
+      if (modal && !modal.classList.contains('hidden')) {
+        this.renderQuestLibrary();
       }
     }
 
@@ -980,6 +1197,8 @@
       localStorage.setItem('ak_owned_cards', JSON.stringify(owned));
       this.activeCardId = cardId;
 
+      this.recordStat('cardsOwned', 0); // check card collector milestone
+
       if (window.AK_AUDIO && window.AK_AUDIO.playVictory) {
         window.AK_AUDIO.playVictory();
       }
@@ -1001,7 +1220,7 @@
         return;
       }
 
-      // Sell card for less money (60%)
+      // Sell card for less money (60% resale)
       const updated = owned.filter(id => id !== cardId);
       localStorage.setItem('ak_owned_cards', JSON.stringify(updated));
       this.addCoins(card.resalePrice);
@@ -1040,6 +1259,33 @@
 
     isQuestClaimed(questId) {
       return this.getClaimedQuestIds().includes(questId);
+    }
+
+    claimMilestoneQuest(questId) {
+      const q = this.quests.find(item => item.id === questId);
+      if (!q || q.type !== 'milestone') return;
+      if (this.isQuestClaimed(questId)) return;
+
+      const current = this.getStat(q.statKey);
+      if (current < q.target) {
+        this.showToast(`⚡ Quest in progress (${current}/${q.target}). Reach the target to claim!`);
+        return;
+      }
+
+      const claimed = this.getClaimedQuestIds();
+      claimed.push(questId);
+      localStorage.setItem('ak_claimed_quests', JSON.stringify(claimed));
+      this.addCoins(q.coins);
+
+      if (window.AK_AUDIO && window.AK_AUDIO.playVictory) {
+        window.AK_AUDIO.playVictory();
+      }
+      if (window.AK_GAME && window.AK_GAME.triggerConfetti) {
+        window.AK_GAME.triggerConfetti();
+      }
+
+      this.showToast(this.getI18nText('toast_quest_success').replace('{coins}', q.coins));
+      this.renderQuestLibrary();
     }
 
     answerQuest(questId, isCorrect) {
@@ -1121,7 +1367,7 @@
     }
 
     // ------------------------------------------------------------------------
-    // 6. ARENA GAUNTLET COMBAT ENGINE (4 Stages: Bug -> Predator -> Apex -> Boss)
+    // 6. ARENA GAUNTLET COMBAT ENGINE (4 Stages: Bug -> Scorpion -> Bear -> Croc)
     // ------------------------------------------------------------------------
     initStage(stageIdx) {
       this.currentStageIndex = Math.max(0, Math.min(stageIdx, this.stages.length - 1));
@@ -1153,27 +1399,29 @@
       let dmg = 0;
       let logText = '';
 
-      if (type === 'special') {
-        dmg = Math.round(p.specialDamage * (0.85 + Math.random() * 0.3));
-        logText = `💥 ${this.getCardName(p)} casts [${this.getSpecialMove(p)}] dealing ${dmg} damage!`;
-        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(750);
+      if (type === 'attack') {
+        const variance = Math.floor(Math.random() * 5) - 2;
+        dmg = Math.max(5, p.attack - Math.floor(o.defense * 0.4) + variance);
+        this.opponentCurrentHp = Math.max(0, this.opponentCurrentHp - dmg);
+        logText = `💥 ${this.getCardName(p)} uses Normal Attack dealing ${dmg} damage to ${this.getOpponentName(o)}!`;
+        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(500);
+      } else if (type === 'special') {
+        const specialName = this.getSpecialMove(p);
+        const variance = Math.floor(Math.random() * 8) - 4;
+        dmg = Math.max(10, p.specialDamage - Math.floor(o.defense * 0.3) + variance);
+        this.opponentCurrentHp = Math.max(0, this.opponentCurrentHp - dmg);
+        logText = `⚡ ${this.getCardName(p)} triggers [${specialName}] dealing a MASSIVE ${dmg} damage!`;
+        if (window.AK_AUDIO && window.AK_AUDIO.playSpecialSound) window.AK_AUDIO.playSpecialSound();
       } else if (type === 'guard') {
-        p.isGuarding = true;
-        logText = `🛡️ ${this.getCardName(p)} takes a defensive stance to block incoming blows!`;
-        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(480);
-      } else {
-        // Normal attack
-        dmg = Math.round(p.attack * (0.8 + Math.random() * 0.4));
-        logText = `⚔️ ${this.getCardName(p)} strikes ${this.getOpponentName(o)} for ${dmg} damage.`;
-        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(520);
+        const heal = Math.floor(p.hp * 0.18);
+        this.playerCurrentHp = Math.min(p.hp, this.playerCurrentHp + heal);
+        logText = `🛡️ ${this.getCardName(p)} braces in Defensive Guard posture, restoring +${heal} HP!`;
+        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(350);
       }
 
-      if (dmg > 0) {
-        this.opponentCurrentHp = Math.max(0, this.opponentCurrentHp - dmg);
-      }
       this.battleLogs.unshift(logText);
 
-      // Check opponent defeat
+      // Check if opponent defeated
       if (this.opponentCurrentHp <= 0) {
         this.handleStageVictory();
         return;
@@ -1185,35 +1433,36 @@
 
       setTimeout(() => {
         this.opponentTurn();
-      }, 700);
+      }, 1000);
     }
 
     opponentTurn() {
       if (!this.battleInProgress) return;
+
       const p = this.playerFighter;
       const o = this.opponentFighter;
-
-      // Opponent AI: 35% chance for special attack
       const useSpecial = Math.random() < 0.35;
-      let dmg = useSpecial ? o.specialDamage : o.attack;
-      dmg = Math.round(dmg * (0.8 + Math.random() * 0.35));
+      let dmg = 0;
+      let moveName = '';
 
-      // Check player guard
-      if (p.isGuarding) {
-        dmg = Math.round(dmg * 0.4);
-        p.isGuarding = false;
+      if (useSpecial && o.specialMove) {
+        moveName = this.getSpecialMove(o);
+        const variance = Math.floor(Math.random() * 6) - 3;
+        dmg = Math.max(8, o.specialDamage - Math.floor(p.defense * 0.3) + variance);
+      } else {
+        moveName = 'Fierce Strike';
+        const variance = Math.floor(Math.random() * 4) - 2;
+        dmg = Math.max(4, o.attack - Math.floor(p.defense * 0.4) + variance);
       }
 
       this.playerCurrentHp = Math.max(0, this.playerCurrentHp - dmg);
-
-      const moveName = useSpecial ? o.specialMove : 'Claw & Mandible Strike';
       this.battleLogs.unshift(`🩸 ${this.getOpponentName(o)} uses [${moveName}] hitting for ${dmg} damage!`);
 
       if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
-        window.AK_AUDIO.playPop(310);
+        window.AK_AUDIO.playPop(260);
       }
 
-      // Check player defeat
+      // Check if player defeated
       if (this.playerCurrentHp <= 0) {
         this.handlePlayerDefeat();
         return;
@@ -1228,12 +1477,16 @@
       this.battleInProgress = false;
       this.addCoins(stage.rewardCoins);
 
+      this.recordStat('arenaStageWins', 1);
+
       if (window.AK_AUDIO && window.AK_AUDIO.playVictory) {
         window.AK_AUDIO.playVictory();
       }
 
       if (this.currentStageIndex === this.stages.length - 1) {
         // Complete Gauntlet Cleared!
+        this.recordStat('gauntletCleared', 1);
+
         if (window.AK_GAME && window.AK_GAME.triggerConfetti) {
           window.AK_GAME.triggerConfetti();
         }
@@ -1279,6 +1532,7 @@
     }
 
     getCardName(card) {
+      if (!card) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && card.name_zh) return card.name_zh;
       if (lang === 'es' && card.name_es) return card.name_es;
@@ -1286,6 +1540,7 @@
     }
 
     getCardDesc(card) {
+      if (!card) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && card.description_zh) return card.description_zh;
       if (lang === 'es' && card.description_es) return card.description_es;
@@ -1293,6 +1548,7 @@
     }
 
     getSpecialMove(card) {
+      if (!card) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && card.specialMove_zh) return card.specialMove_zh;
       if (lang === 'es' && card.specialMove_es) return card.specialMove_es;
@@ -1300,6 +1556,7 @@
     }
 
     getOpponentName(opp) {
+      if (!opp) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && opp.name_zh) return opp.name_zh;
       if (lang === 'es' && opp.name_es) return opp.name_es;
@@ -1307,6 +1564,7 @@
     }
 
     getStageTitle(stage) {
+      if (!stage) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && stage.title_zh) return stage.title_zh;
       if (lang === 'es' && stage.title_es) return stage.title_es;
@@ -1314,10 +1572,51 @@
     }
 
     getStageSubtitle(stage) {
+      if (!stage) return '';
       const lang = this.getLanguage();
       if (lang === 'zh' && stage.subtitle_zh) return stage.subtitle_zh;
       if (lang === 'es' && stage.subtitle_es) return stage.subtitle_es;
       return stage.subtitle;
+    }
+
+    getQuestName(q) {
+      if (!q) return '';
+      const lang = this.getLanguage();
+      if (lang === 'zh' && q.name_zh) return q.name_zh;
+      if (lang === 'es' && q.name_es) return q.name_es;
+      return q.name || q.nameKey || 'Quest Challenge';
+    }
+
+    getQuestDesc(q) {
+      if (!q) return '';
+      const lang = this.getLanguage();
+      if (lang === 'zh' && q.desc_zh) return q.desc_zh;
+      if (lang === 'es' && q.desc_es) return q.desc_es;
+      return q.desc || q.descKey || '';
+    }
+
+    getQuestPrompt(q) {
+      if (!q || !q.question) return '';
+      const lang = this.getLanguage();
+      if (lang === 'zh' && q.question.prompt_zh) return q.question.prompt_zh;
+      if (lang === 'es' && q.question.prompt_es) return q.question.prompt_es;
+      return q.question.prompt || q.question.promptKey || '';
+    }
+
+    getOptionText(opt) {
+      if (!opt) return '';
+      const lang = this.getLanguage();
+      if (lang === 'zh' && opt.text_zh) return opt.text_zh;
+      if (lang === 'es' && opt.text_es) return opt.text_es;
+      return opt.text || opt.textKey || '';
+    }
+
+    getActionBtnText(q) {
+      if (!q) return 'Launch ➡️';
+      const lang = this.getLanguage();
+      if (lang === 'zh' && q.actionText_zh) return q.actionText_zh;
+      if (lang === 'es' && q.actionText_es) return q.actionText_es;
+      return q.actionText || 'Launch ➡️';
     }
 
     getI18nText(key) {
@@ -1332,10 +1631,11 @@
           arena_sub: 'Start by battling a bug in Stage 1! Win to advance against increasingly powerful predators!',
           coins_label: 'Coins',
           tab_all: 'All Quests',
-          tab_novice: 'Novice (50-100🪙)',
-          tab_adept: 'Adept (150-300🪙)',
-          tab_master: 'Master (400-600🪙)',
-          tab_legendary: 'Legendary (800-1500🪙)',
+          tab_milestones: '🏆 Action Milestones',
+          tab_novice: 'Novice (50-250🪙)',
+          tab_adept: 'Adept (300-500🪙)',
+          tab_master: 'Master (600-1000🪙)',
+          tab_legendary: 'Legendary (1000-1500🪙)',
           btn_claim_reward: 'Claim {coins} 🪙',
           quest_claimed: '✓ Completed & Claimed',
           btn_buy_card: 'Buy for {coins} 🪙',
@@ -1375,10 +1675,11 @@
           arena_sub: '第 1 關先與巨蟲戰鬥！獲勝後將晉級挑戰更加兇猛的頂級掠食者！',
           coins_label: '金幣',
           tab_all: '全部任務',
-          tab_novice: '初階 (50-100🪙)',
-          tab_adept: '進階 (150-300🪙)',
-          tab_master: '大師 (400-600🪙)',
-          tab_legendary: '傳奇 (800-1500🪙)',
+          tab_milestones: '🏆 重點行動成就',
+          tab_novice: '初階 (50-250🪙)',
+          tab_adept: '進階 (300-500🪙)',
+          tab_master: '大師 (600-1000🪙)',
+          tab_legendary: '傳奇 (1000-1500🪙)',
           btn_claim_reward: '領取 {coins} 🪙',
           quest_claimed: '✓ 已完成並領取',
           btn_buy_card: '以 {coins} 🪙 購買',
@@ -1418,10 +1719,11 @@
           arena_sub: '¡Lucha primero contra un bicho en la Fase 1 y avanza contra bestias cada vez más fuertes!',
           coins_label: 'Monedas',
           tab_all: 'Todas',
-          tab_novice: 'Novato (50-100🪙)',
-          tab_adept: 'Adepto (150-300🪙)',
-          tab_master: 'Maestro (400-600🪙)',
-          tab_legendary: 'Legendario (800-1500🪙)',
+          tab_milestones: '🏆 Hitos de Acción',
+          tab_novice: 'Novato (50-250🪙)',
+          tab_adept: 'Adepto (300-500🪙)',
+          tab_master: 'Maestro (600-1000🪙)',
+          tab_legendary: 'Legendario (1000-1500🪙)',
           btn_claim_reward: 'Reclamar {coins} 🪙',
           quest_claimed: '✓ Completado',
           btn_buy_card: 'Comprar por {coins} 🪙',
@@ -1471,9 +1773,12 @@
       const container = document.getElementById('quest-modal-content');
       if (!container) return;
 
-      const filteredQuests = this.activeQuestTab === 'all'
-        ? this.quests
-        : this.quests.filter(q => q.tier === this.activeQuestTab);
+      let filteredQuests = this.quests;
+      if (this.activeQuestTab === 'milestone') {
+        filteredQuests = this.quests.filter(q => q.type === 'milestone');
+      } else if (this.activeQuestTab !== 'all') {
+        filteredQuests = this.quests.filter(q => q.tier === this.activeQuestTab);
+      }
 
       const claimedIds = this.getClaimedQuestIds();
 
@@ -1492,6 +1797,7 @@
           <!-- Quick Navigation Tabs -->
           <div class="game-tabs-row">
             <button class="game-tab-btn ${this.activeQuestTab === 'all' ? 'active' : ''}" onclick="window.AK_QUESTS.setQuestTab('all')">${this.getI18nText('tab_all')}</button>
+            <button class="game-tab-btn ${this.activeQuestTab === 'milestone' ? 'active' : ''}" onclick="window.AK_QUESTS.setQuestTab('milestone')">${this.getI18nText('tab_milestones')}</button>
             <button class="game-tab-btn ${this.activeQuestTab === 'novice' ? 'active' : ''}" onclick="window.AK_QUESTS.setQuestTab('novice')">${this.getI18nText('tab_novice')}</button>
             <button class="game-tab-btn ${this.activeQuestTab === 'adept' ? 'active' : ''}" onclick="window.AK_QUESTS.setQuestTab('adept')">${this.getI18nText('tab_adept')}</button>
             <button class="game-tab-btn ${this.activeQuestTab === 'master' ? 'active' : ''}" onclick="window.AK_QUESTS.setQuestTab('master')">${this.getI18nText('tab_master')}</button>
@@ -1502,9 +1808,63 @@
           <div class="quests-grid">
             ${filteredQuests.map(q => {
               const isClaimed = claimedIds.includes(q.id);
-              const name = window.AK_I18N ? window.AK_I18N.t(q.nameKey) : q.nameKey;
-              const desc = window.AK_I18N ? window.AK_I18N.t(q.descKey) : q.descKey;
-              const prompt = window.AK_I18N ? window.AK_I18N.t(q.question.promptKey) : q.question.promptKey;
+              const name = this.getQuestName(q);
+              const desc = this.getQuestDesc(q);
+
+              // --------------------------------------------------------------
+              // CASE 1: ACTION MILESTONE QUEST (Tracked in stats)
+              // --------------------------------------------------------------
+              if (q.type === 'milestone') {
+                const currentVal = this.getStat(q.statKey);
+                const pct = Math.min(100, Math.round((currentVal / q.target) * 100));
+                const isReadyToClaim = !isClaimed && currentVal >= q.target;
+
+                return `
+                  <div class="quest-card quest-tier-${q.tier} quest-milestone-card ${isClaimed ? 'quest-claimed-card' : ''}">
+                    <div class="quest-card-top">
+                      <div class="quest-icon-badge">${q.icon}</div>
+                      <div class="quest-header-meta">
+                        <div class="quest-tier-pill tier-${q.tier}">🏆 ${q.tier.toUpperCase()} MILESTONE</div>
+                        <h3 class="quest-card-title">${name}</h3>
+                      </div>
+                      <div class="quest-coin-badge">🪙 +${q.coins}</div>
+                    </div>
+
+                    <p class="quest-desc">${desc}</p>
+
+                    <!-- Milestone Progress Bar & Target -->
+                    <div class="quest-milestone-box">
+                      <div class="milestone-status-header">
+                        <span class="milestone-progress-lbl">📈 Challenge Progress:</span>
+                        <strong class="milestone-counter-num ${currentVal >= q.target ? 'counter-done' : ''}">${currentVal} / ${q.target}</strong>
+                      </div>
+                      <div class="milestone-bar-wrap">
+                        <div class="milestone-bar-fill" style="width: ${pct}%"></div>
+                      </div>
+                    </div>
+
+                    <!-- Milestone Card Footer -->
+                    <div class="quest-card-footer milestone-footer">
+                      ${isClaimed ? `
+                        <span class="quest-claimed-tag">${this.getI18nText('quest_claimed')}</span>
+                      ` : (isReadyToClaim ? `
+                        <button class="btn-claim-milestone glow-pulse" onclick="window.AK_QUESTS.claimMilestoneQuest('${q.id}')">
+                          🏆 ${this.getI18nText('btn_claim_reward').replace('{coins}', q.coins)}
+                        </button>
+                      ` : `
+                        <button class="btn-milestone-action" onclick="${q.actionFn}">
+                          ${this.getActionBtnText(q)}
+                        </button>
+                      `)}
+                    </div>
+                  </div>
+                `;
+              }
+
+              // --------------------------------------------------------------
+              // CASE 2: KNOWLEDGE QUIZ CHALLENGE
+              // --------------------------------------------------------------
+              const prompt = this.getQuestPrompt(q);
 
               return `
                 <div class="quest-card quest-tier-${q.tier} ${isClaimed ? 'quest-claimed-card' : ''}">
@@ -1523,7 +1883,7 @@
                     <p class="quest-q-prompt"><strong>❓ ${prompt}</strong></p>
                     <div class="quest-options-row">
                       ${q.question.options.map(opt => {
-                        const optText = window.AK_I18N ? window.AK_I18N.t(opt.textKey) : opt.textKey;
+                        const optText = this.getOptionText(opt);
                         return `
                           <button class="btn-quest-opt ${isClaimed && opt.correct ? 'opt-correct' : ''}" 
                             onclick="window.AK_QUESTS.answerQuest('${q.id}', ${opt.correct})"
@@ -1602,11 +1962,13 @@
               const name = this.getCardName(card);
               const desc = this.getCardDesc(card);
               const special = this.getSpecialMove(card);
+              const imgUrl = this.getCardImageUrl(card, 500);
 
               return `
                 <div class="collector-card rarity-${card.rarity} ${isOwned ? 'card-is-owned' : ''} ${isActive ? 'card-is-active' : ''}">
                   <div class="card-thumb-wrap">
-                    <img src="${card.image}" alt="${name}" class="card-shop-img" onerror="this.style.display='none'">
+                    <img src="${imgUrl}" alt="${name}" class="card-shop-img" loading="lazy" 
+                      onerror="if(window.app && window.app.handleImageError){ window.app.handleImageError(this, '${card.category || ''}', '${card.emoji || '🐾'}', '${name.replace(/'/g, "\\'")}'); } else { this.style.display='none'; }">
                     <span class="card-rarity-badge badge-${card.rarity}">${card.rarity.toUpperCase()}</span>
                     ${isOwned ? `<span class="card-owned-banner">${this.getI18nText('owned_badge')}</span>` : ''}
                   </div>
@@ -1685,6 +2047,9 @@
       const isPlayerDefeat = this.playerCurrentHp <= 0;
       const isGauntletDone = isStageVictory && this.currentStageIndex === this.stages.length - 1;
 
+      const pImgUrl = this.getCardImageUrl(p, 500);
+      const oImgUrl = this.getCardImageUrl(o, 500);
+
       container.innerHTML = `
         <div class="game-modal-container gauntlet-arena-container">
           <button class="game-modal-close" onclick="window.AK_QUESTS.closeGauntletModal()">✕</button>
@@ -1709,7 +2074,8 @@
             <!-- PLAYER FIGHTER -->
             <div class="fighter-panel fighter-player ${this.playerCurrentHp <= 0 ? 'fighter-defeated' : ''}">
               <div class="fighter-tag">YOUR FIGHTER</div>
-              <img src="${p.image}" alt="${pName}" class="fighter-avatar" onerror="this.style.display='none'">
+              <img src="${pImgUrl}" alt="${pName}" class="fighter-avatar"
+                onerror="if(window.app && window.app.handleImageError){ window.app.handleImageError(this, '${p.category || ''}', '${p.emoji || '🐾'}', '${pName.replace(/'/g, "\\'")}'); } else { this.style.display='none'; }">
               <h3 class="fighter-name">${p.emoji} ${pName}</h3>
               
               <div class="fighter-hp-wrap">
@@ -1732,7 +2098,8 @@
             <!-- OPPONENT FIGHTER -->
             <div class="fighter-panel fighter-opponent ${this.opponentCurrentHp <= 0 ? 'fighter-defeated' : ''}">
               <div class="fighter-tag stage-tag">STAGE ${stage.stageNumber} BOSS</div>
-              <img src="${o.image}" alt="${oName}" class="fighter-avatar" onerror="this.style.display='none'">
+              <img src="${oImgUrl}" alt="${oName}" class="fighter-avatar"
+                onerror="if(window.app && window.app.handleImageError){ window.app.handleImageError(this, '${o.category || 'wildlife'}', '${o.emoji || '👾'}', '${oName.replace(/'/g, "\\'")}'); } else { this.style.display='none'; }">
               <h3 class="fighter-name">${o.emoji} ${oName}</h3>
               
               <div class="fighter-hp-wrap">

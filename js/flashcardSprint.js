@@ -325,6 +325,9 @@
         if (window.AK_GAME && window.AK_GAME.triggerConfetti) {
           window.AK_GAME.triggerConfetti();
         }
+        if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+          window.AK_QUESTS.recordStat('flashcardWins', 1);
+        }
       } else {
         if (window.AK_AUDIO && window.AK_AUDIO.playPop) {
           window.AK_AUDIO.playPop(650);

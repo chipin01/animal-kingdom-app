@@ -874,6 +874,9 @@
     }
 
     openCandidate(id) {
+      if (window.AK_QUESTS && window.AK_QUESTS.recordStat) {
+        window.AK_QUESTS.recordStat('identifiedCount', 1);
+      }
       this.closeModal();
       if (window.app && window.app.openAnimalDetail) {
         window.app.openAnimalDetail(id);
