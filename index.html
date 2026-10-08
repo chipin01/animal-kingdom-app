@@ -25,8 +25,9 @@
 
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="lib/leaflet.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.2">
   <link rel="stylesheet" href="timeMachine.css">
+  <link rel="stylesheet" href="academy.css?v=2.2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -85,7 +86,7 @@
           </div>
 
           <!-- Interactive Feature Buttons (Small) -->
-          <button class="btn-header-pill btn-small-pill btn-academy-glow" onclick="window.location.href = 'academy.html'" title="Wildlife Academy: 7 courses, 10 lessons on how animals live, organized 2-column mastery squares!">
+          <button class="btn-header-pill btn-small-pill btn-academy-glow" onclick="window.app ? window.app.showAcademyView() : (window.location.href = 'academy.html')" title="Wildlife Academy: 8 units, Botany course, 146 skills, organized 2-column mastery squares!">
             <span data-i18n="nav_academy">🎓 Academy</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">NEW</span>
           </button>
           <button class="btn-header-pill btn-small-pill btn-ultimate-glow" onclick="window.AK_ULTIMATE_TEST && window.AK_ULTIMATE_TEST.openModal()" title="The Ultimate Wildlife Test: Test everything across all animals!">

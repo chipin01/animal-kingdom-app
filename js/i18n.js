@@ -60,8 +60,8 @@
       cool_card_shop_desc: 'Buy new creature battle cards or sell unwanted ones back for coins!',
       cool_gauntlet_title: '4-Stage Progressive Arena',
       cool_gauntlet_desc: 'Put your cards in the ring! Battle a bug in Stage 1 and advance through 4 stages of beasts!',
-      cool_academy_title: 'Wildlife Academy',
-      cool_academy_desc: 'Khan Academy-style courses! 7 full curriculums, 10 lessons on How Animals Live, XP leveling & quizzes!',
+      cool_academy_title: 'Wildlife & Botany Academy',
+      cool_academy_desc: '8 Full Courses including Botany & Plants! 146 skills with tiny squares (⬜ 🟥 🟧 ✅), quizzes & unit tests!',
       cool_ultimate_title: 'The Ultimate Wildlife Test',
       cool_ultimate_desc: 'The grand capstone exam! 25 comprehensive questions across all zones, instant scoring & official diploma!',
 
@@ -473,8 +473,8 @@
       cool_card_shop_desc: '購買各階野生動物戰鬥卡，或將多餘卡片折價售出換取金幣！',
       cool_gauntlet_title: '4 關漸進式競技場挑戰',
       cool_gauntlet_desc: '派遣你的卡牌出戰！第 1 關迎擊巨蟲，連闖 4 關挑戰遠古泰坦！',
-      cool_academy_title: '野生動物學院',
-      cool_academy_desc: '可汗學院風格系統！7 門完整課程、10 堂動物生存課、經驗值等級升級與隨堂測驗！',
+      cool_academy_title: '野生生物與植物學院',
+      cool_academy_desc: '8 門完整課程（含全新植物學課程）！146 項技能方塊（⬜ 🟥 🟧 ✅）、單元測驗與大考！',
       cool_ultimate_title: '野生動物終極大考驗',
       cool_ultimate_desc: '全王國知識大成！25 題綜合大考、即時評分回饋、領域分析與正式榮譽結業證書！',
 
@@ -890,8 +890,8 @@
       cool_card_shop_desc: '¡Compra cartas de animales o vende las que no uses por monedas para entrar a la Arena!',
       cool_gauntlet_title: 'Arena Progresiva de 4 Fases',
       cool_gauntlet_desc: '¡Pon tus cartas en el ring! ¡Vence a un insecto en Fase 1 y llega hasta el titán supremo!',
-      cool_academy_title: 'Academia de Vida Silvestre',
-      cool_academy_desc: '¡Estilo Khan Academy! 7 cursos completos, 10 lecciones sobre cómo viven los animales, niveles de XP y cuestionarios.',
+      cool_academy_title: 'Academia de Fauna y Botánica',
+      cool_academy_desc: '¡8 Cursos Completos incluyendo Botánica y Plantas! 146 habilidades en casillas (⬜ 🟥 🟧 ✅), cuestionarios y exámenes.',
       cool_ultimate_title: 'La Prueba Suprema de Vida Silvestre',
       cool_ultimate_desc: '¡El gran examen final! 25 preguntas exhaustivas de todas las zonas, puntuación en vivo y diploma oficial.',
 
