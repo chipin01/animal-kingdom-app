@@ -638,56 +638,385 @@
       this.renderLessonReadingScreen();
     }
 
-    // Vocabulary Dictionary with kid-friendly (9-year-old) explanations
+    // Vocabulary Dictionary with kid-friendly (9-year-old) explanations and awesome facts
     getVocabDefinitions() {
       return {
-        'habitat': { term: 'Habitat', def: 'A habitat is the natural home where an animal or plant lives, finds food, water, and stays safe.' },
-        'habitats': { term: 'Habitats', def: 'Natural homes where animals or plants live, find food, water, and stay safe.' },
-        'adaptation': { term: 'Adaptation', def: 'A special body part or clever behavior that helps a creature survive in its home.' },
-        'adaptations': { term: 'Adaptations', def: 'Special body parts or clever behaviors that help creatures survive in their homes.' },
-        'adapt': { term: 'Adapt', def: 'To change or develop special features so you can survive easily.' },
-        'adapted': { term: 'Adapted', def: 'Having special features or skills that make it easy to survive.' },
-        'predator': { term: 'Predator', def: 'An animal that hunts and eats other animals for food (like a lion or hawk).' },
-        'predators': { term: 'Predators', def: 'Animals that hunt and eat other animals for food.' },
-        'predation': { term: 'Predation', def: 'When one animal hunts and catches another animal for food.' },
-        'prey': { term: 'Prey', def: 'An animal that is hunted and eaten by other animals (like a rabbit or mouse).' },
-        'ecosystem': { term: 'Ecosystem', def: 'A community of living creatures and plants sharing air, water, and soil together.' },
-        'ecosystems': { term: 'Ecosystems', def: 'Communities of living creatures and plants sharing air, water, and soil together.' },
-        'food web': { term: 'Food Web', def: 'A giant network showing who eats whom in nature so energy moves around.' },
-        'herbivore': { term: 'Herbivore', def: 'An animal that only eats plants, leaves, grasses, or fruits (like a cow or rabbit).' },
-        'herbivores': { term: 'Herbivores', def: 'Animals that only eat plants, leaves, grasses, or fruits.' },
-        'carnivore': { term: 'Carnivore', def: 'A meat-eating animal that hunts or eats other animals.' },
-        'carnivores': { term: 'Carnivores', def: 'Meat-eating animals that hunt or eat other animals.' },
-        'omnivore': { term: 'Omnivore', def: 'An animal that eats both plants and meat (like bears and humans!).' },
-        'omnivores': { term: 'Omnivores', def: 'Animals that happily eat both plants and meat.' },
-        'camouflage': { term: 'Camouflage', def: 'Colors, patterns, or shapes that help an animal blend into its background so it can hide.' },
-        'nocturnal': { term: 'Nocturnal', def: 'Animals that sleep during the daytime and wake up to hunt or play at night.' },
-        'diurnal': { term: 'Diurnal', def: 'Animals that are awake and busy during the sunny daytime and sleep at night.' },
-        'hibernation': { term: 'Hibernation', def: 'A super deep, long winter sleep that saves energy when it is freezing and food is scarce.' },
-        'migrate': { term: 'Migrate', def: 'To travel a long distance with the seasons to find warmer weather and more food.' },
-        'migration': { term: 'Migration', def: 'A seasonal journey to find warmer weather, better food, or a safe place to have babies.' },
-        'photosynthesis': { term: 'Photosynthesis', def: 'How green plants use sunshine, water, and air to make their own sugary food.' },
-        'species': { term: 'Species', def: 'A specific group of living things that are closely related and can have babies together.' },
-        'organism': { term: 'Organism', def: 'Any living creature, such as an animal, plant, insect, or fungus.' },
-        'organisms': { term: 'Organisms', def: 'Living creatures, including all animals, plants, insects, and fungi.' },
-        'scavenger': { term: 'Scavenger', def: 'An animal that cleans up nature by eating food or animals that are already dead.' },
-        'scavengers': { term: 'Scavengers', def: 'Animals that clean up nature by eating leftover food or dead animals.' },
-        'decomposer': { term: 'Decomposer', def: 'Tiny helpers like worms or mushrooms that break down rotting leaves into rich soil.' },
-        'decomposers': { term: 'Decomposers', def: 'Living helpers like worms and fungi that recycle dead plants into rich dirt.' },
-        'echolocation': { term: 'Echolocation', def: 'Using bouncing sound waves (clicks and echoes) to "see" things in the dark.' },
-        'bioluminescence': { term: 'Bioluminescence', def: 'The amazing ability of some sea creatures and fireflies to make their own glowing light!' },
-        'metamorphosis': { term: 'Metamorphosis', def: 'A magical body transformation, like a caterpillar turning into a butterfly.' },
-        'exoskeleton': { term: 'Exoskeleton', def: 'A hard shell worn on the outside of an insect or crab’s body like armor.' },
-        'extinct': { term: 'Extinct', def: 'When all members of a species have died out and none are left alive on Earth.' },
-        'extinction': { term: 'Extinction', def: 'When a kind of animal or plant disappears forever from our planet.' },
-        'fossil': { term: 'Fossil', def: 'The hardened remains or rocky shape of an ancient animal or plant that lived long ago.' },
-        'fossils': { term: 'Fossils', def: 'Rocks that preserve prints, bones, or traces of creatures from millions of years ago.' },
-        'chloroplasts': { term: 'Chloroplasts', def: 'Tiny green kitchens inside plant cells that catch sunlight to cook up plant food.' },
-        'pollinator': { term: 'Pollinator', def: 'An animal like a bee or butterfly that carries pollen from flower to flower so plants make seeds.' },
-        'pollinators': { term: 'Pollinators', def: 'Helpful animals like bees and birds that carry flower pollen to help plants make seeds.' },
-        'symbiosis': { term: 'Symbiosis', def: 'When two different living creatures live close together and share life (often helping each other!).' },
-        'venom': { term: 'Venom', def: 'A defensive or hunting liquid that is injected through fangs or a sharp stinger.' },
-        'poison': { term: 'Poison', def: 'A harmful chemical that causes sickness if touched, eaten, or swallowed.' }
+        'habitat': {
+          term: 'Habitat',
+          category: 'Ecology',
+          icon: '🏡',
+          pronounce: 'HAB-ih-tat',
+          def: 'The natural home where an animal or plant lives and finds everything it needs: food, clean water, shelter, and safe space.',
+          fact: 'Tropical rainforest habitats cover only 6% of Earth’s land, but over half of all the world’s animals and plants live there!'
+        },
+        'habitats': {
+          term: 'Habitats',
+          category: 'Ecology',
+          icon: '🏡',
+          pronounce: 'HAB-ih-tats',
+          def: 'Natural homes where animals or plants live and find food, water, and shelter.',
+          fact: 'Habitats can be as huge as an entire ocean or as tiny as a single puddle inside a tree!'
+        },
+        'adaptation': {
+          term: 'Adaptation',
+          category: 'Survival',
+          icon: '⚡',
+          pronounce: 'ad-ap-TAY-shun',
+          def: 'A special body part or clever behavior that helps a creature survive and thrive in its wild home.',
+          fact: 'Polar bears have black skin hidden under see-through fur to absorb warm heat directly from the sun!'
+        },
+        'adaptations': {
+          term: 'Adaptations',
+          category: 'Survival',
+          icon: '⚡',
+          pronounce: 'ad-ap-TAY-shunz',
+          def: 'Special body features or clever behaviors that help creatures survive in their wild homes.',
+          fact: 'Woodpeckers have super spongy skulls that absorb shocks like football helmets when pecking trees!'
+        },
+        'adapt': {
+          term: 'Adapt',
+          category: 'Survival',
+          icon: '🔄',
+          pronounce: 'uh-DAPT',
+          def: 'To develop special body features or habits over time to survive easily in an environment.',
+          fact: 'Camels adapt to desert heat by storing fat inside humps so they can go weeks without drinking water.'
+        },
+        'adapted': {
+          term: 'Adapted',
+          category: 'Survival',
+          icon: '🔄',
+          pronounce: 'uh-DAP-tid',
+          def: 'Having special features or skills that make it easy to survive.',
+          fact: 'Deep sea fish are adapted to survive water pressure strong enough to crush a car!'
+        },
+        'predator': {
+          term: 'Predator',
+          category: 'Food Web',
+          icon: '🦁',
+          pronounce: 'PRED-uh-ter',
+          def: 'An animal that hunts and catches other animals for food, like a lion, eagle, or shark.',
+          fact: 'Cheetahs are the fastest land predators on Earth, accelerating from 0 to 60 mph in just 3 seconds!'
+        },
+        'predators': {
+          term: 'Predators',
+          category: 'Food Web',
+          icon: '🦅',
+          pronounce: 'PRED-uh-terz',
+          def: 'Animals that hunt and eat other animals for food.',
+          fact: 'Barn owls have asymmetrical ears (one higher than the other) to pinpoint mice in total darkness!'
+        },
+        'predation': {
+          term: 'Predation',
+          category: 'Food Web',
+          icon: '🏹',
+          pronounce: 'preh-DAY-shun',
+          def: 'When a hungry hunter catches and eats another creature.',
+          fact: 'Predation helps keep nature healthy by stopping herbivore populations from eating all the plants.'
+        },
+        'prey': {
+          term: 'Prey',
+          category: 'Food Web',
+          icon: '🐰',
+          pronounce: 'PRAY',
+          def: 'An animal that is hunted and eaten by predators, like a rabbit, gazelle, or tiny fish.',
+          fact: 'Rabbits have eyes placed on the sides of their head so they can see nearly 360 degrees around them!'
+        },
+        'ecosystem': {
+          term: 'Ecosystem',
+          category: 'Ecology',
+          icon: '🌍',
+          pronounce: 'EE-koh-sis-tem',
+          def: 'A community where living animals, plants, water, air, and rocks all interact and share life together.',
+          fact: 'The Great Barrier Reef is the largest living ecosystem on Earth and can even be seen from outer space!'
+        },
+        'ecosystems': {
+          term: 'Ecosystems',
+          category: 'Ecology',
+          icon: '🌍',
+          pronounce: 'EE-koh-sis-temz',
+          def: 'Communities of living things and nature sharing air, water, and food.',
+          fact: 'A single rotting tree log in the forest is its own miniature ecosystem housing thousands of critters!'
+        },
+        'food web': {
+          term: 'Food Web',
+          category: 'Food Web',
+          icon: '🕸️',
+          pronounce: 'FOOD WEB',
+          def: 'A connected network of food chains showing how sun energy moves through plants, herbivores, and predators.',
+          fact: 'If you remove one keystone species from a food web, the whole ecosystem can shift completely!'
+        },
+        'herbivore': {
+          term: 'Herbivore',
+          category: 'Diet',
+          icon: '🦒',
+          pronounce: 'HER-bih-vor',
+          def: 'An animal that eats only plants, grasses, leaves, tree bark, and sweet fruits.',
+          fact: 'Giraffes spend up to 18 hours every day chewing leaves using long, blue-black 18-inch tongues!'
+        },
+        'herbivores': {
+          term: 'Herbivores',
+          category: 'Diet',
+          icon: '🦓',
+          pronounce: 'HER-bih-vorz',
+          def: 'Plant-eating animals that munch on grasses, leaves, and berries.',
+          fact: 'Giant pandas eat up to 28 pounds of tough bamboo every single day to stay full!'
+        },
+        'carnivore': {
+          term: 'Carnivore',
+          category: 'Diet',
+          icon: '🐅',
+          pronounce: 'KAR-nih-vor',
+          def: 'A meat-eating animal equipped with sharp teeth or claws to eat other animals.',
+          fact: 'The blue whale is technically a carnivore—it eats up to 4 tons of tiny shrimp-like krill every day!'
+        },
+        'carnivores': {
+          term: 'Carnivores',
+          category: 'Diet',
+          icon: '🐊',
+          pronounce: 'KAR-nih-vorz',
+          def: 'Meat-eating hunters that survive on animal protein.',
+          fact: 'Crocodiles can go for over a whole year without eating food because their body burns energy very slowly.'
+        },
+        'omnivore': {
+          term: 'Omnivore',
+          category: 'Diet',
+          icon: '🐻',
+          pronounce: 'OM-nih-vor',
+          def: 'An animal that eats both meat and plants (like bears, raccoons, and human beings!).',
+          fact: 'Grizzly bears eat sweet salmon fish in the fall and wild berries and tree roots in the spring!'
+        },
+        'omnivores': {
+          term: 'Omnivores',
+          category: 'Diet',
+          icon: '🦝',
+          pronounce: 'OM-nih-vorz',
+          def: 'Animals that happily eat both plant foods and animal foods.',
+          fact: 'Raccoons have super sensitive front paws that they use to wash fruits, nuts, frogs, and fish in rivers!'
+        },
+        'camouflage': {
+          term: 'Camouflage',
+          category: 'Survival',
+          icon: '🦎',
+          pronounce: 'KAM-uh-flahzh',
+          def: 'Colors, patterns, or textures that help an animal blend into its background so no one can spot it.',
+          fact: 'Octopuses can change both the color and texture of their skin to look like sandy coral in less than one second!'
+        },
+        'nocturnal': {
+          term: 'Nocturnal',
+          category: 'Habits',
+          icon: '🌙',
+          pronounce: 'nok-TER-nul',
+          def: 'Animals that sleep during the daytime and wake up to hunt, play, or forage in the dark night.',
+          fact: 'Bats are nocturnal mammals that can catch more than 1,000 pesky mosquitoes in just one hour of night flight!'
+        },
+        'diurnal': {
+          term: 'Diurnal',
+          category: 'Habits',
+          icon: '☀️',
+          pronounce: 'dy-ER-nul',
+          def: 'Animals that are awake and busy during daylight hours and sleep soundly when night comes.',
+          fact: 'Most songbirds and butterflies are diurnal because they need warm sunshine to see colorful flowers.'
+        },
+        'hibernation': {
+          term: 'Hibernation',
+          category: 'Survival',
+          icon: '❄️',
+          pronounce: 'hy-ber-NAY-shun',
+          def: 'A deep, dormant winter sleep where an animal slows its heart and breathing to survive freezing cold.',
+          fact: 'Arctic ground squirrels can let their body temperature drop below freezing without their blood freezing solid!'
+        },
+        'migrate': {
+          term: 'Migrate',
+          category: 'Habits',
+          icon: '✈️',
+          pronounce: 'MY-grayt',
+          def: 'To travel a long distance with the seasons to find warmth, food, or a safe nursery for babies.',
+          fact: 'Arctic Terns migrate 44,000 miles every year from the North Pole to the South Pole and back!'
+        },
+        'migration': {
+          term: 'Migration',
+          category: 'Habits',
+          icon: '🗺️',
+          pronounce: 'my-GRAY-shun',
+          def: 'A seasonal journey made by groups of animals to find better weather and plenty of food.',
+          fact: 'Millions of wildebeest and zebras travel together across the Serengeti in the Great Migration!'
+        },
+        'photosynthesis': {
+          term: 'Photosynthesis',
+          category: 'Plants',
+          icon: '🌱',
+          pronounce: 'foh-toh-SIN-thuh-sis',
+          def: 'The magical process where green plants turn sunshine, water, and air into delicious plant sugar and fresh oxygen.',
+          fact: 'Tiny ocean phytoplankton make over half of the oxygen gas that all humans and animals breathe on Earth!'
+        },
+        'species': {
+          term: 'Species',
+          category: 'Classification',
+          icon: '🏷️',
+          pronounce: 'SPEE-sheez',
+          def: 'A specific group of living things that look similar and can have healthy babies together.',
+          fact: 'Scientists estimate there are over 8.7 million different species of animals, plants, and fungi on Earth!'
+        },
+        'organism': {
+          term: 'Organism',
+          category: 'Biology',
+          icon: '🔬',
+          pronounce: 'OR-guh-niz-um',
+          def: 'Any single living creature, including animals, tall trees, tiny mushrooms, and swimming pond bugs.',
+          fact: 'The largest living organism on Earth is a giant honey fungus in Oregon that spreads over 3.5 square miles!'
+        },
+        'organisms': {
+          term: 'Organisms',
+          category: 'Biology',
+          icon: '🔬',
+          pronounce: 'OR-guh-niz-umz',
+          def: 'Living creatures, including all animals, plants, trees, and fungi.',
+          fact: 'There are more single-celled organisms in one spoonful of garden dirt than people living on Earth!'
+        },
+        'scavenger': {
+          term: 'Scavenger',
+          category: 'Food Web',
+          icon: '🦅',
+          pronounce: 'SKAV-en-jer',
+          def: 'An animal that cleans up nature by eating animals or food that have already died.',
+          fact: 'Vultures have stomach acid that is so powerful it safely destroys deadly germs like rabies and anthrax!'
+        },
+        'scavengers': {
+          term: 'Scavengers',
+          category: 'Food Web',
+          icon: '🦀',
+          pronounce: 'SKAV-en-jerz',
+          def: 'Animals that clean up leftovers and dead matter in the wild.',
+          fact: 'Crabs and hermit crabs act as underwater ocean vacuum cleaners by eating fallen organic matter on the seabed.'
+        },
+        'decomposer': {
+          term: 'Decomposer',
+          category: 'Ecology',
+          icon: '🪱',
+          pronounce: 'dee-kum-POH-zer',
+          def: 'Living helpers like earthworms and mushrooms that turn dead leaves and wood into super rich, dark garden soil.',
+          fact: 'Earthworms can eat their own body weight in soil and decaying leaves every single day!'
+        },
+        'decomposers': {
+          term: 'Decomposers',
+          category: 'Ecology',
+          icon: '🍄',
+          pronounce: 'dee-kum-POH-zerz',
+          def: 'Helpful recyclers like fungi and worms that renew soil nutrients.',
+          fact: 'Without decomposers, forests would quickly become buried under miles of dead fallen logs and leaves!'
+        },
+        'echolocation': {
+          term: 'Echolocation',
+          category: 'Superpowers',
+          icon: '🐬',
+          pronounce: 'ek-oh-loh-KAY-shun',
+          def: 'A biological superpower where animals make clicking sounds and listen to the echoes to "see" in the dark.',
+          fact: 'Dolphins and bats can use sound echoes to detect an object as thin as a single strand of human hair!'
+        },
+        'bioluminescence': {
+          term: 'Bioluminescence',
+          category: 'Superpowers',
+          icon: '🏮',
+          pronounce: 'by-oh-loo-mih-NES-ens',
+          def: 'The magical ability of living creatures like fireflies and anglerfish to create their own glowing light.',
+          fact: 'Deep in the ocean, over 75% of all sea creatures make their own colorful bioluminescent light!'
+        },
+        'metamorphosis': {
+          term: 'Metamorphosis',
+          category: 'Growth',
+          icon: '🦋',
+          pronounce: 'met-uh-MOR-fuh-sis',
+          def: 'A magnificent life change where a young animal completely rebuilds its body into an adult (like a tadpole into a frog).',
+          fact: 'Inside a chrysalis, a caterpillar’s body dissolves into liquid goo before assembling into butterfly wings!'
+        },
+        'exoskeleton': {
+          term: 'Exoskeleton',
+          category: 'Anatomy',
+          icon: '🪲',
+          pronounce: 'ek-soh-SKEL-eh-tun',
+          def: 'A tough shell armor worn on the outside of an insect or crab’s body that protects it and supports muscles.',
+          fact: 'Because exoskeletons are hard and cannot stretch, growing bugs have to molt and shed their old shells!'
+        },
+        'extinct': {
+          term: 'Extinct',
+          category: 'History',
+          icon: '🦕',
+          pronounce: 'ek-STINKT',
+          def: 'When every single member of an animal or plant species has passed away and none live on Earth anymore.',
+          fact: 'Dinosaurs roamed Earth for over 160 million years before going extinct 66 million years ago!'
+        },
+        'extinction': {
+          term: 'Extinction',
+          category: 'History',
+          icon: '☄️',
+          pronounce: 'ek-STINK-shun',
+          def: 'When a whole family of animals or plants disappears forever from our planet.',
+          fact: 'Protecting wild parks and forests prevents endangered species from facing extinction.'
+        },
+        'fossil': {
+          term: 'Fossil',
+          category: 'History',
+          icon: '🦴',
+          pronounce: 'FOSS-ul',
+          def: 'The ancient stone print or preserved bony remains of a plant or animal that lived millions of years ago.',
+          fact: 'Some fossilized dinosaur footprints are so clear you can see individual scale textures from the creature’s skin!'
+        },
+        'fossils': {
+          term: 'Fossils',
+          category: 'History',
+          icon: '🪨',
+          pronounce: 'FOSS-ulz',
+          def: 'Rocky clues left behind by prehistoric creatures.',
+          fact: 'Fossils of ancient sea shells have been discovered at the very peak of Mount Everest!'
+        },
+        'chloroplasts': {
+          term: 'Chloroplasts',
+          category: 'Plants',
+          icon: '🍃',
+          pronounce: 'KLOR-oh-plasts',
+          def: 'Tiny green sun-cookers inside plant cells that trap solar rays to bake food for the plant.',
+          fact: 'Chloroplasts give leaves their beautiful bright green color!'
+        },
+        'pollinator': {
+          term: 'Pollinator',
+          category: 'Plants',
+          icon: '🐝',
+          pronounce: 'PAHL-ih-nay-ter',
+          def: 'A helpful animal like a bee, butterfly, or hummingbird that carries flower dust so plants can make fruits and seeds.',
+          fact: 'Honeybees visit about 2,000 flowers each day to collect nectar and pollinate blooms!'
+        },
+        'pollinators': {
+          term: 'Pollinators',
+          category: 'Plants',
+          icon: '🌸',
+          pronounce: 'PAHL-ih-nay-terz',
+          def: 'Friends of nature like bees, bats, and butterflies that spread pollen.',
+          fact: 'One out of every three bites of delicious food we eat exists thanks to wild animal pollinators!'
+        },
+        'symbiosis': {
+          term: 'Symbiosis',
+          category: 'Friendship',
+          icon: '🐠',
+          pronounce: 'sim-by-OH-sis',
+          def: 'A special partnership where two different kinds of creatures live closely together and help one another.',
+          fact: 'Clownfish live safely inside stinging sea anemones, keeping the anemone clean while getting safe shelter!'
+        },
+        'venom': {
+          term: 'Venom',
+          category: 'Defense',
+          icon: '🐍',
+          pronounce: 'VEN-um',
+          def: 'A defensive potion that an animal injects directly into prey or attackers using sharp fangs, teeth, or stingers.',
+          fact: 'The Inland Taipan snake has enough venom in one bite to ward off 100 adult attackers!'
+        },
+        'poison': {
+          term: 'Poison',
+          category: 'Defense',
+          icon: '🐸',
+          pronounce: 'POY-zun',
+          def: 'A harmful chemical defense that works if a predator tries to touch, bite, or swallow the animal.',
+          fact: 'A golden poison frog has bright yellow skin to warn hungry jungle predators: "Do not lick me!"'
+        }
       };
     }
 
@@ -1294,6 +1623,162 @@
       cards.forEach(card => {
         card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
       });
+    }
+
+    // ========================================================================
+    // FULL VOCABULARY & SCIENCE FACTS EXPLORER SECTION
+    // ========================================================================
+    openVocabSection(filterCategory = 'ALL') {
+      const modal = document.getElementById('ka-modal-backdrop');
+      const content = document.getElementById('ka-modal-content');
+      if (!modal || !content) return;
+
+      this.currentVocabFilter = filterCategory || 'ALL';
+      const vocabs = this.getVocabDefinitions();
+      const entries = Object.entries(vocabs);
+
+      // Collect unique categories
+      const categories = ['ALL'];
+      entries.forEach(([_, item]) => {
+        if (item.category && !categories.includes(item.category)) {
+          categories.push(item.category);
+        }
+      });
+
+      // Pick a random fun spotlight word
+      const randomEntry = entries[Math.floor(Math.random() * entries.length)][1];
+
+      content.innerHTML = `
+        <div class="ka-modal-header">
+          <div>
+            <span class="ka-modal-tag" style="color: #0284c7;">Junior Naturalist Dictionary</span>
+            <h2 class="ka-modal-title">📖 Wildlife Vocabulary & Amazing Science Facts</h2>
+          </div>
+          <button class="ka-modal-close-btn" onclick="window.AK_PAGE.closeModal()">✕</button>
+        </div>
+
+        <div class="ka-modal-body ka-vocab-section-modal" style="padding: 24px;">
+          <!-- Random Fun Fact Spotlight Banner -->
+          <div class="ka-vocab-spotlight-bar">
+            <div class="ka-vocab-spotlight-text">
+              <h4>${randomEntry.icon} Featured Word of the Moment: <strong>${randomEntry.term}</strong></h4>
+              <p>💡 <em>"${randomEntry.fact}"</em></p>
+            </div>
+            <button class="ka-boost-btn" style="background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); padding: 8px 14px; font-size: 13px;" onclick="window.AK_PAGE.openVocabSection()">
+              🎲 Surprise Me!
+            </button>
+          </div>
+
+          <!-- Controls: Category Filters + Search Bar -->
+          <div class="ka-vocab-controls">
+            <div class="ka-vocab-filters" id="ka-vocab-filters-bar">
+              ${categories.map(cat => `
+                <button type="button" class="ka-vocab-filter-btn ${cat === this.currentVocabFilter ? 'active' : ''}" onclick="window.AK_PAGE.filterVocabSection('${cat}')">
+                  ${cat === 'ALL' ? '🌟 All Words' : cat}
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="ka-vocab-search-wrap">
+              <span class="ka-vocab-search-icon">🔍</span>
+              <input type="text" id="ka-vocab-search-box" class="ka-vocab-search-input" placeholder="Search words or facts..." oninput="window.AK_PAGE.searchVocabCards(this.value)" />
+            </div>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="ka-vocab-grid" id="ka-vocab-cards-grid">
+            ${this.renderVocabCardsHtml(entries, this.currentVocabFilter, '')}
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    renderVocabCardsHtml(entries, activeCategory, searchQ) {
+      const q = (searchQ || '').trim().toLowerCase();
+
+      const filtered = entries.filter(([key, item]) => {
+        const matchesCategory = (activeCategory === 'ALL') || (item.category === activeCategory);
+        if (!matchesCategory) return false;
+        if (!q) return true;
+        return item.term.toLowerCase().includes(q) ||
+               (item.def && item.def.toLowerCase().includes(q)) ||
+               (item.fact && item.fact.toLowerCase().includes(q)) ||
+               (item.category && item.category.toLowerCase().includes(q));
+      });
+
+      if (filtered.length === 0) {
+        return `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #64748b; font-size: 15px;">
+            🔍 No vocabulary words found matching "<strong>${searchQ}</strong>". Try searching another term!
+          </div>
+        `;
+      }
+
+      return filtered.map(([key, item]) => `
+        <div class="ka-vocab-card">
+          <div>
+            <div class="ka-vocab-card-header">
+              <div class="ka-vocab-card-term">
+                <span>${item.icon || '🌱'}</span>
+                <span>${item.term}</span>
+              </div>
+              <span class="ka-vocab-card-category">${item.category || 'Science'}</span>
+            </div>
+
+            <div style="font-size: 11.5px; color: #64748b; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+              <span>🗣️ Pronounce: <em>${item.pronounce || item.term}</em></span>
+              <button type="button" class="ka-vocab-btn-speak" onclick="window.AK_PAGE.speakVocabTerm('${item.term.replace(/'/g, "\\'")}')" title="Listen to pronunciation">
+                🔊 Listen
+              </button>
+            </div>
+
+            <div class="ka-vocab-card-def">
+              ${item.def}
+            </div>
+          </div>
+
+          ${item.fact ? `
+            <div class="ka-vocab-card-fact">
+              <strong>🤯 Cool Fact:</strong> ${item.fact}
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    filterVocabSection(category) {
+      this.currentVocabFilter = category;
+      document.querySelectorAll('#ka-vocab-filters-bar .ka-vocab-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === (category === 'ALL' ? '🌟 All Words' : category));
+      });
+      const grid = document.getElementById('ka-vocab-cards-grid');
+      const searchBox = document.getElementById('ka-vocab-search-box');
+      const q = searchBox ? searchBox.value : '';
+      if (grid) {
+        grid.innerHTML = this.renderVocabCardsHtml(Object.entries(this.getVocabDefinitions()), category, q);
+      }
+    }
+
+    searchVocabCards(query) {
+      const grid = document.getElementById('ka-vocab-cards-grid');
+      if (grid) {
+        grid.innerHTML = this.renderVocabCardsHtml(Object.entries(this.getVocabDefinitions()), this.currentVocabFilter || 'ALL', query);
+      }
+    }
+
+    speakVocabTerm(term) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(term);
+        utterance.rate = 0.9;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert(`Pronunciation: ${term}`);
+      }
     }
 
     restartAllProgress() {

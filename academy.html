@@ -42,6 +42,9 @@
       <div class="ka-stat-pill" title="Zoologist Level">
         <span id="ka-header-level">🌱 Lv.1</span>
       </div>
+      <button class="ka-btn-vocab" onclick="window.AK_PAGE.openVocabSection()" title="Explore Wildlife Vocabulary & Fun Science Facts" style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; border: none; padding: 7px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(2,132,199,0.3); transition: all 0.15s ease;">
+        📖 Vocabulary & Facts
+      </button>
       <button class="ka-btn-restart" onclick="window.AK_PAGE.restartAllProgress()" title="Restart all skills, tests, and mastery progress back to 0">
         🔄 Restart All
       </button>
@@ -107,6 +110,14 @@
         <span class="ka-boost-text">Boost your skills and level up faster!</span>
         <button class="ka-boost-btn" onclick="window.AK_PAGE.startMasteryChallenge()">
           Start mastery challenge
+        </button>
+      </div>
+
+      <!-- Blue Vocabulary & Science Facts Callout Banner -->
+      <div class="ka-boost-banner" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: none; margin-bottom: 20px;">
+        <span class="ka-boost-text">📖 <strong>Junior Naturalist Dictionary:</strong> Learn cool animal words, hear pronunciations, and discover wild facts!</span>
+        <button class="ka-boost-btn" style="background: #ffffff; color: #0369a1; font-weight: 800;" onclick="window.AK_PAGE.openVocabSection()">
+          Explore Vocabulary & Facts 🔍
         </button>
       </div>
 

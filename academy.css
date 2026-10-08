@@ -1080,6 +1080,196 @@ body.academy-body {
   gap: 8px;
 }
 
+/* ==========================================================================
+   FULL VOCABULARY & FACTS EXPLORER SECTION (CARDS & INTERACTIVE LEARNING)
+   ========================================================================== */
+.ka-vocab-section-modal {
+  max-width: 960px;
+}
+
+.ka-vocab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ka-vocab-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ka-vocab-filter-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ka-vocab-filter-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.ka-vocab-filter-btn.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+.ka-vocab-search-wrap {
+  position: relative;
+  min-width: 240px;
+}
+
+.ka-vocab-search-input {
+  width: 100%;
+  padding: 8px 14px 8px 34px;
+  border-radius: 20px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 13px;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.ka-vocab-search-input:focus {
+  border-color: #0284c7;
+}
+
+.ka-vocab-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.ka-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.ka-vocab-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ka-vocab-card:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.12);
+}
+
+.ka-vocab-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ka-vocab-card-term {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ka-vocab-card-category {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.ka-vocab-card-def {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.ka-vocab-card-fact {
+  background: #f8fafc;
+  border-left: 3.5px solid #10b981;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #065f46;
+}
+
+.ka-vocab-btn-speak {
+  background: #f1f5f9;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.ka-vocab-btn-speak:hover {
+  background: #e2e8f0;
+  color: #0284c7;
+}
+
+.ka-vocab-spotlight-bar {
+  background: linear-gradient(135deg, #0369a1, #0284c7);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ka-vocab-spotlight-text h4 {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ka-vocab-spotlight-text p {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+
 
 /* ==========================================================================
    RESPONSIVE LAYOUT
