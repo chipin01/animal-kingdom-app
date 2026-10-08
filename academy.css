@@ -209,6 +209,29 @@ body.academy-body {
   border-color: #ffffff;
 }
 
+.ka-btn-restart {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ka-btn-restart:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+}
+
 /* ==========================================================================
    APP CONTAINER (2-PANE: LEFT SIDEBAR + MAIN CONTENT)
    ========================================================================== */

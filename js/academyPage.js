@@ -1107,6 +1107,33 @@
       });
     }
 
+    restartAllProgress() {
+      const confirmReset = confirm(
+        '⚠️ RESTART EVERYTHING?\n\n' +
+        'Are you sure you want to restart all progress?\n' +
+        '• All 146 skill squares will be reset back to Unstarted (⬜)\n' +
+        '• Mastery Points will be reset to 0\n' +
+        '• Academy XP will be reset to 0\n' +
+        '• All quizzes and unit tests will be reset\n\n' +
+        'Click OK to wipe clean and start completely fresh!'
+      );
+
+      if (!confirmReset) return;
+
+      localStorage.setItem(this.storageKey, JSON.stringify({}));
+      localStorage.setItem('ak_academy_xp', '0');
+      localStorage.setItem('ak_academy_completed_lessons', JSON.stringify([]));
+      localStorage.setItem('ak_academy_quiz_scores', JSON.stringify({}));
+
+      this.updateHeaderStats();
+      this.updateMasteryHeader();
+      this.renderSidebar();
+      this.renderUnitsGrid();
+
+      if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(450);
+      alert('✨ Restart Complete! All 146 skills, quizzes, and mastery squares have been restarted to unstarted (⬜).');
+    }
+
     bindEvents() {
       if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('keydown', (e) => {
