@@ -999,6 +999,89 @@ body.academy-body {
 }
 
 /* ==========================================================================
+   VOCABULARY INTERACTIVE BUTTONS & DEFINITIONS (KIDS-FRIENDLY)
+   ========================================================================== */
+.ka-vocab-word {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 6px;
+  border: 1.5px dashed #3b82f6;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+.ka-vocab-word:hover, .ka-vocab-word:focus {
+  background: #dbeafe;
+  color: #1e40af;
+  border-style: solid;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+.ka-vocab-hint-icon {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.ka-vocab-popover {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  margin-top: 14px;
+  border-left: 5px solid #38bdf8;
+  animation: kaFadeIn 0.2s ease;
+}
+
+.ka-vocab-popover-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ka-vocab-popover-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.ka-vocab-popover-close:hover {
+  color: #ffffff;
+}
+
+.ka-vocab-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #166534;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* ==========================================================================
    RESPONSIVE LAYOUT
    ========================================================================== */
 @media (max-width: 1024px) {

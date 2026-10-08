@@ -638,8 +638,105 @@
       this.renderLessonReadingScreen();
     }
 
+    // Vocabulary Dictionary with kid-friendly (9-year-old) explanations
+    getVocabDefinitions() {
+      return {
+        'habitat': { term: 'Habitat', def: 'A habitat is the natural home where an animal or plant lives, finds food, water, and stays safe.' },
+        'habitats': { term: 'Habitats', def: 'Natural homes where animals or plants live, find food, water, and stay safe.' },
+        'adaptation': { term: 'Adaptation', def: 'A special body part or clever behavior that helps a creature survive in its home.' },
+        'adaptations': { term: 'Adaptations', def: 'Special body parts or clever behaviors that help creatures survive in their homes.' },
+        'adapt': { term: 'Adapt', def: 'To change or develop special features so you can survive easily.' },
+        'adapted': { term: 'Adapted', def: 'Having special features or skills that make it easy to survive.' },
+        'predator': { term: 'Predator', def: 'An animal that hunts and eats other animals for food (like a lion or hawk).' },
+        'predators': { term: 'Predators', def: 'Animals that hunt and eat other animals for food.' },
+        'predation': { term: 'Predation', def: 'When one animal hunts and catches another animal for food.' },
+        'prey': { term: 'Prey', def: 'An animal that is hunted and eaten by other animals (like a rabbit or mouse).' },
+        'ecosystem': { term: 'Ecosystem', def: 'A community of living creatures and plants sharing air, water, and soil together.' },
+        'ecosystems': { term: 'Ecosystems', def: 'Communities of living creatures and plants sharing air, water, and soil together.' },
+        'food web': { term: 'Food Web', def: 'A giant network showing who eats whom in nature so energy moves around.' },
+        'herbivore': { term: 'Herbivore', def: 'An animal that only eats plants, leaves, grasses, or fruits (like a cow or rabbit).' },
+        'herbivores': { term: 'Herbivores', def: 'Animals that only eat plants, leaves, grasses, or fruits.' },
+        'carnivore': { term: 'Carnivore', def: 'A meat-eating animal that hunts or eats other animals.' },
+        'carnivores': { term: 'Carnivores', def: 'Meat-eating animals that hunt or eat other animals.' },
+        'omnivore': { term: 'Omnivore', def: 'An animal that eats both plants and meat (like bears and humans!).' },
+        'omnivores': { term: 'Omnivores', def: 'Animals that happily eat both plants and meat.' },
+        'camouflage': { term: 'Camouflage', def: 'Colors, patterns, or shapes that help an animal blend into its background so it can hide.' },
+        'nocturnal': { term: 'Nocturnal', def: 'Animals that sleep during the daytime and wake up to hunt or play at night.' },
+        'diurnal': { term: 'Diurnal', def: 'Animals that are awake and busy during the sunny daytime and sleep at night.' },
+        'hibernation': { term: 'Hibernation', def: 'A super deep, long winter sleep that saves energy when it is freezing and food is scarce.' },
+        'migrate': { term: 'Migrate', def: 'To travel a long distance with the seasons to find warmer weather and more food.' },
+        'migration': { term: 'Migration', def: 'A seasonal journey to find warmer weather, better food, or a safe place to have babies.' },
+        'photosynthesis': { term: 'Photosynthesis', def: 'How green plants use sunshine, water, and air to make their own sugary food.' },
+        'species': { term: 'Species', def: 'A specific group of living things that are closely related and can have babies together.' },
+        'organism': { term: 'Organism', def: 'Any living creature, such as an animal, plant, insect, or fungus.' },
+        'organisms': { term: 'Organisms', def: 'Living creatures, including all animals, plants, insects, and fungi.' },
+        'scavenger': { term: 'Scavenger', def: 'An animal that cleans up nature by eating food or animals that are already dead.' },
+        'scavengers': { term: 'Scavengers', def: 'Animals that clean up nature by eating leftover food or dead animals.' },
+        'decomposer': { term: 'Decomposer', def: 'Tiny helpers like worms or mushrooms that break down rotting leaves into rich soil.' },
+        'decomposers': { term: 'Decomposers', def: 'Living helpers like worms and fungi that recycle dead plants into rich dirt.' },
+        'echolocation': { term: 'Echolocation', def: 'Using bouncing sound waves (clicks and echoes) to "see" things in the dark.' },
+        'bioluminescence': { term: 'Bioluminescence', def: 'The amazing ability of some sea creatures and fireflies to make their own glowing light!' },
+        'metamorphosis': { term: 'Metamorphosis', def: 'A magical body transformation, like a caterpillar turning into a butterfly.' },
+        'exoskeleton': { term: 'Exoskeleton', def: 'A hard shell worn on the outside of an insect or crab’s body like armor.' },
+        'extinct': { term: 'Extinct', def: 'When all members of a species have died out and none are left alive on Earth.' },
+        'extinction': { term: 'Extinction', def: 'When a kind of animal or plant disappears forever from our planet.' },
+        'fossil': { term: 'Fossil', def: 'The hardened remains or rocky shape of an ancient animal or plant that lived long ago.' },
+        'fossils': { term: 'Fossils', def: 'Rocks that preserve prints, bones, or traces of creatures from millions of years ago.' },
+        'chloroplasts': { term: 'Chloroplasts', def: 'Tiny green kitchens inside plant cells that catch sunlight to cook up plant food.' },
+        'pollinator': { term: 'Pollinator', def: 'An animal like a bee or butterfly that carries pollen from flower to flower so plants make seeds.' },
+        'pollinators': { term: 'Pollinators', def: 'Helpful animals like bees and birds that carry flower pollen to help plants make seeds.' },
+        'symbiosis': { term: 'Symbiosis', def: 'When two different living creatures live close together and share life (often helping each other!).' },
+        'venom': { term: 'Venom', def: 'A defensive or hunting liquid that is injected through fangs or a sharp stinger.' },
+        'poison': { term: 'Poison', def: 'A harmful chemical that causes sickness if touched, eaten, or swallowed.' }
+      };
+    }
+
+    // Wrap vocabulary words inside clickable badge buttons that 9-year-olds can tap
+    enrichTextWithVocab(text) {
+      if (!text) return '';
+      const vocabs = this.getVocabDefinitions();
+      const keys = Object.keys(vocabs).sort((a, b) => b.length - a.length);
+      const pattern = new RegExp(`\\b(${keys.join('|')})\\b`, 'gi');
+
+      return text.replace(pattern, (match) => {
+        const lower = match.toLowerCase();
+        return `<button type="button" class="ka-vocab-word" onclick="window.AK_PAGE.showVocabPopup('${lower}', event)" title="Tap to see what '${match}' means!">${match} <span class="ka-vocab-hint-icon">❓</span></button>`;
+      });
+    }
+
+    showVocabPopup(wordKey, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      const vocabs = this.getVocabDefinitions();
+      const item = vocabs[wordKey.toLowerCase()] || { term: wordKey, def: 'A special science word in this lesson!' };
+
+      const popBox = document.getElementById('ka-vocab-popover-box');
+      if (popBox) {
+        popBox.innerHTML = `
+          <div class="ka-vocab-popover">
+            <div class="ka-vocab-popover-title">
+              <span>💡 Vocabulary Helper: <strong>${item.term}</strong></span>
+              <button type="button" class="ka-vocab-popover-close" onclick="window.AK_PAGE.hideVocabPopup()">✕</button>
+            </div>
+            <div>${item.def}</div>
+          </div>
+        `;
+        popBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        alert(`${item.term}: ${item.def}`);
+      }
+    }
+
+    hideVocabPopup() {
+      const popBox = document.getElementById('ka-vocab-popover-box');
+      if (popBox) popBox.innerHTML = '';
+    }
+
     generateReadingPassage(skill, unit) {
-      return `Welcome to **Unit ${unit.number}: ${unit.title}**. In this in-depth lesson on **${skill.name}**, naturalists examine the specialized evolutionary traits of **${skill.animal}**. In the natural world, living organisms face persistent selective pressures including predation, temperature fluctuations, food scarcity, and habitat shifts. To flourish within their ecological niches, species develop extraordinary biological mechanisms. Specifically, **${skill.fact}** Understanding the physiological and anatomical structure of this specimen enables researchers to map ecosystem dynamics, nutrient transfers, and food web resilience. Notice how form directly determines function in this species, and remember these key concepts as you proceed to test your mastery in the practice questions!`;
+      // Clear, engaging, friendly paragraph tailored for 9-year-olds
+      return `Welcome to **Unit ${unit.number}: ${unit.title}**! In this lesson, we are exploring **${skill.name}** and getting to know our amazing wildlife friend, the **${skill.animal}**. Every animal has a home called a habitat, and each creature needs healthy food, clean water, and safe shelter to grow big and strong. To stay safe from predators and bad weather, animals develop special super skills called adaptations. For example, did you know? **${skill.fact}** By learning how the ${skill.animal} uses these clever tricks, young nature scientists like you can understand how all living creatures stay healthy in their ecosystem. Look closely at the cool facts below, tap any word you want to learn more about, and then show what you know in the questions!`;
     }
 
     formatMarkdown(text) {
@@ -656,37 +753,49 @@
 
       const curSkill = this.activeLesson;
       const unit = this.activeUnit;
-      const passage = this.generateReadingPassage(curSkill, unit);
+      const rawPassage = this.generateReadingPassage(curSkill, unit);
+      const markdownPassage = this.formatMarkdown(rawPassage);
+      const interactivePassage = this.enrichTextWithVocab(markdownPassage);
+      const enrichedFact = this.enrichTextWithVocab(curSkill.fact);
 
       content.innerHTML = `
         <div class="ka-modal-header">
           <div>
-            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Read About the Animal</span>
+            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Read About This Animal</span>
             <h2 class="ka-modal-title">${curSkill.animal} — ${curSkill.name}</h2>
           </div>
           <button class="ka-modal-close-btn" onclick="window.AK_PAGE.closeModal()">✕</button>
         </div>
 
-        <div class="ka-modal-body" style="padding: 28px 24px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <div class="ka-modal-body" style="padding: 24px 22px;">
+          <!-- Kid-friendly guidance banner -->
+          <div class="ka-vocab-banner">
+            <span>✨ <strong>Reading Tip:</strong> Read the story below! If you see a blue dotted word with a question mark (❓), you can <strong>tap it</strong> to see what it means in plain words!</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
             <span style="font-size: 13px; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 5px 14px; border-radius: 20px;">
-              📖 Step 1: Read about this animal first before reviewing the skill!
+              📖 Step 1: Read this friendly story first!
             </span>
             <span style="font-size: 12px; color: #64748b; font-weight: 600;">
               Skill ${curSkill.index} of ${unit.skillCount}
             </span>
           </div>
 
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 22px; font-size: 15.5px; line-height: 1.8; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 24px;">
-            <p style="margin-bottom: 14px;">${this.formatMarkdown(passage)}</p>
-            <div style="background: #f8fafc; border-left: 4px solid #10b981; padding: 12px 16px; border-radius: 6px; font-size: 14px; color: #065f46; margin-top: 14px;">
-              <strong>🔍 Key Scientific Insight:</strong> ${curSkill.fact}
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 22px; font-size: 16px; line-height: 1.85; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px;">
+            <p style="margin-bottom: 14px;">${interactivePassage}</p>
+            
+            <div style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 14px 16px; border-radius: 6px; font-size: 15px; color: #065f46; margin-top: 14px; line-height: 1.6;">
+              <strong>🔍 Cool Animal Fact:</strong> ${enrichedFact}
             </div>
+
+            <!-- Vocabulary definition popup appears right here when clicked -->
+            <div id="ka-vocab-popover-box"></div>
           </div>
 
           <div style="text-align: center;">
             <button class="ka-boost-btn" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-size: 15px; padding: 12px 28px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(37,99,235,0.3);" onclick="window.AK_PAGE.renderLessonQuestionScreen()">
-              ➔ I've Read About This Animal! Start Skill Review
+              ➔ I Read the Story! Let's Start the Questions
             </button>
           </div>
         </div>
@@ -699,51 +808,51 @@
     generateQuestionsForSkill(skill, unit) {
       return [
         {
-          prompt: `1. Primary Adaptation: In the study of ${skill.name}, which adaptation is most critical for ${skill.animal}?`,
+          prompt: `1. Main Superpower: In our story about ${skill.name}, what makes the ${skill.animal} so special?`,
           options: [
             { text: skill.fact, correct: true },
-            { text: 'Migrating to the polar ice caps exclusively during warm seasons.', correct: false },
-            { text: 'Losing all camouflage pigments to reflect pure sunlight.', correct: false }
+            { text: 'It flies to the moon every single night.', correct: false },
+            { text: 'It can turn into pure sunlight when it is scared.', correct: false }
           ]
         },
         {
-          prompt: `2. Evolutionary Advantage: Why is the biological trait of ${skill.name} a major survival advantage?`,
+          prompt: `2. How It Helps: Why is this special feature a big help for the ${skill.animal}?`,
           options: [
-            { text: 'It conserves vital metabolic energy and maximizes reproductive fitness in its native habitat.', correct: true },
-            { text: 'It completely eliminates the animal’s need for drinking fresh water or nutrient intake.', correct: false },
-            { text: 'It allows the creature to breathe underwater without lungs, gills, or skin pores.', correct: false }
+            { text: 'It helps it stay safe, find food, and survive easily in its home.', correct: true },
+            { text: 'It means the animal never ever needs to drink water or eat food.', correct: false },
+            { text: 'It lets the animal live without breathing any air at all.', correct: false }
           ]
         },
         {
-          prompt: `3. Ecological Food Web: How does ${skill.name} directly influence species interactions and food chain balance?`,
+          prompt: `3. Finding Food & Friends: How does ${skill.name} help in nature\'s food web?`,
           options: [
-            { text: `It allows ${skill.animal} to efficiently forage, hunt, or avoid predation without wasting energy.`, correct: true },
-            { text: 'It breaks all thermodynamic laws of cellular respiration and energy conversion.', correct: false },
-            { text: 'It renders the organism immune to all climatic temperature changes on Earth.', correct: false }
+            { text: `It helps ${skill.animal} catch its dinner or stay hidden from hungry predators.`, correct: true },
+            { text: 'It lets animals survive by eating only rocks and dirt.', correct: false },
+            { text: 'It stops the seasons from ever getting cold or warm.', correct: false }
           ]
         },
         {
-          prompt: `4. Environmental Stress: When faced with environmental pressures, how does ${skill.animal} utilize ${skill.name}?`,
+          prompt: `4. Weather and Changes: When the weather gets tough, how does the ${skill.animal} use this skill?`,
           options: [
-            { text: `By employing specialized anatomical structures and behaviors demonstrated by ${skill.animal}.`, correct: true },
-            { text: 'By permanently halting all metabolic cellular activity for decades at a time.', correct: false },
-            { text: 'By changing its entire skeletal bone composition within hours.', correct: false }
+            { text: `By using its clever body parts and smart natural habits to stay protected.`, correct: true },
+            { text: 'By falling asleep for 500 years in a cave.', correct: false },
+            { text: 'By growing extra legs and arms overnight.', correct: false }
           ]
         },
         {
-          prompt: `5. Field Observation: What empirical scientific evidence proves the function of ${skill.name}?`,
+          prompt: `5. Nature Explorers: How do scientists learn about the ${skill.animal} and its amazing skills?`,
           options: [
-            { text: `Direct bio-telemetry and observational fieldwork tracking ${skill.animal} in its natural biome.`, correct: true },
-            { text: 'Pure folklore without any verified scientific observation.', correct: false },
-            { text: 'Species mutating random appendages on demand.', correct: false }
+            { text: `By watching real animals carefully in the wild and taking field notes.`, correct: true },
+            { text: 'By guessing randomly without ever looking at the animals.', correct: false },
+            { text: 'By asking cartoon characters on television.', correct: false }
           ]
         },
         {
-          prompt: `6. Conservation Synthesis: Why is preserving the habitat of ${skill.animal} vital to understanding ${skill.name}?`,
+          prompt: `6. Helping Nature: Why is it important to protect the wild home of the ${skill.animal}?`,
           options: [
-            { text: 'Because habitat fragmentation directly disrupts the evolutionary niche and survival of this species.', correct: true },
-            { text: 'Because this species can easily relocate to any indoor concrete environment.', correct: false },
-            { text: 'Because ecosystems operate identically even if keystone species disappear.', correct: false }
+            { text: 'Because if their natural home is destroyed, these special animals cannot survive.', correct: true },
+            { text: 'Because wild animals would rather live inside shopping malls.', correct: false },
+            { text: 'Because ecosystems stay exactly the same even if animals disappear.', correct: false }
           ]
         }
       ];
@@ -751,14 +860,15 @@
 
     generateBonusQuestionForSkill(skill) {
       return {
-        prompt: `🌟 BONUS REDEMPTION QUESTION: Can you identify the scientific significance of ${skill.animal} in ${skill.name}?`,
+        prompt: `🌟 BONUS REDEMPTION QUESTION: Can you pick the true fact about the ${skill.animal}?`,
         options: [
-          { text: `Accurate biological observation: ${skill.fact}`, correct: true },
-          { text: 'It has no biological significance in ecological food chains.', correct: false },
-          { text: 'It defies all laws of organic chemistry and thermodynamics.', correct: false }
+          { text: `True Nature Fact: ${skill.fact}`, correct: true },
+          { text: 'This animal is made entirely out of plastic.', correct: false },
+          { text: 'This animal does not need to live on planet Earth.', correct: false }
         ]
       };
     }
+
 
     renderLessonQuestionScreen() {
       const modal = document.getElementById('ka-modal-backdrop');
@@ -1010,9 +1120,27 @@
 
       const qid = `${unit.id}-quiz-${quizNum}`;
       const questions = [
-        { prompt: `Checkpoint: What is the primary evolutionary advantage in Unit ${unit.number}?`, options: [{ text: 'Adaptive fitness in diverse environmental pressures.', correct: true }, { text: 'Zero metabolic energy consumption.', correct: false }] },
-        { prompt: `True or False: Wildlife in Unit ${unit.number} rely heavily on species interactions and food chains.`, options: [{ text: 'True, all living systems are intricately connected.', correct: true }, { text: 'False, every organism lives in total biological vacuum.', correct: false }] },
-        { prompt: `Identify the scientific law governing ecosystems in Unit ${unit.number}:`, options: [{ text: 'The Conservation of Biomass and Trophic Energy Transfer.', correct: true }, { text: 'Infinite reproduction without resource limits.', correct: false }] }
+        {
+          prompt: `Checkpoint Question: How do animals in Unit ${unit.number} stay safe in their home habitats?`,
+          options: [
+            { text: 'By using special body features and behaviors called adaptations.', correct: true },
+            { text: 'By never moving or eating anything at all.', correct: false }
+          ]
+        },
+        {
+          prompt: `True or False: Living creatures in Unit ${unit.number} share food webs and depend on one another.`,
+          options: [
+            { text: 'True! Animals and plants are closely connected in nature.', correct: true },
+            { text: 'False! Every animal lives alone in a bubble.', correct: false }
+          ]
+        },
+        {
+          prompt: `Food & Energy: Where does energy in nature come from first?`,
+          options: [
+            { text: 'From the warm sun and green plants making food!', correct: true },
+            { text: 'From magic clouds with endless battery power.', correct: false }
+          ]
+        }
       ];
 
       this.runExamModal(qid, `Unit ${unit.number} • Checkpoint Quiz ${quizNum} (❔)`, questions, 150, 50);
@@ -1024,11 +1152,41 @@
 
       const tid = `${unit.id}-unit-test`;
       const questions = [
-        { prompt: `Unit ${unit.number} Exam: How do species in this unit adapt to severe environmental stressors?`, options: [{ text: 'Through genetic behavioral, physiological, and structural modifications.', correct: true }, { text: 'By permanently halting cellular respiration.', correct: false }] },
-        { prompt: `Which factor is the greatest threat to wildlife in Unit ${unit.number}?`, options: [{ text: 'Anthropogenic habitat destruction, climate shifts, and fragmentation.', correct: true }, { text: 'Natural sunlight and rain.', correct: false }] },
-        { prompt: `What role do keystone species play in Unit ${unit.number} ecosystems?`, options: [{ text: 'They exert disproportionately large control over community balance.', correct: true }, { text: 'They have zero effect on other plants and animals.', correct: false }] },
-        { prompt: `How does energy flow through the trophic networks of Unit ${unit.number}?`, options: [{ text: 'Unidirectionally from primary autotrophs upwards with ~90% heat dissipation.', correct: true }, { text: 'In an infinite closed loop with zero energy loss.', correct: false }] },
-        { prompt: `Comprehensive Assessment: What is the ultimate goal of conservation biology?`, options: [{ text: 'Preserving biodiversity, genetic richness, and intact ecological habitats.', correct: true }, { text: 'Relocating all species into artificial indoor labs.', correct: false }] }
+        {
+          prompt: `Unit ${unit.number} Big Test: Why do creatures develop amazing adaptations?`,
+          options: [
+            { text: 'To find food, protect their babies, and survive in the wild.', correct: true },
+            { text: 'To show off for video games.', correct: false }
+          ]
+        },
+        {
+          prompt: `Nature Protection: What is one of the biggest dangers to wild animals today?`,
+          options: [
+            { text: 'Losing their natural homes and forests when habitats are destroyed.', correct: true },
+            { text: 'Having too many clean trees and fresh rivers.', correct: false }
+          ]
+        },
+        {
+          prompt: `Ecosystem Balance: What happens when an important animal or plant is protected?`,
+          options: [
+            { text: 'The whole natural community stays healthy and balanced!', correct: true },
+            { text: 'Nothing at all because nature doesn\'t matter.', correct: false }
+          ]
+        },
+        {
+          prompt: `Energy in Nature: How does energy travel through a food web?`,
+          options: [
+            { text: 'Plants catch sunlight, herbivores eat plants, and predators hunt for food.', correct: true },
+            { text: 'Animals plug themselves into electric wall sockets.', correct: false }
+          ]
+        },
+        {
+          prompt: `Junior Ranger Goal: What is the main mission of caring for wildlife?`,
+          options: [
+            { text: 'Keeping Earth\'s wild lands, waters, plants, and animals safe and healthy!', correct: true },
+            { text: 'Moving all wild animals into plastic cages indoors.', correct: false }
+          ]
+        }
       ];
 
       this.runExamModal(tid, `Unit ${unit.number} Comprehensive Exam (⭐)`, questions, 300, 100);
