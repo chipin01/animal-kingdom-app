@@ -1,0 +1,1004 @@
+/* ============================================================================
+   KHAN ACADEMY-STYLE WILDLIFE ACADEMY CSS
+   Clean, organized 2-column dashboard layout, crisp typography, and mastery squares
+   ============================================================================ */
+
+:root {
+  --ka-navy: #0b1e36;
+  --ka-navy-hover: #132a48;
+  --ka-brand-green: #14b8a6;
+  --ka-purple: #7c3aed;
+  --ka-purple-dark: #6d28d9;
+  --ka-purple-bg: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  --ka-bg: #f8fafc;
+  --ka-sidebar-bg: #ffffff;
+  --ka-card-bg: #ffffff;
+  --ka-border: #e2e8f0;
+  --ka-border-hover: #cbd5e1;
+  --ka-text-main: #0f172a;
+  --ka-text-sub: #475569;
+  --ka-text-muted: #64748b;
+  --ka-blue-accent: #2563eb;
+  --ka-blue-soft: #eff6ff;
+
+  /* Mastery Squares Colors requested by user:
+     ⬜ unstarted / not practiced
+     🟥 needs work (<60%)
+     🟧 familiar (60%-85%)
+     ✅ proficient (100% / mastered)
+  */
+  --sq-unstarted-bg: #ffffff;
+  --sq-unstarted-border: #cbd5e1;
+  --sq-unstarted-text: #64748b;
+
+  --sq-needs-work-bg: #ef4444;
+  --sq-needs-work-border: #dc2626;
+  --sq-needs-work-text: #ffffff;
+
+  --sq-familiar-bg: #f97316;
+  --sq-familiar-border: #ea580c;
+  --sq-familiar-text: #ffffff;
+
+  --sq-proficient-bg: #10b981;
+  --sq-proficient-border: #059669;
+  --sq-proficient-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.academy-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--ka-bg);
+  color: var(--ka-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   TOP HEADER (KHAN ACADEMY STYLE)
+   ========================================================================== */
+.ka-header {
+  background-color: var(--ka-navy);
+  color: #ffffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ka-header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.ka-courses-dropdown-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ka-courses-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ka-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ka-search-input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 6px 36px 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  width: 200px;
+  transition: all 0.25s ease;
+}
+
+.ka-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ka-search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #38bdf8;
+  width: 250px;
+}
+
+.ka-search-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 13px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.ka-header-center {
+  display: flex;
+  align-items: center;
+}
+
+.ka-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.ka-logo-icon {
+  font-size: 22px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.ka-logo-badge {
+  background: #059669;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ka-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ka-stat-pill {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ka-btn-back {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ka-btn-back:hover {
+  background: #ffffff;
+  color: var(--ka-navy);
+  border-color: #ffffff;
+}
+
+/* ==========================================================================
+   APP CONTAINER (2-PANE: LEFT SIDEBAR + MAIN CONTENT)
+   ========================================================================== */
+.ka-app-layout {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 60px);
+}
+
+/* --- LEFT SIDEBAR --- */
+.ka-sidebar {
+  width: 290px;
+  flex-shrink: 0;
+  background-color: var(--ka-sidebar-bg);
+  border-right: 1px solid var(--ka-border);
+  padding: 24px 0;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.ka-sidebar-course-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px 20px 20px;
+  border-bottom: 1px solid var(--ka-border);
+  margin-bottom: 12px;
+}
+
+.ka-sidebar-course-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.ka-sidebar-course-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ka-text-main);
+  line-height: 1.2;
+}
+
+.ka-sidebar-course-meta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ka-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.ka-sidebar-nav-list {
+  list-style: none;
+}
+
+.ka-sidebar-item {
+  position: relative;
+}
+
+.ka-sidebar-link {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--ka-text-main);
+  transition: all 0.15s ease;
+  border-left: 3px solid transparent;
+}
+
+.ka-sidebar-link:hover {
+  background-color: #f1f5f9;
+}
+
+.ka-sidebar-item.active .ka-sidebar-link {
+  background-color: var(--ka-blue-soft);
+  border-left-color: var(--ka-blue-accent);
+}
+
+.ka-sidebar-unit-num {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ka-text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.ka-sidebar-item.active .ka-sidebar-unit-num {
+  color: var(--ka-blue-accent);
+}
+
+.ka-sidebar-unit-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.ka-sidebar-item.active .ka-sidebar-unit-title {
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.ka-main {
+  flex: 1;
+  padding: 32px 40px 60px 40px;
+  overflow-y: auto;
+}
+
+.ka-breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ka-text-muted);
+}
+
+.ka-breadcrumbs-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ka-breadcrumbs-left a {
+  color: var(--ka-blue-accent);
+  text-decoration: none;
+}
+
+.ka-breadcrumb-help {
+  color: var(--ka-text-sub);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ka-breadcrumb-help:hover {
+  color: var(--ka-blue-accent);
+  text-decoration: underline;
+}
+
+.ka-course-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--ka-text-main);
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+/* Course Mastery Bar */
+.ka-mastery-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.ka-mastery-label {
+  font-size: 15px;
+  color: var(--ka-text-main);
+  font-weight: 500;
+}
+
+.ka-mastery-percent {
+  font-weight: 700;
+  color: var(--ka-purple);
+}
+
+.ka-mastery-points {
+  font-weight: 600;
+  color: var(--ka-text-sub);
+}
+
+.ka-mastery-info-icon {
+  font-size: 14px;
+  color: var(--ka-text-muted);
+  cursor: pointer;
+}
+
+.ka-mastery-progress-track {
+  width: 220px;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ka-mastery-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ==========================================================================
+   PURPLE MASTERY BOOST BANNER
+   ========================================================================== */
+.ka-boost-banner {
+  background: var(--ka-purple-bg);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  margin-bottom: 32px;
+}
+
+.ka-boost-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ka-boost-btn {
+  background: #ffffff;
+  color: var(--ka-purple-dark);
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ka-boost-btn:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   LEGEND BAR (COLOR CODING AS REQUESTED)
+   ⬜ unstarted | 🟥 needs work | 🟧 familiar | ✅ proficient | ❔ quiz | ⭐ test
+   ========================================================================== */
+.ka-legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #ffffff;
+  border: 1px solid var(--ka-border);
+  padding: 10px 18px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ka-text-sub);
+  flex-wrap: wrap;
+}
+
+.ka-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ka-legend-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ka-legend-box.box-unstarted {
+  background: var(--sq-unstarted-bg);
+  border: 1.5px solid var(--sq-unstarted-border);
+}
+
+.ka-legend-box.box-needs-work {
+  background: var(--sq-needs-work-bg);
+  border: 1.5px solid var(--sq-needs-work-border);
+  color: #fff;
+}
+
+.ka-legend-box.box-familiar {
+  background: var(--sq-familiar-bg);
+  border: 1.5px solid var(--sq-familiar-border);
+  color: #fff;
+}
+
+.ka-legend-box.box-proficient {
+  background: var(--sq-proficient-bg);
+  border: 1.5px solid var(--sq-proficient-border);
+  color: #fff;
+}
+
+/* ==========================================================================
+   2-COLUMN ORGANIZED UNITS GRID ("Not scrolling down way")
+   ========================================================================== */
+.ka-units-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ka-unit-card {
+  background: var(--ka-card-bg);
+  border: 1px solid var(--ka-border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ka-unit-card:hover {
+  border-color: var(--ka-border-hover);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* "✦ UP NEXT FOR YOU!" highlighted active unit */
+.ka-unit-card.active-unit {
+  border: 2px solid #3b82f6;
+  background-color: #f8fafc;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12), 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.ka-unit-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ka-unit-title-wrap {
+  flex: 1;
+}
+
+.ka-unit-number-tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ka-text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ka-badge-up-next {
+  background: #3b82f6;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ka-unit-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ka-text-main);
+  margin-top: 2px;
+}
+
+.ka-unit-points-meta {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ka-text-muted);
+}
+
+/* ==========================================================================
+   SQUARES GRID ROW (KHAN ACADEMY CLUSTERS)
+   Organized row of skills, quizzes (❔), and unit tests (⭐)
+   ========================================================================== */
+.ka-squares-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ka-cluster-group {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+/* Skill Square Base Styles */
+.ka-sq {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  user-select: none;
+}
+
+.ka-sq:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+}
+
+/* State 1: ⬜ Unstarted / Not Practiced */
+.ka-sq.sq-unstarted {
+  background-color: var(--sq-unstarted-bg);
+  border: 1.5px solid var(--sq-unstarted-border);
+  color: var(--sq-unstarted-text);
+}
+
+.ka-sq.sq-unstarted:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+/* State 2: 🟥 Needs Work (<60%) */
+.ka-sq.sq-needs-work {
+  background-color: var(--sq-needs-work-bg);
+  border: 1.5px solid var(--sq-needs-work-border);
+  color: var(--sq-needs-work-text);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.25);
+}
+
+/* State 3: 🟧 Familiar (60%-85%) */
+.ka-sq.sq-familiar {
+  background-color: var(--sq-familiar-bg);
+  border: 1.5px solid var(--sq-familiar-border);
+  color: var(--sq-familiar-text);
+  box-shadow: 0 2px 6px rgba(249, 115, 22, 0.25);
+}
+
+/* State 4: ✅ Proficient (100% / Mastered) */
+.ka-sq.sq-proficient {
+  background-color: var(--sq-proficient-bg);
+  border: 1.5px solid var(--sq-proficient-border);
+  color: var(--sq-proficient-text);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+}
+
+/* Quiz Square (❔) */
+.ka-sq.sq-quiz {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.ka-sq.sq-quiz.sq-unstarted {
+  background: #eff6ff;
+  border: 1.5px dashed #60a5fa;
+  color: #2563eb;
+}
+
+/* Unit Test Square (⭐) */
+.ka-sq.sq-test {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.ka-sq.sq-test.sq-unstarted {
+  background: #fefce8;
+  border: 1.5px dashed #facc15;
+  color: #ca8a04;
+}
+
+/* Grand Capstone Card */
+.ka-unit-card.capstone-card {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+}
+
+.ka-unit-card.capstone-card .ka-unit-number-tag {
+  color: #b45309;
+}
+
+.ka-sq.sq-capstone {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 18px;
+  background: #f59e0b;
+  border: 2px solid #d97706;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+}
+
+/* Tooltip on Square */
+.ka-sq::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.95);
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ka-sq:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: 130%;
+}
+
+/* ==========================================================================
+   INTERACTIVE LESSON / QUIZ / TEST MODAL
+   ========================================================================== */
+.ka-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: kaFadeIn 0.2s ease;
+}
+
+.ka-modal-backdrop.hidden {
+  display: none !important;
+}
+
+.ka-modal-window {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 840px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  animation: kaModalSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ka-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--ka-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 10;
+}
+
+.ka-modal-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ka-blue-accent);
+  letter-spacing: 0.5px;
+}
+
+.ka-modal-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ka-text-main);
+  margin-top: 2px;
+}
+
+.ka-modal-close-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--ka-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.ka-modal-close-btn:hover {
+  background: #e2e8f0;
+  color: var(--ka-text-main);
+}
+
+.ka-modal-body {
+  padding: 24px;
+}
+
+/* Article Reader View */
+.ka-article-lead {
+  font-size: 15px;
+  color: var(--ka-text-sub);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.ka-article-img-wrap {
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: #0f172a;
+}
+
+.ka-article-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ka-article-section {
+  background: #f8fafc;
+  border: 1px solid var(--ka-border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.ka-article-sec-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ka-text-main);
+  margin-bottom: 8px;
+}
+
+.ka-article-sec-body {
+  font-size: 14px;
+  color: var(--ka-text-sub);
+  line-height: 1.6;
+}
+
+/* Interactive Quiz Inside Modal */
+.ka-quiz-box {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.ka-quiz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: var(--ka-blue-accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ka-quiz-prompt {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ka-text-main);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.ka-quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ka-quiz-btn {
+  background: #ffffff;
+  border: 1.5px solid var(--ka-border);
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ka-text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ka-quiz-btn:hover:not(:disabled) {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.ka-quiz-btn.opt-correct {
+  background-color: #ecfdf5 !important;
+  border-color: #10b981 !important;
+  color: #065f46 !important;
+}
+
+.ka-quiz-btn.opt-wrong {
+  background-color: #fef2f2 !important;
+  border-color: #ef4444 !important;
+  color: #991b1b !important;
+}
+
+.ka-quiz-feedback {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.ka-quiz-feedback.fb-win {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.ka-quiz-feedback.fb-lose {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+@keyframes kaFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes kaModalSlide {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .ka-units-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ka-app-layout {
+    flex-direction: column;
+  }
+  .ka-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--ka-border);
+  }
+  .ka-main {
+    padding: 20px 16px;
+  }
+  .ka-search-wrap {
+    display: none;
+  }
+}
