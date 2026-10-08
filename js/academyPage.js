@@ -642,6 +642,13 @@
       return `Welcome to **Unit ${unit.number}: ${unit.title}**. In this in-depth lesson on **${skill.name}**, naturalists examine the specialized evolutionary traits of **${skill.animal}**. In the natural world, living organisms face persistent selective pressures including predation, temperature fluctuations, food scarcity, and habitat shifts. To flourish within their ecological niches, species develop extraordinary biological mechanisms. Specifically, **${skill.fact}** Understanding the physiological and anatomical structure of this specimen enables researchers to map ecosystem dynamics, nutrient transfers, and food web resilience. Notice how form directly determines function in this species, and remember these key concepts as you proceed to test your mastery in the practice questions!`;
     }
 
+    formatMarkdown(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>');
+    }
+
     renderLessonReadingScreen() {
       const modal = document.getElementById('ka-modal-backdrop');
       const content = document.getElementById('ka-modal-content');
@@ -654,7 +661,7 @@
       content.innerHTML = `
         <div class="ka-modal-header">
           <div>
-            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Lesson Reading</span>
+            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Read About the Animal</span>
             <h2 class="ka-modal-title">${curSkill.animal} — ${curSkill.name}</h2>
           </div>
           <button class="ka-modal-close-btn" onclick="window.AK_PAGE.closeModal()">✕</button>
@@ -663,7 +670,7 @@
         <div class="ka-modal-body" style="padding: 28px 24px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
             <span style="font-size: 13px; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 5px 14px; border-radius: 20px;">
-              📖 Read this lesson passage carefully before taking the quiz!
+              📖 Step 1: Read about this animal first before reviewing the skill!
             </span>
             <span style="font-size: 12px; color: #64748b; font-weight: 600;">
               Skill ${curSkill.index} of ${unit.skillCount}
@@ -673,13 +680,13 @@
           <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 22px; font-size: 15.5px; line-height: 1.8; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 24px;">
             <p style="margin-bottom: 14px;">${this.formatMarkdown(passage)}</p>
             <div style="background: #f8fafc; border-left: 4px solid #10b981; padding: 12px 16px; border-radius: 6px; font-size: 14px; color: #065f46; margin-top: 14px;">
-              <strong>🔍 Critical Exam Takeaway:</strong> ${curSkill.fact}
+              <strong>🔍 Key Scientific Insight:</strong> ${curSkill.fact}
             </div>
           </div>
 
           <div style="text-align: center;">
             <button class="ka-boost-btn" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-size: 15px; padding: 12px 28px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(37,99,235,0.3);" onclick="window.AK_PAGE.renderLessonQuestionScreen()">
-              I've Read the Lesson! Start Practice Questions ➔
+              ➔ I've Read About This Animal! Start Skill Review
             </button>
           </div>
         </div>
@@ -741,8 +748,8 @@
       content.innerHTML = `
         <div class="ka-modal-header">
           <div>
-            <span class="ka-modal-tag">Unit ${unit.number} • Skill ${curSkill.index} of ${unit.skillCount}</span>
-            <h2 class="ka-modal-title">${curSkill.animal} ${curSkill.name}</h2>
+            <span class="ka-modal-tag">Unit ${unit.number} • Step 2: Skill Review (Show What You Know)</span>
+            <h2 class="ka-modal-title">${curSkill.animal} — ${curSkill.name}</h2>
           </div>
           <button class="ka-modal-close-btn" onclick="window.AK_PAGE.closeModal()">✕</button>
         </div>
