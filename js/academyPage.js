@@ -1477,7 +1477,12 @@
         message = 'Outstanding! You answered every question correctly (or redeemed via the bonus question) without skipping!';
         badgeHtml = '<span style="color: #10b981; font-weight: 800;">✅ Proficient</span>';
         this.awardRewards(100, 50);
-        if (window.AK_AUDIO && window.AK_AUDIO.playVictory) window.AK_AUDIO.playVictory();
+        // Play triumphant celebration chime!
+        if (window.AK_AUDIO && window.AK_AUDIO.playReviewChime) {
+          window.AK_AUDIO.playReviewChime(true);
+        } else if (window.AK_AUDIO && window.AK_AUDIO.playVictory) {
+          window.AK_AUDIO.playVictory();
+        }
       } else if (this.correctCount >= Math.ceil(total / 2)) {
         status = 'familiar';
         title = 'Good progress! Familiar 🟧';
@@ -1486,14 +1491,18 @@
           : 'Solid attempt! Practice again to reach 100% and unlock Proficient ✅.';
         badgeHtml = '<span style="color: #f97316; font-weight: 800;">🟧 Familiar</span>';
         this.awardRewards(60, 25);
-        if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(480);
+        // Play melodic chime for familiar progress!
+        if (window.AK_AUDIO && window.AK_AUDIO.playReviewChime) {
+          window.AK_AUDIO.playReviewChime(false);
+        }
       } else {
-        // Most wrong
+        // Most wrong: Needs Work -> Absolutely NO CHIME plays!
         status = 'needs_work';
         title = 'Keep working! 🟥';
         message = 'You struggled with this skill. The square is marked Needs Work 🟥. Move on to the next lesson or retry anytime!';
         badgeHtml = '<span style="color: #ef4444; font-weight: 800;">🟥 Needs Work</span>';
         this.awardRewards(20, 10);
+        // (No chime)
       }
 
       this.setSkillLevel(sid, status);
@@ -1642,6 +1651,13 @@
 
           this.setSkillLevel(examId, status);
           this.awardRewards(score * Math.round(pts / questions.length), score * Math.round(coins / questions.length));
+
+          if (status === 'proficient') {
+            if (window.AK_AUDIO && window.AK_AUDIO.playReviewChime) window.AK_AUDIO.playReviewChime(true);
+          } else if (status === 'familiar') {
+            if (window.AK_AUDIO && window.AK_AUDIO.playReviewChime) window.AK_AUDIO.playReviewChime(false);
+          }
+          // If needs_work: silent!
 
           content.innerHTML = `
             <div class="ka-modal-header">

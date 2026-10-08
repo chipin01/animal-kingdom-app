@@ -21,17 +21,89 @@ function toggleSound() {
   return soundEnabled;
 }
 
+// Web Audio API AudioContext for crystal-clear musical chimes
+let _audioCtx = null;
+function getAudioContext() {
+  if (!_audioCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      _audioCtx = new AudioContextClass();
+    }
+  }
+  if (_audioCtx && _audioCtx.state === 'suspended') {
+    _audioCtx.resume();
+  }
+  return _audioCtx;
+}
+
 // UI Pops & Cues
-function playPop(freq) {
-  // Silent or mild click if needed
+function playPop(freq = 440) {
+  if (!isSoundEnabled()) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.12);
+  } catch(e) {}
+}
+
+// Play pleasant melodic bell chime on successful review completion (Proficient or Familiar)
+function playReviewChime(isProficient = true) {
+  if (!isSoundEnabled()) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    // Musical chord frequencies for a rich chime:
+    // Proficient: C5 (523.25), E5 (659.25), G5 (783.99), C6 (1046.50)
+    // Familiar: E5 (659.25), G5 (783.99), B5 (987.77)
+    const notes = isProficient
+      ? [523.25, 659.25, 783.99, 1046.50]
+      : [523.25, 659.25, 783.99];
+
+    notes.forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+      const startTime = ctx.currentTime + (index * 0.09);
+      const duration = 0.8;
+
+      gain.gain.setValueAtTime(0.001, startTime);
+      gain.gain.linearRampToValueAtTime(0.18, startTime + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    });
+  } catch(e) {
+    console.warn('Review chime error:', e);
+  }
+}
+
+function playVictory() {
+  playReviewChime(true);
 }
 
 function playSuccess() {
-  // Silent or UI cue
+  playReviewChime(false);
 }
 
 function playWrong() {
-  // Silent or UI cue
+  // Silent on wrong / needs work
 }
 
 function playCategoryCue(category) {
@@ -220,6 +292,8 @@ window.AK_AUDIO = {
   playPop,
   playSuccess,
   playWrong,
+  playReviewChime,
+  playVictory,
   playCategoryCue,
   playAnimalSound,
   toggleSound,
