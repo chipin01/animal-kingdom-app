@@ -699,7 +699,7 @@
     generateQuestionsForSkill(skill, unit) {
       return [
         {
-          prompt: `In the study of ${skill.name}, which adaptation is most critical for ${skill.animal}?`,
+          prompt: `1. Primary Adaptation: In the study of ${skill.name}, which adaptation is most critical for ${skill.animal}?`,
           options: [
             { text: skill.fact, correct: true },
             { text: 'Migrating to the polar ice caps exclusively during warm seasons.', correct: false },
@@ -707,19 +707,43 @@
           ]
         },
         {
-          prompt: `Why is the biological trait of ${skill.name} an evolutionary advantage?`,
+          prompt: `2. Evolutionary Advantage: Why is the biological trait of ${skill.name} a major survival advantage?`,
           options: [
-            { text: 'It conserves vital metabolic energy and maximizes reproductive fitness.', correct: true },
-            { text: 'It completely eliminates the animal’s need for drinking fresh water.', correct: false },
-            { text: 'It allows the creature to breathe underwater without lungs or gills.', correct: false }
+            { text: 'It conserves vital metabolic energy and maximizes reproductive fitness in its native habitat.', correct: true },
+            { text: 'It completely eliminates the animal’s need for drinking fresh water or nutrient intake.', correct: false },
+            { text: 'It allows the creature to breathe underwater without lungs, gills, or skin pores.', correct: false }
           ]
         },
         {
-          prompt: `Which real-world scenario demonstrates the principle of ${skill.name}?`,
+          prompt: `3. Ecological Food Web: How does ${skill.name} directly influence species interactions and food chain balance?`,
           options: [
-            { text: `Observing ${skill.animal} in its natural biome utilizing specialized physiological behaviors.`, correct: true },
-            { text: 'Animals changing their entire skeletal bone count overnight.', correct: false },
-            { text: 'Living solely on air molecules without food web inputs.', correct: false }
+            { text: `It allows ${skill.animal} to efficiently forage, hunt, or avoid predation without wasting energy.`, correct: true },
+            { text: 'It breaks all thermodynamic laws of cellular respiration and energy conversion.', correct: false },
+            { text: 'It renders the organism immune to all climatic temperature changes on Earth.', correct: false }
+          ]
+        },
+        {
+          prompt: `4. Environmental Stress: When faced with environmental pressures, how does ${skill.animal} utilize ${skill.name}?`,
+          options: [
+            { text: `By employing specialized anatomical structures and behaviors demonstrated by ${skill.animal}.`, correct: true },
+            { text: 'By permanently halting all metabolic cellular activity for decades at a time.', correct: false },
+            { text: 'By changing its entire skeletal bone composition within hours.', correct: false }
+          ]
+        },
+        {
+          prompt: `5. Field Observation: What empirical scientific evidence proves the function of ${skill.name}?`,
+          options: [
+            { text: `Direct bio-telemetry and observational fieldwork tracking ${skill.animal} in its natural biome.`, correct: true },
+            { text: 'Pure folklore without any verified scientific observation.', correct: false },
+            { text: 'Species mutating random appendages on demand.', correct: false }
+          ]
+        },
+        {
+          prompt: `6. Conservation Synthesis: Why is preserving the habitat of ${skill.animal} vital to understanding ${skill.name}?`,
+          options: [
+            { text: 'Because habitat fragmentation directly disrupts the evolutionary niche and survival of this species.', correct: true },
+            { text: 'Because this species can easily relocate to any indoor concrete environment.', correct: false },
+            { text: 'Because ecosystems operate identically even if keystone species disappear.', correct: false }
           ]
         }
       ];
@@ -918,7 +942,7 @@
         badgeHtml = '<span style="color: #10b981; font-weight: 800;">✅ Proficient</span>';
         this.awardRewards(100, 50);
         if (window.AK_AUDIO && window.AK_AUDIO.playVictory) window.AK_AUDIO.playVictory();
-      } else if (this.correctCount >= 1) {
+      } else if (this.correctCount >= Math.ceil(total / 2)) {
         status = 'familiar';
         title = 'Good progress! Familiar 🟧';
         message = this.hasSkipped
