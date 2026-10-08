@@ -1198,6 +1198,20 @@
             </span>
           </div>
 
+          <!-- Audio Read-Aloud Support Toolbar -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 10px 16px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 22px;">🎧</span>
+              <div>
+                <div style="font-size: 13px; font-weight: 700; color: #1e293b;">Audio Read-Aloud Support</div>
+                <div style="font-size: 11px; color: #64748b;">Listen to the animal story read out loud with a clear, friendly voice!</div>
+              </div>
+            </div>
+            <button id="ka-lesson-narrate-btn" class="ka-boost-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 13px; padding: 8px 18px; border-radius: 20px; display: flex; align-items: center; gap: 6px; cursor: pointer; border: none; font-weight: 700; box-shadow: 0 2px 8px rgba(16,185,129,0.3);" onclick="window.AK_PAGE.toggleLessonAudioNarration(this)">
+              <span>🔊</span> <span>Read Aloud</span>
+            </button>
+          </div>
+
           <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 22px; font-size: 16px; line-height: 1.85; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px;">
             <p style="margin-bottom: 14px;">${interactivePassage}</p>
             
@@ -1219,6 +1233,38 @@
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+    }
+
+    toggleLessonAudioNarration(btn) {
+      if (window.speechSynthesis && window.speechSynthesis.speaking) {
+        if (window.AK_AUDIO && window.AK_AUDIO.stopSpeech) window.AK_AUDIO.stopSpeech();
+        if (btn) {
+          btn.innerHTML = '<span>🔊</span> <span>Read Aloud</span>';
+          btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        }
+        return;
+      }
+
+      if (!this.activeLesson) return;
+      const unit = this.activeUnit;
+      const curSkill = this.activeLesson;
+      const rawPassage = this.generateReadingPassage(curSkill, unit);
+      const cleanPassage = rawPassage.replace(/\*\*/g, '').replace(/\*/g, '');
+      const textToRead = `${curSkill.animal}. ${curSkill.name}. ${cleanPassage}. Cool animal fact: ${curSkill.fact}`;
+
+      if (btn) {
+        btn.innerHTML = '<span>⏹️</span> <span>Stop Voice</span>';
+        btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      }
+
+      if (window.AK_AUDIO && window.AK_AUDIO.speakAnimalText) {
+        window.AK_AUDIO.speakAnimalText(textToRead, () => {
+          if (btn) {
+            btn.innerHTML = '<span>🔊</span> <span>Read Aloud</span>';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+          }
+        });
+      }
     }
 
     // Shuffle array helper so correct answers appear randomly across A, B, and C
@@ -1297,6 +1343,9 @@
 
 
     renderLessonQuestionScreen() {
+      if (window.AK_AUDIO && window.AK_AUDIO.stopSpeech) {
+        window.AK_AUDIO.stopSpeech();
+      }
       const modal = document.getElementById('ka-modal-backdrop');
       const content = document.getElementById('ka-modal-content');
       if (!modal || !content) return;
@@ -1728,9 +1777,18 @@
     }
 
     closeModal() {
+      if (window.AK_AUDIO && window.AK_AUDIO.stopSpeech) {
+        window.AK_AUDIO.stopSpeech();
+      }
       const modal = document.getElementById('ka-modal-backdrop');
       if (modal) modal.classList.add('hidden');
       document.body.style.overflow = 'auto';
+    }
+
+    openAdventureBook(pageNum = null) {
+      if (window.AK_BOOK && window.AK_BOOK.openBook) {
+        window.AK_BOOK.openBook(pageNum);
+      }
     }
 
     onSearch(query) {

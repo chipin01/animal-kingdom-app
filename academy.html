@@ -66,6 +66,9 @@
       <button class="ka-btn-vocab" onclick="window.AK_PAGE.openVocabSection()" title="Explore Wildlife Vocabulary & Fun Science Facts" style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; border: none; padding: 7px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(2,132,199,0.3); transition: all 0.15s ease;">
         📖 Vocabulary & Facts
       </button>
+      <button class="ka-btn-adventure-book" onclick="window.AK_PAGE.openAdventureBook()" title="Read Bonus Adventure Book: Survivors of the Extreme Wild (90 Pages!)" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; border: none; padding: 7px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(217,119,6,0.3); transition: all 0.15s ease;">
+        📕 Adventure Book (90p)
+      </button>
       <button class="ka-btn-restart" onclick="window.AK_PAGE.restartAllProgress()" title="Restart all skills, tests, and mastery progress back to 0">
         🔄 Restart All
       </button>
@@ -135,10 +138,25 @@
       </div>
 
       <!-- Blue Vocabulary & Science Facts Callout Banner -->
-      <div class="ka-boost-banner" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: none; margin-bottom: 20px;">
+      <div class="ka-boost-banner" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: none; margin-bottom: 14px;">
         <span class="ka-boost-text">📖 <strong>Junior Naturalist Dictionary:</strong> Learn cool animal words, hear pronunciations, and discover wild facts!</span>
         <button class="ka-boost-btn" style="background: #ffffff; color: #0369a1; font-weight: 800;" onclick="window.AK_PAGE.openVocabSection()">
           Explore Vocabulary & Facts 🔍
+        </button>
+      </div>
+
+      <!-- Golden Bonus Adventure Book Callout Banner -->
+      <div class="ka-boost-banner" style="background: linear-gradient(135deg, #78350f, #92400e, #b45309); border: 2px solid #fde68a; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-radius: 12px; box-shadow: 0 6px 18px rgba(146,64,14,0.25);">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <img src="assets/images/bonus_adventure_book_cover.jpg" alt="Survivors of the Extreme Wild Cover" style="width: 58px; height: 78px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid #fde68a; flex-shrink: 0;" />
+          <div>
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #fde68a; font-weight: 800;">⭐ SPECIAL BONUS RELEASE • 90 FULL PAGES</div>
+            <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-top: 2px;">Survivors of the Extreme Wild: Journey Across Earth's Harshest Lands</div>
+            <div style="font-size: 13px; color: #fef3c7; margin-top: 3px;">An epic fictional adventure packed with 100% real survival science, audio narration, and 90 thrilling pages!</div>
+          </div>
+        </div>
+        <button class="ka-boost-btn" style="background: #ffffff; color: #92400e; font-weight: 800; font-size: 14px; white-space: nowrap; padding: 11px 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" onclick="window.AK_PAGE.openAdventureBook()">
+          Read 90-Page Book 📖
         </button>
       </div>
 
@@ -212,6 +230,7 @@
   <script src="js/wildlifeAcademy.js"></script>
   <script src="js/ultimateTest.js"></script>
   <script src="data/zoology2Courses.js"></script>
+  <script src="data/adventureBook.js"></script>
   <script src="js/academyPage.js"></script>
 </body>
 </html>

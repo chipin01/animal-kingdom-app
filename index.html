@@ -89,6 +89,9 @@
           <button class="btn-header-pill btn-small-pill btn-academy-glow" onclick="window.app ? window.app.showAcademyView() : (window.location.href = 'academy.html')" title="Wildlife Academy: 8 units, Botany course, 146 skills, organized 2-column mastery squares!">
             <span data-i18n="nav_academy">🎓 Academy</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">NEW</span>
           </button>
+          <button class="btn-header-pill btn-small-pill" onclick="window.AK_BOOK ? window.AK_BOOK.openBook() : (window.location.href='academy.html')" title="Bonus Adventure Book: Survivors of the Extreme Wild (90 Pages!)" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-weight: 700; border: none; box-shadow: 0 2px 8px rgba(217,119,6,0.35);">
+            <span>📕 Adventure Book</span> <span class="badge-live-pulse-sm" style="background: #92400e;">90p</span>
+          </button>
           <button class="btn-header-pill btn-small-pill btn-ultimate-glow" onclick="window.AK_ULTIMATE_TEST && window.AK_ULTIMATE_TEST.openModal()" title="The Ultimate Wildlife Test: Test everything across all animals!">
             <span data-i18n="nav_ultimate_test">🏆 Ultimate Test</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">EXAM</span>
           </button>
@@ -1398,6 +1401,7 @@
   <script src="js/questSystem.js"></script>
   <script src="js/wildlifeAcademy.js"></script>
   <script src="js/ultimateTest.js"></script>
+  <script src="data/adventureBook.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
