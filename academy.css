@@ -82,6 +82,10 @@ body.academy-body {
   gap: 18px;
 }
 
+.ka-courses-dropdown-wrap {
+  position: relative;
+}
+
 .ka-courses-dropdown-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -101,6 +105,89 @@ body.academy-body {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.4);
 }
+
+.ka-courses-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 330px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--ka-border);
+  padding: 8px;
+  z-index: 200;
+  animation: kaFadeIn 0.18s ease;
+}
+
+.ka-courses-menu.hidden {
+  display: none !important;
+}
+
+.ka-courses-menu-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  padding: 8px 12px 6px;
+  letter-spacing: 0.5px;
+}
+
+.ka-course-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #0f172a;
+  transition: all 0.15s ease;
+}
+
+.ka-course-option:hover {
+  background: #f1f5f9;
+}
+
+.ka-course-option.active {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.ka-course-opt-icon {
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ka-course-opt-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ka-course-opt-info strong {
+  font-size: 13.5px;
+  color: #0f172a;
+}
+
+.ka-course-opt-info small {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.ka-course-opt-check {
+  font-weight: 800;
+  color: #2563eb;
+  font-size: 14px;
+}
+
 
 .ka-search-wrap {
   position: relative;

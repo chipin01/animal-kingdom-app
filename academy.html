@@ -15,9 +15,30 @@
   <!-- ===================================================================== -->
   <header class="ka-header">
     <div class="ka-header-left">
-      <button class="ka-courses-dropdown-btn" onclick="alert('Courses available: Zoology 1 (7 Units, 46 Skills). More arriving soon!')">
-        🐾 Courses ▾
-      </button>
+      <div class="ka-courses-dropdown-wrap" id="ka-courses-dropdown-wrap">
+        <button class="ka-courses-dropdown-btn" id="ka-courses-btn" onclick="window.AK_PAGE.toggleCoursesDropdown(event)">
+          🐾 Courses <span id="ka-courses-arrow">▾</span>
+        </button>
+        <div class="ka-courses-menu hidden" id="ka-courses-menu">
+          <div class="ka-courses-menu-header">Wildlife Academy Courses</div>
+          <a href="javascript:void(0)" class="ka-course-option active" id="opt-course-zoology-1" onclick="window.AK_PAGE.switchCourse('zoology-1')">
+            <span class="ka-course-opt-icon">🦁</span>
+            <div class="ka-course-opt-info">
+              <strong>Zoology 1: Foundations & Biomes</strong>
+              <small>8 Units • 146 Skills • Introductory to Advanced</small>
+            </div>
+            <span class="ka-course-opt-check" id="check-course-zoology-1">✓</span>
+          </a>
+          <a href="javascript:void(0)" class="ka-course-option" id="opt-course-zoology-2" onclick="window.AK_PAGE.switchCourse('zoology-2')">
+            <span class="ka-course-opt-icon">🐬</span>
+            <div class="ka-course-opt-info">
+              <strong>Zoology 2: Extreme Wildlife & Marine Biology</strong>
+              <small>8 Units • 146 Skills • Deep Ocean, Rainforests & Microbes</small>
+            </div>
+            <span class="ka-course-opt-check" id="check-course-zoology-2" style="display:none;">✓</span>
+          </a>
+        </div>
+      </div>
 
       <div class="ka-search-wrap">
         <input type="text" class="ka-search-input" placeholder="Search skills or biomes..." id="ka-search-bar" oninput="window.AK_PAGE && window.AK_PAGE.onSearch && window.AK_PAGE.onSearch(this.value)" />
@@ -62,10 +83,10 @@
     <!-- LEFT SIDEBAR -->
     <aside class="ka-sidebar">
       <div class="ka-sidebar-course-card">
-        <div class="ka-sidebar-course-avatar">🦁</div>
+        <div class="ka-sidebar-course-avatar" id="ka-sidebar-course-avatar">🦁</div>
         <div>
-          <h2 class="ka-sidebar-course-name">Zoology 1</h2>
-          <div class="ka-sidebar-course-meta">8 UNITS • 146 SKILLS</div>
+          <h2 class="ka-sidebar-course-name" id="ka-sidebar-course-name">Zoology 1</h2>
+          <div class="ka-sidebar-course-meta" id="ka-sidebar-course-meta">8 UNITS • 146 SKILLS</div>
         </div>
       </div>
 
@@ -84,7 +105,7 @@
           <span>•</span>
           <span>WILDLIFE</span>
           <span>•</span>
-          <span>ZOOLOGY 1</span>
+          <span id="ka-breadcrumb-course">ZOOLOGY 1</span>
         </div>
         <a href="index.html" class="ka-breadcrumb-help">
           🐾 Explore 840+ Earth Kingdom Species →
@@ -92,7 +113,7 @@
       </nav>
 
       <!-- Course Big Title -->
-      <h1 class="ka-course-title">Zoology 1</h1>
+      <h1 class="ka-course-title" id="ka-main-course-title">Zoology 1</h1>
 
       <!-- Course Mastery Stats -->
       <div class="ka-mastery-stats-row">
@@ -190,6 +211,7 @@
   <script src="js/audio.js"></script>
   <script src="js/wildlifeAcademy.js"></script>
   <script src="js/ultimateTest.js"></script>
+  <script src="data/zoology2Courses.js"></script>
   <script src="js/academyPage.js"></script>
 </body>
 </html>

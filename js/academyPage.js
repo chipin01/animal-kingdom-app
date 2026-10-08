@@ -256,10 +256,26 @@
 
   class WildlifeAcademyPageController {
     constructor() {
-      this.units = UNITS_CONFIG;
-      this.totalSkills = this.units.reduce((acc, u) => acc + u.skillCount, 0); // 128 skills
-      this.totalMasteryPoints = this.totalSkills * 100 + (24 * 150) + (7 * 300) + 500; // ~20,000 pts
-      this.storageKey = 'ak_academy_skill_levels';
+      // Current active course: 'zoology-1' or 'zoology-2'
+      this.currentCourseId = localStorage.getItem('ak_academy_active_course') || 'zoology-1';
+      this.coursesConfig = {
+        'zoology-1': {
+          id: 'zoology-1',
+          name: 'Zoology 1',
+          title: 'Zoology 1: Foundations & Biomes',
+          avatar: '🦁',
+          units: UNITS_CONFIG
+        },
+        'zoology-2': {
+          id: 'zoology-2',
+          name: 'Zoology 2',
+          title: 'Zoology 2: Extreme Wildlife & Marine Biology',
+          avatar: '🐬',
+          units: (typeof window !== 'undefined' && window.ZOOLOGY_2_UNITS_CONFIG) ? window.ZOOLOGY_2_UNITS_CONFIG : UNITS_CONFIG
+        }
+      };
+
+      this.loadCourse(this.currentCourseId, false);
 
       // Current Exam / Practice State
       this.activeLesson = null;
@@ -271,8 +287,78 @@
       this.correctCount = 0;
       this.hasSkipped = false;
       this.userAnswers = [];
+    }
+
+    loadCourse(courseId, shouldRerender = true) {
+      if (typeof window !== 'undefined' && window.ZOOLOGY_2_UNITS_CONFIG) {
+        this.coursesConfig['zoology-2'].units = window.ZOOLOGY_2_UNITS_CONFIG;
+      }
+      this.currentCourseId = courseId || 'zoology-1';
+      localStorage.setItem('ak_academy_active_course', this.currentCourseId);
+
+      const courseInfo = this.coursesConfig[this.currentCourseId] || this.coursesConfig['zoology-1'];
+      this.currentCourse = courseInfo;
+      this.units = courseInfo.units;
+      this.totalSkills = this.units.reduce((acc, u) => acc + u.skillCount, 0);
+      this.totalMasteryPoints = this.totalSkills * 100 + (24 * 150) + (7 * 300) + 500;
+      this.storageKey = `ak_academy_skill_levels_${this.currentCourseId}`;
 
       this.initStorage();
+
+      if (shouldRerender) {
+        this.updateCourseHeaderUI();
+        this.updateMasteryHeader();
+        this.renderSidebar();
+        this.renderUnitsGrid();
+      }
+    }
+
+    updateCourseHeaderUI() {
+      const course = this.currentCourse;
+      if (!course) return;
+
+      const avatarEl = document.getElementById('ka-sidebar-course-avatar');
+      if (avatarEl) avatarEl.textContent = course.avatar;
+
+      const nameEl = document.getElementById('ka-sidebar-course-name');
+      if (nameEl) nameEl.textContent = course.name;
+
+      const metaEl = document.getElementById('ka-sidebar-course-meta');
+      if (metaEl) metaEl.textContent = `${this.units.length} UNITS • ${this.totalSkills} SKILLS`;
+
+      const breadcrumbEl = document.getElementById('ka-breadcrumb-course');
+      if (breadcrumbEl) breadcrumbEl.textContent = course.name.toUpperCase();
+
+      const mainTitleEl = document.getElementById('ka-main-course-title');
+      if (mainTitleEl) mainTitleEl.textContent = course.name;
+
+      // Update dropdown selection states
+      const opt1 = document.getElementById('opt-course-zoology-1');
+      const opt2 = document.getElementById('opt-course-zoology-2');
+      const check1 = document.getElementById('check-course-zoology-1');
+      const check2 = document.getElementById('check-course-zoology-2');
+
+      if (opt1) opt1.classList.toggle('active', this.currentCourseId === 'zoology-1');
+      if (opt2) opt2.classList.toggle('active', this.currentCourseId === 'zoology-2');
+      if (check1) check1.style.display = this.currentCourseId === 'zoology-1' ? '' : 'none';
+      if (check2) check2.style.display = this.currentCourseId === 'zoology-2' ? '' : 'none';
+    }
+
+    toggleCoursesDropdown(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      const menu = document.getElementById('ka-courses-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    switchCourse(courseId) {
+      this.loadCourse(courseId, true);
+      const menu = document.getElementById('ka-courses-menu');
+      if (menu) menu.classList.add('hidden');
+      if (window.AK_AUDIO && window.AK_AUDIO.playPop) window.AK_AUDIO.playPop(540);
     }
 
     initStorage() {
@@ -350,6 +436,7 @@
 
     init() {
       this.updateHeaderStats();
+      this.updateCourseHeaderUI();
       this.renderSidebar();
       this.updateMasteryHeader();
       this.renderUnitsGrid();
@@ -1134,67 +1221,77 @@
       document.body.style.overflow = 'hidden';
     }
 
+    // Shuffle array helper so correct answers appear randomly across A, B, and C
+    shuffleOptions(options) {
+      const copy = options.map(opt => ({ ...opt }));
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
     generateQuestionsForSkill(skill, unit) {
       return [
         {
           prompt: `1. Main Superpower: In our story about ${skill.name}, what makes the ${skill.animal} so special?`,
-          options: [
+          options: this.shuffleOptions([
             { text: skill.fact, correct: true },
-            { text: 'It flies to the moon every single night.', correct: false },
-            { text: 'It can turn into pure sunlight when it is scared.', correct: false }
-          ]
+            { text: `They migrate across entire continents every week regardless of seasons or food supply.`, correct: false },
+            { text: `They store all their energy in subterranean mineral stones instead of eating biological food.`, correct: false }
+          ])
         },
         {
           prompt: `2. How It Helps: Why is this special feature a big help for the ${skill.animal}?`,
-          options: [
-            { text: 'It helps it stay safe, find food, and survive easily in its home.', correct: true },
-            { text: 'It means the animal never ever needs to drink water or eat food.', correct: false },
-            { text: 'It lets the animal live without breathing any air at all.', correct: false }
-          ]
+          options: this.shuffleOptions([
+            { text: 'It helps it stay safe, find food, and survive easily in its natural home.', correct: true },
+            { text: 'It completely eliminates the animal’s need to ever drink water or rest.', correct: false },
+            { text: 'It allows the animal to change its body temperature instantly to match boiling water.', correct: false }
+          ])
         },
         {
-          prompt: `3. Finding Food & Friends: How does ${skill.name} help in nature\'s food web?`,
-          options: [
+          prompt: `3. Finding Food & Friends: How does ${skill.name} help in nature's food web?`,
+          options: this.shuffleOptions([
             { text: `It helps ${skill.animal} catch its dinner or stay hidden from hungry predators.`, correct: true },
-            { text: 'It lets animals survive by eating only rocks and dirt.', correct: false },
-            { text: 'It stops the seasons from ever getting cold or warm.', correct: false }
-          ]
+            { text: 'It allows the creature to produce its own food using only solar radiation like a green tree.', correct: false },
+            { text: 'It stops the local ecosystem from ever having winter or dry spells.', correct: false }
+          ])
         },
         {
-          prompt: `4. Weather and Changes: When the weather gets tough, how does the ${skill.animal} use this skill?`,
-          options: [
-            { text: `By using its clever body parts and smart natural habits to stay protected.`, correct: true },
-            { text: 'By falling asleep for 500 years in a cave.', correct: false },
-            { text: 'By growing extra legs and arms overnight.', correct: false }
-          ]
+          prompt: `4. Weather and Changes: When environmental conditions get tough, how does the ${skill.animal} use this skill?`,
+          options: this.shuffleOptions([
+            { text: `By using its clever body parts and natural habits to stay protected and conserve energy.`, correct: true },
+            { text: 'By completely shutting down its heartbeat for several continuous years at a time.', correct: false },
+            { text: 'By shedding its entire skeleton and regrowing a new bone frame within a few hours.', correct: false }
+          ])
         },
         {
           prompt: `5. Nature Explorers: How do scientists learn about the ${skill.animal} and its amazing skills?`,
-          options: [
-            { text: `By watching real animals carefully in the wild and taking field notes.`, correct: true },
-            { text: 'By guessing randomly without ever looking at the animals.', correct: false },
-            { text: 'By asking cartoon characters on television.', correct: false }
-          ]
+          options: this.shuffleOptions([
+            { text: `By watching real animals carefully in the wild, using field cameras, and taking detailed field notes.`, correct: true },
+            { text: 'By relying only on old legends and myths without checking real animals in nature.', correct: false },
+            { text: 'By assuming all animals in the world have identical body features and habits.', correct: false }
+          ])
         },
         {
           prompt: `6. Helping Nature: Why is it important to protect the wild home of the ${skill.animal}?`,
-          options: [
-            { text: 'Because if their natural home is destroyed, these special animals cannot survive.', correct: true },
-            { text: 'Because wild animals would rather live inside shopping malls.', correct: false },
-            { text: 'Because ecosystems stay exactly the same even if animals disappear.', correct: false }
-          ]
+          options: this.shuffleOptions([
+            { text: 'Because if their natural habitat is destroyed or fragmented, these special animals cannot survive.', correct: true },
+            { text: 'Because these animals can easily relocate and adapt to living inside suburban shopping malls.', correct: false },
+            { text: 'Because ecosystems remain completely balanced and unaffected even if key native species disappear.', correct: false }
+          ])
         }
       ];
     }
 
     generateBonusQuestionForSkill(skill) {
       return {
-        prompt: `🌟 BONUS REDEMPTION QUESTION: Can you pick the true fact about the ${skill.animal}?`,
-        options: [
+        prompt: `🌟 BONUS REDEMPTION QUESTION: Can you pick the true scientific fact about the ${skill.animal}?`,
+        options: this.shuffleOptions([
           { text: `True Nature Fact: ${skill.fact}`, correct: true },
-          { text: 'This animal is made entirely out of plastic.', correct: false },
-          { text: 'This animal does not need to live on planet Earth.', correct: false }
-        ]
+          { text: 'This animal is an artificial robot that does not need oxygen or organic food.', correct: false },
+          { text: 'This animal has no predators or biological relationships in its ecosystem.', correct: false }
+        ])
       };
     }
 
@@ -1451,24 +1548,26 @@
       const questions = [
         {
           prompt: `Checkpoint Question: How do animals in Unit ${unit.number} stay safe in their home habitats?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'By using special body features and behaviors called adaptations.', correct: true },
-            { text: 'By never moving or eating anything at all.', correct: false }
-          ]
+            { text: 'By changing their whole skeleton and bone structure whenever seasons change.', correct: false },
+            { text: 'By surviving permanently without any food, water, or shelter.', correct: false }
+          ])
         },
         {
           prompt: `True or False: Living creatures in Unit ${unit.number} share food webs and depend on one another.`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'True! Animals and plants are closely connected in nature.', correct: true },
-            { text: 'False! Every animal lives alone in a bubble.', correct: false }
-          ]
+            { text: 'False! Every species produces its own food and has no predators or competitors.', correct: false }
+          ])
         },
         {
           prompt: `Food & Energy: Where does energy in nature come from first?`,
-          options: [
-            { text: 'From the warm sun and green plants making food!', correct: true },
-            { text: 'From magic clouds with endless battery power.', correct: false }
-          ]
+          options: this.shuffleOptions([
+            { text: 'From the warm sun and green plants capturing solar light!', correct: true },
+            { text: 'From deep underground magma rocks without any plant interaction.', correct: false },
+            { text: 'From apex predators creating chemical energy from nothing.', correct: false }
+          ])
         }
       ];
 
@@ -1483,38 +1582,43 @@
       const questions = [
         {
           prompt: `Unit ${unit.number} Big Test: Why do creatures develop amazing adaptations?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'To find food, protect their babies, and survive in the wild.', correct: true },
-            { text: 'To show off for video games.', correct: false }
-          ]
+            { text: 'To permanently stop their cells from needing oxygen or moisture.', correct: false },
+            { text: 'To change their species into another animal over a few days.', correct: false }
+          ])
         },
         {
           prompt: `Nature Protection: What is one of the biggest dangers to wild animals today?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'Losing their natural homes and forests when habitats are destroyed.', correct: true },
-            { text: 'Having too many clean trees and fresh rivers.', correct: false }
-          ]
+            { text: 'Having natural rainfall and clean seasonal weather in their biome.', correct: false },
+            { text: 'Ecosystems having too many diverse native plant species.', correct: false }
+          ])
         },
         {
           prompt: `Ecosystem Balance: What happens when an important animal or plant is protected?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'The whole natural community stays healthy and balanced!', correct: true },
-            { text: 'Nothing at all because nature doesn\'t matter.', correct: false }
-          ]
+            { text: 'All other species in the food web immediately disappear.', correct: false },
+            { text: 'The ecosystem stops transferring energy completely.', correct: false }
+          ])
         },
         {
           prompt: `Energy in Nature: How does energy travel through a food web?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'Plants catch sunlight, herbivores eat plants, and predators hunt for food.', correct: true },
-            { text: 'Animals plug themselves into electric wall sockets.', correct: false }
-          ]
+            { text: 'Energy moves backwards from apex predators into sunlight without loss.', correct: false },
+            { text: 'Animals generate endless energy solely by drinking ocean saltwater.', correct: false }
+          ])
         },
         {
           prompt: `Junior Ranger Goal: What is the main mission of caring for wildlife?`,
-          options: [
+          options: this.shuffleOptions([
             { text: 'Keeping Earth\'s wild lands, waters, plants, and animals safe and healthy!', correct: true },
-            { text: 'Moving all wild animals into plastic cages indoors.', correct: false }
-          ]
+            { text: 'Relocating all wild animals into concrete urban areas permanently.', correct: false },
+            { text: 'Letting invasive non-native species replace all indigenous wildlife.', correct: false }
+          ])
         }
       ];
 
@@ -1811,7 +1915,21 @@
     bindEvents() {
       if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') this.closeModal();
+          if (e.key === 'Escape') {
+            this.closeModal();
+            const menu = document.getElementById('ka-courses-menu');
+            if (menu) menu.classList.add('hidden');
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          const wrap = document.getElementById('ka-courses-dropdown-wrap');
+          if (wrap && !wrap.contains(e.target)) {
+            const menu = document.getElementById('ka-courses-menu');
+            if (menu && !menu.classList.contains('hidden')) {
+              menu.classList.add('hidden');
+            }
+          }
         });
       }
     }
