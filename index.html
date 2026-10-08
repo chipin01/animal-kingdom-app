@@ -85,6 +85,12 @@
           </div>
 
           <!-- Interactive Feature Buttons (Small) -->
+          <button class="btn-header-pill btn-small-pill btn-academy-glow" onclick="window.AK_ACADEMY && window.AK_ACADEMY.openModal()" title="Wildlife Academy: 7 courses, 10 lessons on how animals live, XP leveling!">
+            <span data-i18n="nav_academy">🎓 Academy</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">NEW</span>
+          </button>
+          <button class="btn-header-pill btn-small-pill btn-ultimate-glow" onclick="window.AK_ULTIMATE_TEST && window.AK_ULTIMATE_TEST.openModal()" title="The Ultimate Wildlife Test: Test everything across all animals!">
+            <span data-i18n="nav_ultimate_test">🏆 Ultimate Test</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">EXAM</span>
+          </button>
           <button class="btn-header-pill btn-small-pill btn-quest-glow" onclick="window.AK_QUESTS && window.AK_QUESTS.openQuestModal()" title="Explore Animal Quests and earn coins!">
             <span data-i18n="nav_quests">📜 Quests</span> <span class="badge-live-pulse-sm" style="background: linear-gradient(135deg, #10b981, #eab308);">NEW</span>
           </button>
@@ -199,6 +205,30 @@
         <!-- Quick Access Grid for Other Cool Apps -->
         <div class="cool-apps-grid">
           
+          <div class="cool-app-card" onclick="window.AK_ACADEMY && window.AK_ACADEMY.openModal()" title="Launch Wildlife Academy" style="border: 1px solid rgba(99, 102, 241, 0.45); background: rgba(49, 46, 129, 0.22);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff;">🎓</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_academy_title">Wildlife Academy</h4>
+                <span class="cool-card-badge" style="background: #6366f1; color: #fff;">7 COURSES</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_academy_desc">Khan Academy-style courses! 7 full curriculums, 10 lessons on How Animals Live, XP leveling & quizzes!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
+          <div class="cool-app-card" onclick="window.AK_ULTIMATE_TEST && window.AK_ULTIMATE_TEST.openModal()" title="Launch The Ultimate Wildlife Test" style="border: 1px solid rgba(245, 158, 11, 0.45); background: rgba(120, 53, 15, 0.22);">
+            <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff;">🏆</div>
+            <div class="cool-card-text">
+              <div class="cool-card-header-row">
+                <h4 class="cool-card-title" data-i18n="cool_ultimate_title">The Ultimate Wildlife Test</h4>
+                <span class="cool-card-badge" style="background: #f59e0b; color: #fff;">GRAND EXAM</span>
+              </div>
+              <p class="cool-card-desc" data-i18n="cool_ultimate_desc">The grand capstone exam! 25 comprehensive questions across all zones, instant scoring & official diploma!</p>
+            </div>
+            <span class="cool-card-arrow">→</span>
+          </div>
+
           <div class="cool-app-card" onclick="window.AK_QUESTS && window.AK_QUESTS.openQuestModal()" title="Launch Animal Quest Library" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(6, 78, 59, 0.18);">
             <div class="cool-card-icon-wrap" style="background: linear-gradient(135deg, #10b981, #eab308); color: #fff;">📜</div>
             <div class="cool-card-text">
@@ -1317,6 +1347,16 @@
     <div id="gauntlet-modal-content" class="gauntlet-modal-window"></div>
   </div>
 
+  <!-- WILDLIFE ACADEMY MODAL -->
+  <div id="academy-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_ACADEMY.closeModal()">
+    <div id="academy-modal-content" class="academy-modal-window"></div>
+  </div>
+
+  <!-- ULTIMATE WILDLIFE TEST MODAL -->
+  <div id="ultimate-test-modal" class="modal-backdrop hidden" onclick="if(event.target === this) window.AK_ULTIMATE_TEST.closeModal()">
+    <div id="ultimate-test-modal-content" class="ultimate-modal-window"></div>
+  </div>
+
   <!-- Confetti Layer -->
   <div id="confetti-layer" class="confetti-layer"></div>
 
@@ -1355,6 +1395,8 @@
   <script src="js/specimenIdentifier.js"></script>
   <script src="js/flashcardSprint.js"></script>
   <script src="js/questSystem.js"></script>
+  <script src="js/wildlifeAcademy.js"></script>
+  <script src="js/ultimateTest.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

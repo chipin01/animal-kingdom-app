@@ -336,6 +336,20 @@ class AnimalKingdomApp {
         window.AK_QUESTS.renderGauntlet();
       }
     }
+
+    // If academy or ultimate test modal is open, re-render
+    if (window.AK_ACADEMY) {
+      const acModal = document.getElementById('academy-modal');
+      if (acModal && !acModal.classList.contains('hidden')) {
+        window.AK_ACADEMY.renderDashboard();
+      }
+    }
+    if (window.AK_ULTIMATE_TEST) {
+      const utModal = document.getElementById('ultimate-test-modal');
+      if (utModal && !utModal.classList.contains('hidden') && !window.AK_ULTIMATE_TEST.isExamActive) {
+        window.AK_ULTIMATE_TEST.renderIntro();
+      }
+    }
   }
 
   toggleTheme() {
@@ -1449,6 +1463,8 @@ class AnimalKingdomApp {
         this.closeQuiz();
         this.closeBattleArena();
         this.closeBackgroundModal();
+        if (window.AK_ACADEMY && window.AK_ACADEMY.closeModal) window.AK_ACADEMY.closeModal();
+        if (window.AK_ULTIMATE_TEST && window.AK_ULTIMATE_TEST.closeModal) window.AK_ULTIMATE_TEST.closeModal();
         this.closeGlobalDropdown();
         this.clearFighterSearch(1);
         this.clearFighterSearch(2);
