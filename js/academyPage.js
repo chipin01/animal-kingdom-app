@@ -745,11 +745,19 @@
       this.hasSkipped = false;
       this.inBonusMode = false;
 
-      // Generate 3 core questions + 1 bonus redemption question for this skill
-      this.coreQuestions = this.generateQuestionsForSkill(skill, unit);
+      // Deep bespoke knowledge retrieval: hunting, sleeping, depth levels, and superpowers!
+      const k = (window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.getSpeciesKnowledge)
+        ? window.AK_LESSON_ENGINE.getSpeciesKnowledge(skill.animal, skill.name, skill.fact, unit)
+        : null;
+      this.activeLessonKnowledge = k;
+
+      // Generate bespoke questions testing hunting, sleeping, superpowers, and depth zones!
+      this.coreQuestions = (window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.generateBespokeQuestions && k)
+        ? window.AK_LESSON_ENGINE.generateBespokeQuestions(skill, unit, k)
+        : this.generateQuestionsForSkill(skill, unit);
       this.bonusQuestion = this.generateBonusQuestionForSkill(skill);
 
-      // STEP 1: Display long reading paragraph first!
+      // STEP 1: Display rich multi-section lesson screen first!
       this.renderLessonReadingScreen();
     }
 
@@ -1197,42 +1205,45 @@
 
       const curSkill = this.activeLesson;
       const unit = this.activeUnit;
-      const rawPassage = this.generateReadingPassage(curSkill, unit);
-      const markdownPassage = this.formatMarkdown(rawPassage);
-      const interactivePassage = this.enrichTextWithVocab(markdownPassage);
-      const enrichedFact = this.enrichTextWithVocab(curSkill.fact);
+
+      // Fetch bespoke knowledge from lessonKnowledgeEngine
+      const k = this.activeLessonKnowledge || ((window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.getSpeciesKnowledge)
+        ? window.AK_LESSON_ENGINE.getSpeciesKnowledge(curSkill.animal, curSkill.name, curSkill.fact, unit)
+        : null);
+
+      const sleepText = k ? k.sleep : 'Rests in sheltered dens or cozy microhabitats to conserve metabolic energy.';
+      const huntText = k ? k.hunt : 'Forages or hunts using acute sensory receptors and physical adaptations.';
+      const skillText = k ? k.skill : curSkill.fact;
+      const storyText = k ? k.story : `As dawn breaks, ${curSkill.animal} wakes to explore its native environment in ${unit.title}.`;
+      const depthZone = k ? k.depthZone : null;
+
+      const interactiveSleep = this.enrichTextWithVocab(this.formatMarkdown(sleepText));
+      const interactiveHunt = this.enrichTextWithVocab(this.formatMarkdown(huntText));
+      const interactiveSkill = this.enrichTextWithVocab(this.formatMarkdown(skillText));
+      const interactiveStory = this.enrichTextWithVocab(this.formatMarkdown(storyText));
 
       content.innerHTML = `
         <div class="ka-modal-header">
           <div>
-            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Read About This Animal</span>
+            <span class="ka-modal-tag">Unit ${unit.number} • Step 1: Deep Wildlife Study</span>
             <h2 class="ka-modal-title">${curSkill.animal} — ${curSkill.name}</h2>
           </div>
           <button class="ka-modal-close-btn" onclick="window.AK_PAGE.closeModal()">✕</button>
         </div>
 
-        <div class="ka-modal-body" style="padding: 24px 22px;">
+        <div class="ka-modal-body" style="padding: 24px 22px; max-height: 78vh; overflow-y: auto;">
           <!-- Kid-friendly guidance banner -->
-          <div class="ka-vocab-banner">
-            <span>✨ <strong>Reading Tip:</strong> Read the story below! If you see a blue dotted word with a question mark (❓), you can <strong>tap it</strong> to see what it means in plain words!</span>
-          </div>
-
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-            <span style="font-size: 13px; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 5px 14px; border-radius: 20px;">
-              📖 Step 1: Read this friendly story first!
-            </span>
-            <span style="font-size: 12px; color: #64748b; font-weight: 600;">
-              Skill ${curSkill.index} of ${unit.skillCount}
-            </span>
+          <div class="ka-vocab-banner" style="margin-bottom: 14px;">
+            <span>✨ <strong>Naturalist Field Guide:</strong> Learn how they sleep, how they hunt, and explore their wild world! Tap any blue word with ❓ for a quick explanation!</span>
           </div>
 
           <!-- Audio Read-Aloud Support Toolbar -->
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 10px 16px; border-radius: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 10px 16px; border-radius: 12px;">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="font-size: 22px;">🎧</span>
+              <span style="font-size: 24px;">🎧</span>
               <div>
                 <div style="font-size: 13px; font-weight: 700; color: #1e293b;">Audio Read-Aloud Support</div>
-                <div style="font-size: 11px; color: #64748b;">Listen to the animal story read out loud with a clear, friendly voice!</div>
+                <div style="font-size: 11px; color: #64748b;">Listen to how they live, hunt, sleep, and their wild story!</div>
               </div>
             </div>
             <button id="ka-lesson-narrate-btn" class="ka-boost-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 13px; padding: 8px 18px; border-radius: 20px; display: flex; align-items: center; gap: 6px; cursor: pointer; border: none; font-weight: 700; box-shadow: 0 2px 8px rgba(16,185,129,0.3);" onclick="window.AK_PAGE.toggleLessonAudioNarration(this)">
@@ -1240,20 +1251,86 @@
             </button>
           </div>
 
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 22px; font-size: 16px; line-height: 1.85; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px;">
-            <p style="margin-bottom: 14px;">${interactivePassage}</p>
+          ${depthZone ? `
+            <!-- OCEAN DEPTH ZONE CARD (For Marine Life) -->
+            <div style="background: ${depthZone.badgeBg}; border: 2px solid ${depthZone.badgeBorder}; border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.05);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                <div style="font-size: 14px; font-weight: 800; color: ${depthZone.color}; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 20px;">${depthZone.icon}</span>
+                  <span>OCEAN DEPTH LEVEL: <strong>${depthZone.zone}</strong></span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <span style="font-size: 11px; font-weight: 800; background: ${depthZone.color}; color: #ffffff; padding: 3px 10px; border-radius: 12px;">
+                    📏 ${depthZone.range}
+                  </span>
+                  <span style="font-size: 11px; font-weight: 700; background: #ffffff; color: ${depthZone.color}; border: 1px solid ${depthZone.color}; padding: 3px 8px; border-radius: 12px;">
+                    ⚓ ${depthZone.pressure}
+                  </span>
+                </div>
+              </div>
+              <div style="font-size: 13.5px; color: #1e293b; line-height: 1.55; margin-bottom: 6px;">
+                <strong>💡 Light & Waters:</strong> ${depthZone.light} • <strong>🌡️ Temp:</strong> ${depthZone.temp}
+              </div>
+              <div style="font-size: 13px; color: #334155; line-height: 1.5; background: rgba(255,255,255,0.7); padding: 8px 12px; border-radius: 8px;">
+                <strong>🌊 How Creatures Live at this Depth:</strong> ${depthZone.desc}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- THREE PILLARS: WHERE THEY SLEEP, HOW THEY HUNT, SPECIAL SUPERPOWER -->
+          <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 18px;">
             
-            <div style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 14px 16px; border-radius: 6px; font-size: 15px; color: #065f46; margin-top: 14px; line-height: 1.6;">
-              <strong>🔍 Cool Animal Fact:</strong> ${enrichedFact}
+            <!-- 1. WHERE THEY SLEEP & LIVE -->
+            <div style="background: #fdf2f8; border: 1.5px solid #f472b6; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span style="font-size: 20px;">🏡</span>
+                <strong style="color: #9d174d; font-size: 15px;">Where They Sleep & Live:</strong>
+              </div>
+              <p style="margin: 0; font-size: 14.5px; color: #831843; line-height: 1.65;">
+                ${interactiveSleep}
+              </p>
             </div>
 
-            <!-- Vocabulary definition popup appears right here when clicked -->
-            <div id="ka-vocab-popover-box"></div>
+            <!-- 2. HOW THEY HUNT & EAT -->
+            <div style="background: #fff7ed; border: 1.5px solid #fb923c; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span style="font-size: 20px;">🏹</span>
+                <strong style="color: #9a3412; font-size: 15px;">How They Hunt & What They Eat:</strong>
+              </div>
+              <p style="margin: 0; font-size: 14.5px; color: #7c2d12; line-height: 1.65;">
+                ${interactiveHunt}
+              </p>
+            </div>
+
+            <!-- 3. SPECIAL SUPERPOWER -->
+            <div style="background: #f0fdf4; border: 1.5px solid #4ade80; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span style="font-size: 20px;">⚡</span>
+                <strong style="color: #166534; font-size: 15px;">Special Survival Superpower:</strong>
+              </div>
+              <p style="margin: 0; font-size: 14.5px; color: #14532d; line-height: 1.65;">
+                ${interactiveSkill}
+              </p>
+            </div>
           </div>
 
-          <div style="text-align: center;">
-            <button class="ka-boost-btn" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-size: 15px; padding: 12px 28px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(37,99,235,0.3);" onclick="window.AK_PAGE.renderLessonQuestionScreen()">
-              ➔ I Read the Story! Let's Start the Questions
+          <!-- 4. VIVID DAY-IN-THE-LIFE NARRATIVE STORY -->
+          <div style="background: #ffffff; border: 2px solid #3b82f6; border-radius: 14px; padding: 20px 22px; margin-bottom: 20px; box-shadow: 0 6px 16px rgba(59,130,246,0.08);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid #dbeafe; padding-bottom: 8px;">
+              <span style="font-size: 22px;">📖</span>
+              <strong style="color: #1e40af; font-size: 16px;">A Day in the Wild: ${curSkill.animal}</strong>
+            </div>
+            <p style="margin: 0; font-size: 15.5px; color: #1e293b; line-height: 1.8; font-family: Georgia, 'Times New Roman', serif;">
+              ${interactiveStory}
+            </p>
+          </div>
+
+          <!-- Vocabulary definition popup appears right here when clicked -->
+          <div id="ka-vocab-popover-box"></div>
+
+          <div style="text-align: center; margin-top: 10px;">
+            <button class="ka-boost-btn" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-size: 15px; padding: 12px 32px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(37,99,235,0.3); font-weight: 800;" onclick="window.AK_PAGE.renderLessonQuestionScreen()">
+              ➔ I Studied How They Live! Let's Start the Questions
             </button>
           </div>
         </div>
@@ -1276,9 +1353,22 @@
       if (!this.activeLesson) return;
       const unit = this.activeUnit;
       const curSkill = this.activeLesson;
-      const rawPassage = this.generateReadingPassage(curSkill, unit);
-      const cleanPassage = rawPassage.replace(/\*\*/g, '').replace(/\*/g, '');
-      const textToRead = `${curSkill.animal}. ${curSkill.name}. ${cleanPassage}. Cool animal fact: ${curSkill.fact}`;
+      const k = this.activeLessonKnowledge || ((window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.getSpeciesKnowledge)
+        ? window.AK_LESSON_ENGINE.getSpeciesKnowledge(curSkill.animal, curSkill.name, curSkill.fact, unit)
+        : null);
+
+      let textToRead = `${curSkill.animal}. ${curSkill.name}. `;
+      if (k && k.depthZone) {
+        textToRead += `Ocean Depth Zone: ${k.depthZone.zone}, at depths of ${k.depthZone.range}. Under ${k.depthZone.pressure}. `;
+      }
+      if (k) {
+        textToRead += `Where they sleep: ${k.sleep}. How they hunt and eat: ${k.hunt}. Special superpower: ${k.skill}. A day in the wild: ${k.story}`;
+      } else {
+        textToRead += `${curSkill.fact}`;
+      }
+
+      // Clean markdown asterisks
+      textToRead = textToRead.replace(/\*\*/g, '').replace(/\*/g, '');
 
       if (btn) {
         btn.innerHTML = '<span>⏹️</span> <span>Stop Voice</span>';
@@ -1306,6 +1396,14 @@
     }
 
     generateQuestionsForSkill(skill, unit) {
+      const k = this.activeLessonKnowledge || ((window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.getSpeciesKnowledge)
+        ? window.AK_LESSON_ENGINE.getSpeciesKnowledge(skill.animal, skill.name, skill.fact, unit)
+        : null);
+
+      if (window.AK_LESSON_ENGINE && window.AK_LESSON_ENGINE.generateBespokeQuestions && k) {
+        return window.AK_LESSON_ENGINE.generateBespokeQuestions(skill, unit, k);
+      }
+
       return [
         {
           prompt: `1. Main Superpower: In our story about ${skill.name}, what makes the ${skill.animal} so special?`,
