@@ -279,6 +279,13 @@
           title: 'Advanced Biology & Minerals: Molecular Life, Extremophiles & Earth Crystals',
           avatar: '💎',
           units: (typeof window !== 'undefined' && window.ADVANCED_BIO_MINERALS_UNITS_CONFIG) ? window.ADVANCED_BIO_MINERALS_UNITS_CONFIG : UNITS_CONFIG
+        },
+        'master-plants': {
+          id: 'master-plants',
+          name: 'Master Level: Dive into Plants',
+          title: 'Master Level: Dive into Plants & How They Live',
+          avatar: '🌿',
+          units: (typeof window !== 'undefined' && window.MASTER_PLANTS_UNITS_CONFIG) ? window.MASTER_PLANTS_UNITS_CONFIG : UNITS_CONFIG
         }
       };
 
@@ -302,6 +309,9 @@
       }
       if (typeof window !== 'undefined' && window.ADVANCED_BIO_MINERALS_UNITS_CONFIG) {
         this.coursesConfig['advanced-bio-minerals'].units = window.ADVANCED_BIO_MINERALS_UNITS_CONFIG;
+      }
+      if (typeof window !== 'undefined' && window.MASTER_PLANTS_UNITS_CONFIG) {
+        this.coursesConfig['master-plants'].units = window.MASTER_PLANTS_UNITS_CONFIG;
       }
       this.currentCourseId = courseId || 'zoology-1';
       localStorage.setItem('ak_academy_active_course', this.currentCourseId);
@@ -346,16 +356,20 @@
       const opt1 = document.getElementById('opt-course-zoology-1');
       const opt2 = document.getElementById('opt-course-zoology-2');
       const opt3 = document.getElementById('opt-course-advanced-bio-minerals');
+      const opt4 = document.getElementById('opt-course-master-plants');
       const check1 = document.getElementById('check-course-zoology-1');
       const check2 = document.getElementById('check-course-zoology-2');
       const check3 = document.getElementById('check-course-advanced-bio-minerals');
+      const check4 = document.getElementById('check-course-master-plants');
 
       if (opt1) opt1.classList.toggle('active', this.currentCourseId === 'zoology-1');
       if (opt2) opt2.classList.toggle('active', this.currentCourseId === 'zoology-2');
       if (opt3) opt3.classList.toggle('active', this.currentCourseId === 'advanced-bio-minerals');
+      if (opt4) opt4.classList.toggle('active', this.currentCourseId === 'master-plants');
       if (check1) check1.style.display = this.currentCourseId === 'zoology-1' ? '' : 'none';
       if (check2) check2.style.display = this.currentCourseId === 'zoology-2' ? '' : 'none';
       if (check3) check3.style.display = this.currentCourseId === 'advanced-bio-minerals' ? '' : 'none';
+      if (check4) check4.style.display = this.currentCourseId === 'master-plants' ? '' : 'none';
     }
 
     toggleCoursesDropdown(event) {
