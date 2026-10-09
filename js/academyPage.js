@@ -272,6 +272,13 @@
           title: 'Zoology 2: Extreme Wildlife & Marine Biology',
           avatar: '🐬',
           units: (typeof window !== 'undefined' && window.ZOOLOGY_2_UNITS_CONFIG) ? window.ZOOLOGY_2_UNITS_CONFIG : UNITS_CONFIG
+        },
+        'advanced-bio-minerals': {
+          id: 'advanced-bio-minerals',
+          name: 'Advanced Biology & Minerals',
+          title: 'Advanced Biology & Minerals: Molecular Life, Extremophiles & Earth Crystals',
+          avatar: '💎',
+          units: (typeof window !== 'undefined' && window.ADVANCED_BIO_MINERALS_UNITS_CONFIG) ? window.ADVANCED_BIO_MINERALS_UNITS_CONFIG : UNITS_CONFIG
         }
       };
 
@@ -292,6 +299,9 @@
     loadCourse(courseId, shouldRerender = true) {
       if (typeof window !== 'undefined' && window.ZOOLOGY_2_UNITS_CONFIG) {
         this.coursesConfig['zoology-2'].units = window.ZOOLOGY_2_UNITS_CONFIG;
+      }
+      if (typeof window !== 'undefined' && window.ADVANCED_BIO_MINERALS_UNITS_CONFIG) {
+        this.coursesConfig['advanced-bio-minerals'].units = window.ADVANCED_BIO_MINERALS_UNITS_CONFIG;
       }
       this.currentCourseId = courseId || 'zoology-1';
       localStorage.setItem('ak_academy_active_course', this.currentCourseId);
@@ -335,13 +345,17 @@
       // Update dropdown selection states
       const opt1 = document.getElementById('opt-course-zoology-1');
       const opt2 = document.getElementById('opt-course-zoology-2');
+      const opt3 = document.getElementById('opt-course-advanced-bio-minerals');
       const check1 = document.getElementById('check-course-zoology-1');
       const check2 = document.getElementById('check-course-zoology-2');
+      const check3 = document.getElementById('check-course-advanced-bio-minerals');
 
       if (opt1) opt1.classList.toggle('active', this.currentCourseId === 'zoology-1');
       if (opt2) opt2.classList.toggle('active', this.currentCourseId === 'zoology-2');
+      if (opt3) opt3.classList.toggle('active', this.currentCourseId === 'advanced-bio-minerals');
       if (check1) check1.style.display = this.currentCourseId === 'zoology-1' ? '' : 'none';
       if (check2) check2.style.display = this.currentCourseId === 'zoology-2' ? '' : 'none';
+      if (check3) check3.style.display = this.currentCourseId === 'advanced-bio-minerals' ? '' : 'none';
     }
 
     toggleCoursesDropdown(event) {
